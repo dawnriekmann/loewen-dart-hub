@@ -4,9 +4,40 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { CheckCircle, Star, Truck, Shield, Award, Users, Zap, Target } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { CheckCircle, Star, Truck, Shield, Award, Users, Zap, Target, ArrowLeft, Plus, Minus } from "lucide-react";
+import { useState } from "react";
 
 const ProductHB8 = () => {
+  const [checkoutMode, setCheckoutMode] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    quantity: 1
+  });
+
+  const basePrice = 2000;
+  const calculateTotal = () => {
+    return basePrice * formData.quantity;
+  };
+
+  const handleInputChange = (field: string, value: string | number) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleQuantityChange = (delta: number) => {
+    const newQuantity = Math.max(1, Math.min(7, formData.quantity + delta));
+    setFormData(prev => ({ ...prev, quantity: newQuantity }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+    // Handle form submission logic here
+  };
+
   return (
     <div className="min-h-screen bg-slate-900">
       <Navbar />
@@ -53,49 +84,181 @@ const ProductHB8 = () => {
                 </div>
               </div>
               
-              {/* Enhanced Price Box */}
-              <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700 rounded-2xl p-8 mb-8 shadow-2xl">
-                <div className="flex items-baseline gap-4 mb-4">
-                  <div className="text-5xl font-bold text-white">2.000€</div>
-                  <div className="text-slate-400 text-lg line-through">2.500€</div>
-                  <Badge className="bg-red-600 text-white">-20%</Badge>
-                </div>
-                <div className="text-slate-300 text-lg mb-6">inkl. 19% MwSt.</div>
-                
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="flex items-center gap-2 bg-green-900/30 text-green-400 px-3 py-2 rounded-full text-sm">
-                    <CheckCircle className="w-4 h-4" />
-                    Nur 7 Stück verfügbar
+              {/* Enhanced Price Box / Checkout Form */}
+              <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700 rounded-2xl p-8 mb-8 shadow-2xl transition-all duration-500 ease-in-out">
+                {!checkoutMode ? (
+                  // Normal Price Display Mode
+                  <div className="animate-fade-in">
+                    <div className="flex items-baseline gap-4 mb-4">
+                      <div className="text-5xl font-bold text-white">2.000€</div>
+                      <div className="text-slate-400 text-lg line-through">2.500€</div>
+                      <Badge className="bg-red-600 text-white">-20%</Badge>
+                    </div>
+                    <div className="text-slate-300 text-lg mb-6">inkl. 19% MwSt.</div>
+                    
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="flex items-center gap-2 bg-green-900/30 text-green-400 px-3 py-2 rounded-full text-sm">
+                        <CheckCircle className="w-4 h-4" />
+                        Nur 7 Stück verfügbar
+                      </div>
+                      <div className="flex items-center gap-2 bg-blue-900/30 text-blue-400 px-3 py-2 rounded-full text-sm">
+                        <Truck className="w-4 h-4" />
+                        Kostenlose Spedition
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-3 text-sm text-slate-400 mb-6">
+                      <div className="flex items-center gap-2">
+                        <Shield className="w-4 h-4 text-green-400" />
+                        24 Monate Garantie
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Users className="w-4 h-4 text-blue-400" />
+                        Kostenlose Einrichtung vor Ort
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Zap className="w-4 h-4 text-cyan-400" />
+                        Sofort einsatzbereit
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2 bg-blue-900/30 text-blue-400 px-3 py-2 rounded-full text-sm">
-                    <Truck className="w-4 h-4" />
-                    Kostenlose Spedition
+                ) : (
+                  // Checkout Form Mode
+                  <form onSubmit={handleSubmit} className="animate-fade-in">
+                    <div className="flex items-center gap-3 mb-6">
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => setCheckoutMode(false)}
+                        className="text-slate-400 hover:text-white p-2"
+                      >
+                        <ArrowLeft className="w-4 h-4" />
+                      </Button>
+                      <h3 className="text-xl font-semibold text-white">Bestellung aufgeben</h3>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4 mb-4">
+                      <div>
+                        <label className="block text-sm font-medium text-slate-300 mb-2">Vorname</label>
+                        <Input
+                          value={formData.firstName}
+                          onChange={(e) => handleInputChange("firstName", e.target.value)}
+                          className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400"
+                          placeholder="Max"
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-slate-300 mb-2">Nachname</label>
+                        <Input
+                          value={formData.lastName}
+                          onChange={(e) => handleInputChange("lastName", e.target.value)}
+                          className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400"
+                          placeholder="Mustermann"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div className="mb-4">
+                      <label className="block text-sm font-medium text-slate-300 mb-2">E-Mail</label>
+                      <Input
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => handleInputChange("email", e.target.value)}
+                        className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400"
+                        placeholder="max@example.com"
+                        required
+                      />
+                    </div>
+
+                    <div className="mb-4">
+                      <label className="block text-sm font-medium text-slate-300 mb-2">Telefonnummer</label>
+                      <Input
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) => handleInputChange("phone", e.target.value)}
+                        className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400"
+                        placeholder="+49 123 456 789"
+                        required
+                      />
+                    </div>
+
+                    <div className="mb-6">
+                      <label className="block text-sm font-medium text-slate-300 mb-2">Menge</label>
+                      <div className="flex items-center gap-3">
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          onClick={() => handleQuantityChange(-1)}
+                          disabled={formData.quantity <= 1}
+                          className="border-slate-600 text-slate-300 hover:bg-slate-700"
+                        >
+                          <Minus className="w-4 h-4" />
+                        </Button>
+                        <span className="text-xl font-semibold text-white min-w-[3rem] text-center">
+                          {formData.quantity}
+                        </span>
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          onClick={() => handleQuantityChange(1)}
+                          disabled={formData.quantity >= 7}
+                          className="border-slate-600 text-slate-300 hover:bg-slate-700"
+                        >
+                          <Plus className="w-4 h-4" />
+                        </Button>
+                        <span className="text-sm text-slate-400 ml-2">
+                          (max. 7 Stück verfügbar)
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Integrated Price Calculator */}
+                    <div className="bg-slate-900/50 border border-slate-600 rounded-lg p-4 mb-6 animate-scale-in">
+                      <div className="space-y-2">
+                        <div className="flex justify-between text-slate-300">
+                          <span>Einzelpreis:</span>
+                          <span>{basePrice.toLocaleString()}€</span>
+                        </div>
+                        <div className="flex justify-between text-slate-300">
+                          <span>Menge:</span>
+                          <span>{formData.quantity}x</span>
+                        </div>
+                        <Separator className="bg-slate-600" />
+                        <div className="flex justify-between text-lg font-semibold text-white">
+                          <span>Gesamtpreis:</span>
+                          <span>{calculateTotal().toLocaleString()}€</span>
+                        </div>
+                        <div className="text-sm text-slate-400 text-right">inkl. 19% MwSt.</div>
+                      </div>
+                    </div>
+
+                    <Button 
+                      type="submit" 
+                      className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 rounded-md shadow-lg transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
+                    >
+                      Verbindliche Bestellung aufgeben
+                    </Button>
+                  </form>
+                )}
+
+                {!checkoutMode && (
+                  <div className="flex gap-4">
+                    <Button 
+                      onClick={() => setCheckoutMode(true)}
+                      className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-3 text-lg font-semibold rounded-md shadow-lg transition-all duration-300 hover:shadow-xl flex-1 transform hover:scale-[1.02]"
+                    >
+                      Jetzt kaufen
+                    </Button>
+                    <Button variant="ghost" className="border border-transparent text-slate-300 hover:bg-slate-700 hover:border-slate-500 hover:text-white px-6 py-3 text-lg rounded-md transition-all duration-300 transform hover:scale-[1.02]">
+                      Mehr Info
+                    </Button>
                   </div>
-                </div>
-                
-                <div className="space-y-3 text-sm text-slate-400">
-                  <div className="flex items-center gap-2">
-                    <Shield className="w-4 h-4 text-green-400" />
-                    24 Monate Garantie
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Users className="w-4 h-4 text-blue-400" />
-                    Kostenlose Einrichtung vor Ort
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Zap className="w-4 h-4 text-cyan-400" />
-                    Sofort einsatzbereit
-                  </div>
-                </div>
-              </div>
-              
-              <div className="flex gap-4">
-                <Button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-3 text-lg font-semibold rounded-md shadow-lg transition-all duration-300 hover:shadow-xl flex-1 transform hover:scale-[1.02]">
-                  Jetzt kaufen
-                </Button>
-                <Button variant="ghost" className="border border-transparent text-slate-300 hover:bg-slate-700 hover:border-slate-500 hover:text-white px-6 py-3 text-lg rounded-md transition-all duration-300 transform hover:scale-[1.02]">
-                  Mehr Info
-                </Button>
+                )}
               </div>
             </div>
             
