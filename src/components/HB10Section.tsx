@@ -49,8 +49,8 @@ const HB10Section = () => {
             </p>
           </div>
 
-          {/* Highlights white box - keep rotation */}
-          <div className="bg-white rounded-lg shadow-xl p-8 mb-16 max-w-4xl mx-auto transform rotate-1">
+          {/* Highlights white box - keep white background but remove rotation */}
+          <div className="bg-white rounded-lg shadow-xl p-8 mb-16 max-w-4xl mx-auto">
             <div className="flex items-center mb-6">
               <img 
                 src="https://www.loewen.de/fileadmin/_processed_/4/8/csm_Dart_HB_10_Logo_klein_407a328601.png" 
@@ -73,9 +73,9 @@ const HB10Section = () => {
             </ul>
           </div>
 
-          {/* Games and Options section - removed rotation */}
+          {/* Games and Options section - removed white background */}
           <div className="mb-16">
-            <div className="bg-white p-8 shadow-lg max-w-4xl mx-auto mb-8">
+            <div className="mb-8 max-w-4xl mx-auto">
               <h3 className="text-3xl font-bold text-[#002454] mb-4">
                 Spiele und Optionen
               </h3>
@@ -84,7 +84,7 @@ const HB10Section = () => {
               </p>
             </div>
             <div className="max-w-6xl mx-auto mb-8">
-              <div className="bg-white p-4 shadow-xl">
+              <div className="shadow-xl">
                 <img 
                   src="https://www.loewen.de/fileadmin/user_upload/Erlauterung-Menue-Dart-V4-102024.png" 
                   alt="LÖWEN DART Menu Explanation"
@@ -94,15 +94,15 @@ const HB10Section = () => {
             </div>
           </div>
 
-          {/* HB10 Monitorkit section - removed rotation */}
+          {/* HB10 Monitorkit section - removed white background */}
           <div className="mb-16">
-            <div className="bg-white p-8 shadow-lg max-w-4xl mx-auto mb-8">
+            <div className="mb-8 max-w-4xl mx-auto">
               <h3 className="text-3xl font-bold text-[#002454]">
                 HB10 - Monitorkit
               </h3>
             </div>
             <div className="max-w-6xl mx-auto">
-              <div className="bg-white p-4 shadow-xl">
+              <div className="shadow-xl">
                 <img 
                   src="https://www.loewen.de/fileadmin/user_upload/Dart-Banner-HB10-Monitorkit_092024.png" 
                   alt="LÖWEN DART HB10 Monitorkit"
@@ -112,9 +112,9 @@ const HB10Section = () => {
             </div>
           </div>
 
-          {/* Two columns with download items - removed rotations */}
+          {/* Two columns with download items - removed white backgrounds */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-4xl mx-auto">
-            <div className="bg-white p-6 shadow-lg">
+            <div className="p-6 shadow-lg">
               <div className="flex items-center space-x-2">
                 <div 
                   className="flex-shrink-0"
@@ -144,7 +144,7 @@ const HB10Section = () => {
               </div>
             </div>
 
-            <div className="bg-white p-6 shadow-lg">
+            <div className="p-6 shadow-lg">
               <div className="flex items-center space-x-2">
                 <div 
                   className="flex-shrink-0"
@@ -178,9 +178,9 @@ const HB10Section = () => {
             </div>
           </div>
 
-          {/* Bottom text section */}
+          {/* Bottom text section - removed white background */}
           <div className="text-center">
-            <div className="bg-white p-6 shadow-lg max-w-2xl mx-auto">
+            <div className="p-6 shadow-lg max-w-2xl mx-auto">
               <p className="text-lg text-[#002454] mb-4">
                 Weitere Inhalte stehen für Sie in unserem Downloadbereich zur Verfügung!
               </p>
