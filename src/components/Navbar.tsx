@@ -1,3 +1,4 @@
+
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
 import { useState, useEffect } from "react";
 
@@ -19,7 +20,7 @@ const Navbar = () => {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-[#002454]' : 'bg-transparent'
+      isScrolled ? 'bg-[#050c21]' : 'bg-transparent'
     }`}>
       <div className="w-full max-w-7xl mx-auto px-8 md:px-16 lg:px-24 py-4">
         <div className="flex items-center justify-between">
@@ -37,7 +38,7 @@ const Navbar = () => {
             <NavigationMenuList className="flex items-center space-x-8">
               {/* Dartautomaten Dropdown */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent text-white hover:text-gray-200 text-lg font-medium">
+                <NavigationMenuTrigger className="bg-transparent text-white hover:text-gray-200 text-lg font-medium font-franklin">
                   Dartautomaten
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -70,7 +71,7 @@ const Navbar = () => {
               <NavigationMenuItem>
                 <a 
                   href="#kontakt" 
-                  className="text-white hover:text-gray-200 text-lg font-medium transition-colors"
+                  className="text-white hover:text-gray-200 text-lg font-medium font-franklin transition-colors"
                 >
                   Kontakt
                 </a>
