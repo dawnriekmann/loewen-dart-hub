@@ -37,21 +37,19 @@ const HB10Section = () => {
       </div>
 
       {/* Content section with top padding to account for overlapping image */}
-      <div className="bg-slate-50 pt-80 pb-20">
+      <div className="bg-slate-50 pt-96 pb-20">
         <div className="container mx-auto px-4">
-          {/* Main title and description */}
+          {/* Main title and description - removed white background */}
           <div className="mb-16 ml-8">
-            <div className="bg-white p-8 shadow-lg max-w-4xl">
-              <h2 className="text-4xl font-bold text-[#002454] mb-8">
-                Das neue Erfolgsmodell - jetzt noch besser.
-              </h2>
-              <p className="text-lg text-[#002454]">
-                Der LÖWEN DART HB10 ist die innovative Weiterentwicklung der bisherigen Erfolgsmodelle von LÖWEN ENTERTAINMENT. Mit vielen verschiedenen Spielmodi, einem Touchpad und dem hochauflösenden Monitor bringt der HB10 den elektronischen Dartsport in das Hier und Jetzt. Und das alles im unverwechselbaren LÖWEN DART-Design.
-              </p>
-            </div>
+            <h2 className="text-4xl font-bold text-[#002454] mb-8">
+              Das neue Erfolgsmodell - jetzt noch besser.
+            </h2>
+            <p className="text-lg text-[#002454] max-w-4xl">
+              Der LÖWEN DART HB10 ist die innovative Weiterentwicklung der bisherigen Erfolgsmodelle von LÖWEN ENTERTAINMENT. Mit vielen verschiedenen Spielmodi, einem Touchpad und dem hochauflösenden Monitor bringt der HB10 den elektronischen Dartsport in das Hier und Jetzt. Und das alles im unverwechselbaren LÖWEN DART-Design.
+            </p>
           </div>
 
-          {/* Highlights white box */}
+          {/* Highlights white box - keep rotation */}
           <div className="bg-white rounded-lg shadow-xl p-8 mb-16 max-w-4xl mx-auto transform rotate-1">
             <div className="flex items-center mb-6">
               <img 
@@ -75,9 +73,9 @@ const HB10Section = () => {
             </ul>
           </div>
 
-          {/* Games and Options section */}
+          {/* Games and Options section - removed rotation */}
           <div className="mb-16">
-            <div className="bg-white p-8 shadow-lg max-w-4xl mx-auto transform -rotate-1 mb-8">
+            <div className="bg-white p-8 shadow-lg max-w-4xl mx-auto mb-8">
               <h3 className="text-3xl font-bold text-[#002454] mb-4">
                 Spiele und Optionen
               </h3>
@@ -86,7 +84,7 @@ const HB10Section = () => {
               </p>
             </div>
             <div className="max-w-6xl mx-auto mb-8">
-              <div className="bg-white p-4 shadow-xl transform rotate-1">
+              <div className="bg-white p-4 shadow-xl">
                 <img 
                   src="https://www.loewen.de/fileadmin/user_upload/Erlauterung-Menue-Dart-V4-102024.png" 
                   alt="LÖWEN DART Menu Explanation"
@@ -96,7 +94,7 @@ const HB10Section = () => {
             </div>
           </div>
 
-          {/* HB10 Monitorkit section */}
+          {/* HB10 Monitorkit section - removed rotation */}
           <div className="mb-16">
             <div className="bg-white p-8 shadow-lg max-w-4xl mx-auto mb-8">
               <h3 className="text-3xl font-bold text-[#002454]">
@@ -104,7 +102,7 @@ const HB10Section = () => {
               </h3>
             </div>
             <div className="max-w-6xl mx-auto">
-              <div className="bg-white p-4 shadow-xl transform -rotate-1">
+              <div className="bg-white p-4 shadow-xl">
                 <img 
                   src="https://www.loewen.de/fileadmin/user_upload/Dart-Banner-HB10-Monitorkit_092024.png" 
                   alt="LÖWEN DART HB10 Monitorkit"
@@ -114,9 +112,9 @@ const HB10Section = () => {
             </div>
           </div>
 
-          {/* Two columns with download items */}
+          {/* Two columns with download items - removed rotations */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-4xl mx-auto">
-            <div className="bg-white p-6 shadow-lg transform rotate-1">
+            <div className="bg-white p-6 shadow-lg">
               <div className="flex items-center space-x-2">
                 <div 
                   className="flex-shrink-0"
@@ -146,7 +144,7 @@ const HB10Section = () => {
               </div>
             </div>
 
-            <div className="bg-white p-6 shadow-lg transform -rotate-1">
+            <div className="bg-white p-6 shadow-lg">
               <div className="flex items-center space-x-2">
                 <div 
                   className="flex-shrink-0"
