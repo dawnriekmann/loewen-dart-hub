@@ -5,22 +5,22 @@ const HB10Section = () => {
       {/* Blue background header - larger height */}
       <div className="relative w-full h-[400px] bg-[#002454] overflow-hidden">
         <div className="container mx-auto px-4 h-full relative">
-          {/* Title box positioned over the image area */}
-          <div className="absolute right-8 top-16 z-20">
+          {/* Title box positioned to span across all three sections - 30% larger */}
+          <div className="absolute right-8 top-16 z-30">
             <div 
-              className="flex items-center justify-center mb-6 shadow-lg"
+              className="flex items-center justify-center mb-8 shadow-lg"
               style={{ 
-                width: '320px', 
-                height: '100px', 
+                width: '416px', 
+                height: '130px', 
                 backgroundColor: '#638fc6' 
               }}
             >
-              <h2 className="text-white font-bold text-2xl text-center">
+              <h2 className="text-white font-bold text-3xl text-center">
                 LÖWEN DART HB10
               </h2>
             </div>
-            <div className="bg-white p-4 shadow-lg max-w-xs">
-              <p className="text-[#002454] text-lg font-semibold">
+            <div className="bg-white p-6 shadow-lg max-w-md">
+              <p className="text-[#002454] text-xl font-semibold">
                 EINE NEUE ÄRA DES ELECTRONIC DARTS.
               </p>
             </div>
