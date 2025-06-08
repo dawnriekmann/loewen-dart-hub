@@ -4,38 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { CheckCircle, Star, Truck, Shield, Award, Users, Zap, Target, Minus, Plus, X } from "lucide-react";
-import { useState } from "react";
+import { CheckCircle, Star, Truck, Shield, Award, Users, Zap, Target } from "lucide-react";
 
 const ProductHB8 = () => {
-  const [isCheckoutMode, setIsCheckoutMode] = useState(false);
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    quantity: 1
-  });
-
-  const basePrice = 2000;
-  const totalPrice = basePrice * formData.quantity;
-  const vatAmount = Math.round(totalPrice * 0.19);
-  const netPrice = totalPrice - vatAmount;
-
-  const handleInputChange = (field: string, value: string | number) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: value
-    }));
-  };
-
-  const handleQuantityChange = (delta: number) => {
-    const newQuantity = Math.max(1, Math.min(7, formData.quantity + delta));
-    handleInputChange('quantity', newQuantity);
-  };
-
   return (
     <div className="min-h-screen bg-slate-900">
       <Navbar />
@@ -82,158 +53,50 @@ const ProductHB8 = () => {
                 </div>
               </div>
               
-              {/* Enhanced Price Box / Checkout Form */}
-              <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700 rounded-2xl p-8 mb-8 shadow-2xl transition-all duration-500">
-                {!isCheckoutMode ? (
-                  // Original Price Display
-                  <>
-                    <div className="flex items-baseline gap-4 mb-4">
-                      <div className="text-5xl font-bold text-white">2.000€</div>
-                      <div className="text-slate-400 text-lg line-through">2.500€</div>
-                      <Badge className="bg-red-600 text-white">-20%</Badge>
-                    </div>
-                    <div className="text-slate-300 text-lg mb-6">inkl. 19% MwSt.</div>
-                    
-                    <div className="flex items-center gap-3 mb-6">
-                      <div className="flex items-center gap-2 bg-green-900/30 text-green-400 px-3 py-2 rounded-full text-sm">
-                        <CheckCircle className="w-4 h-4" />
-                        Nur 7 Stück verfügbar
-                      </div>
-                      <div className="flex items-center gap-2 bg-blue-900/30 text-blue-400 px-3 py-2 rounded-full text-sm">
-                        <Truck className="w-4 h-4" />
-                        Kostenlose Spedition
-                      </div>
-                    </div>
-                    
-                    <div className="space-y-3 text-sm text-slate-400">
-                      <div className="flex items-center gap-2">
-                        <Shield className="w-4 h-4 text-green-400" />
-                        24 Monate Garantie
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Users className="w-4 h-4 text-blue-400" />
-                        Kostenlose Einrichtung vor Ort
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Zap className="w-4 h-4 text-cyan-400" />
-                        Sofort einsatzbereit
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  // Checkout Form
-                  <div className="animate-fade-in">
-                    <div className="flex items-center justify-between mb-6">
-                      <h3 className="text-2xl font-bold text-white">Bestellung aufgeben</h3>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={() => setIsCheckoutMode(false)}
-                        className="text-slate-400 hover:text-white"
-                      >
-                        <X className="w-5 h-5" />
-                      </Button>
-                    </div>
-                    
-                    <div className="space-y-4">
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <Label htmlFor="firstName" className="text-slate-300">Vorname</Label>
-                          <Input
-                            id="firstName"
-                            value={formData.firstName}
-                            onChange={(e) => handleInputChange('firstName', e.target.value)}
-                            className="bg-slate-700/50 border-slate-600 text-white placeholder:text-slate-400 focus:border-blue-500"
-                            placeholder="Max"
-                          />
-                        </div>
-                        <div>
-                          <Label htmlFor="lastName" className="text-slate-300">Nachname</Label>
-                          <Input
-                            id="lastName"
-                            value={formData.lastName}
-                            onChange={(e) => handleInputChange('lastName', e.target.value)}
-                            className="bg-slate-700/50 border-slate-600 text-white placeholder:text-slate-400 focus:border-blue-500"
-                            placeholder="Mustermann"
-                          />
-                        </div>
-                      </div>
-                      
-                      <div>
-                        <Label htmlFor="email" className="text-slate-300">E-Mail Adresse</Label>
-                        <Input
-                          id="email"
-                          type="email"
-                          value={formData.email}
-                          onChange={(e) => handleInputChange('email', e.target.value)}
-                          className="bg-slate-700/50 border-slate-600 text-white placeholder:text-slate-400 focus:border-blue-500"
-                          placeholder="max@beispiel.de"
-                        />
-                      </div>
-                      
-                      <div>
-                        <Label htmlFor="phone" className="text-slate-300">Telefonnummer</Label>
-                        <Input
-                          id="phone"
-                          type="tel"
-                          value={formData.phone}
-                          onChange={(e) => handleInputChange('phone', e.target.value)}
-                          className="bg-slate-700/50 border-slate-600 text-white placeholder:text-slate-400 focus:border-blue-500"
-                          placeholder="+49 123 456789"
-                        />
-                      </div>
-                      
-                      <div>
-                        <Label className="text-slate-300">Anzahl</Label>
-                        <div className="flex items-center gap-3 mt-2">
-                          <Button
-                            variant="outline"
-                            size="icon"
-                            onClick={() => handleQuantityChange(-1)}
-                            disabled={formData.quantity <= 1}
-                            className="bg-slate-700/50 border-slate-600 text-white hover:bg-slate-600"
-                          >
-                            <Minus className="w-4 h-4" />
-                          </Button>
-                          <span className="text-2xl font-bold text-white w-12 text-center">
-                            {formData.quantity}
-                          </span>
-                          <Button
-                            variant="outline"
-                            size="icon"
-                            onClick={() => handleQuantityChange(1)}
-                            disabled={formData.quantity >= 7}
-                            className="bg-slate-700/50 border-slate-600 text-white hover:bg-slate-600"
-                          >
-                            <Plus className="w-4 h-4" />
-                          </Button>
-                          <span className="text-sm text-slate-400 ml-2">
-                            (max. 7 verfügbar)
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <Button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-3 text-lg font-semibold rounded-md shadow-lg transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02] mt-6">
-                      Bestellung abschicken
-                    </Button>
+              {/* Enhanced Price Box */}
+              <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700 rounded-2xl p-8 mb-8 shadow-2xl">
+                <div className="flex items-baseline gap-4 mb-4">
+                  <div className="text-5xl font-bold text-white">2.000€</div>
+                  <div className="text-slate-400 text-lg line-through">2.500€</div>
+                  <Badge className="bg-red-600 text-white">-20%</Badge>
+                </div>
+                <div className="text-slate-300 text-lg mb-6">inkl. 19% MwSt.</div>
+                
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="flex items-center gap-2 bg-green-900/30 text-green-400 px-3 py-2 rounded-full text-sm">
+                    <CheckCircle className="w-4 h-4" />
+                    Nur 7 Stück verfügbar
                   </div>
-                )}
+                  <div className="flex items-center gap-2 bg-blue-900/30 text-blue-400 px-3 py-2 rounded-full text-sm">
+                    <Truck className="w-4 h-4" />
+                    Kostenlose Spedition
+                  </div>
+                </div>
+                
+                <div className="space-y-3 text-sm text-slate-400">
+                  <div className="flex items-center gap-2">
+                    <Shield className="w-4 h-4 text-green-400" />
+                    24 Monate Garantie
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Users className="w-4 h-4 text-blue-400" />
+                    Kostenlose Einrichtung vor Ort
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Zap className="w-4 h-4 text-cyan-400" />
+                    Sofort einsatzbereit
+                  </div>
+                </div>
               </div>
               
-              {!isCheckoutMode && (
-                <div className="flex gap-4">
-                  <Button 
-                    onClick={() => setIsCheckoutMode(true)}
-                    className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-3 text-lg font-semibold rounded-md shadow-lg transition-all duration-300 hover:shadow-xl flex-1 transform hover:scale-[1.02]"
-                  >
-                    Jetzt kaufen
-                  </Button>
-                  <Button variant="ghost" className="border border-transparent text-slate-300 hover:bg-slate-700 hover:border-slate-500 hover:text-white px-6 py-3 text-lg rounded-md transition-all duration-300 transform hover:scale-[1.02]">
-                    Mehr Info
-                  </Button>
-                </div>
-              )}
+              <div className="flex gap-4">
+                <Button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-3 text-lg font-semibold rounded-md shadow-lg transition-all duration-300 hover:shadow-xl flex-1 transform hover:scale-[1.02]">
+                  Jetzt kaufen
+                </Button>
+                <Button variant="ghost" className="border border-transparent text-slate-300 hover:bg-slate-700 hover:border-slate-500 hover:text-white px-6 py-3 text-lg rounded-md transition-all duration-300 transform hover:scale-[1.02]">
+                  Mehr Info
+                </Button>
+              </div>
             </div>
             
             <div className="order-1 lg:order-2">
@@ -275,48 +138,6 @@ const ProductHB8 = () => {
             </div>
           </div>
         </div>
-        
-        {/* Floating Price Calculator - Only visible in checkout mode */}
-        {isCheckoutMode && (
-          <div className="fixed bottom-6 right-6 z-50 animate-scale-in">
-            <div className="bg-slate-800/90 backdrop-blur-xl border border-slate-700 rounded-xl p-4 shadow-2xl min-w-[280px]">
-              <h4 className="text-white font-semibold mb-3 flex items-center">
-                <Target className="w-4 h-4 mr-2 text-blue-400" />
-                Preisübersicht
-              </h4>
-              
-              <div className="space-y-2 text-sm">
-                <div className="flex justify-between text-slate-300">
-                  <span>Einzelpreis:</span>
-                  <span>{basePrice.toLocaleString('de-DE')}€</span>
-                </div>
-                <div className="flex justify-between text-slate-300">
-                  <span>Anzahl:</span>
-                  <span>{formData.quantity}x</span>
-                </div>
-                <Separator className="bg-slate-600" />
-                <div className="flex justify-between text-slate-300">
-                  <span>Netto:</span>
-                  <span>{netPrice.toLocaleString('de-DE')}€</span>
-                </div>
-                <div className="flex justify-between text-slate-300">
-                  <span>MwSt. (19%):</span>
-                  <span>{vatAmount.toLocaleString('de-DE')}€</span>
-                </div>
-                <Separator className="bg-slate-600" />
-                <div className="flex justify-between text-white font-bold text-lg">
-                  <span>Gesamt:</span>
-                  <span>{totalPrice.toLocaleString('de-DE')}€</span>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-2 mt-3 text-xs text-green-400">
-                <Truck className="w-3 h-3" />
-                <span>Kostenlose Spedition</span>
-              </div>
-            </div>
-          </div>
-        )}
       </section>
 
       {/* Key Features Section */}
