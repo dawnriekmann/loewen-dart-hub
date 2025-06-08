@@ -1,0 +1,64 @@
+
+const Footer = () => {
+  return (
+    <footer className="bg-[#002454] text-white py-16">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          <div className="col-span-1 md:col-span-2">
+            <h3 className="text-2xl font-bold mb-4">Löwen Dart</h3>
+            <p className="text-slate-300 mb-6 max-w-md">
+              Der internationale Marktführer für professionelle E-Dart Automaten. 
+              Qualität und Innovation seit Jahrzehnten.
+            </p>
+            <div className="flex space-x-4">
+              <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer">
+                <span className="text-sm font-bold">f</span>
+              </div>
+              <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer">
+                <span className="text-sm font-bold">@</span>
+              </div>
+              <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer">
+                <span className="text-sm font-bold">in</span>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <h4 className="text-lg font-semibold mb-4">Produkte</h4>
+            <ul className="space-y-2 text-slate-300">
+              <li><a href="#" className="hover:text-white transition-colors">Dart HB8</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Dart HB9</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Dart HB10</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Zubehör</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 className="text-lg font-semibold mb-4">Service</h4>
+            <ul className="space-y-2 text-slate-300">
+              <li><a href="#" className="hover:text-white transition-colors">Support</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Wartung</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Ersatzteile</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Downloads</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div className="border-t border-white/20 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-slate-300 text-sm mb-4 md:mb-0">
+              © 2024 Löwen Entertainment GmbH. Alle Rechte vorbehalten.
+            </p>
+            <div className="flex space-x-6 text-slate-300 text-sm">
+              <a href="#" className="hover:text-white transition-colors">Impressum</a>
+              <a href="#" className="hover:text-white transition-colors">Datenschutz</a>
+              <a href="#" className="hover:text-white transition-colors">AGB</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
