@@ -45,6 +45,10 @@
     --sidebar-accent-foreground: 15 23 42; /* slate-900 */
     --sidebar-border: 226 232 240; /* slate-200 */
     --sidebar-ring: 0 36 84; /* #002454 - Löwen blue */
+
+    /* Custom colors for ProductsSection */
+    --products-text: 0 36 84; /* #002454 */
+    --products-title-bg: 248 250 252; /* background color (gray/slate-50) */
   }
 
   .dark {
@@ -83,6 +87,10 @@
     --sidebar-accent-foreground: 248 250 252; /* slate-50 */
     --sidebar-border: 30 41 59; /* slate-800 */
     --sidebar-ring: 0 36 84; /* #002454 - Löwen blue */
+
+    /* Custom colors for ProductsSection in dark mode */
+    --products-text: 0 36 84; /* #002454 */
+    --products-title-bg: 15 23 42; /* darker background for dark mode */
   }
 }
 
@@ -129,4 +137,11 @@
   height: 100%;
   background: rgba(0, 36, 84, 0.6);
   z-index: 0;
+}
+
+/* Gradient background for section title */
+.products-title-gradient {
+  background: linear-gradient(to right, transparent 0%, #638fc6 30%, #638fc6 70%, transparent 100%);
+  display: inline-block;
+  padding: 0.5rem 2rem;
 }
