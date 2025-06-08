@@ -146,7 +146,7 @@
   left: 0;
   right: 0;
   transform: translateY(-50%);
-  height: 4rem;
+  height: 4.4rem;
   background: linear-gradient(to right, transparent 0%, #638fc6 20%, #638fc6 80%, transparent 100%);
   z-index: 1;
 }
