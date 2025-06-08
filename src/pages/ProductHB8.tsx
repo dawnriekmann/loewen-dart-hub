@@ -92,10 +92,10 @@ const ProductHB8 = () => {
               </div>
               
               <div className="flex gap-4">
-                <Button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-10 py-4 text-xl font-semibold rounded-xl shadow-2xl flex-1">
+                <Button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-3 text-lg font-semibold rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 flex-1">
                   Jetzt kaufen
                 </Button>
-                <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-800 px-6 py-4">
+                <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700 hover:border-slate-500 px-6 py-3 text-lg rounded-lg transition-all duration-300">
                   Mehr Info
                 </Button>
               </div>
@@ -106,12 +106,34 @@ const ProductHB8 = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-blue-700/20 rounded-3xl blur-2xl transform scale-110"></div>
                 
                 <div className="relative bg-slate-800/30 backdrop-blur-sm rounded-3xl p-8 border border-slate-700 shadow-2xl">
-                  <div className="aspect-[3/4] flex items-center justify-center">
-                    <img 
-                      src="https://www.loewen.de/fileadmin/_processed_/3/b/csm_DART_HB8_Tunier_Retusche_593a52b77d.png"
-                      alt="Löwen Dartautomat HB8"
-                      className="max-h-full max-w-full object-contain drop-shadow-2xl"
-                    />
+                  <div className="aspect-[3/4] flex flex-col">
+                    <div className="flex-1 flex items-center justify-center mb-6">
+                      <img 
+                        src="https://www.loewen.de/fileadmin/_processed_/3/b/csm_DART_HB8_Tunier_Retusche_593a52b77d.png"
+                        alt="Löwen Dartautomat HB8"
+                        className="max-h-full max-w-full object-contain drop-shadow-2xl"
+                      />
+                    </div>
+                    
+                    <div className="text-center space-y-4">
+                      <h3 className="text-2xl font-bold text-white">LÖWEN DARTAUTOMAT HB8</h3>
+                      <p className="text-slate-300 text-base leading-relaxed">
+                        Der LÖWEN Turnier Dart HB8 ist die neueste Evolution des legendären Dart 96, 
+                        der seit 1996 als Marktführer in Deutschland gilt. Ein hochwertiges 
+                        Profi-Gerät mit über 10.000 verkauften Geräten im ersten Jahr.
+                      </p>
+                      
+                      <div className="flex items-center justify-center gap-4 pt-4">
+                        <div className="flex items-center gap-2 text-sm text-blue-400">
+                          <Target className="w-4 h-4" />
+                          <span>Piezo-Sensoren</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-green-400">
+                          <Shield className="w-4 h-4" />
+                          <span>Made in Germany</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -583,10 +605,10 @@ const ProductHB8 = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-12 py-5 font-semibold rounded-xl shadow-2xl text-xl">
+              <Button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-12 py-5 font-semibold rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 text-xl">
                 Jetzt bestellen
               </Button>
-              <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-800 px-8 py-5 text-lg">
+              <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700 hover:border-slate-500 px-8 py-5 text-lg rounded-lg transition-all duration-300">
                 Beratung anfordern
               </Button>
             </div>
