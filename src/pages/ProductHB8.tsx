@@ -1,3 +1,4 @@
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -105,8 +106,8 @@ const ProductHB8 = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-blue-700/20 rounded-3xl blur-2xl transform scale-110"></div>
                 
                 <div className="relative bg-slate-800/30 backdrop-blur-sm rounded-3xl p-8 border border-slate-700 shadow-2xl">
-                  <div className="aspect-[3/4] flex flex-col">
-                    <div className="flex-1 flex items-center justify-center mb-3">
+                  <div className="flex flex-col">
+                    <div className="h-80 flex items-center justify-center mb-4">
                       <img 
                         src="https://www.loewen.de/fileadmin/_processed_/3/b/csm_DART_HB8_Tunier_Retusche_593a52b77d.png"
                         alt="Löwen Dartautomat HB8"
