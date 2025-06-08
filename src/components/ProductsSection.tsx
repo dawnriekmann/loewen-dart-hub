@@ -1,3 +1,4 @@
+
 const ProductsSection = () => {
   const products = [
     {
@@ -22,12 +23,12 @@ const ProductsSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <div className="inline-block">
-            <h2 className="text-4xl md:text-5xl font-bold font-parisine uppercase text-products-title products-title-gradient">
+            <h2 className="text-4xl md:text-5xl font-bold font-parisine uppercase text-white products-title-gradient">
               UNSERE DARTAUTOMATEN
             </h2>
           </div>
           
-          <p className="text-lg text-products-text mt-4 max-w-2xl mx-auto">
+          <p className="text-lg text-[#002454] mt-4 max-w-2xl mx-auto">
             Entdecken Sie unsere hochwertigen Dartautomaten - perfekt für jeden Anspruch und jede Umgebung.
           </p>
         </div>
@@ -47,11 +48,11 @@ const ProductsSection = () => {
                 />
               </div>
               
-              <h3 className="text-2xl font-bold text-products-text mb-3">
+              <h3 className="text-2xl font-bold text-[#002454] mb-3">
                 {product.name}
               </h3>
               
-              <p className="text-lg font-bold text-products-text cursor-pointer hover:underline">
+              <p className="text-lg font-bold text-[#002454] cursor-pointer hover:underline">
                 Hier öffnen
               </p>
             </div>
