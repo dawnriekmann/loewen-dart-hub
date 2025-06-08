@@ -1,9 +1,26 @@
-
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      
+      // Check if we've scrolled past the hero section (first section)
+      setIsScrolled(scrollPosition > windowHeight);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-[#002454]' : 'bg-transparent'
+    }`}>
       <div className="w-full max-w-7xl mx-auto px-8 md:px-16 lg:px-24 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
