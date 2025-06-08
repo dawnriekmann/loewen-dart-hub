@@ -107,7 +107,7 @@ const ProductHB8 = () => {
                 
                 <div className="relative bg-slate-800/30 backdrop-blur-sm rounded-3xl p-8 border border-slate-700 shadow-2xl">
                   <div className="flex flex-col">
-                    <div className="h-96 flex items-center justify-center mb-4">
+                    <div className="h-[28rem] flex items-center justify-center mb-4">
                       <img 
                         src="https://www.loewen.de/fileadmin/_processed_/3/b/csm_DART_HB8_Tunier_Retusche_593a52b77d.png"
                         alt="Löwen Dartautomat HB8"
