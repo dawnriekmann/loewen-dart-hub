@@ -1,4 +1,3 @@
-
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { useState, useEffect } from "react";
 import { useDynamicGradientHeight } from "@/hooks/useDynamicGradientHeight";
@@ -51,18 +50,18 @@ const UpdateSection = () => {
   }, [sliderImages.length]);
 
   return (
-    <section className="py-20 bg-slate-50">
-      <div className="container mx-auto px-4">
+    <section className="py-20 bg-slate-50 overflow-x-hidden">
+      <div className="container mx-auto px-4 overflow-x-hidden">
         {/* Title with gradient background */}
-        <div className="text-center mb-16">
-          <div className="relative">
+        <div className="text-center mb-16 overflow-x-hidden">
+          <div className="relative overflow-x-hidden">
             <div 
               className="products-title-gradient-container w-full"
               style={{ height: gradientHeight }}
             ></div>
             <h2 
               ref={textRef}
-              className="font-bold font-parisine-narrow uppercase text-white relative z-10" 
+              className="font-bold font-parisine-narrow uppercase text-white relative z-10 px-4" 
               style={{ fontSize: '58.5px' }}
             >
               JETZT NEU: HB10 UPDATE V4.0-4 (April 2025)
@@ -71,7 +70,7 @@ const UpdateSection = () => {
         </div>
 
         {/* Long description text */}
-        <div className="max-w-5xl mx-auto mb-16 text-[#002454] space-y-6">
+        <div className="max-w-5xl mx-auto mb-16 text-[#002454] space-y-6 overflow-x-hidden">
           <p className="text-lg">
             Für das LÖWEN DART HB10 gibt es jetzt eine neue Softwareversion (V4.0-4). Die Update-Datei können Sie hier kostenlos herunterladen.
           </p>
@@ -91,8 +90,8 @@ const UpdateSection = () => {
         </div>
 
         {/* Banner Slider with custom dots navigation - 50% larger */}
-        <div className="mb-16">
-          <div className="w-full max-w-7xl mx-auto"> {/* Changed from max-w-5xl to max-w-7xl for 50% larger */}
+        <div className="mb-16 overflow-x-hidden">
+          <div className="w-full max-w-7xl mx-auto overflow-x-hidden"> {/* Changed from max-w-5xl to max-w-7xl for 50% larger */}
             <div className="relative overflow-hidden rounded-lg">
               <div 
                 className="flex transition-transform duration-500 ease-in-out"
@@ -100,7 +99,7 @@ const UpdateSection = () => {
               >
                 {sliderImages.map((image, index) => (
                   <div key={index} className="w-full flex-shrink-0 flex justify-center p-8">
-                    <div className="bg-white rounded-lg shadow-lg p-6 max-w-5xl"> {/* Changed from max-w-3xl to max-w-5xl for 50% larger */}
+                    <div className="bg-white rounded-lg shadow-lg p-6 max-w-5xl w-full"> {/* Added w-full to prevent overflow */}
                       <img 
                         src={image} 
                         alt={`HB10 Update Slide ${index + 1}`}
@@ -129,9 +128,9 @@ const UpdateSection = () => {
         </div>
 
         {/* Three columns with download items */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 overflow-x-hidden">
           {downloadItems.map((item) => (
-            <div key={item.id} className="flex items-center space-x-2">
+            <div key={item.id} className="flex items-center space-x-2 min-w-0"> {/* Added min-w-0 to prevent overflow */}
               <div 
                 className="flex-shrink-0"
                 style={{ 
@@ -146,18 +145,18 @@ const UpdateSection = () => {
                 className="flex-shrink-0"
                 style={{ width: '80px', height: '100px' }}
               />
-              <div className="flex flex-col text-left">
-                <h3 className="text-lg text-[#002454] mb-1">
+              <div className="flex flex-col text-left min-w-0 flex-1"> {/* Added min-w-0 and flex-1 */}
+                <h3 className="text-lg text-[#002454] mb-1 break-words"> {/* Added break-words */}
                   {item.title}
                 </h3>
-                <p className="text-xl font-bold text-[#002454] mb-2">
+                <p className="text-xl font-bold text-[#002454] mb-2 break-words"> {/* Added break-words */}
                   {item.subtitle}
                 </p>
                 <a 
                   href="https://www.loewen-kundenportal.de/downloadbereich/produktinformationen/dart-soccer"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-lg font-bold text-[#002454] cursor-pointer hover:underline"
+                  className="text-lg font-bold text-[#002454] cursor-pointer hover:underline break-words" // Added break-words
                 >
                   Zum Downloadbereich
                 </a>
@@ -167,7 +166,7 @@ const UpdateSection = () => {
         </div>
 
         {/* Bottom text section */}
-        <div className="text-center">
+        <div className="text-center overflow-x-hidden">
           <p className="text-lg text-[#002454] mb-4">
             Weitere Inhalte stehen für Sie in unserem Downloadbereich zur Verfügung!
           </p>
