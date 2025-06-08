@@ -38,7 +38,7 @@ const Navbar = () => {
             <NavigationMenuList className="flex items-center space-x-8">
               {/* Dartautomaten Dropdown */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent text-white hover:text-gray-200 text-xl font-medium font-franklin tracking-wider leading-none">
+                <NavigationMenuTrigger className="bg-transparent text-white hover:text-gray-200 text-xl font-medium font-franklin tracking-wider leading-none [&>*]:text-xl [&>*]:leading-none [&>*]:font-medium [&>*]:tracking-wider" style={{ textTransform: 'none', verticalAlign: 'baseline' }}>
                   Dartautomaten
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -72,6 +72,7 @@ const Navbar = () => {
                 <a 
                   href="#kontakt" 
                   className="text-white hover:text-gray-200 text-xl font-medium font-franklin tracking-wider leading-none transition-colors"
+                  style={{ textTransform: 'none', verticalAlign: 'baseline' }}
                 >
                   Kontakt
                 </a>
