@@ -139,9 +139,14 @@
   z-index: 0;
 }
 
-/* Gradient background for section title */
-.products-title-gradient {
-  background: linear-gradient(to right, transparent 0%, #638fc6 30%, #638fc6 70%, transparent 100%);
-  display: inline-block;
-  padding: 0.5rem 2rem;
+/* Gradient background for section title - spans full container width */
+.products-title-gradient-full {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  height: 4rem;
+  background: linear-gradient(to right, transparent 0%, #638fc6 20%, #638fc6 80%, transparent 100%);
+  z-index: 1;
 }

@@ -22,8 +22,9 @@ const ProductsSection = () => {
     <section id="products" className="py-20 bg-slate-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <div className="inline-block">
-            <h2 className="font-bold font-parisine-narrow uppercase text-white products-title-gradient" style={{ fontSize: '45px' }}>
+          <div className="relative">
+            <div className="products-title-gradient-full w-full"></div>
+            <h2 className="font-bold font-parisine-narrow uppercase text-white relative z-10" style={{ fontSize: '58.5px' }}>
               UNSERE DARTAUTOMATEN
             </h2>
           </div>
