@@ -1,7 +1,10 @@
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { useState, useEffect } from "react";
+import { useDynamicGradientHeight } from "@/hooks/useDynamicGradientHeight";
 
 const UpdateSection = () => {
+  const { textRef, gradientHeight } = useDynamicGradientHeight();
+
   const sliderImages = [
     "https://www.loewen.de/fileadmin/user_upload/Dart-Slider-V4-092024-1.png",
     "https://www.loewen.de/fileadmin/user_upload/Dart-Slider-V4-092024-2.png",
@@ -52,8 +55,15 @@ const UpdateSection = () => {
         {/* Title with gradient background */}
         <div className="text-center mb-16">
           <div className="relative">
-            <div className="products-title-gradient-container w-full"></div>
-            <h2 className="font-bold font-parisine-narrow uppercase text-white relative z-10" style={{ fontSize: '58.5px' }}>
+            <div 
+              className="products-title-gradient-container w-full"
+              style={{ height: gradientHeight }}
+            ></div>
+            <h2 
+              ref={textRef}
+              className="font-bold font-parisine-narrow uppercase text-white relative z-10" 
+              style={{ fontSize: '58.5px' }}
+            >
               JETZT NEU: HB10 UPDATE V4.0-4 (April 2025)
             </h2>
           </div>
