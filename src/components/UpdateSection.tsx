@@ -1,5 +1,6 @@
 
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { useState, useEffect } from "react";
 
 const UpdateSection = () => {
   const sliderImages = [
@@ -35,6 +36,17 @@ const UpdateSection = () => {
     }
   ];
 
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Auto-play functionality
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % sliderImages.length);
+    }, 4000); // Change slide every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [sliderImages.length]);
+
   return (
     <section className="py-20 bg-slate-50">
       <div className="container mx-auto px-4">
@@ -63,30 +75,47 @@ const UpdateSection = () => {
           </p>
           
           <p className="text-lg">
-            Insofern das Gerät vernetzt und mindestens mit Softwareversion 3 ausgestattet ist findet der Downloadprozess im Hintergrund statt. Die Installation kann über das Service-Menü unter Gerät --> Netzwerk --> Remote Update angestoßen werden.
+            Insofern das Gerät vernetzt und mindestens mit Softwareversion 3 ausgestattet ist findet der Downloadprozess im Hintergrund statt. Die Installation kann über das Service-Menü unter Gerät {"->"} Netzwerk {"->"} Remote Update angestoßen werden.
             Alle Informationen zum alternativen Prozess erhalten Sie im Dokument „Update-Anleitung" innerhalb des Downloadbereichs.
           </p>
         </div>
 
-        {/* Banner Slider */}
+        {/* Banner Slider with custom dots navigation */}
         <div className="mb-16">
-          <Carousel className="w-full max-w-5xl mx-auto">
-            <CarouselContent>
-              {sliderImages.map((image, index) => (
-                <CarouselItem key={index}>
-                  <div className="aspect-video overflow-hidden rounded-lg">
-                    <img 
-                      src={image} 
-                      alt={`HB10 Update Slide ${index + 1}`}
-                      className="w-full h-full object-cover"
-                    />
+          <div className="w-full max-w-5xl mx-auto">
+            <div className="relative overflow-hidden rounded-lg">
+              <div 
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              >
+                {sliderImages.map((image, index) => (
+                  <div key={index} className="w-full flex-shrink-0 flex justify-center p-8">
+                    <div className="bg-white rounded-lg shadow-lg p-6 max-w-2xl">
+                      <img 
+                        src={image} 
+                        alt={`HB10 Update Slide ${index + 1}`}
+                        className="w-full h-auto object-contain rounded"
+                      />
+                    </div>
                   </div>
-                </CarouselItem>
+                ))}
+              </div>
+            </div>
+            
+            {/* Dots Navigation */}
+            <div className="flex justify-center mt-6 space-x-2">
+              {sliderImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                    index === currentSlide ? 'bg-[#002454]' : 'bg-gray-300'
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
               ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
+            </div>
+          </div>
         </div>
 
         {/* Three columns with download items */}
