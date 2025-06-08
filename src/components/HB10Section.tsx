@@ -1,3 +1,4 @@
+
 const HB10Section = () => {
   return (
     <section className="py-0 relative">
@@ -169,9 +170,14 @@ const HB10Section = () => {
                   <p className="text-lg text-[#002454] mb-2">
                     HB10
                   </p>
-                  <p className="text-lg font-bold text-[#002454] cursor-pointer hover:underline">
+                  <a 
+                    href="https://www.loewen-kundenportal.de/downloadbereich/produktinformationen/dart-soccer"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-lg font-bold text-[#002454] cursor-pointer hover:underline"
+                  >
                     Zum Downloadbereich
-                  </p>
+                  </a>
                 </div>
               </div>
             </div>
@@ -185,7 +191,7 @@ const HB10Section = () => {
               </p>
               
               <a 
-                href="https://www.loewen-kundenportal.de/downloadbereich/produktinformationen/dart-soccer?utm_source=website&utm_medium=link&utm_campaign=downloadbereich&utm_content=dart"
+                href="https://www.loewen-kundenportal.de/downloadbereich/produktinformationen/dart-soccer"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-lg font-bold text-[#002454] cursor-pointer hover:underline"

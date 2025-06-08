@@ -1,3 +1,4 @@
+
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { useState, useEffect } from "react";
 import { useDynamicGradientHeight } from "@/hooks/useDynamicGradientHeight";
@@ -152,9 +153,14 @@ const UpdateSection = () => {
                 <p className="text-xl font-bold text-[#002454] mb-2">
                   {item.subtitle}
                 </p>
-                <p className="text-lg font-bold text-[#002454] cursor-pointer hover:underline">
+                <a 
+                  href="https://www.loewen-kundenportal.de/downloadbereich/produktinformationen/dart-soccer"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg font-bold text-[#002454] cursor-pointer hover:underline"
+                >
                   Zum Downloadbereich
-                </p>
+                </a>
               </div>
             </div>
           ))}
@@ -167,7 +173,7 @@ const UpdateSection = () => {
           </p>
           
           <a 
-            href="https://www.loewen-kundenportal.de/downloadbereich/produktinformationen/dart-soccer?utm_source=website&utm_medium=link&utm_campaign=downloadbereich&utm_content=dart"
+            href="https://www.loewen-kundenportal.de/downloadbereich/produktinformationen/dart-soccer"
             target="_blank"
             rel="noopener noreferrer"
             className="text-lg font-bold text-[#002454] cursor-pointer hover:underline"
