@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -186,4 +187,12 @@
   height: 4.4rem;
   background: linear-gradient(to right, transparent 0%, #638fc6 20%, #638fc6 80%, transparent 100%);
   z-index: 1;
+}
+
+/* Mobile responsive gradient background */
+@media (max-width: 768px) {
+  .products-title-gradient-container {
+    height: 6rem; /* Increased height for mobile */
+    background: linear-gradient(to right, transparent 0%, #638fc6 10%, #638fc6 90%, transparent 100%); /* Wider gradient coverage */
+  }
 }

@@ -79,8 +79,15 @@ const HeroSection = () => {
             </h1>
           </div>
           
-          <p className="mb-12 animate-fade-in opacity-90 max-w-4xl leading-relaxed whitespace-nowrap" style={{ fontSize: '18px' }}>
+          {/* Desktop version */}
+          <p className="mb-12 animate-fade-in opacity-90 max-w-4xl leading-relaxed whitespace-nowrap hidden md:block" style={{ fontSize: '18px' }}>
             Die E-Dart Produkte des internationalen Marktführers
+          </p>
+          
+          {/* Mobile version with line break */}
+          <p className="mb-12 animate-fade-in opacity-90 max-w-4xl leading-relaxed md:hidden" style={{ fontSize: '18px' }}>
+            Die E-Dart Produkte des<br />
+            internationalen Marktführers
           </p>
         </div>
       </div>
