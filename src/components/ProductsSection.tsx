@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -31,13 +30,14 @@ const ProductsSection = () => {
     <section id="products" className="py-20 bg-slate-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-            Unsere Dartautomaten
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Entdecken Sie die drei Premium-Modelle von Löwen Dart - 
-            perfekt für jeden Anspruch und jede Umgebung.
+          <p className="text-lg mb-8" style={{ color: '#002454' }}>
+            Entdecken Sie unsere hochwertigen Dartautomaten. 
+            Jedes Modell bietet einzigartige Features für das perfekte Dart-Erlebnis.
           </p>
+          
+          <h2 className="font-parisine font-bold text-4xl md:text-5xl mb-6 title-gradient-bg">
+            UNSERE DARTAUTOMATEN
+          </h2>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
@@ -55,31 +55,21 @@ const ProductsSection = () => {
                 />
               </div>
               
-              <CardHeader className="text-center pb-4">
-                <CardTitle className="text-2xl font-bold text-primary mb-2">
+              <CardContent className="text-center p-6">
+                <h3 className="text-2xl font-bold mb-4" style={{ color: '#002454' }}>
                   {product.name}
-                </CardTitle>
-                <CardDescription className="text-lg text-muted-foreground">
-                  {product.description}
-                </CardDescription>
-              </CardHeader>
-              
-              <CardContent className="pt-0">
-                <ul className="space-y-2 mb-6">
-                  {product.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-muted-foreground">
-                      <div className="w-2 h-2 bg-primary rounded-full mr-3 flex-shrink-0"></div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+                </h3>
                 
-                <Button 
-                  className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-3 transition-all duration-300"
-                  size="lg"
+                <p 
+                  className="text-lg font-bold cursor-pointer hover:underline transition-all duration-300"
+                  style={{ color: '#002454' }}
+                  onClick={() => {
+                    // Hier würde später die Navigation zur Produktseite erfolgen
+                    console.log(`Navigating to ${product.name} page`);
+                  }}
                 >
-                  Mehr erfahren
-                </Button>
+                  Hier öffnen
+                </p>
               </CardContent>
             </Card>
           ))}
