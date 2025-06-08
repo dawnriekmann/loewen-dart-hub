@@ -38,11 +38,11 @@ const UpdateSection = () => {
 
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Auto-play functionality
+  // Auto-play functionality - slower speed
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % sliderImages.length);
-    }, 4000); // Change slide every 4 seconds
+    }, 6000); // Changed from 4000 to 6000ms (slower)
 
     return () => clearInterval(interval);
   }, [sliderImages.length]);
@@ -80,9 +80,9 @@ const UpdateSection = () => {
           </p>
         </div>
 
-        {/* Banner Slider with custom dots navigation */}
+        {/* Banner Slider with custom dots navigation - 50% larger */}
         <div className="mb-16">
-          <div className="w-full max-w-5xl mx-auto">
+          <div className="w-full max-w-7xl mx-auto"> {/* Changed from max-w-5xl to max-w-7xl for 50% larger */}
             <div className="relative overflow-hidden rounded-lg">
               <div 
                 className="flex transition-transform duration-500 ease-in-out"
@@ -90,7 +90,7 @@ const UpdateSection = () => {
               >
                 {sliderImages.map((image, index) => (
                   <div key={index} className="w-full flex-shrink-0 flex justify-center p-8">
-                    <div className="bg-white rounded-lg shadow-lg p-6 max-w-2xl">
+                    <div className="bg-white rounded-lg shadow-lg p-6 max-w-3xl"> {/* Changed from max-w-2xl to max-w-3xl for 50% larger */}
                       <img 
                         src={image} 
                         alt={`HB10 Update Slide ${index + 1}`}
@@ -102,14 +102,14 @@ const UpdateSection = () => {
               </div>
             </div>
             
-            {/* Dots Navigation */}
+            {/* Dots Navigation with #007aff color */}
             <div className="flex justify-center mt-6 space-x-2">
               {sliderImages.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}
                   className={`w-3 h-3 rounded-full transition-colors duration-300 ${
-                    index === currentSlide ? 'bg-[#002454]' : 'bg-gray-300'
+                    index === currentSlide ? 'bg-[#007aff]' : 'bg-gray-300'
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
