@@ -79,7 +79,7 @@ const HeroSection = () => {
             </h1>
           </div>
           
-          <p className="mb-12 animate-fade-in opacity-90 max-w-2xl leading-relaxed" style={{ fontSize: '40px' }}>
+          <p className="mb-12 animate-fade-in opacity-90 max-w-4xl leading-relaxed whitespace-nowrap" style={{ fontSize: '18px' }}>
             Die E-Dart Produkte des internationalen Marktführers
           </p>
         </div>
@@ -91,9 +91,9 @@ const HeroSection = () => {
           src="https://www.loewen.de/_assets/522279b556b280de835e1011f7255b60/img/arrow-dotted-scroll-down.png" 
           alt="Scroll down arrow"
           className="mx-auto mb-2"
-          style={{ width: '171px', height: '208px' }}
+          style={{ width: '100px', height: '208px' }}
         />
-        <div className="font-franklin font-medium tracking-wider" style={{ fontSize: '25px' }}>
+        <div className="font-franklin font-medium" style={{ fontSize: '25px', letterSpacing: '0.2em' }}>
           JETZT ENTDECKEN!
         </div>
       </div>
