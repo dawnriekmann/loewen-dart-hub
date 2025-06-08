@@ -25,14 +25,14 @@ const UpdateSection = () => {
     {
       id: 2,
       image: "https://www.loewen.de/fileadmin/user_upload/Video-Bild.PNG",
-      title: "HB10 - V4.0-4 (April 2025)",
-      subtitle: "Update-Datei"
+      title: "HB10 - V4",
+      subtitle: "Promovideo"
     },
     {
       id: 3,
       image: "https://www.loewen.de/fileadmin/user_upload/Titel_dart.PNG",
-      title: "HB10 - V4.0-4 (April 2025)",
-      subtitle: "Update-Datei"
+      title: "HB10",
+      subtitle: "Update-Anleitung"
     }
   ];
 
@@ -121,18 +121,18 @@ const UpdateSection = () => {
         {/* Three columns with download items */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {downloadItems.map((item) => (
-            <div key={item.id} className="text-center">
-              <div className="flex flex-col items-center mb-4">
-                <img 
-                  src={item.image} 
-                  alt={item.title}
-                  className="mb-4"
-                  style={{ width: '80px', height: '100px' }}
-                />
-                <h3 className="text-lg font-bold text-[#002454] mb-2">
+            <div key={item.id} className="flex items-center space-x-4">
+              <img 
+                src={item.image} 
+                alt={item.title}
+                className="flex-shrink-0"
+                style={{ width: '80px', height: '100px' }}
+              />
+              <div className="flex flex-col text-left">
+                <h3 className="text-lg text-[#002454] mb-1">
                   {item.title}
                 </h3>
-                <p className="text-lg text-[#002454] mb-3">
+                <p className="text-xl font-bold text-[#002454] mb-2">
                   {item.subtitle}
                 </p>
                 <p className="text-lg font-bold text-[#002454] cursor-pointer hover:underline">
