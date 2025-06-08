@@ -1,3 +1,4 @@
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -110,7 +111,7 @@ const ProductHB8 = () => {
                       <img 
                         src="https://www.loewen.de/fileadmin/_processed_/3/b/csm_DART_HB8_Tunier_Retusche_593a52b77d.png"
                         alt="Löwen Dartautomat HB8"
-                        className="max-h-full max-w-full object-contain drop-shadow-2xl"
+                        className="max-h-full max-w-full object-contain drop-shadow-2xl scale-120"
                       />
                     </div>
                     
