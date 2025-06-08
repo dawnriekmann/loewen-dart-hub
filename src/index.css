@@ -104,40 +104,15 @@
     --tw-ring-offset-color: transparent !important;
   }
 
-  /* Override any yellow/amber focus rings globally */
+  /* Override any yellow/amber focus rings */
   *:focus-visible {
     outline: 2px solid rgb(0 36 84) !important;
     outline-offset: 2px !important;
-    box-shadow: 0 0 0 2px rgb(0 36 84) !important;
   }
 
   /* Override any yellow/amber box shadows */
   * {
     --tw-shadow-color: rgb(0 36 84) !important;
-  }
-
-  /* Force all focus states to use blue/purple */
-  *:focus,
-  *:focus-within,
-  *:focus-visible {
-    outline-color: rgb(0 36 84) !important;
-    border-color: rgb(0 36 84) !important;
-    box-shadow: 0 0 0 2px rgb(0 36 84) !important;
-  }
-
-  /* Override Radix Navigation Menu specific focus styles */
-  [data-radix-navigation-menu-trigger]:focus-visible,
-  [data-radix-navigation-menu-trigger]:focus {
-    outline: 2px solid rgb(0 36 84) !important;
-    outline-offset: 2px !important;
-    box-shadow: 0 0 0 2px rgb(0 36 84) !important;
-  }
-
-  /* Override any data attributes that might set yellow/gold */
-  [data-state="open"],
-  [data-state="closed"] {
-    outline-color: rgb(0 36 84) !important;
-    border-color: rgb(0 36 84) !important;
   }
 }
 
@@ -197,3 +172,4 @@
   background: linear-gradient(to right, transparent 0%, #638fc6 20%, #638fc6 80%, transparent 100%);
   z-index: 1;
 }
+
