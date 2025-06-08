@@ -18,9 +18,6 @@ const ContactHero = () => {
         <div className="text-left">
           <div className="mb-8 animate-fade-in">
             <h1 className="font-bold leading-none font-parisine-narrow" style={{ fontSize: '70px' }}>
-              LÖWEN
-            </h1>
-            <h1 className="font-bold leading-none font-parisine-narrow" style={{ fontSize: '70px' }}>
               KONTAKT
             </h1>
           </div>
