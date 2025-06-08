@@ -9,18 +9,16 @@ const HB10FinderButton = () => {
           href="https://www.loewen.de/produkte/dart-soccer/hb10-finder/"
           target="_blank"
           rel="noopener noreferrer"
-          className="fixed right-4 top-1/2 -translate-y-1/2 z-50 bg-[#002454] hover:bg-[#003875] text-white p-3 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl group w-60 h-[70px] border-2 border-[#73afff]"
+          className="flex items-center bg-[#060034] border-2 border-[#73afff] rounded-[36px] max-w-[240px] p-[10px_20px] fixed bottom-[145px] right-[-45px] z-[200] hover:bg-[#080048] text-white shadow-lg transition-all duration-300 hover:shadow-xl group"
         >
-          <div className="flex items-center space-x-3 h-full">
-            <img
-              src="https://www.loewen.de/_assets/522279b556b280de835e1011f7255b60/img/RZ_DART_HB10-Finder.svg"
-              alt="HB10 Finder Icon"
-              className="w-[90px] h-[40px] object-contain transition-transform duration-300 group-hover:scale-110"
-            />
-            <span className="text-lg font-medium text-white leading-tight flex-1">
-              HB10<br />Finder
-            </span>
-          </div>
+          <img
+            src="https://www.loewen.de/_assets/522279b556b280de835e1011f7255b60/img/RZ_DART_HB10-Finder.svg"
+            alt="HB10 Finder Icon"
+            className="w-[90px] h-[40px] object-contain transition-transform duration-300 group-hover:scale-110"
+          />
+          <span className="text-lg font-medium text-white leading-tight flex-1 ml-3">
+            HB10<br />Finder
+          </span>
         </a>
       </TooltipTrigger>
       <TooltipContent side="left" className="bg-[#002454] text-white">
