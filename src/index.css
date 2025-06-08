@@ -139,8 +139,8 @@
   z-index: 0;
 }
 
-/* Gradient background for section title - spans full container width */
-.products-title-gradient-full {
+/* Gradient background for section title - spans container width */
+.products-title-gradient-container {
   position: absolute;
   top: 50%;
   left: 0;
