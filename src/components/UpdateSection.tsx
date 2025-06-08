@@ -1,3 +1,4 @@
+
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { useState, useEffect } from "react";
 import { useDynamicGradientHeight } from "@/hooks/useDynamicGradientHeight";
@@ -91,7 +92,7 @@ const UpdateSection = () => {
 
         {/* Banner Slider with custom dots navigation - 50% larger */}
         <div className="mb-16 overflow-x-hidden">
-          <div className="w-full max-w-7xl mx-auto overflow-x-hidden"> {/* Changed from max-w-5xl to max-w-7xl for 50% larger */}
+          <div className="w-full max-w-7xl mx-auto overflow-x-hidden">
             <div className="relative overflow-hidden rounded-lg">
               <div 
                 className="flex transition-transform duration-500 ease-in-out"
@@ -99,7 +100,7 @@ const UpdateSection = () => {
               >
                 {sliderImages.map((image, index) => (
                   <div key={index} className="w-full flex-shrink-0 flex justify-center p-8">
-                    <div className="bg-white rounded-lg shadow-lg p-6 max-w-5xl w-full"> {/* Added w-full to prevent overflow */}
+                    <div className="bg-white rounded-lg shadow-lg p-6 max-w-5xl w-full">
                       <img 
                         src={image} 
                         alt={`HB10 Update Slide ${index + 1}`}
@@ -130,7 +131,7 @@ const UpdateSection = () => {
         {/* Three columns with download items */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 overflow-x-hidden">
           {downloadItems.map((item) => (
-            <div key={item.id} className="flex items-center space-x-2 min-w-0"> {/* Added min-w-0 to prevent overflow */}
+            <div key={item.id} className="flex items-center space-x-2 min-w-0">
               <div 
                 className="flex-shrink-0"
                 style={{ 
@@ -145,18 +146,18 @@ const UpdateSection = () => {
                 className="flex-shrink-0"
                 style={{ width: '80px', height: '100px' }}
               />
-              <div className="flex flex-col text-left min-w-0 flex-1"> {/* Added min-w-0 and flex-1 */}
-                <h3 className="text-lg text-[#002454] mb-1 break-words"> {/* Added break-words */}
+              <div className="flex flex-col text-left min-w-0 flex-1">
+                <h3 className="text-lg text-[#002454] mb-1 break-words">
                   {item.title}
                 </h3>
-                <p className="text-xl font-bold text-[#002454] mb-2 break-words"> {/* Added break-words */}
+                <p className="text-xl font-bold text-[#002454] mb-2 break-words">
                   {item.subtitle}
                 </p>
                 <a 
                   href="https://www.loewen-kundenportal.de/downloadbereich/produktinformationen/dart-soccer"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-lg font-bold text-[#002454] cursor-pointer hover:underline break-words" // Added break-words
+                  className="text-lg font-bold text-[#002454] cursor-pointer hover:underline break-words"
                 >
                   Zum Downloadbereich
                 </a>

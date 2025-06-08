@@ -1,3 +1,4 @@
+
 const HB10Section = () => {
   return (
     <section className="py-0 relative overflow-x-hidden">
@@ -14,7 +15,7 @@ const HB10Section = () => {
           <img 
             src="https://www.loewen.de/fileadmin/user_upload/Dart-HB10-092024.jpg" 
             alt="LÖWEN DART HB10"
-            className="object-cover w-[332px] h-[153px] md:w-[1331px] md:h-[614px] max-w-full" // Added max-w-full to prevent overflow
+            className="object-cover w-[332px] h-[153px] md:w-[1331px] md:h-[614px] max-w-full"
           />
           
           {/* Logo and text positioned relative to the image */}
@@ -23,11 +24,11 @@ const HB10Section = () => {
               <img 
                 src="https://www.loewen.de/fileadmin/_processed_/4/8/csm_Dart_HB_10_Logo_klein_407a328601.png" 
                 alt="LÖWEN DART HB10 Logo"
-                className="h-16 md:h-32 object-contain max-w-full" // Added max-w-full
+                className="h-16 md:h-32 object-contain max-w-full"
               />
             </div>
             <div className="max-w-xs md:max-w-md">
-              <p className="text-white text-sm md:text-xl font-semibold break-words"> // Added break-words
+              <p className="text-white text-sm md:text-xl font-semibold break-words">
                 EINE NEUE ÄRA DES ELECTRONIC DARTS.
               </p>
             </div>
@@ -40,10 +41,10 @@ const HB10Section = () => {
         <div className="container mx-auto px-4 overflow-x-hidden">
           {/* Main title and description - removed white background */}
           <div className="mb-16 ml-8 overflow-x-hidden">
-            <h2 className="text-4xl font-bold text-[#002454] mb-8 break-words"> // Added break-words
+            <h2 className="text-4xl font-bold text-[#002454] mb-8 break-words">
               Das neue Erfolgsmodell - jetzt noch besser.
             </h2>
-            <p className="text-lg text-[#002454] max-w-4xl break-words"> // Added break-words
+            <p className="text-lg text-[#002454] max-w-4xl break-words">
               Der LÖWEN DART HB10 ist die innovative Weiterentwicklung der bisherigen Erfolgsmodelle von LÖWEN ENTERTAINMENT. Mit vielen verschiedenen Spielmodi, einem Touchpad und dem hochauflösenden Monitor bringt der HB10 den elektronischen Dartsport in das Hier und Jetzt. Und das alles im unverwechselbaren LÖWEN DART-Design.
             </p>
           </div>
@@ -75,10 +76,10 @@ const HB10Section = () => {
           {/* Games and Options section - removed white background */}
           <div className="mb-16 overflow-x-hidden">
             <div className="mb-8 max-w-4xl mx-auto ml-8 overflow-x-hidden">
-              <h3 className="text-3xl font-bold text-[#002454] mb-4 break-words"> // Added break-words
+              <h3 className="text-3xl font-bold text-[#002454] mb-4 break-words">
                 Spiele und Optionen
               </h3>
-              <p className="text-lg text-[#002454] break-words"> // Added break-words
+              <p className="text-lg text-[#002454] break-words">
                 Das LÖWEN DART HB10 bietet ab der neuen V4 insgesamt 15 Spielvarianten, fünf Trainingsspiele sowie zahlreiche Spieloptionen inkl. flexiblen Teamspielmöglichkeiten.
               </p>
             </div>
@@ -87,7 +88,7 @@ const HB10Section = () => {
                 <img 
                   src="https://www.loewen.de/fileadmin/user_upload/Erlauterung-Menue-Dart-V4-102024.png" 
                   alt="LÖWEN DART Menu Explanation"
-                  className="w-full h-auto max-w-full" // Added max-w-full
+                  className="w-full h-auto max-w-full"
                 />
               </div>
             </div>
@@ -96,7 +97,7 @@ const HB10Section = () => {
           {/* HB10 Monitorkit section - removed white background */}
           <div className="mb-16 overflow-x-hidden">
             <div className="mb-8 max-w-4xl mx-auto ml-8 overflow-x-hidden">
-              <h3 className="text-3xl font-bold text-[#002454] break-words"> // Added break-words
+              <h3 className="text-3xl font-bold text-[#002454] break-words">
                 HB10 - Monitorkit
               </h3>
             </div>
@@ -105,7 +106,7 @@ const HB10Section = () => {
                 <img 
                   src="https://www.loewen.de/fileadmin/user_upload/Dart-Banner-HB10-Monitorkit_092024.png" 
                   alt="LÖWEN DART HB10 Monitorkit"
-                  className="w-full h-auto max-w-full" // Added max-w-full
+                  className="w-full h-auto max-w-full"
                 />
               </div>
             </div>
@@ -114,7 +115,7 @@ const HB10Section = () => {
           {/* Two columns with download items - removed white backgrounds */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-4xl mx-auto overflow-x-hidden">
             <div className="p-6 overflow-x-hidden">
-              <div className="flex items-center space-x-2 min-w-0"> // Added min-w-0
+              <div className="flex items-center space-x-2 min-w-0">
                 <div 
                   className="flex-shrink-0"
                   style={{ 
@@ -129,14 +130,14 @@ const HB10Section = () => {
                   className="flex-shrink-0"
                   style={{ width: '95px', height: '135px' }}
                 />
-                <div className="flex flex-col text-left min-w-0 flex-1"> // Added min-w-0 and flex-1
-                  <h4 className="text-lg text-[#002454] mb-1 break-words"> // Added break-words
+                <div className="flex flex-col text-left min-w-0 flex-1">
+                  <h4 className="text-lg text-[#002454] mb-1 break-words">
                     Produktflyer
                   </h4>
-                  <p className="text-xl font-bold text-[#002454] mb-2 break-words"> // Added break-words
+                  <p className="text-xl font-bold text-[#002454] mb-2 break-words">
                     LÖWEN DART HB10
                   </p>
-                  <p className="text-lg font-bold text-[#002454] cursor-pointer hover:underline break-words"> // Added break-words
+                  <p className="text-lg font-bold text-[#002454] cursor-pointer hover:underline break-words">
                     Zum E-Paper
                   </p>
                 </div>
@@ -144,7 +145,7 @@ const HB10Section = () => {
             </div>
 
             <div className="p-6 overflow-x-hidden">
-              <div className="flex items-center space-x-2 min-w-0"> // Added min-w-0
+              <div className="flex items-center space-x-2 min-w-0">
                 <div 
                   className="flex-shrink-0"
                   style={{ 
@@ -159,21 +160,21 @@ const HB10Section = () => {
                   className="flex-shrink-0"
                   style={{ width: '95px', height: '135px' }}
                 />
-                <div className="flex flex-col text-left min-w-0 flex-1"> // Added min-w-0 and flex-1
-                  <h4 className="text-lg text-[#002454] mb-1 break-words"> // Added break-words
+                <div className="flex flex-col text-left min-w-0 flex-1">
+                  <h4 className="text-lg text-[#002454] mb-1 break-words">
                     Benutzerhandbuch
                   </h4>
-                  <p className="text-xl font-bold text-[#002454] mb-2 break-words"> // Added break-words
+                  <p className="text-xl font-bold text-[#002454] mb-2 break-words">
                     LÖWEN DART
                   </p>
-                  <p className="text-lg text-[#002454] mb-2 break-words"> // Added break-words
+                  <p className="text-lg text-[#002454] mb-2 break-words">
                     HB10
                   </p>
                   <a 
                     href="https://www.loewen-kundenportal.de/downloadbereich/produktinformationen/dart-soccer"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-lg font-bold text-[#002454] cursor-pointer hover:underline break-words" // Added break-words
+                    className="text-lg font-bold text-[#002454] cursor-pointer hover:underline break-words"
                   >
                     Zum Downloadbereich
                   </a>
@@ -185,7 +186,7 @@ const HB10Section = () => {
           {/* Bottom text section - removed white background */}
           <div className="text-center overflow-x-hidden">
             <div className="p-6 max-w-2xl mx-auto overflow-x-hidden">
-              <p className="text-lg text-[#002454] mb-4 break-words"> // Added break-words
+              <p className="text-lg text-[#002454] mb-4 break-words">
                 Weitere Inhalte stehen für Sie in unserem Downloadbereich zur Verfügung!
               </p>
               
@@ -193,7 +194,7 @@ const HB10Section = () => {
                 href="https://www.loewen-kundenportal.de/downloadbereich/produktinformationen/dart-soccer"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-lg font-bold text-[#002454] cursor-pointer hover:underline break-words" // Added break-words
+                className="text-lg font-bold text-[#002454] cursor-pointer hover:underline break-words"
               >
                 Zum Downloadbereich
               </a>
