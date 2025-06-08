@@ -76,7 +76,7 @@ const ProductHB10 = () => {
       <Navbar />
       
       {/* Hero Section - Dark Theme */}
-      <section ref={heroSectionRef} className="pt-24 pb-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+      <section ref={heroSectionRef} className="pt-32 pb-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-10 left-10 w-64 h-64 bg-blue-500 rounded-full blur-3xl"></div>
