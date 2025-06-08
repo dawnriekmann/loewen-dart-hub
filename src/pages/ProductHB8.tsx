@@ -23,6 +23,7 @@ const ProductHB8 = () => {
   });
   const [previousCustomerType, setPreviousCustomerType] = useState("private");
   const companyFieldRef = useRef<HTMLDivElement>(null);
+  const heroSectionRef = useRef<HTMLElement>(null);
 
   const basePrice = 2000;
   const calculateTotal = () => {
@@ -47,12 +48,19 @@ const ProductHB8 = () => {
     // Handle form submission logic here
   };
 
+  const scrollToTop = () => {
+    heroSectionRef.current?.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
+  };
+
   return (
     <div className="min-h-screen bg-slate-900">
       <Navbar />
       
       {/* Hero Section - Dark Theme */}
-      <section className="pt-24 pb-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+      <section ref={heroSectionRef} className="pt-24 pb-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-10 left-10 w-64 h-64 bg-blue-500 rounded-full blur-3xl"></div>
@@ -807,7 +815,10 @@ const ProductHB8 = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-12 py-5 font-semibold rounded-md shadow-lg transition-all duration-300 hover:shadow-xl text-xl transform hover:scale-[1.02]">
+              <Button 
+                onClick={scrollToTop}
+                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-12 py-5 font-semibold rounded-md shadow-lg transition-all duration-300 hover:shadow-xl text-xl transform hover:scale-[1.02]"
+              >
                 Jetzt bestellen
               </Button>
               <Button variant="ghost" className="border border-transparent text-slate-300 hover:bg-slate-700 hover:border-slate-500 hover:text-white px-8 py-5 text-lg rounded-md transition-all duration-300 transform hover:scale-[1.02]">
