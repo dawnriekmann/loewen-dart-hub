@@ -1,5 +1,4 @@
 
-
 const Footer = () => {
   return (
     <>
@@ -18,6 +17,21 @@ const Footer = () => {
                 Der internationale Marktführer für professionelle E-Dart Automaten. 
                 Qualität und Innovation seit Jahrzehnten.
               </p>
+              
+              {/* Contact Information */}
+              <div className="mb-6">
+                <h4 className="text-lg font-semibold mb-3 text-white">Kontakt</h4>
+                <div className="text-slate-300 space-y-1">
+                  <div className="font-semibold text-white">LÖWEN ENTERTAINMENT GmbH</div>
+                  <div>Saarlandstraße 240</div>
+                  <div>55411 Bingen</div>
+                  <div className="pt-2">
+                    <div>Telefon: <a href="tel:+492345678910" className="hover:text-white transition-colors">+49 2345678910</a></div>
+                    <div>E-Mail: <a href="mailto:info@loewen-vertrieb.de" className="hover:text-white transition-colors">info@loewen-vertrieb.de</a></div>
+                  </div>
+                </div>
+              </div>
+              
               <div className="flex space-x-4">
                 <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer">
                   <span className="text-sm font-bold">f</span>
@@ -70,4 +84,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
