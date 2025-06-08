@@ -1,88 +1,123 @@
 
 import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
 
 const AppSection = () => {
+  const sliderImages = [
+    "https://www.loewen.de/fileadmin/user_upload/Banner-Desktop-Dart-App-Startseite-07032023.jpg",
+    "https://www.loewen.de/fileadmin/user_upload/DartSlider-V3-HB10Finder-App-12072023.jpg",
+    "https://www.loewen.de/fileadmin/user_upload/Banner-Desktop-Dart-App-Statistiken-07032023.jpg",
+    "https://www.loewen.de/fileadmin/user_upload/Dartbannner-Spielhistorie-24112023.jpg",
+    "https://www.loewen.de/fileadmin/user_upload/Dart-Slider-App-092024.png",
+    "https://www.loewen.de/fileadmin/user_upload/Banner-Desktop-Dart-App-SocialMedia-07032023.jpg"
+  ];
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Auto-play functionality
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % sliderImages.length);
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, [sliderImages.length]);
+
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="mb-12">
-            <img 
-              src="https://www.loewen.de/fileadmin/user_upload/Icon_Dart_App_2000px.png" 
-              alt="Löwen Dart App Icon"
-              className="w-32 h-32 mx-auto mb-8 float-animation"
-            />
-            
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-              Lade dir jetzt die Löwen Dart App herunter
+        <div className="max-w-6xl mx-auto">
+          {/* Title */}
+          <div className="text-left mb-12">
+            <h2 className="text-3xl font-bold text-primary">
+              Lade dir jetzt die LÖWEN Dart-App herunter:
             </h2>
-            <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
-              Erlebe Dart auf einem neuen Level! Verwalte deine Spiele, tracke deine Statistiken 
-              und verbinde dich mit der Dart-Community.
-            </p>
           </div>
           
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Button asChild className="group transition-all duration-300 hover:scale-105">
-              <a 
-                href="#" 
-                className="inline-block"
-                target="_blank" 
-                rel="noopener noreferrer"
-              >
-                <img 
-                  src="https://www.loewen.de/fileadmin/user_upload/myNOVO/app-store.png" 
-                  alt="Download im App Store"
-                  className="h-14 w-auto group-hover:brightness-110 transition-all duration-300"
-                />
-              </a>
-            </Button>
+          {/* Image and Description Layout */}
+          <div className="flex flex-col lg:flex-row items-start gap-8 mb-12">
+            {/* App Icon */}
+            <div className="flex-shrink-0">
+              <img 
+                src="https://www.loewen.de/fileadmin/user_upload/Icon_Dart_App_2000px.png" 
+                alt="LÖWEN Dart App Icon"
+                className="w-96 h-96 object-contain"
+              />
+            </div>
             
-            <Button asChild className="group transition-all duration-300 hover:scale-105">
-              <a 
-                href="#" 
-                className="inline-block"
-                target="_blank" 
-                rel="noopener noreferrer"
-              >
-                <img 
-                  src="https://www.loewen.de/fileadmin/user_upload/myNOVO/google-play.png" 
-                  alt="Jetzt bei Google Play"
-                  className="h-14 w-auto group-hover:brightness-110 transition-all duration-300"
-                />
-              </a>
-            </Button>
+            {/* Description and Download Buttons */}
+            <div className="flex-1">
+              <p className="text-xl text-primary mb-8 leading-relaxed">
+                Erlebe Dart auf einem neuen Level! Verwalte deine Spiele, tracke deine Statistiken 
+                und verbinde dich mit der Dart-Community.
+              </p>
+              
+              {/* Download Buttons */}
+              <div className="flex flex-col sm:flex-row gap-6">
+                <a 
+                  href="#" 
+                  className="inline-block transition-all duration-300 hover:scale-105"
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  <img 
+                    src="https://www.loewen.de/fileadmin/user_upload/myNOVO/app-store.png" 
+                    alt="Download im App Store"
+                    className="h-14 w-auto hover:brightness-110 transition-all duration-300"
+                  />
+                </a>
+                
+                <a 
+                  href="#" 
+                  className="inline-block transition-all duration-300 hover:scale-105"
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  <img 
+                    src="https://www.loewen.de/fileadmin/user_upload/myNOVO/google-play.png" 
+                    alt="Jetzt bei Google Play"
+                    className="h-14 w-auto hover:brightness-110 transition-all duration-300"
+                  />
+                </a>
+              </div>
+            </div>
           </div>
-          
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-8 h-8 bg-primary rounded-full"></div>
+
+          {/* App Screenshots Slider */}
+          <div className="mb-16">
+            <div className="w-full max-w-7xl mx-auto">
+              <div className="relative overflow-hidden rounded-lg">
+                <div 
+                  className="flex transition-transform duration-500 ease-in-out"
+                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                >
+                  {sliderImages.map((image, index) => (
+                    <div key={index} className="w-full flex-shrink-0 flex justify-center p-8">
+                      <div className="bg-white rounded-lg shadow-lg p-6 max-w-5xl">
+                        <img 
+                          src={image} 
+                          alt={`Dart App Screenshot ${index + 1}`}
+                          className="w-full h-auto object-contain rounded"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <h3 className="font-semibold text-primary mb-2">Spiel-Tracking</h3>
-              <p className="text-muted-foreground text-sm">
-                Verfolge deine Fortschritte und Statistiken
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-8 h-8 bg-primary rounded-full"></div>
+              
+              {/* Dots Navigation */}
+              <div className="flex justify-center mt-6 space-x-2">
+                {sliderImages.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                      index === currentSlide ? 'bg-[#007aff]' : 'bg-gray-300'
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
               </div>
-              <h3 className="font-semibold text-primary mb-2">Community</h3>
-              <p className="text-muted-foreground text-sm">
-                Verbinde dich mit anderen Dart-Spielern
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-8 h-8 bg-primary rounded-full"></div>
-              </div>
-              <h3 className="font-semibold text-primary mb-2">Turniere</h3>
-              <p className="text-muted-foreground text-sm">
-                Nimm an spannenden Turnieren teil
-              </p>
             </div>
           </div>
         </div>
