@@ -1,4 +1,3 @@
-
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -97,13 +96,13 @@ const Navbar = () => {
               
               {/* Kontakt */}
               <NavigationMenuItem>
-                <a 
-                  href="#kontakt" 
+                <Link 
+                  to="/kontakt" 
                   className="text-white hover:text-blue-300 font-franklin transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-0 rounded-sm px-1"
                   style={menuItemStyle}
                 >
                   <span style={menuItemStyle}>Kontakt</span>
-                </a>
+                </Link>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
