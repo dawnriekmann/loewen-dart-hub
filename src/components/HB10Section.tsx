@@ -51,11 +51,11 @@ const HB10Section = () => {
 
           {/* Highlights white box - keep white background but remove rotation */}
           <div className="bg-white rounded-lg shadow-xl p-8 mb-16 max-w-4xl mx-auto">
-            <div className="flex items-center mb-6">
+            <div className="flex flex-col items-center mb-6">
               <img 
                 src="https://www.loewen.de/fileadmin/_processed_/4/8/csm_Dart_HB_10_Logo_klein_407a328601.png" 
                 alt="LÖWEN DART HB10 Logo"
-                className="mr-4"
+                className="mb-4"
               />
               <h3 className="text-2xl font-bold text-[#002454]">Highlights</h3>
             </div>
