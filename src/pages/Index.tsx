@@ -7,6 +7,7 @@ import HB10Section from "@/components/HB10Section";
 import AppSection from "@/components/AppSection";
 import SocialMediaSection from "@/components/SocialMediaSection";
 import Footer from "@/components/Footer";
+import HB10FinderButton from "@/components/HB10FinderButton";
 
 const Index = () => {
   return (
@@ -19,6 +20,7 @@ const Index = () => {
       <AppSection />
       <SocialMediaSection />
       <Footer />
+      <HB10FinderButton />
     </div>
   );
 };
