@@ -1,6 +1,4 @@
 
-import { Button } from "@/components/ui/button";
-import { ArrowDown } from "lucide-react";
 import { useEffect, useRef } from "react";
 
 const HeroSection = () => {
@@ -47,7 +45,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative h-screen flex items-center overflow-hidden font-open-sans">
       {/* Video Background */}
       <video 
         ref={videoRef}
@@ -69,28 +67,34 @@ const HeroSection = () => {
       {/* Overlay */}
       <div className="video-overlay"></div>
       
-      {/* Content */}
-      <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
-        <h1 className="text-6xl md:text-8xl font-bold mb-6 animate-fade-in">
-          Löwen Dart
-        </h1>
-        <p className="text-xl md:text-2xl mb-12 animate-fade-in opacity-90 max-w-3xl mx-auto leading-relaxed">
-          Die E-Dart Produkte des internationalen Marktführers
-        </p>
-        
-        <Button 
-          onClick={scrollToProducts}
-          size="lg"
-          className="bg-white text-primary hover:bg-slate-100 transition-all duration-300 transform hover:scale-105 px-8 py-4 text-lg font-semibold animate-fade-in"
-        >
-          Jetzt Entdecken
-          <ArrowDown className="ml-2 h-5 w-5 animate-bounce" />
-        </Button>
+      {/* Content - Left aligned */}
+      <div className="relative z-10 text-white px-8 md:px-16 lg:px-24 w-full max-w-7xl mx-auto">
+        <div className="text-left">
+          <div className="mb-8 animate-fade-in">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold leading-none">
+              LÖWEN
+            </h1>
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold leading-none">
+              DART
+            </h1>
+          </div>
+          
+          <p className="text-xl md:text-2xl lg:text-3xl mb-12 animate-fade-in opacity-90 max-w-2xl leading-relaxed">
+            Die E-Dart Produkte des internationalen Marktführers
+          </p>
+        </div>
       </div>
       
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
-        <ArrowDown className="h-6 w-6" />
+      {/* Scroll indicator with new image and text */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white text-center cursor-pointer animate-bounce" onClick={scrollToProducts}>
+        <div className="font-franklin text-sm md:text-base font-medium tracking-wider mb-2">
+          JETZT ENTDECKEN!
+        </div>
+        <img 
+          src="https://www.loewen.de/_assets/522279b556b280de835e1011f7255b60/img/arrow-dotted-scroll-down.png" 
+          alt="Scroll down arrow"
+          className="h-8 w-auto mx-auto"
+        />
       </div>
     </section>
   );
