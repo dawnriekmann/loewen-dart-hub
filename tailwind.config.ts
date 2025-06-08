@@ -23,6 +23,7 @@ export default {
 				'open-sans': ['Open Sans', 'sans-serif'],
 				'franklin': ['Oswald', 'Arial Narrow', 'sans-serif'],
 				'parisine': ['Oswald Condensed', 'Arial Narrow', 'sans-serif'],
+				'parisine-narrow': ['Barlow Condensed', 'Oswald Condensed', 'Arial Narrow', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',

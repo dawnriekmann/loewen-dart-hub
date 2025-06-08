@@ -1,4 +1,3 @@
-
 const ProductsSection = () => {
   const products = [
     {
@@ -23,7 +22,7 @@ const ProductsSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <div className="inline-block">
-            <h2 className="text-4xl md:text-5xl font-bold font-parisine uppercase text-white products-title-gradient">
+            <h2 className="text-4xl md:text-5xl font-bold font-parisine-narrow uppercase text-white products-title-gradient">
               UNSERE DARTAUTOMATEN
             </h2>
           </div>
