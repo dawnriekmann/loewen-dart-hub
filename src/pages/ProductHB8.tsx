@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -30,7 +29,7 @@ const ProductHB8 = () => {
                   Profi-Gerät
                 </Badge>
                 <Badge className="bg-slate-700 hover:bg-slate-600 text-slate-200 border-slate-600">
-                  <Star className="w-4 h-4 mr-2 fill-yellow-400 text-yellow-400" />
+                  <Star className="w-4 h-4 mr-2 fill-blue-400 text-blue-400" />
                   Marktführer
                 </Badge>
               </div>
@@ -85,17 +84,17 @@ const ProductHB8 = () => {
                     Kostenlose Einrichtung vor Ort
                   </div>
                   <div className="flex items-center gap-2">
-                    <Zap className="w-4 h-4 text-yellow-400" />
+                    <Zap className="w-4 h-4 text-cyan-400" />
                     Sofort einsatzbereit
                   </div>
                 </div>
               </div>
               
               <div className="flex gap-4">
-                <Button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-3 text-lg font-semibold rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 flex-1">
+                <Button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-3 text-lg font-semibold rounded-md shadow-lg transition-all duration-300 hover:shadow-xl flex-1 transform hover:scale-[1.02]">
                   Jetzt kaufen
                 </Button>
-                <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700 hover:border-slate-500 px-6 py-3 text-lg rounded-lg transition-all duration-300">
+                <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700 hover:border-slate-500 hover:text-white px-6 py-3 text-lg rounded-md transition-all duration-300 transform hover:scale-[1.02]">
                   Mehr Info
                 </Button>
               </div>
@@ -605,10 +604,10 @@ const ProductHB8 = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-12 py-5 font-semibold rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 text-xl">
+              <Button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-12 py-5 font-semibold rounded-md shadow-lg transition-all duration-300 hover:shadow-xl text-xl transform hover:scale-[1.02]">
                 Jetzt bestellen
               </Button>
-              <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700 hover:border-slate-500 px-8 py-5 text-lg rounded-lg transition-all duration-300">
+              <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700 hover:border-slate-500 hover:text-white px-8 py-5 text-lg rounded-md transition-all duration-300 transform hover:scale-[1.02]">
                 Beratung anfordern
               </Button>
             </div>
