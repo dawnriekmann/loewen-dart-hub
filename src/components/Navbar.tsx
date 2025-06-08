@@ -1,7 +1,6 @@
 
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
 import { useState, useEffect } from "react";
-import { ChevronDown } from "lucide-react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,10 +20,11 @@ const Navbar = () => {
 
   const menuItemStyle = {
     fontSize: '1.25rem',
-    lineHeight: '1',
+    lineHeight: '1.2',
     fontWeight: '500',
     letterSpacing: '0.05em',
     textTransform: 'none' as const,
+    fontVariant: 'normal' as const,
     verticalAlign: 'baseline' as const,
     height: 'auto',
     padding: '0',
@@ -52,15 +52,10 @@ const Navbar = () => {
               {/* Dartautomaten Dropdown */}
               <NavigationMenuItem>
                 <NavigationMenuTrigger 
-                  className="bg-transparent text-white hover:text-gray-200 font-franklin transition-colors border-0 outline-0 p-0 h-auto min-h-0"
+                  className="bg-transparent text-white hover:text-gray-200 font-franklin transition-colors border-0 outline-0 p-0 h-auto min-h-0 [&>svg]:w-3 [&>svg]:h-3 [&>svg]:ml-1"
                   style={menuItemStyle}
                 >
                   <span style={menuItemStyle}>Dartautomaten</span>
-                  <ChevronDown
-                    className="ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180"
-                    aria-hidden="true"
-                    style={{ fontSize: '0.75rem', lineHeight: '1' }}
-                  />
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <div className="p-4 w-48">
@@ -95,7 +90,7 @@ const Navbar = () => {
                   className="text-white hover:text-gray-200 font-franklin transition-colors"
                   style={menuItemStyle}
                 >
-                  Kontakt
+                  <span style={menuItemStyle}>Kontakt</span>
                 </a>
               </NavigationMenuItem>
             </NavigationMenuList>
