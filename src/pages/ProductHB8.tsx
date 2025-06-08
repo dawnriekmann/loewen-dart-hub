@@ -206,8 +206,8 @@ const ProductHB8 = () => {
                     <li>• Befestigungsmaterial</li>
                     <li>• Ausführliches Benutzerhandbuch in Deutsch</li>
                   </ul>
-                  <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded">
-                    <p className="text-sm text-yellow-800">
+                  <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded">
+                    <p className="text-sm text-blue-800">
                       <strong>Hinweis:</strong> Die LEO Funktion steht bei diesen Geräten nicht zur Verfügung 
                       und kann auch nicht nachgerüstet werden.
                     </p>
