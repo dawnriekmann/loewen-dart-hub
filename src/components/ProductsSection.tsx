@@ -13,13 +13,13 @@ const ProductsSection = () => {
       id: 2,
       name: "Dart HB9",
       image: "https://www.loewen.de/fileadmin/_processed_/6/8/csm_HB9_Sport_Dart_760f4d03f8.png",
-      link: "#"
+      link: "/hb9"
     },
     {
       id: 3,
       name: "Dart HB10",
       image: "https://www.loewen.de/fileadmin/_processed_/6/8/csm_2023-08-08-HB10-Rot-Blau-Links_9b110b3a99.png",
-      link: "#"
+      link: "/hb10"
     }
   ];
 
@@ -46,30 +46,23 @@ const ProductsSection = () => {
               className="group text-center transform hover:-translate-y-2 transition-all duration-300"
               style={{ animationDelay: `${index * 150}ms` }}
             >
-              <div className="aspect-square overflow-hidden flex items-center justify-center p-4 mb-6">
-                <img 
-                  src={product.image} 
-                  alt={product.name}
-                  className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 float-animation"
-                />
-              </div>
-              
-              <h3 className="text-2xl font-bold text-[#002454] mb-3">
-                {product.name}
-              </h3>
-              
-              {product.link === "#" ? (
+              <Link to={product.link} className="block">
+                <div className="aspect-square overflow-hidden flex items-center justify-center p-4 mb-6">
+                  <img 
+                    src={product.image} 
+                    alt={product.name}
+                    className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 float-animation"
+                  />
+                </div>
+                
+                <h3 className="text-2xl font-bold text-[#002454] mb-3">
+                  {product.name}
+                </h3>
+                
                 <p className="text-lg font-bold text-[#002454] cursor-pointer hover:underline">
                   Hier öffnen
                 </p>
-              ) : (
-                <Link 
-                  to={product.link}
-                  className="text-lg font-bold text-[#002454] cursor-pointer hover:underline"
-                >
-                  Hier öffnen
-                </Link>
-              )}
+              </Link>
             </div>
           ))}
         </div>

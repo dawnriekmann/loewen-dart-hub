@@ -72,24 +72,24 @@ const Navbar = () => {
                           <span>LÖWEN HB8</span>
                         </div>
                       </Link>
-                      <a 
-                        href="#" 
+                      <Link 
+                        to="/hb9" 
                         className="block px-4 py-3 text-white hover:bg-blue-600/30 hover:border-l-4 hover:border-l-blue-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-0"
                       >
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-blue-400 rounded-full shadow-lg shadow-blue-400/50"></div>
                           <span>LÖWEN HB9</span>
                         </div>
-                      </a>
-                      <a 
-                        href="#" 
+                      </Link>
+                      <Link 
+                        to="/hb10" 
                         className="block px-4 py-3 text-white hover:bg-blue-600/30 hover:border-l-4 hover:border-l-blue-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-0"
                       >
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-blue-400 rounded-full shadow-lg shadow-blue-400/50"></div>
                           <span>LÖWEN HB10</span>
                         </div>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </NavigationMenuContent>
