@@ -184,7 +184,7 @@
   left: 0;
   right: 0;
   transform: translateY(-50%);
-  height: 5.5rem; /* Increased from 4.4rem */
+  height: 7rem; /* Increased from 5.5rem */
   background: linear-gradient(to right, transparent 0%, #638fc6 20%, #638fc6 80%, transparent 100%);
   z-index: 1;
 }
@@ -192,7 +192,7 @@
 /* Mobile responsive gradient background */
 @media (max-width: 768px) {
   .products-title-gradient-container {
-    height: 8rem; /* Increased from 6rem for mobile */
+    height: 10rem; /* Increased from 8rem for mobile */
     background: linear-gradient(to right, transparent 0%, #638fc6 10%, #638fc6 90%, transparent 100%); /* Wider gradient coverage */
   }
 }
