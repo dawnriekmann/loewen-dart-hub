@@ -85,8 +85,8 @@ const HeroSection = () => {
         </div>
       </div>
       
-      {/* Scroll indicator with arrow above text - static (no bounce) */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white text-center cursor-pointer" onClick={scrollToProducts}>
+      {/* Scroll indicator with arrow above text - with bounce animation */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white text-center cursor-pointer animate-bounce" onClick={scrollToProducts}>
         <img 
           src="https://www.loewen.de/_assets/522279b556b280de835e1011f7255b60/img/arrow-dotted-scroll-down.png" 
           alt="Scroll down arrow"
