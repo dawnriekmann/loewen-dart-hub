@@ -5,7 +5,21 @@ const HB10Section = () => {
       {/* Blue background header - larger height */}
       <div className="relative w-full h-[400px] bg-[#002454] overflow-hidden">
         <div className="container mx-auto px-4 h-full relative">
-          {/* Title box positioned to span across all three sections - 30% larger */}
+          {/* Blue background content - no title box here anymore */}
+        </div>
+      </div>
+
+      {/* HB10 Image positioned to overlap both sections - with title box attached */}
+      <div className="absolute left-0 top-32 z-10">
+        <div className="shadow-2xl relative">
+          <img 
+            src="https://www.loewen.de/fileadmin/user_upload/Dart-HB10-092024.jpg" 
+            alt="LÖWEN DART HB10"
+            className="object-cover"
+            style={{ width: '1331px', height: '614px' }}
+          />
+          
+          {/* Title box positioned relative to the image */}
           <div className="absolute right-8 top-16 z-30">
             <div 
               className="flex items-center justify-center mb-8 shadow-lg"
@@ -25,18 +39,6 @@ const HB10Section = () => {
               </p>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* HB10 Image positioned to overlap both sections - 20% larger than previous size */}
-      <div className="absolute left-0 top-32 z-10">
-        <div className="shadow-2xl">
-          <img 
-            src="https://www.loewen.de/fileadmin/user_upload/Dart-HB10-092024.jpg" 
-            alt="LÖWEN DART HB10"
-            className="object-cover"
-            style={{ width: '1109px', height: '512px' }}
-          />
         </div>
       </div>
 
