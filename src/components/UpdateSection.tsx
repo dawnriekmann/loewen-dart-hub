@@ -90,7 +90,7 @@ const UpdateSection = () => {
               >
                 {sliderImages.map((image, index) => (
                   <div key={index} className="w-full flex-shrink-0 flex justify-center p-8">
-                    <div className="bg-white rounded-lg shadow-lg p-6 max-w-3xl"> {/* Changed from max-w-2xl to max-w-3xl for 50% larger */}
+                    <div className="bg-white rounded-lg shadow-lg p-6 max-w-5xl"> {/* Changed from max-w-3xl to max-w-5xl for 50% larger */}
                       <img 
                         src={image} 
                         alt={`HB10 Update Slide ${index + 1}`}
