@@ -128,6 +128,14 @@ const UpdateSection = () => {
                 className="flex-shrink-0"
                 style={{ width: '80px', height: '100px' }}
               />
+              <div 
+                className="flex-shrink-0"
+                style={{ 
+                  width: '12px', 
+                  height: '100px', 
+                  backgroundColor: '#638ec5' 
+                }}
+              />
               <div className="flex flex-col text-left">
                 <h3 className="text-lg text-[#002454] mb-1">
                   {item.title}
