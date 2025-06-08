@@ -22,15 +22,15 @@ const ProductsSection = () => {
     <section id="products" className="py-20 bg-slate-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <p className="text-lg text-products-text mb-4 max-w-2xl mx-auto">
-            Entdecken Sie unsere hochwertigen Dartautomaten - perfekt für jeden Anspruch und jede Umgebung.
-          </p>
-          
           <div className="inline-block">
             <h2 className="text-4xl md:text-5xl font-bold font-parisine uppercase text-products-title-bg products-title-gradient">
               UNSERE DARTAUTOMATEN
             </h2>
           </div>
+          
+          <p className="text-lg text-products-text mt-4 max-w-2xl mx-auto">
+            Entdecken Sie unsere hochwertigen Dartautomaten - perfekt für jeden Anspruch und jede Umgebung.
+          </p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
