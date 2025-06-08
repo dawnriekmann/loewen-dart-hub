@@ -5,7 +5,7 @@ const SocialMediaSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <div className="inline-block">
-            <h2 className="font-bold font-parisine-narrow uppercase text-white products-title-gradient" style={{ fontSize: '45px' }}>
+            <h2 className="font-bold font-parisine-narrow uppercase text-white products-title-gradient" style={{ fontSize: '58.5px' }}>
               UNSERE SOCIAL MEDIA KANÄLE
             </h2>
           </div>
