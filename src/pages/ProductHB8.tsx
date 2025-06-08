@@ -65,7 +65,7 @@ const ProductHB8 = () => {
                 <div className="flex items-center gap-3 mb-6">
                   <div className="flex items-center gap-2 bg-green-900/30 text-green-400 px-3 py-2 rounded-full text-sm">
                     <CheckCircle className="w-4 h-4" />
-                    Nur 3 Stück verfügbar
+                    Nur 7 Stück verfügbar
                   </div>
                   <div className="flex items-center gap-2 bg-blue-900/30 text-blue-400 px-3 py-2 rounded-full text-sm">
                     <Truck className="w-4 h-4" />
