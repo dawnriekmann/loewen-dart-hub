@@ -163,7 +163,7 @@ const ProductHB8 = () => {
 
                     {/* Company Name Field - only show if business is selected */}
                     {formData.customerType === "business" && (
-                      <div className="mb-4">
+                      <div className="mb-4 animate-slide-down">
                         <label className="block text-sm font-medium text-slate-300 mb-2">Unternehmen</label>
                         <Input
                           value={formData.companyName}
