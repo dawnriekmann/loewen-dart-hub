@@ -75,7 +75,7 @@ const HB10Section = () => {
 
           {/* Games and Options section - removed white background */}
           <div className="mb-16">
-            <div className="mb-8 max-w-4xl mx-auto">
+            <div className="mb-8 max-w-4xl mx-auto ml-8">
               <h3 className="text-3xl font-bold text-[#002454] mb-4">
                 Spiele und Optionen
               </h3>
@@ -96,7 +96,7 @@ const HB10Section = () => {
 
           {/* HB10 Monitorkit section - removed white background */}
           <div className="mb-16">
-            <div className="mb-8 max-w-4xl mx-auto">
+            <div className="mb-8 max-w-4xl mx-auto ml-8">
               <h3 className="text-3xl font-bold text-[#002454]">
                 HB10 - Monitorkit
               </h3>
