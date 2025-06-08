@@ -9,8 +9,10 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { CheckCircle, Star, Truck, Shield, Award, Users, Zap, Target, ArrowLeft, Plus, Minus } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ProductHB8 = () => {
+  const navigate = useNavigate();
   const [checkoutMode, setCheckoutMode] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -24,6 +26,7 @@ const ProductHB8 = () => {
   const [previousCustomerType, setPreviousCustomerType] = useState("private");
   const companyFieldRef = useRef<HTMLDivElement>(null);
   const heroSectionRef = useRef<HTMLElement>(null);
+  const productDetailsRef = useRef<HTMLElement>(null);
 
   const basePrice = 2000;
   const calculateTotal = () => {
@@ -53,6 +56,17 @@ const ProductHB8 = () => {
       behavior: 'smooth',
       block: 'start'
     });
+  };
+
+  const scrollToProductDetails = () => {
+    productDetailsRef.current?.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
+  };
+
+  const handleBeratungAnfordern = () => {
+    navigate('/kontakt');
   };
 
   return (
@@ -315,7 +329,11 @@ const ProductHB8 = () => {
                     >
                       Jetzt anfragen
                     </Button>
-                    <Button variant="ghost" className="border border-transparent text-slate-300 hover:bg-slate-700 hover:border-slate-500 hover:text-white px-6 py-3 text-lg rounded-md transition-all duration-300 transform hover:scale-[1.02]">
+                    <Button 
+                      variant="ghost" 
+                      onClick={scrollToProductDetails}
+                      className="border border-transparent text-slate-300 hover:bg-slate-700 hover:border-slate-500 hover:text-white px-6 py-3 text-lg rounded-md transition-all duration-300 transform hover:scale-[1.02]"
+                    >
                       Mehr Info
                     </Button>
                   </div>
@@ -421,7 +439,7 @@ const ProductHB8 = () => {
       </section>
 
       {/* Detailed Description Section */}
-      <section className="py-20 bg-slate-800">
+      <section ref={productDetailsRef} className="py-20 bg-slate-800">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -821,7 +839,11 @@ const ProductHB8 = () => {
               >
                 Jetzt bestellen
               </Button>
-              <Button variant="ghost" className="border border-transparent text-slate-300 hover:bg-slate-700 hover:border-slate-500 hover:text-white px-8 py-5 text-lg rounded-md transition-all duration-300 transform hover:scale-[1.02]">
+              <Button 
+                variant="ghost" 
+                onClick={handleBeratungAnfordern}
+                className="border border-transparent text-slate-300 hover:bg-slate-700 hover:border-slate-500 hover:text-white px-8 py-5 text-lg rounded-md transition-all duration-300 transform hover:scale-[1.02]"
+              >
                 Beratung anfordern
               </Button>
             </div>
