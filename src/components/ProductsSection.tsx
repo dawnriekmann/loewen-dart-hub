@@ -1,3 +1,4 @@
+
 const ProductsSection = () => {
   const products = [
     {
@@ -22,7 +23,7 @@ const ProductsSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <div className="inline-block">
-            <h2 className="text-4xl md:text-5xl font-bold font-parisine-narrow uppercase text-white products-title-gradient">
+            <h2 className="font-bold font-parisine-narrow uppercase text-white products-title-gradient" style={{ fontSize: '45px' }}>
               UNSERE DARTAUTOMATEN
             </h2>
           </div>
@@ -39,11 +40,11 @@ const ProductsSection = () => {
               className="group text-center transform hover:-translate-y-2 transition-all duration-300"
               style={{ animationDelay: `${index * 150}ms` }}
             >
-              <div className="aspect-square overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center p-8 mb-6 rounded-lg shadow-lg">
+              <div className="aspect-square overflow-hidden flex items-center justify-center p-8 mb-6">
                 <img 
                   src={product.image} 
                   alt={product.name}
-                  className="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-500 float-animation"
+                  className="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-500 float-animation scale-130"
                 />
               </div>
               
