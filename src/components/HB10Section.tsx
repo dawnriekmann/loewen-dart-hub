@@ -14,20 +14,20 @@ const HB10Section = () => {
           <img 
             src="https://www.loewen.de/fileadmin/user_upload/Dart-HB10-092024.jpg" 
             alt="LÖWEN DART HB10"
-            className="object-cover w-full h-auto max-w-[1331px] max-h-[614px] md:w-[1331px] md:h-[614px]"
+            className="object-cover w-full h-auto max-w-[665px] max-h-[307px] md:max-w-[1331px] md:max-h-[614px]"
           />
           
           {/* Logo and text positioned relative to the image */}
-          <div className="absolute right-2 md:right-8 top-8 md:top-16 z-30">
-            <div className="flex items-center justify-center mb-4 md:mb-8">
+          <div className="absolute right-2 md:right-8 top-4 md:top-16 z-30">
+            <div className="flex items-center justify-center mb-2 md:mb-8">
               <img 
                 src="https://www.loewen.de/fileadmin/_processed_/4/8/csm_Dart_HB_10_Logo_klein_407a328601.png" 
                 alt="LÖWEN DART HB10 Logo"
-                className="h-16 md:h-32 object-contain"
+                className="h-8 md:h-32 object-contain"
               />
             </div>
-            <div className="max-w-xs md:max-w-md">
-              <p className="text-white text-sm md:text-xl font-semibold">
+            <div className="max-w-[150px] md:max-w-md">
+              <p className="text-white text-xs md:text-xl font-semibold">
                 EINE NEUE ÄRA DES ELECTRONIC DARTS.
               </p>
             </div>
@@ -36,7 +36,7 @@ const HB10Section = () => {
       </div>
 
       {/* Content section with top padding to account for overlapping image */}
-      <div className="bg-slate-50 pt-64 md:pt-96 pb-20">
+      <div className="bg-slate-50 pt-32 md:pt-96 pb-20">
         <div className="container mx-auto px-4">
           {/* Main title and description - removed white background */}
           <div className="mb-16 ml-2 md:ml-8">
