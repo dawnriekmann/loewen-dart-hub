@@ -1,4 +1,3 @@
-
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { useState, useEffect } from "react";
 import { useDynamicGradientHeight } from "@/hooks/useDynamicGradientHeight";
@@ -51,18 +50,25 @@ const UpdateSection = () => {
   }, [sliderImages.length]);
 
   return (
-    <section className="py-20 bg-slate-50 overflow-x-hidden">
-      <div className="container mx-auto px-4 overflow-x-hidden">
+    <section className="py-20 bg-slate-50 overflow-hidden">
+      <div className="container mx-auto px-4 max-w-none overflow-hidden">
         {/* Title with gradient background */}
-        <div className="text-center mb-16 overflow-x-hidden">
-          <div className="relative overflow-x-hidden">
+        <div className="text-center mb-16 overflow-hidden w-full">
+          <div className="relative overflow-hidden w-full">
             <div 
-              className="products-title-gradient-container w-full"
-              style={{ height: gradientHeight }}
+              className="products-title-gradient-container"
+              style={{ 
+                height: gradientHeight,
+                left: '50%',
+                right: 'auto',
+                transform: 'translateX(-50%) translateY(-50%)',
+                width: '100vw',
+                maxWidth: 'none'
+              }}
             ></div>
             <h2 
               ref={textRef}
-              className="font-bold font-parisine-narrow uppercase text-white relative z-10 px-4" 
+              className="font-bold font-parisine-narrow uppercase text-white relative z-10 px-4 max-w-full" 
               style={{ fontSize: '58.5px' }}
             >
               JETZT NEU: HB10 UPDATE V4.0-4 (April 2025)
@@ -71,7 +77,7 @@ const UpdateSection = () => {
         </div>
 
         {/* Long description text */}
-        <div className="max-w-5xl mx-auto mb-16 text-[#002454] space-y-6 overflow-x-hidden">
+        <div className="max-w-5xl mx-auto mb-16 text-[#002454] space-y-6">
           <p className="text-lg">
             Für das LÖWEN DART HB10 gibt es jetzt eine neue Softwareversion (V4.0-4). Die Update-Datei können Sie hier kostenlos herunterladen.
           </p>
@@ -91,7 +97,7 @@ const UpdateSection = () => {
         </div>
 
         {/* Banner Slider with custom dots navigation - 50% larger */}
-        <div className="mb-16 overflow-x-hidden">
+        <div className="mb-16 overflow-hidden">
           <div className="w-full max-w-7xl mx-auto overflow-x-hidden">
             <div className="relative overflow-hidden rounded-lg">
               <div 
@@ -129,7 +135,7 @@ const UpdateSection = () => {
         </div>
 
         {/* Three columns with download items */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 overflow-x-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {downloadItems.map((item) => (
             <div key={item.id} className="flex items-center space-x-2 min-w-0">
               <div 
@@ -167,7 +173,7 @@ const UpdateSection = () => {
         </div>
 
         {/* Bottom text section */}
-        <div className="text-center overflow-x-hidden">
+        <div className="text-center">
           <p className="text-lg text-[#002454] mb-4">
             Weitere Inhalte stehen für Sie in unserem Downloadbereich zur Verfügung!
           </p>
