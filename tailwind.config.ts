@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -23,7 +22,6 @@ export default {
 				'sans': ['Open Sans', 'sans-serif'],
 				'open-sans': ['Open Sans', 'sans-serif'],
 				'franklin': ['Oswald', 'Arial Narrow', 'sans-serif'],
-				'parisine': ['Oswald Condensed', 'Oswald', 'Arial Narrow', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -68,8 +66,7 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				},
-				'dart': 'hsl(var(--dart-text))'
+				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

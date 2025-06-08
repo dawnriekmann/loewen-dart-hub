@@ -45,9 +45,6 @@
     --sidebar-accent-foreground: 15 23 42; /* slate-900 */
     --sidebar-border: 226 232 240; /* slate-200 */
     --sidebar-ring: 0 36 84; /* #002454 - Löwen blue */
-
-    /* Custom colors for dart section */
-    --dart-text: 0 36 84; /* #002454 - Löwen blue for all texts */
   }
 
   .dark {
@@ -86,8 +83,6 @@
     --sidebar-accent-foreground: 248 250 252; /* slate-50 */
     --sidebar-border: 30 41 59; /* slate-800 */
     --sidebar-ring: 0 36 84; /* #002454 - Löwen blue */
-
-    --dart-text: 248 250 252; /* slate-50 for dark mode */
   }
 }
 
@@ -134,17 +129,4 @@
   height: 100%;
   background: rgba(0, 36, 84, 0.6);
   z-index: 0;
-}
-
-/* Custom gradient background for title */
-.gradient-title-bg {
-  background: linear-gradient(to right, transparent 0%, #638fc6 30%, #638fc6 70%, transparent 100%);
-  display: inline-block;
-  padding: 12px 40px;
-  margin: 0 auto;
-}
-
-/* Custom dart text color */
-.text-dart {
-  color: #002454;
 }
