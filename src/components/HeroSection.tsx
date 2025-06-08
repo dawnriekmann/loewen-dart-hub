@@ -1,8 +1,44 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 const HeroSection = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const playVideo = async () => {
+      try {
+        await video.play();
+        console.log("Video autoplay successful");
+      } catch (error) {
+        console.log("Autoplay prevented, video will play on user interaction:", error);
+      }
+    };
+
+    // Try to play when video is loaded
+    if (video.readyState >= 3) {
+      playVideo();
+    } else {
+      video.addEventListener('loadeddata', playVideo);
+    }
+
+    // Cleanup
+    return () => {
+      video.removeEventListener('loadeddata', playVideo);
+    };
+  }, []);
+
+  const handleVideoClick = () => {
+    const video = videoRef.current;
+    if (video && video.paused) {
+      video.play().catch(console.error);
+    }
+  };
+
   const scrollToProducts = () => {
     const productsSection = document.getElementById('products');
     if (productsSection) {
@@ -14,11 +50,14 @@ const HeroSection = () => {
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Video Background */}
       <video 
-        className="video-background"
+        ref={videoRef}
+        className="video-background cursor-pointer"
         autoPlay 
         muted 
         loop 
         playsInline
+        preload="auto"
+        onClick={handleVideoClick}
       >
         <source 
           src="https://www.loewen.de/fileadmin/user_upload/240409_Headervideo_Darts_Produktseite_2024.mp4" 
