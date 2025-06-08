@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -61,8 +60,7 @@ const ProductHB8 = () => {
                   <div className="text-slate-400 text-lg line-through">2.500€</div>
                   <Badge className="bg-red-600 text-white">-20%</Badge>
                 </div>
-                <div className="text-slate-300 text-lg mb-2">inkl. 19% MwSt.</div>
-                <div className="text-slate-300 text-lg mb-6">Versandkosten: 49,95€</div>
+                <div className="text-slate-300 text-lg mb-6">inkl. 19% MwSt.</div>
                 
                 <div className="flex items-center gap-3 mb-6">
                   <div className="flex items-center gap-2 bg-green-900/30 text-green-400 px-3 py-2 rounded-full text-sm">
