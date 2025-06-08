@@ -123,7 +123,7 @@ const ProductHB8 = () => {
                     <div className="flex items-baseline gap-4 mb-4">
                       <div className="text-5xl font-bold text-white">2.799€</div>
                       <div className="text-slate-400 text-lg line-through">2.999€</div>
-                      <Badge className="bg-red-600 text-white">-7%</Badge>
+                      <Badge className="bg-red-600 text-white">-200€</Badge>
                     </div>
                     <div className="text-slate-300 text-lg mb-6">inkl. 19% MwSt.</div>
                     
