@@ -1,4 +1,5 @@
 
+
 const Footer = () => {
   return (
     <>
@@ -50,19 +51,6 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-          
-          <div className="border-t border-white/20 pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <p className="text-slate-300 text-sm mb-4 md:mb-0">
-                © 2024 Löwen Entertainment GmbH. Alle Rechte vorbehalten.
-              </p>
-              <div className="flex space-x-6 text-slate-300 text-sm">
-                <a href="#" className="hover:text-white transition-colors">Impressum</a>
-                <a href="#" className="hover:text-white transition-colors">Datenschutz</a>
-                <a href="#" className="hover:text-white transition-colors">AGB</a>
-              </div>
-            </div>
-          </div>
         </div>
       </footer>
       
@@ -82,3 +70,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
