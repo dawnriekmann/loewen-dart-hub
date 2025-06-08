@@ -1,6 +1,7 @@
 
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,11 +40,13 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <img 
-              src="https://i.imgur.com/iLQceVb.png" 
-              alt="LÖWEN Logo"
-              className="h-16 w-auto"
-            />
+            <Link to="/">
+              <img 
+                src="https://i.imgur.com/iLQceVb.png" 
+                alt="LÖWEN Logo"
+                className="h-16 w-auto"
+              />
+            </Link>
           </div>
           
           {/* Navigation Menu */}
@@ -60,15 +63,15 @@ const Navbar = () => {
                 <NavigationMenuContent className="!bg-transparent !border-none !shadow-none focus:ring-0 focus:ring-offset-0 focus-visible:ring-2 focus-visible:ring-blue-600 data-[state=open]:ring-0">
                   <div className="bg-slate-900/90 backdrop-blur-xl border-2 border-blue-500/60 rounded-xl shadow-2xl p-6 w-64 !text-white focus:ring-0 focus:ring-offset-0">
                     <div className="space-y-2">
-                      <a 
-                        href="#" 
+                      <Link 
+                        to="/hb8"
                         className="block px-4 py-3 text-white hover:bg-blue-600/30 hover:border-l-4 hover:border-l-blue-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-0"
                       >
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-blue-400 rounded-full shadow-lg shadow-blue-400/50"></div>
                           <span>LÖWEN HB8</span>
                         </div>
-                      </a>
+                      </Link>
                       <a 
                         href="#" 
                         className="block px-4 py-3 text-white hover:bg-blue-600/30 hover:border-l-4 hover:border-l-blue-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-0"
@@ -111,4 +114,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

@@ -1,20 +1,25 @@
 
+import { Link } from "react-router-dom";
+
 const ProductsSection = () => {
   const products = [
     {
       id: 1,
       name: "Dart HB8",
       image: "https://www.loewen.de/fileadmin/_processed_/3/b/csm_DART_HB8_Tunier_Retusche_593a52b77d.png",
+      link: "/hb8"
     },
     {
       id: 2,
       name: "Dart HB9",
       image: "https://www.loewen.de/fileadmin/_processed_/6/8/csm_HB9_Sport_Dart_760f4d03f8.png",
+      link: "#"
     },
     {
       id: 3,
       name: "Dart HB10",
       image: "https://www.loewen.de/fileadmin/_processed_/6/8/csm_2023-08-08-HB10-Rot-Blau-Links_9b110b3a99.png",
+      link: "#"
     }
   ];
 
@@ -53,9 +58,18 @@ const ProductsSection = () => {
                 {product.name}
               </h3>
               
-              <p className="text-lg font-bold text-[#002454] cursor-pointer hover:underline">
-                Hier öffnen
-              </p>
+              {product.link === "#" ? (
+                <p className="text-lg font-bold text-[#002454] cursor-pointer hover:underline">
+                  Hier öffnen
+                </p>
+              ) : (
+                <Link 
+                  to={product.link}
+                  className="text-lg font-bold text-[#002454] cursor-pointer hover:underline"
+                >
+                  Hier öffnen
+                </Link>
+              )}
             </div>
           ))}
         </div>
