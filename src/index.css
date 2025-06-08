@@ -139,9 +139,9 @@
   z-index: 0;
 }
 
-/* Extended gradient background for section titles */
+/* Gradient background for section title */
 .products-title-gradient {
-  background: linear-gradient(to right, transparent 0%, transparent 10%, #638fc6 20%, #638fc6 80%, transparent 90%, transparent 100%);
+  background: linear-gradient(to right, transparent 0%, #638fc6 30%, #638fc6 70%, transparent 100%);
   display: inline-block;
-  padding: 0.5rem 4rem;
+  padding: 0.5rem 2rem;
 }
