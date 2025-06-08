@@ -29,7 +29,7 @@ const AppSection = () => {
         <div className="max-w-6xl mx-auto">
           {/* Title */}
           <div className="text-left mb-12">
-            <h2 className="text-2xl font-bold text-primary">
+            <h2 className="text-2xl font-bold text-[#002454]">
               Lade dir jetzt die LÖWEN Dart-App herunter:
             </h2>
           </div>
@@ -47,7 +47,7 @@ const AppSection = () => {
             
             {/* Description and Download Buttons */}
             <div className="flex-1">
-              <p className="text-xl text-primary mb-8 leading-relaxed">
+              <p className="text-xl text-[#002454] mb-8 leading-relaxed">
                 Erlebe Dart auf einem neuen Level! Verwalte deine Spiele, tracke deine Statistiken 
                 und verbinde dich mit der Dart-Community.
               </p>
