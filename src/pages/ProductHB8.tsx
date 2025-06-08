@@ -28,7 +28,7 @@ const ProductHB8 = () => {
   const heroSectionRef = useRef<HTMLElement>(null);
   const productDetailsRef = useRef<HTMLElement>(null);
 
-  const basePrice = 2000;
+  const basePrice = 2799;
   const calculateTotal = () => {
     return basePrice * formData.quantity;
   };
@@ -121,9 +121,9 @@ const ProductHB8 = () => {
                   // Normal Price Display Mode
                   <div className="animate-fade-in">
                     <div className="flex items-baseline gap-4 mb-4">
-                      <div className="text-5xl font-bold text-white">2.000€</div>
-                      <div className="text-slate-400 text-lg line-through">2.500€</div>
-                      <Badge className="bg-red-600 text-white">-20%</Badge>
+                      <div className="text-5xl font-bold text-white">2.799€</div>
+                      <div className="text-slate-400 text-lg line-through">2.999€</div>
+                      <Badge className="bg-red-600 text-white">-7%</Badge>
                     </div>
                     <div className="text-slate-300 text-lg mb-6">inkl. 19% MwSt.</div>
                     
@@ -791,7 +791,7 @@ const ProductHB8 = () => {
                         <ul className="text-slate-400 text-sm space-y-1">
                           <li>• Offizielle Turnier-Abwurflinie</li>
                           <li>• Befestigungsmaterial (Wandmontage)</li>
-                          <li>• Deutsches Handbuch (120 Seiten)</li>
+                          <li>• Deutsches Benutzerhandbuch (120 Seiten)</li>
                           <li>• Garantieschein & Zertifikate</li>
                         </ul>
                       </div>
