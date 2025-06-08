@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -70,7 +69,7 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				'products-text': 'hsl(var(--products-text))',
-				'products-title-bg': 'hsl(var(--products-title-bg))',
+				'products-title': 'hsl(var(--products-title))',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
