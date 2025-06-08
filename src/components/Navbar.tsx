@@ -52,38 +52,38 @@ const Navbar = () => {
               {/* Dartautomaten Dropdown */}
               <NavigationMenuItem>
                 <NavigationMenuTrigger 
-                  className="bg-transparent text-white hover:text-gray-200 font-franklin transition-colors border-0 outline-0 p-0 h-auto min-h-0 [&>svg]:w-3 [&>svg]:h-3 [&>svg]:ml-1"
+                  className="bg-transparent text-white hover:text-gray-200 font-franklin transition-colors border-0 outline-0 p-0 h-auto min-h-0 [&>svg]:w-3 [&>svg]:h-3 [&>svg]:ml-1 data-[state=open]:bg-transparent focus:bg-transparent"
                   style={menuItemStyle}
                 >
                   <span style={menuItemStyle}>Dartautomaten</span>
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="bg-black/80 backdrop-blur-md border border-white/20 rounded-lg shadow-2xl p-4 w-56">
+                  <div className="bg-[#1e3a8a]/90 backdrop-blur-md border border-blue-400/30 rounded-lg shadow-2xl p-4 w-56">
                     <div className="space-y-1">
                       <a 
                         href="#" 
-                        className="block px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide"
+                        className="block px-4 py-3 text-white hover:bg-blue-500/20 hover:border-l-4 hover:border-l-blue-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide"
                       >
-                        <div className="flex items-center space-x-2">
-                          <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                        <div className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-blue-400 rounded-full shadow-lg shadow-blue-400/50"></div>
                           <span>LÖWEN HB8</span>
                         </div>
                       </a>
                       <a 
                         href="#" 
-                        className="block px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide"
+                        className="block px-4 py-3 text-white hover:bg-blue-500/20 hover:border-l-4 hover:border-l-cyan-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide"
                       >
-                        <div className="flex items-center space-x-2">
-                          <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                        <div className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-cyan-400 rounded-full shadow-lg shadow-cyan-400/50"></div>
                           <span>LÖWEN HB9</span>
                         </div>
                       </a>
                       <a 
                         href="#" 
-                        className="block px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide"
+                        className="block px-4 py-3 text-white hover:bg-blue-500/20 hover:border-l-4 hover:border-l-indigo-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide"
                       >
-                        <div className="flex items-center space-x-2">
-                          <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                        <div className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-indigo-400 rounded-full shadow-lg shadow-indigo-400/50"></div>
                           <span>LÖWEN HB10</span>
                         </div>
                       </a>
