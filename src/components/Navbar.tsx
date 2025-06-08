@@ -38,7 +38,7 @@ const Navbar = () => {
             <NavigationMenuList className="flex items-center space-x-8">
               {/* Dartautomaten Dropdown */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent text-white hover:text-gray-200 text-lg font-medium font-franklin">
+                <NavigationMenuTrigger className="bg-transparent text-white hover:text-gray-200 text-xl font-medium font-franklin tracking-wider leading-none">
                   Dartautomaten
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -71,7 +71,7 @@ const Navbar = () => {
               <NavigationMenuItem>
                 <a 
                   href="#kontakt" 
-                  className="text-white hover:text-gray-200 text-lg font-medium font-franklin transition-colors"
+                  className="text-white hover:text-gray-200 text-xl font-medium font-franklin tracking-wider leading-none transition-colors"
                 >
                   Kontakt
                 </a>
