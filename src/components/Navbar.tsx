@@ -1,6 +1,7 @@
 
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
 import { useState, useEffect } from "react";
+import { ChevronDown } from "lucide-react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,6 +18,18 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const menuItemStyle = {
+    fontSize: '1.25rem',
+    lineHeight: '1',
+    fontWeight: '500',
+    letterSpacing: '0.05em',
+    textTransform: 'none' as const,
+    verticalAlign: 'baseline' as const,
+    height: 'auto',
+    padding: '0',
+    margin: '0'
+  };
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -38,8 +51,16 @@ const Navbar = () => {
             <NavigationMenuList className="flex items-center space-x-8">
               {/* Dartautomaten Dropdown */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent text-white hover:text-gray-200 text-xl font-medium font-franklin tracking-wider leading-none [&>*]:text-xl [&>*]:leading-none [&>*]:font-medium [&>*]:tracking-wider" style={{ textTransform: 'none', verticalAlign: 'baseline' }}>
-                  Dartautomaten
+                <NavigationMenuTrigger 
+                  className="bg-transparent text-white hover:text-gray-200 font-franklin transition-colors border-0 outline-0 p-0 h-auto min-h-0"
+                  style={menuItemStyle}
+                >
+                  <span style={menuItemStyle}>Dartautomaten</span>
+                  <ChevronDown
+                    className="ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180"
+                    aria-hidden="true"
+                    style={{ fontSize: '0.75rem', lineHeight: '1' }}
+                  />
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <div className="p-4 w-48">
@@ -71,8 +92,8 @@ const Navbar = () => {
               <NavigationMenuItem>
                 <a 
                   href="#kontakt" 
-                  className="text-white hover:text-gray-200 text-xl font-medium font-franklin tracking-wider leading-none transition-colors"
-                  style={{ textTransform: 'none', verticalAlign: 'baseline' }}
+                  className="text-white hover:text-gray-200 font-franklin transition-colors"
+                  style={menuItemStyle}
                 >
                   Kontakt
                 </a>
