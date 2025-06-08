@@ -135,7 +135,7 @@ const ProductHB8 = () => {
                       >
                         <ArrowLeft className="w-4 h-4" />
                       </Button>
-                      <h3 className="text-xl font-semibold text-white">Bestellung aufgeben</h3>
+                      <h3 className="text-xl font-semibold text-white">Anfrage stellen</h3>
                     </div>
 
                     <div className="grid grid-cols-2 gap-4 mb-4">
@@ -145,7 +145,7 @@ const ProductHB8 = () => {
                           value={formData.firstName}
                           onChange={(e) => handleInputChange("firstName", e.target.value)}
                           className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400"
-                          placeholder="Max"
+                          placeholder="Ihr Vorname"
                           required
                         />
                       </div>
@@ -155,7 +155,7 @@ const ProductHB8 = () => {
                           value={formData.lastName}
                           onChange={(e) => handleInputChange("lastName", e.target.value)}
                           className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400"
-                          placeholder="Mustermann"
+                          placeholder="Ihr Nachname"
                           required
                         />
                       </div>
@@ -168,7 +168,7 @@ const ProductHB8 = () => {
                         value={formData.email}
                         onChange={(e) => handleInputChange("email", e.target.value)}
                         className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400"
-                        placeholder="max@example.com"
+                        placeholder="Ihre E-Mail Adresse"
                         required
                       />
                     </div>
@@ -180,7 +180,7 @@ const ProductHB8 = () => {
                         value={formData.phone}
                         onChange={(e) => handleInputChange("phone", e.target.value)}
                         className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400"
-                        placeholder="+49 123 456 789"
+                        placeholder="Ihre Telefonnummer"
                         required
                       />
                     </div>
@@ -228,6 +228,10 @@ const ProductHB8 = () => {
                           <span>Menge:</span>
                           <span>{formData.quantity}x</span>
                         </div>
+                        <div className="flex justify-between text-slate-300">
+                          <span>Versand:</span>
+                          <span className="text-green-400">Kostenlos</span>
+                        </div>
                         <Separator className="bg-slate-600" />
                         <div className="flex justify-between text-lg font-semibold text-white">
                           <span>Gesamtpreis:</span>
@@ -241,7 +245,7 @@ const ProductHB8 = () => {
                       type="submit" 
                       className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 rounded-md shadow-lg transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
                     >
-                      Verbindliche Bestellung aufgeben
+                      Unverbindliche Anfrage stellen
                     </Button>
                   </form>
                 )}
@@ -252,7 +256,7 @@ const ProductHB8 = () => {
                       onClick={() => setCheckoutMode(true)}
                       className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-3 text-lg font-semibold rounded-md shadow-lg transition-all duration-300 hover:shadow-xl flex-1 transform hover:scale-[1.02]"
                     >
-                      Jetzt kaufen
+                      Jetzt anfragen
                     </Button>
                     <Button variant="ghost" className="border border-transparent text-slate-300 hover:bg-slate-700 hover:border-slate-500 hover:text-white px-6 py-3 text-lg rounded-md transition-all duration-300 transform hover:scale-[1.02]">
                       Mehr Info
