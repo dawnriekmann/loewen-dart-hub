@@ -1,4 +1,5 @@
 
+
 const Footer = () => {
   return (
     <>
@@ -20,7 +21,7 @@ const Footer = () => {
               
               {/* Contact Information */}
               <div className="mb-6">
-                <h4 className="text-lg font-semibold mb-3 text-white">Kontakt</h4>
+                <h4 className="text-lg font-semibold mb-3 text-white">Informationen</h4>
                 <div className="text-slate-300 space-y-1">
                   <div className="font-semibold text-white">LÖWEN ENTERTAINMENT GmbH</div>
                   <div>Saarlandstraße 240</div>
@@ -56,13 +57,16 @@ const Footer = () => {
             </div>
             
             <div>
-              <h4 className="text-lg font-semibold mb-4">Service</h4>
-              <ul className="space-y-2 text-slate-300">
-                <li><a href="#" className="hover:text-white transition-colors">Support</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Wartung</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Ersatzteile</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Downloads</a></li>
-              </ul>
+              <h4 className="text-lg font-semibold mb-4">Informationen</h4>
+              <div className="text-slate-300 space-y-1">
+                <div className="font-semibold text-white">LÖWEN ENTERTAINMENT GmbH</div>
+                <div>Saarlandstraße 240</div>
+                <div>55411 Bingen</div>
+                <div className="pt-2">
+                  <div>Telefon: <a href="tel:+492345678910" className="hover:text-white transition-colors">+49 2345678910</a></div>
+                  <div>E-Mail: <a href="mailto:info@loewen-vertrieb.de" className="hover:text-white transition-colors">info@loewen-vertrieb.de</a></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -84,3 +88,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
