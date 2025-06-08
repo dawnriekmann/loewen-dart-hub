@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -44,7 +43,7 @@ const ProductHB10 = () => {
   };
 
   const handleQuantityChange = (delta: number) => {
-    const newQuantity = Math.max(1, Math.min(5, formData.quantity + delta));
+    const newQuantity = Math.max(1, Math.min(10, formData.quantity + delta));
     setFormData(prev => ({ ...prev, quantity: newQuantity }));
   };
 
@@ -280,7 +279,7 @@ const ProductHB10 = () => {
                           variant="outline"
                           size="sm"
                           onClick={() => handleQuantityChange(1)}
-                          disabled={formData.quantity >= 5}
+                          disabled={formData.quantity >= 10}
                           className="bg-transparent border-blue-500 text-blue-400 hover:bg-blue-500/10 hover:text-blue-300 disabled:opacity-50 disabled:border-slate-600 disabled:text-slate-500"
                         >
                           <Plus className="w-4 h-4" />
