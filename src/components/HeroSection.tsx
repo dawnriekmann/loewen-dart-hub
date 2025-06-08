@@ -71,30 +71,31 @@ const HeroSection = () => {
       <div className="relative z-10 text-white px-8 md:px-16 lg:px-24 w-full max-w-7xl mx-auto">
         <div className="text-left">
           <div className="mb-8 animate-fade-in">
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold leading-none">
+            <h1 className="font-bold leading-none" style={{ fontSize: '70px' }}>
               LÖWEN
             </h1>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold leading-none">
+            <h1 className="font-bold leading-none" style={{ fontSize: '70px' }}>
               DART
             </h1>
           </div>
           
-          <p className="text-xl md:text-2xl lg:text-3xl mb-12 animate-fade-in opacity-90 max-w-2xl leading-relaxed">
+          <p className="mb-12 animate-fade-in opacity-90 max-w-2xl leading-relaxed" style={{ fontSize: '40px' }}>
             Die E-Dart Produkte des internationalen Marktführers
           </p>
         </div>
       </div>
       
-      {/* Scroll indicator with new image and text */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white text-center cursor-pointer animate-bounce" onClick={scrollToProducts}>
-        <div className="font-franklin text-sm md:text-base font-medium tracking-wider mb-2">
-          JETZT ENTDECKEN!
-        </div>
+      {/* Scroll indicator with arrow above text - static (no bounce) */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white text-center cursor-pointer" onClick={scrollToProducts}>
         <img 
           src="https://www.loewen.de/_assets/522279b556b280de835e1011f7255b60/img/arrow-dotted-scroll-down.png" 
           alt="Scroll down arrow"
-          className="h-8 w-auto mx-auto"
+          className="mx-auto mb-2"
+          style={{ width: '171px', height: '208px' }}
         />
+        <div className="font-franklin font-medium tracking-wider" style={{ fontSize: '25px' }}>
+          JETZT ENTDECKEN!
+        </div>
       </div>
     </section>
   );
