@@ -1,5 +1,3 @@
-
-
 const HB10Section = () => {
   return (
     <section className="py-0 relative">
@@ -16,21 +14,20 @@ const HB10Section = () => {
           <img 
             src="https://www.loewen.de/fileadmin/user_upload/Dart-HB10-092024.jpg" 
             alt="LÖWEN DART HB10"
-            className="object-cover"
-            style={{ width: '1331px', height: '614px' }}
+            className="object-cover w-full h-auto max-w-[1331px] max-h-[614px] md:w-[1331px] md:h-[614px]"
           />
           
           {/* Logo and text positioned relative to the image */}
-          <div className="absolute right-8 top-16 z-30">
-            <div className="flex items-center justify-center mb-8">
+          <div className="absolute right-2 md:right-8 top-8 md:top-16 z-30">
+            <div className="flex items-center justify-center mb-4 md:mb-8">
               <img 
                 src="https://www.loewen.de/fileadmin/_processed_/4/8/csm_Dart_HB_10_Logo_klein_407a328601.png" 
                 alt="LÖWEN DART HB10 Logo"
-                className="h-32 object-contain"
+                className="h-16 md:h-32 object-contain"
               />
             </div>
-            <div className="max-w-md">
-              <p className="text-white text-xl font-semibold">
+            <div className="max-w-xs md:max-w-md">
+              <p className="text-white text-sm md:text-xl font-semibold">
                 EINE NEUE ÄRA DES ELECTRONIC DARTS.
               </p>
             </div>
@@ -39,29 +36,29 @@ const HB10Section = () => {
       </div>
 
       {/* Content section with top padding to account for overlapping image */}
-      <div className="bg-slate-50 pt-96 pb-20">
+      <div className="bg-slate-50 pt-64 md:pt-96 pb-20">
         <div className="container mx-auto px-4">
           {/* Main title and description - removed white background */}
-          <div className="mb-16 ml-8">
-            <h2 className="text-4xl font-bold text-[#002454] mb-8">
+          <div className="mb-16 ml-2 md:ml-8">
+            <h2 className="text-2xl md:text-4xl font-bold text-[#002454] mb-8">
               Das neue Erfolgsmodell - jetzt noch besser.
             </h2>
-            <p className="text-lg text-[#002454] max-w-4xl">
+            <p className="text-base md:text-lg text-[#002454] max-w-4xl">
               Der LÖWEN DART HB10 ist die innovative Weiterentwicklung der bisherigen Erfolgsmodelle von LÖWEN ENTERTAINMENT. Mit vielen verschiedenen Spielmodi, einem Touchpad und dem hochauflösenden Monitor bringt der HB10 den elektronischen Dartsport in das Hier und Jetzt. Und das alles im unverwechselbaren LÖWEN DART-Design.
             </p>
           </div>
 
           {/* Highlights white box - keep white background but remove rotation */}
-          <div className="bg-white rounded-lg shadow-xl p-8 mb-16 max-w-4xl mx-auto">
+          <div className="bg-white rounded-lg shadow-xl p-6 md:p-8 mb-16 max-w-4xl mx-auto">
             <div className="flex flex-col items-center mb-6">
               <img 
                 src="https://www.loewen.de/fileadmin/_processed_/4/8/csm_Dart_HB_10_Logo_klein_407a328601.png" 
                 alt="LÖWEN DART HB10 Logo"
-                className="mb-4"
+                className="mb-4 h-8 md:h-auto"
               />
-              <h3 className="text-2xl font-bold text-[#002454]">Highlights</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-[#002454]">Highlights</h3>
             </div>
-            <ul className="text-[#002454] space-y-2 text-xl">
+            <ul className="text-[#002454] space-y-2 text-lg md:text-xl">
               <li>• Offizielles DSAB-Liga- und Turniergerät</li>
               <li>• Hochauflösender 23,8-Zoll-Monitor und ein 12,1-Zoll-Touchpad</li>
               <li>• Bewährtes Treffererkennungssystem</li>
@@ -77,11 +74,11 @@ const HB10Section = () => {
 
           {/* Games and Options section - removed white background */}
           <div className="mb-16">
-            <div className="mb-8 max-w-4xl mx-auto ml-8">
-              <h3 className="text-3xl font-bold text-[#002454] mb-4">
+            <div className="mb-8 max-w-4xl mx-auto ml-2 md:ml-8">
+              <h3 className="text-2xl md:text-3xl font-bold text-[#002454] mb-4">
                 Spiele und Optionen
               </h3>
-              <p className="text-lg text-[#002454]">
+              <p className="text-base md:text-lg text-[#002454]">
                 Das LÖWEN DART HB10 bietet ab der neuen V4 insgesamt 15 Spielvarianten, fünf Trainingsspiele sowie zahlreiche Spieloptionen inkl. flexiblen Teamspielmöglichkeiten.
               </p>
             </div>
@@ -98,8 +95,8 @@ const HB10Section = () => {
 
           {/* HB10 Monitorkit section - removed white background */}
           <div className="mb-16">
-            <div className="mb-8 max-w-4xl mx-auto ml-8">
-              <h3 className="text-3xl font-bold text-[#002454]">
+            <div className="mb-8 max-w-4xl mx-auto ml-2 md:ml-8">
+              <h3 className="text-2xl md:text-3xl font-bold text-[#002454]">
                 HB10 - Monitorkit
               </h3>
             </div>
@@ -204,4 +201,3 @@ const HB10Section = () => {
 };
 
 export default HB10Section;
-
