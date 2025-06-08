@@ -194,7 +194,7 @@ const ProductHB8 = () => {
                           size="sm"
                           onClick={() => handleQuantityChange(-1)}
                           disabled={formData.quantity <= 1}
-                          className="border-slate-600 text-slate-300 hover:bg-slate-700"
+                          className="border-slate-600 text-slate-300 hover:bg-slate-700 hover:text-slate-200 disabled:opacity-50"
                         >
                           <Minus className="w-4 h-4" />
                         </Button>
@@ -207,7 +207,7 @@ const ProductHB8 = () => {
                           size="sm"
                           onClick={() => handleQuantityChange(1)}
                           disabled={formData.quantity >= 7}
-                          className="border-slate-600 text-slate-300 hover:bg-slate-700"
+                          className="border-slate-600 text-slate-300 hover:bg-slate-700 hover:text-slate-200 disabled:opacity-50"
                         >
                           <Plus className="w-4 h-4" />
                         </Button>
