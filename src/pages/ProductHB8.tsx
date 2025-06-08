@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { CheckCircle, Star, Truck, Shield, Award, Users, Zap, Target, ArrowLeft, Plus, Minus } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const ProductHB8 = () => {
   const [checkoutMode, setCheckoutMode] = useState(false);
@@ -21,6 +21,8 @@ const ProductHB8 = () => {
     customerType: "private", // "private" or "business"
     companyName: ""
   });
+  const [previousCustomerType, setPreviousCustomerType] = useState("private");
+  const companyFieldRef = useRef<HTMLDivElement>(null);
 
   const basePrice = 2000;
   const calculateTotal = () => {
@@ -28,6 +30,9 @@ const ProductHB8 = () => {
   };
 
   const handleInputChange = (field: string, value: string | number) => {
+    if (field === "customerType") {
+      setPreviousCustomerType(formData.customerType);
+    }
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
@@ -161,9 +166,16 @@ const ProductHB8 = () => {
                       </RadioGroup>
                     </div>
 
-                    {/* Company Name Field - only show if business is selected */}
-                    {formData.customerType === "business" && (
-                      <div className="mb-4 animate-slide-down">
+                    {/* Company Name Field - with smooth animation */}
+                    <div 
+                      ref={companyFieldRef}
+                      className={`overflow-hidden transition-all duration-300 ease-out ${
+                        formData.customerType === "business" 
+                          ? "max-h-20 opacity-100 mb-4 animate-slide-down" 
+                          : "max-h-0 opacity-0 mb-0"
+                      }`}
+                    >
+                      <div className="mb-4">
                         <label className="block text-sm font-medium text-slate-300 mb-2">Unternehmen</label>
                         <Input
                           value={formData.companyName}
@@ -173,7 +185,7 @@ const ProductHB8 = () => {
                           required={formData.customerType === "business"}
                         />
                       </div>
-                    )}
+                    </div>
 
                     <div className="grid grid-cols-2 gap-4 mb-4">
                       <div>
