@@ -1,4 +1,5 @@
 
+
 const HB10Section = () => {
   return (
     <section className="py-0 relative">
@@ -60,7 +61,7 @@ const HB10Section = () => {
               />
               <h3 className="text-2xl font-bold text-[#002454]">Highlights</h3>
             </div>
-            <ul className="text-[#002454] space-y-2">
+            <ul className="text-[#002454] space-y-2 text-xl">
               <li>• Offizielles DSAB-Liga- und Turniergerät</li>
               <li>• Hochauflösender 23,8-Zoll-Monitor und ein 12,1-Zoll-Touchpad</li>
               <li>• Bewährtes Treffererkennungssystem</li>
@@ -203,3 +204,4 @@ const HB10Section = () => {
 };
 
 export default HB10Section;
+
