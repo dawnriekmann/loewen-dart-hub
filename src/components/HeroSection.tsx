@@ -85,12 +85,12 @@ const HeroSection = () => {
         </div>
       </div>
       
-      {/* Scroll indicator with arrow above text - static (no bounce) */}
+      {/* Scroll indicator with arrow above text */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white text-center cursor-pointer" onClick={scrollToProducts}>
         <img 
           src="https://www.loewen.de/_assets/522279b556b280de835e1011f7255b60/img/arrow-dotted-scroll-down.png" 
           alt="Scroll down arrow"
-          className="mx-auto mb-2"
+          className="mx-auto mb-2 animate-bounce"
           style={{ width: '208px', height: '172px' }}
         />
         <div className="font-franklin font-medium" style={{ fontSize: '25px', letterSpacing: '0.4em' }}>
