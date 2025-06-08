@@ -1,4 +1,3 @@
-
 const HB10Section = () => {
   return (
     <section className="py-0 relative">
@@ -19,22 +18,17 @@ const HB10Section = () => {
             style={{ width: '1331px', height: '614px' }}
           />
           
-          {/* Title box positioned relative to the image */}
+          {/* Logo and text positioned relative to the image */}
           <div className="absolute right-8 top-16 z-30">
-            <div 
-              className="flex items-center justify-center mb-8 shadow-lg"
-              style={{ 
-                width: '416px', 
-                height: '130px', 
-                backgroundColor: '#638fc6' 
-              }}
-            >
-              <h2 className="text-white font-bold text-3xl text-center">
-                LÖWEN DART HB10
-              </h2>
+            <div className="flex items-center justify-center mb-8">
+              <img 
+                src="https://www.loewen.de/fileadmin/_processed_/4/8/csm_Dart_HB_10_Logo_klein_407a328601.png" 
+                alt="LÖWEN DART HB10 Logo"
+                className="h-32 object-contain"
+              />
             </div>
-            <div className="bg-white p-6 shadow-lg max-w-md">
-              <p className="text-[#002454] text-xl font-semibold">
+            <div className="max-w-md">
+              <p className="text-white text-xl font-semibold">
                 EINE NEUE ÄRA DES ELECTRONIC DARTS.
               </p>
             </div>
