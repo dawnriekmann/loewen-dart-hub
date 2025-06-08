@@ -1,3 +1,4 @@
+
 const HB10Section = () => {
   return (
     <section className="py-0 relative">
@@ -114,7 +115,7 @@ const HB10Section = () => {
 
           {/* Two columns with download items - removed white backgrounds */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-4xl mx-auto">
-            <div className="p-6 shadow-lg">
+            <div className="p-6">
               <div className="flex items-center space-x-2">
                 <div 
                   className="flex-shrink-0"
@@ -144,7 +145,7 @@ const HB10Section = () => {
               </div>
             </div>
 
-            <div className="p-6 shadow-lg">
+            <div className="p-6">
               <div className="flex items-center space-x-2">
                 <div 
                   className="flex-shrink-0"
@@ -180,7 +181,7 @@ const HB10Section = () => {
 
           {/* Bottom text section - removed white background */}
           <div className="text-center">
-            <div className="p-6 shadow-lg max-w-2xl mx-auto">
+            <div className="p-6 max-w-2xl mx-auto">
               <p className="text-lg text-[#002454] mb-4">
                 Weitere Inhalte stehen für Sie in unserem Downloadbereich zur Verfügung!
               </p>
