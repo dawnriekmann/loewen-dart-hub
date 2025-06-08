@@ -1,4 +1,3 @@
-
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { useState, useEffect } from "react";
 
@@ -121,13 +120,7 @@ const UpdateSection = () => {
         {/* Three columns with download items */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {downloadItems.map((item) => (
-            <div key={item.id} className="flex items-center space-x-4">
-              <img 
-                src={item.image} 
-                alt={item.title}
-                className="flex-shrink-0"
-                style={{ width: '80px', height: '100px' }}
-              />
+            <div key={item.id} className="flex items-center space-x-2">
               <div 
                 className="flex-shrink-0"
                 style={{ 
@@ -135,6 +128,12 @@ const UpdateSection = () => {
                   height: '100px', 
                   backgroundColor: '#638ec5' 
                 }}
+              />
+              <img 
+                src={item.image} 
+                alt={item.title}
+                className="flex-shrink-0"
+                style={{ width: '80px', height: '100px' }}
               />
               <div className="flex flex-col text-left">
                 <h3 className="text-lg text-[#002454] mb-1">
