@@ -23,7 +23,7 @@ const Navbar = () => {
     lineHeight: '1.2',
     fontWeight: '500',
     letterSpacing: '0.05em',
-    textTransform: 'none' as const,
+    textTransform: 'uppercase' as const,
     fontVariant: 'normal' as const,
     verticalAlign: 'baseline' as const,
     height: 'auto',
@@ -58,25 +58,34 @@ const Navbar = () => {
                   <span style={menuItemStyle}>Dartautomaten</span>
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="p-4 w-48">
-                    <div className="space-y-2">
+                  <div className="bg-black/80 backdrop-blur-md border border-white/20 rounded-lg shadow-2xl p-4 w-56">
+                    <div className="space-y-1">
                       <a 
                         href="#" 
-                        className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-100 rounded-md transition-colors"
+                        className="block px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide"
                       >
-                        Löwen HB8
+                        <div className="flex items-center space-x-2">
+                          <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                          <span>LÖWEN HB8</span>
+                        </div>
                       </a>
                       <a 
                         href="#" 
-                        className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-100 rounded-md transition-colors"
+                        className="block px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide"
                       >
-                        Löwen HB9
+                        <div className="flex items-center space-x-2">
+                          <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                          <span>LÖWEN HB9</span>
+                        </div>
                       </a>
                       <a 
                         href="#" 
-                        className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-100 rounded-md transition-colors"
+                        className="block px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide"
                       >
-                        Löwen HB10
+                        <div className="flex items-center space-x-2">
+                          <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                          <span>LÖWEN HB10</span>
+                        </div>
                       </a>
                     </div>
                   </div>
