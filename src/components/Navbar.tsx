@@ -52,17 +52,17 @@ const Navbar = () => {
               {/* Dartautomaten Dropdown */}
               <NavigationMenuItem>
                 <NavigationMenuTrigger 
-                  className="bg-transparent text-white hover:text-blue-300 font-franklin transition-colors border-0 outline-0 p-0 h-auto min-h-0 focus:bg-transparent data-[state=open]:bg-transparent hover:bg-transparent active:bg-transparent [&>svg]:w-5 [&>svg]:h-5 [&>svg]:ml-2 [&>svg]:stroke-[3] [&>svg]:text-white focus:outline-none focus:ring-0"
+                  className="bg-transparent text-white hover:text-blue-300 font-franklin transition-colors border-0 outline-0 p-0 h-auto min-h-0 focus:bg-transparent data-[state=open]:bg-transparent hover:bg-transparent active:bg-transparent [&>svg]:w-5 [&>svg]:h-5 [&>svg]:ml-2 [&>svg]:stroke-[3] [&>svg]:text-white focus:outline-none focus:ring-0 focus:ring-offset-0 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-0"
                   style={menuItemStyle}
                 >
                   <span style={menuItemStyle}>Dartautomaten</span>
                 </NavigationMenuTrigger>
-                <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
-                  <div className="bg-slate-900/90 backdrop-blur-xl border-2 border-blue-500/60 rounded-xl shadow-2xl p-6 w-64 !text-white">
+                <NavigationMenuContent className="!bg-transparent !border-none !shadow-none focus:ring-0 focus:ring-offset-0 focus-visible:ring-2 focus-visible:ring-blue-600 data-[state=open]:ring-0">
+                  <div className="bg-slate-900/90 backdrop-blur-xl border-2 border-blue-500/60 rounded-xl shadow-2xl p-6 w-64 !text-white focus:ring-0 focus:ring-offset-0">
                     <div className="space-y-2">
                       <a 
                         href="#" 
-                        className="block px-4 py-3 text-white hover:bg-blue-600/30 hover:border-l-4 hover:border-l-blue-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide"
+                        className="block px-4 py-3 text-white hover:bg-blue-600/30 hover:border-l-4 hover:border-l-blue-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-0"
                       >
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-blue-400 rounded-full shadow-lg shadow-blue-400/50"></div>
@@ -71,7 +71,7 @@ const Navbar = () => {
                       </a>
                       <a 
                         href="#" 
-                        className="block px-4 py-3 text-white hover:bg-blue-600/30 hover:border-l-4 hover:border-l-blue-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide"
+                        className="block px-4 py-3 text-white hover:bg-blue-600/30 hover:border-l-4 hover:border-l-blue-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-0"
                       >
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-blue-400 rounded-full shadow-lg shadow-blue-400/50"></div>
@@ -80,7 +80,7 @@ const Navbar = () => {
                       </a>
                       <a 
                         href="#" 
-                        className="block px-4 py-3 text-white hover:bg-blue-600/30 hover:border-l-4 hover:border-l-blue-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide"
+                        className="block px-4 py-3 text-white hover:bg-blue-600/30 hover:border-l-4 hover:border-l-blue-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-0"
                       >
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-blue-400 rounded-full shadow-lg shadow-blue-400/50"></div>
@@ -96,7 +96,7 @@ const Navbar = () => {
               <NavigationMenuItem>
                 <a 
                   href="#kontakt" 
-                  className="text-white hover:text-blue-300 font-franklin transition-colors"
+                  className="text-white hover:text-blue-300 font-franklin transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-0 rounded-sm px-1"
                   style={menuItemStyle}
                 >
                   <span style={menuItemStyle}>Kontakt</span>
@@ -111,3 +111,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
