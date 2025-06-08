@@ -9,7 +9,7 @@ const HB10FinderButton = () => {
           href="https://www.loewen.de/produkte/dart-soccer/hb10-finder/"
           target="_blank"
           rel="noopener noreferrer"
-          className="fixed right-4 top-1/2 -translate-y-1/2 z-50 bg-[#002454] hover:bg-[#003875] text-white p-3 rounded-l-xl shadow-lg transition-all duration-300 hover:shadow-xl group w-60 h-[70px]"
+          className="fixed right-4 top-1/2 -translate-y-1/2 z-50 bg-[#002454] hover:bg-[#003875] text-white p-3 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl group w-60 h-[70px] border-2 border-[#73afff]"
         >
           <div className="flex items-center space-x-3 h-full">
             <img
@@ -17,7 +17,7 @@ const HB10FinderButton = () => {
               alt="HB10 Finder Icon"
               className="w-[90px] h-[40px] object-contain transition-transform duration-300 group-hover:scale-110"
             />
-            <span className="text-sm font-medium text-white leading-tight">
+            <span className="text-lg font-medium text-white leading-tight flex-1">
               HB10<br />Finder
             </span>
           </div>
