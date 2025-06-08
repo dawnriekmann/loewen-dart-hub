@@ -17,7 +17,7 @@ const HB10FinderButton = () => {
             className="w-[135px] h-[60px] object-contain transition-transform duration-300 group-hover:scale-110"
           />
           <span className="text-xl font-medium text-white leading-tight flex-1 ml-4">
-            HB10<br />Finder
+            HB10<br />Kaufen
           </span>
         </a>
       </TooltipTrigger>
