@@ -22,7 +22,7 @@ const Navbar = () => {
     fontSize: '1.25rem',
     lineHeight: '1.2',
     fontWeight: '500',
-    letterSpacing: '0.05em',
+    letterSpacing: '0.15em', // Erweiterte Buchstabenabstände
     textTransform: 'uppercase' as const,
     fontVariant: 'normal' as const,
     verticalAlign: 'baseline' as const,
@@ -52,17 +52,17 @@ const Navbar = () => {
               {/* Dartautomaten Dropdown */}
               <NavigationMenuItem>
                 <NavigationMenuTrigger 
-                  className="bg-transparent text-white hover:text-gray-200 font-franklin transition-colors border-0 outline-0 p-0 h-auto min-h-0 [&>svg]:w-3 [&>svg]:h-3 [&>svg]:ml-1 data-[state=open]:bg-transparent focus:bg-transparent"
+                  className="bg-transparent text-white hover:text-gray-200 font-franklin transition-colors border-0 outline-0 p-0 h-auto min-h-0 [&>svg]:w-4 [&>svg]:h-4 [&>svg]:ml-2 [&>svg]:stroke-[2.5] data-[state=open]:bg-transparent focus:bg-transparent"
                   style={menuItemStyle}
                 >
                   <span style={menuItemStyle}>Dartautomaten</span>
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="bg-[#1e3a8a]/90 backdrop-blur-md border border-blue-400/30 rounded-lg shadow-2xl p-4 w-56">
+                  <div className="bg-white/5 backdrop-blur-xl border border-blue-400/40 rounded-xl shadow-2xl p-4 w-56">
                     <div className="space-y-1">
                       <a 
                         href="#" 
-                        className="block px-4 py-3 text-white hover:bg-blue-500/20 hover:border-l-4 hover:border-l-blue-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide"
+                        className="block px-4 py-3 text-white hover:bg-blue-500/15 hover:border-l-4 hover:border-l-blue-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide"
                       >
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-blue-400 rounded-full shadow-lg shadow-blue-400/50"></div>
@@ -71,7 +71,7 @@ const Navbar = () => {
                       </a>
                       <a 
                         href="#" 
-                        className="block px-4 py-3 text-white hover:bg-blue-500/20 hover:border-l-4 hover:border-l-cyan-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide"
+                        className="block px-4 py-3 text-white hover:bg-blue-500/15 hover:border-l-4 hover:border-l-cyan-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide"
                       >
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-cyan-400 rounded-full shadow-lg shadow-cyan-400/50"></div>
@@ -80,7 +80,7 @@ const Navbar = () => {
                       </a>
                       <a 
                         href="#" 
-                        className="block px-4 py-3 text-white hover:bg-blue-500/20 hover:border-l-4 hover:border-l-indigo-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide"
+                        className="block px-4 py-3 text-white hover:bg-blue-500/15 hover:border-l-4 hover:border-l-indigo-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide"
                       >
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-indigo-400 rounded-full shadow-lg shadow-indigo-400/50"></div>
