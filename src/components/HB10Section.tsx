@@ -28,14 +28,14 @@ const HB10Section = () => {
         </div>
       </div>
 
-      {/* HB10 Image positioned to overlap both sections */}
+      {/* HB10 Image positioned to overlap both sections - doubled size, no white background */}
       <div className="absolute left-8 top-32 z-10">
-        <div className="bg-white p-4 shadow-2xl">
+        <div className="shadow-2xl">
           <img 
             src="https://www.loewen.de/fileadmin/user_upload/Dart-HB10-092024.jpg" 
             alt="LÖWEN DART HB10"
             className="object-cover"
-            style={{ width: '660px', height: '305px' }}
+            style={{ width: '1320px', height: '610px' }}
           />
         </div>
       </div>
