@@ -94,7 +94,7 @@ const ProductHB8 = () => {
                 <Button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-3 text-lg font-semibold rounded-md shadow-lg transition-all duration-300 hover:shadow-xl flex-1 transform hover:scale-[1.02]">
                   Jetzt kaufen
                 </Button>
-                <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700 hover:border-slate-500 hover:text-white px-6 py-3 text-lg rounded-md transition-all duration-300 transform hover:scale-[1.02]">
+                <Button variant="ghost" className="border border-transparent text-slate-300 hover:bg-slate-700 hover:border-slate-500 hover:text-white px-6 py-3 text-lg rounded-md transition-all duration-300 transform hover:scale-[1.02]">
                   Mehr Info
                 </Button>
               </div>
@@ -591,23 +591,11 @@ const ProductHB8 = () => {
               Mit 24 Monaten Garantie, kostenloser Speditionslieferung und professioneller Einrichtung vor Ort.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
-              <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700 rounded-xl p-6">
-                <div className="text-3xl font-bold text-white mb-2">2.000€</div>
-                <div className="text-slate-400">statt 2.500€</div>
-              </div>
-              <div className="text-slate-400">+</div>
-              <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700 rounded-xl p-6">
-                <div className="text-lg font-bold text-green-400 mb-2">Kostenlos</div>
-                <div className="text-slate-400">Spedition & Setup</div>
-              </div>
-            </div>
-            
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-12 py-5 font-semibold rounded-md shadow-lg transition-all duration-300 hover:shadow-xl text-xl transform hover:scale-[1.02]">
                 Jetzt bestellen
               </Button>
-              <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700 hover:border-slate-500 hover:text-white px-8 py-5 text-lg rounded-md transition-all duration-300 transform hover:scale-[1.02]">
+              <Button variant="ghost" className="border border-transparent text-slate-300 hover:bg-slate-700 hover:border-slate-500 hover:text-white px-8 py-5 text-lg rounded-md transition-all duration-300 transform hover:scale-[1.02]">
                 Beratung anfordern
               </Button>
             </div>
