@@ -352,7 +352,7 @@ const ProductHB8 = () => {
 
             <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 hover:scale-105">
               <CardHeader className="text-center">
-                <Award className="w-12 h-12 text-yellow-400 mx-auto mb-4" />
+                <Award className="w-12 h-12 text-blue-400 mx-auto mb-4" />
                 <CardTitle className="text-white">Marktführer</CardTitle>
               </CardHeader>
               <CardContent>
@@ -424,7 +424,7 @@ const ProductHB8 = () => {
                       <span>Kostenlose Einrichtung und Einweisung vor Ort</span>
                     </div>
                     <div className="flex items-center gap-3 text-slate-300">
-                      <Zap className="w-5 h-5 text-yellow-400" />
+                      <Zap className="w-5 h-5 text-blue-400" />
                       <span>Sofort einsatzbereit nach Aufstellung</span>
                     </div>
                   </div>
@@ -640,7 +640,7 @@ const ProductHB8 = () => {
                           <div className="text-xs text-slate-400">Tiefe</div>
                         </div>
                       </div>
-                      <p className="text-xs text-slate-400 mt-3 bg-yellow-900/20 border border-yellow-700/50 rounded p-2">
+                      <p className="text-xs text-slate-400 mt-3 bg-slate-800/50 border border-slate-700 rounded p-2">
                         <strong>Wichtig:</strong> Zum Aufklappen wird zusätzlicher Platz nach oben benötigt!
                       </p>
                     </div>
@@ -685,7 +685,7 @@ const ProductHB8 = () => {
               <Card className="bg-slate-900/50 border-slate-700 hover:bg-slate-900/70 transition-all duration-500">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center text-xl">
-                    <Award className="w-6 h-6 text-yellow-400 mr-3" />
+                    <Award className="w-6 h-6 text-blue-400 mr-3" />
                     Kompletter Lieferumfang
                   </CardTitle>
                 </CardHeader>
@@ -694,7 +694,7 @@ const ProductHB8 = () => {
                     <div className="grid grid-cols-1 gap-3">
                       <div className="bg-slate-800/50 rounded-lg p-3 border border-slate-700">
                         <div className="flex items-center gap-3 mb-2">
-                          <Target className="w-5 h-5 text-yellow-400" />
+                          <Target className="w-5 h-5 text-blue-400" />
                           <span className="text-white font-semibold">HB8 Hauptgerät</span>
                         </div>
                         <p className="text-slate-400 text-sm">Komplett montiert und getestet</p>
