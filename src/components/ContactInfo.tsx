@@ -1,92 +1,115 @@
 
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
 const ContactInfo = () => {
   return (
-    <div className="space-y-8">
-      <div>
-        <h2 className="text-3xl font-bold text-white mb-6">Kontaktinformationen</h2>
-        <p className="text-slate-300 text-lg leading-relaxed mb-8">
-          Unser erfahrenes Team steht Ihnen bei allen Fragen rund um LÖWEN Dartautomaten zur Verfügung. 
-          Kontaktieren Sie uns für eine persönliche Beratung.
-        </p>
-      </div>
+    <section className="py-16 bg-slate-100">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          {/* Left Column - Main Contact */}
+          <div className="space-y-6">
+            <h3 className="text-2xl font-bold text-[#002454] mb-6 font-parisine-narrow uppercase">
+              KONTAKT
+            </h3>
+            
+            <div className="space-y-4">
+              <div className="text-[#002454]">
+                <h4 className="text-xl font-semibold mb-2">LÖWEN ENTERTAINMENT GmbH</h4>
+                <div className="space-y-1 text-lg">
+                  <div className="flex items-start space-x-3">
+                    <MapPin className="w-5 h-5 mt-1 text-[#002454]" />
+                    <div>
+                      <p>Saarlandstraße 240</p>
+                      <p>55411 Bingen</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-      <div className="space-y-6">
-        <div className="flex items-start space-x-4">
-          <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-            <Mail className="w-6 h-6 text-white" />
-          </div>
-          <div>
-            <h3 className="text-xl font-semibold text-white mb-2">E-Mail</h3>
-            <a 
-              href="mailto:info@loewen-vertrieb.de" 
-              className="text-blue-400 hover:text-blue-300 transition-colors text-lg"
-            >
-              info@loewen-vertrieb.de
-            </a>
-          </div>
-        </div>
+              <div className="space-y-3 pt-4">
+                <div className="flex items-center space-x-3">
+                  <Phone className="w-5 h-5 text-[#002454]" />
+                  <div>
+                    <span className="text-[#002454] text-lg">Telefon: </span>
+                    <a 
+                      href="tel:+492345678910" 
+                      className="text-[#002454] hover:text-blue-600 transition-colors text-lg font-medium"
+                    >
+                      +49 2345678910
+                    </a>
+                  </div>
+                </div>
 
-        <div className="flex items-start space-x-4">
-          <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-            <Phone className="w-6 h-6 text-white" />
+                <div className="flex items-center space-x-3">
+                  <Mail className="w-5 h-5 text-[#002454]" />
+                  <div>
+                    <span className="text-[#002454] text-lg">E-Mail: </span>
+                    <a 
+                      href="mailto:info@loewen-vertrieb.de" 
+                      className="text-[#002454] hover:text-blue-600 transition-colors text-lg font-medium"
+                    >
+                      info@loewen-vertrieb.de
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div>
-            <h3 className="text-xl font-semibold text-white mb-2">Telefon</h3>
-            <a 
-              href="tel:02345678910" 
-              className="text-blue-400 hover:text-blue-300 transition-colors text-lg"
-            >
-              02345 678 910
-            </a>
-          </div>
-        </div>
 
-        <div className="flex items-start space-x-4">
-          <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-            <MapPin className="w-6 h-6 text-white" />
-          </div>
-          <div>
-            <h3 className="text-xl font-semibold text-white mb-2">Adresse</h3>
-            <div className="text-slate-300 text-lg">
-              <p>LÖWEN Vertrieb GmbH</p>
-              <p>Musterstraße 123</p>
-              <p>12345 Musterstadt</p>
-              <p>Deutschland</p>
+          {/* Right Column - Online Sales Center */}
+          <div className="space-y-6">
+            <h3 className="text-2xl font-bold text-[#002454] mb-6 font-parisine-narrow uppercase">
+              Online Vertriebscenter
+            </h3>
+            
+            <div className="space-y-4">
+              <div className="space-y-3">
+                <div className="flex items-center space-x-3">
+                  <Phone className="w-5 h-5 text-[#002454]" />
+                  <div>
+                    <span className="text-[#002454] text-lg">Tel.: </span>
+                    <a 
+                      href="tel:+492345678910" 
+                      className="text-[#002454] hover:text-blue-600 transition-colors text-lg font-medium"
+                    >
+                      +49 2345678910
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-3">
+                  <Mail className="w-5 h-5 text-[#002454]" />
+                  <div>
+                    <span className="text-[#002454] text-lg">E-Mail: </span>
+                    <a 
+                      href="mailto:verkauf@loewen-vertrieb.de" 
+                      className="text-[#002454] hover:text-blue-600 transition-colors text-lg font-medium"
+                    >
+                      verkauf@loewen-vertrieb.de
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-4">
+                <div className="flex items-start space-x-3">
+                  <Clock className="w-5 h-5 mt-1 text-[#002454]" />
+                  <div className="text-[#002454]">
+                    <h4 className="text-lg font-semibold mb-3">Erreichbarkeit*:</h4>
+                    <div className="space-y-2 text-lg">
+                      <div>Mo. – Sa. von 8 – 20 Uhr</div>
+                      <div>So. von 9 – 15 Uhr</div>
+                      <div>Feiertage von 9 – 15 Uhr</div>
+                    </div>
+                    <p className="text-sm text-slate-600 mt-3 italic">*Ausnahmen vorbehalten</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div className="bg-slate-800 rounded-xl p-6 mt-8">
-        <h3 className="text-xl font-semibold text-white mb-4">Geschäftszeiten</h3>
-        <div className="space-y-2 text-slate-300">
-          <div className="flex justify-between">
-            <span>Montag - Freitag:</span>
-            <span>09:00 - 18:00 Uhr</span>
-          </div>
-          <div className="flex justify-between">
-            <span>Samstag:</span>
-            <span>10:00 - 14:00 Uhr</span>
-          </div>
-          <div className="flex justify-between">
-            <span>Sonntag:</span>
-            <span>Geschlossen</span>
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-6 mt-6">
-        <h3 className="text-xl font-semibold text-white mb-3">Unser Service</h3>
-        <ul className="text-blue-100 space-y-2">
-          <li>• Persönliche Beratung vor Ort</li>
-          <li>• Technischer Support</li>
-          <li>• Wartung und Reparatur</li>
-          <li>• Ersatzteile und Zubehör</li>
-        </ul>
-      </div>
-    </div>
+    </section>
   );
 };
 

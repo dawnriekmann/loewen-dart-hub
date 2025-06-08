@@ -1,15 +1,34 @@
 
 const ContactHero = () => {
   return (
-    <section className="relative bg-slate-900 text-white py-24 pt-32">
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900"></div>
-      <div className="relative container mx-auto px-4 text-center">
-        <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
-          Kontakt
-        </h1>
-        <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-          Haben Sie Fragen zu unseren Dartautomaten? Wir sind für Sie da und beraten Sie gerne.
-        </p>
+    <section className="relative h-[60vh] flex items-center overflow-hidden">
+      {/* Banner Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url(https://www.loewen.de/fileadmin/_processed_/5/0/csm_1_gruppe-header_loewen_01665782ea.jpg)'
+        }}
+      ></div>
+      
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-800/60 to-slate-900/60"></div>
+      
+      {/* Content - Left aligned like HeroSection */}
+      <div className="relative z-10 text-white px-8 md:px-16 lg:px-24 w-full max-w-7xl mx-auto">
+        <div className="text-left">
+          <div className="mb-8 animate-fade-in">
+            <h1 className="font-bold leading-none font-parisine-narrow" style={{ fontSize: '70px' }}>
+              LÖWEN
+            </h1>
+            <h1 className="font-bold leading-none font-parisine-narrow" style={{ fontSize: '70px' }}>
+              KONTAKT
+            </h1>
+          </div>
+          
+          <p className="mb-12 animate-fade-in opacity-90 max-w-4xl leading-relaxed" style={{ fontSize: '18px' }}>
+            Ihr direkter Draht zu LÖWEN Entertainment - wir sind für Sie da
+          </p>
+        </div>
       </div>
     </section>
   );
