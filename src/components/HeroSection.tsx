@@ -93,7 +93,7 @@ const HeroSection = () => {
           className="mx-auto mb-2"
           style={{ width: '208px', height: '172px' }}
         />
-        <div className="font-franklin font-medium" style={{ fontSize: '25px', letterSpacing: '0.2em' }}>
+        <div className="font-franklin font-medium" style={{ fontSize: '25px', letterSpacing: '0.4em' }}>
           JETZT ENTDECKEN!
         </div>
       </div>
