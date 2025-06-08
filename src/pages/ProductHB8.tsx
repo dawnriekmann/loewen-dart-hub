@@ -5,6 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
 import { CheckCircle, Star, Truck, Shield, Award, Users, Zap, Target, ArrowLeft, Plus, Minus } from "lucide-react";
 import { useState } from "react";
 
@@ -15,7 +17,9 @@ const ProductHB8 = () => {
     lastName: "",
     email: "",
     phone: "",
-    quantity: 1
+    quantity: 1,
+    customerType: "private", // "private" or "business"
+    companyName: ""
   });
 
   const basePrice = 2000;
@@ -137,6 +141,39 @@ const ProductHB8 = () => {
                       </Button>
                       <h3 className="text-xl font-semibold text-white">Anfrage stellen</h3>
                     </div>
+
+                    {/* Customer Type Selection */}
+                    <div className="mb-4">
+                      <label className="block text-sm font-medium text-slate-300 mb-3">Kundentyp</label>
+                      <RadioGroup
+                        value={formData.customerType}
+                        onValueChange={(value) => handleInputChange("customerType", value)}
+                        className="flex gap-6"
+                      >
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="private" id="private" className="border-slate-600 text-blue-400" />
+                          <Label htmlFor="private" className="text-slate-300 cursor-pointer">Privat</Label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="business" id="business" className="border-slate-600 text-blue-400" />
+                          <Label htmlFor="business" className="text-slate-300 cursor-pointer">Geschäftlich</Label>
+                        </div>
+                      </RadioGroup>
+                    </div>
+
+                    {/* Company Name Field - only show if business is selected */}
+                    {formData.customerType === "business" && (
+                      <div className="mb-4">
+                        <label className="block text-sm font-medium text-slate-300 mb-2">Unternehmen</label>
+                        <Input
+                          value={formData.companyName}
+                          onChange={(e) => handleInputChange("companyName", e.target.value)}
+                          className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400"
+                          placeholder="Ihr Unternehmensname"
+                          required={formData.customerType === "business"}
+                        />
+                      </div>
+                    )}
 
                     <div className="grid grid-cols-2 gap-4 mb-4">
                       <div>
