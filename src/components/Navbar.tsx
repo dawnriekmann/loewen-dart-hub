@@ -55,17 +55,22 @@ const Navbar = () => {
               {/* Dartautomaten Dropdown */}
               <NavigationMenuItem>
                 <NavigationMenuTrigger 
-                  className="bg-transparent text-white hover:text-blue-300 font-franklin transition-colors border-0 outline-0 p-0 h-auto min-h-0 focus:bg-transparent data-[state=open]:bg-transparent hover:bg-transparent active:bg-transparent [&>svg]:w-5 [&>svg]:h-5 [&>svg]:ml-2 [&>svg]:stroke-[3] [&>svg]:text-white focus:outline-none focus:ring-0 focus:ring-offset-0 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-0"
-                  style={menuItemStyle}
+                  className="bg-transparent text-white hover:text-blue-300 font-franklin transition-colors border-0 outline-0 p-0 h-auto min-h-0 focus:bg-transparent data-[state=open]:bg-transparent hover:bg-transparent active:bg-transparent [&>svg]:w-5 [&>svg]:h-5 [&>svg]:ml-2 [&>svg]:stroke-[3] [&>svg]:text-white focus:outline-none focus:ring-0 focus:ring-offset-0 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-0 focus-visible:outline-none focus-visible:outline-primary"
+                  style={{
+                    ...menuItemStyle,
+                    outline: 'none !important',
+                    boxShadow: 'none !important'
+                  }}
                 >
                   <span style={menuItemStyle}>Dartautomaten</span>
                 </NavigationMenuTrigger>
-                <NavigationMenuContent className="!bg-transparent !border-none !shadow-none focus:ring-0 focus:ring-offset-0 focus-visible:ring-2 focus-visible:ring-blue-600 data-[state=open]:ring-0">
-                  <div className="bg-slate-900/90 backdrop-blur-xl border-2 border-blue-500/60 rounded-xl shadow-2xl p-6 w-64 !text-white focus:ring-0 focus:ring-offset-0">
+                <NavigationMenuContent className="!bg-transparent !border-none !shadow-none focus:ring-0 focus:ring-offset-0 focus-visible:ring-2 focus-visible:ring-primary data-[state=open]:ring-0 data-[state=open]:outline-none">
+                  <div className="bg-slate-900/90 backdrop-blur-xl border-2 border-blue-500/60 rounded-xl shadow-2xl p-6 w-64 !text-white focus:ring-0 focus:ring-offset-0 focus:outline-none">
                     <div className="space-y-2">
                       <Link 
                         to="/hb8"
-                        className="block px-4 py-3 text-white hover:bg-blue-600/30 hover:border-l-4 hover:border-l-blue-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-0"
+                        className="block px-4 py-3 text-white hover:bg-blue-600/30 hover:border-l-4 hover:border-l-blue-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-0"
+                        style={{ outline: 'none !important', boxShadow: 'none !important' }}
                       >
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-blue-400 rounded-full shadow-lg shadow-blue-400/50"></div>
@@ -75,6 +80,7 @@ const Navbar = () => {
                       <Link 
                         to="/hb9" 
                         className="block px-4 py-3 text-white hover:bg-purple-600/30 hover:border-l-4 hover:border-l-purple-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-0"
+                        style={{ outline: 'none !important', boxShadow: 'none !important' }}
                       >
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-purple-400 rounded-full shadow-lg shadow-purple-400/50"></div>
@@ -83,7 +89,8 @@ const Navbar = () => {
                       </Link>
                       <Link 
                         to="/hb10" 
-                        className="block px-4 py-3 text-white hover:bg-blue-600/30 hover:border-l-4 hover:border-l-blue-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-0"
+                        className="block px-4 py-3 text-white hover:bg-blue-600/30 hover:border-l-4 hover:border-l-blue-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-0"
+                        style={{ outline: 'none !important', boxShadow: 'none !important' }}
                       >
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-blue-400 rounded-full shadow-lg shadow-blue-400/50"></div>
@@ -99,8 +106,12 @@ const Navbar = () => {
               <NavigationMenuItem>
                 <a 
                   href="#kontakt" 
-                  className="text-white hover:text-blue-300 font-franklin transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-0 rounded-sm px-1"
-                  style={menuItemStyle}
+                  className="text-white hover:text-blue-300 font-franklin transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-0 rounded-sm px-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  style={{
+                    ...menuItemStyle,
+                    outline: 'none !important',
+                    boxShadow: 'none !important'
+                  }}
                 >
                   <span style={menuItemStyle}>Kontakt</span>
                 </a>
