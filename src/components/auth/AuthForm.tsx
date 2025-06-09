@@ -7,12 +7,10 @@ import { useAuth } from "./AuthContext";
 import { useToast } from "@/hooks/use-toast";
 
 const AuthForm = () => {
-  const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [fullName, setFullName] = useState("");
   const [loading, setLoading] = useState(false);
-  const { signIn, signUp } = useAuth();
+  const { signIn } = useAuth();
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -20,11 +18,9 @@ const AuthForm = () => {
     setLoading(true);
 
     try {
-      console.log('AuthForm: Submitting form', { isLogin, email });
+      console.log('AuthForm: Submitting login form', { email });
       
-      const { error } = isLogin 
-        ? await signIn(email, password)
-        : await signUp(email, password, fullName);
+      const { error } = await signIn(email, password);
 
       if (error) {
         console.error('AuthForm: Authentication error:', error);
@@ -52,10 +48,8 @@ const AuthForm = () => {
       } else {
         console.log('AuthForm: Authentication successful');
         toast({
-          title: isLogin ? "Anmeldung erfolgreich" : "Registrierung erfolgreich",
-          description: isLogin 
-            ? "Sie wurden erfolgreich angemeldet." 
-            : "Registrierung erfolgreich. Falls die E-Mail-Bestätigung aktiviert ist, bestätigen Sie bitte Ihre E-Mail-Adresse.",
+          title: "Anmeldung erfolgreich",
+          description: "Sie wurden erfolgreich angemeldet.",
         });
       }
     } catch (error: any) {
@@ -72,33 +66,20 @@ const AuthForm = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4">
-      <Card className="w-full max-w-md">
-        <CardHeader>
-          <CardTitle className="text-2xl text-center text-[#002454]">
-            {isLogin ? "Anmelden" : "Registrieren"}
+      <Card className="w-full max-w-md border-slate-200 shadow-lg">
+        <CardHeader className="text-center pb-6">
+          <CardTitle className="text-3xl font-bold text-[#002454] font-parisine-narrow">
+            ANMELDEN
           </CardTitle>
+          <p className="text-slate-600 mt-2">
+            Melden Sie sich in Ihrem Konto an
+          </p>
         </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            {!isLogin && (
-              <div>
-                <label htmlFor="fullName" className="block text-sm font-medium text-[#002454] mb-2">
-                  Vollständiger Name
-                </label>
-                <Input
-                  id="fullName"
-                  type="text"
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                  required={!isLogin}
-                  className="border-slate-300 focus:border-[#002454] focus:ring-[#002454]"
-                />
-              </div>
-            )}
-            
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-[#002454] mb-2">
-                E-Mail
+        <CardContent className="px-8 pb-8">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="space-y-2">
+              <label htmlFor="email" className="block text-sm font-semibold text-[#002454]">
+                E-Mail-Adresse
               </label>
               <Input
                 id="email"
@@ -106,12 +87,13 @@ const AuthForm = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="border-slate-300 focus:border-[#002454] focus:ring-[#002454]"
+                className="h-12 border-slate-300 focus:border-[#002454] focus:ring-[#002454] focus:ring-2 focus:ring-offset-0"
+                placeholder="ihre.email@example.com"
               />
             </div>
 
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-[#002454] mb-2">
+            <div className="space-y-2">
+              <label htmlFor="password" className="block text-sm font-semibold text-[#002454]">
                 Passwort
               </label>
               <Input
@@ -120,39 +102,19 @@ const AuthForm = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="border-slate-300 focus:border-[#002454] focus:ring-[#002454]"
+                className="h-12 border-slate-300 focus:border-[#002454] focus:ring-[#002454] focus:ring-2 focus:ring-offset-0"
+                placeholder="Ihr Passwort"
               />
             </div>
 
             <Button 
               type="submit" 
-              className="w-full bg-[#002454] hover:bg-[#003366]"
+              className="w-full h-12 bg-[#002454] hover:bg-[#003366] text-white font-semibold transition-colors duration-200"
               disabled={loading}
             >
-              {loading ? "Wird geladen..." : (isLogin ? "Anmelden" : "Registrieren")}
+              {loading ? "Wird angemeldet..." : "ANMELDEN"}
             </Button>
-
-            <div className="text-center">
-              <button
-                type="button"
-                onClick={() => setIsLogin(!isLogin)}
-                className="text-[#002454] hover:underline text-sm"
-              >
-                {isLogin 
-                  ? "Noch kein Konto? Hier registrieren" 
-                  : "Bereits ein Konto? Hier anmelden"
-                }
-              </button>
-            </div>
           </form>
-          
-          {/* Development hint */}
-          <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded text-sm">
-            <p className="text-yellow-800">
-              <strong>Entwicklungshinweis:</strong> Falls Sie Probleme mit der E-Mail-Bestätigung haben, 
-              deaktivieren Sie diese in den Supabase Authentication-Einstellungen.
-            </p>
-          </div>
         </CardContent>
       </Card>
     </div>
