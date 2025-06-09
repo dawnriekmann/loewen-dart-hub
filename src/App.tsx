@@ -35,7 +35,7 @@ const ScrollToTop = () => {
 };
 
 const AppContent = () => (
-  <>
+  <React.Fragment>
     <ScrollToTop />
     <TempAdminSetup />
     <Routes>
@@ -52,7 +52,7 @@ const AppContent = () => (
       <Route path="/agb" element={<AGB />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
-  </>
+  </React.Fragment>
 );
 
 const App = () => (
