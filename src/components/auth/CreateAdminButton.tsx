@@ -12,7 +12,9 @@ const CreateAdminButton = () => {
     setIsCreating(true);
     
     try {
-      // First sign up the admin user
+      console.log('CreateAdminButton: Starting admin account creation');
+      
+      // First try to sign up the admin user
       const { data: authData, error: signUpError } = await supabase.auth.signUp({
         email: 'admin@loewen-dart.de',
         password: 'admin123',
@@ -23,26 +25,58 @@ const CreateAdminButton = () => {
         }
       });
 
+      console.log('CreateAdminButton: Sign up response:', authData, signUpError);
+
       if (signUpError) {
         if (signUpError.message.includes('already registered')) {
+          // User already exists, try to update their role
+          console.log('CreateAdminButton: User already exists, checking profile');
+          
+          // Try to find existing user and update role
+          const { data: existingProfile, error: profileError } = await supabase
+            .from('profiles')
+            .select('*')
+            .eq('email', 'admin@loewen-dart.de')
+            .maybeSingle();
+          
+          console.log('CreateAdminButton: Existing profile:', existingProfile, profileError);
+          
+          if (existingProfile) {
+            const { error: updateError } = await supabase
+              .from('profiles')
+              .update({ role: 'admin' })
+              .eq('id', existingProfile.id);
+              
+            if (updateError) {
+              console.error('CreateAdminButton: Error updating role:', updateError);
+            } else {
+              console.log('CreateAdminButton: Successfully updated role to admin');
+            }
+          }
+          
           toast({
             title: "Admin-Account bereits vorhanden",
-            description: "Der Admin-Account existiert bereits. Sie können sich mit admin@loewen-dart.de und Passwort 'admin123' anmelden.",
+            description: "Der Admin-Account existiert bereits und wurde als Admin konfiguriert. E-Mail: admin@loewen-dart.de, Passwort: admin123",
           });
         } else {
           throw signUpError;
         }
-      } else {
+      } else if (authData.user) {
+        console.log('CreateAdminButton: New user created, updating role');
+        
+        // Wait a bit for the profile to be created by the trigger
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
         // Update the user's role to admin
-        if (authData.user) {
-          const { error: updateError } = await supabase
-            .from('profiles')
-            .update({ role: 'admin' })
-            .eq('id', authData.user.id);
+        const { error: updateError } = await supabase
+          .from('profiles')
+          .update({ role: 'admin' })
+          .eq('id', authData.user.id);
 
-          if (updateError) {
-            console.error('Error updating role:', updateError);
-          }
+        if (updateError) {
+          console.error('CreateAdminButton: Error updating role:', updateError);
+        } else {
+          console.log('CreateAdminButton: Successfully set admin role');
         }
 
         toast({
@@ -51,6 +85,7 @@ const CreateAdminButton = () => {
         });
       }
     } catch (error: any) {
+      console.error('CreateAdminButton: Error creating admin account:', error);
       toast({
         title: "Fehler",
         description: error.message || "Fehler beim Erstellen des Admin-Accounts",

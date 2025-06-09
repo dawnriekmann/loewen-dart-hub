@@ -20,25 +20,46 @@ const AuthForm = () => {
     setLoading(true);
 
     try {
+      console.log('AuthForm: Submitting form', { isLogin, email });
+      
       const { error } = isLogin 
         ? await signIn(email, password)
         : await signUp(email, password, fullName);
 
       if (error) {
-        toast({
-          title: "Fehler",
-          description: error.message,
-          variant: "destructive",
-        });
+        console.error('AuthForm: Authentication error:', error);
+        
+        // Handle specific error cases
+        if (error.message.includes('Email not confirmed')) {
+          toast({
+            title: "E-Mail nicht bestätigt",
+            description: "Bitte bestätigen Sie Ihre E-Mail-Adresse oder wenden Sie sich an den Administrator.",
+            variant: "destructive",
+          });
+        } else if (error.message.includes('Invalid login credentials')) {
+          toast({
+            title: "Ungültige Anmeldedaten",
+            description: "E-Mail oder Passwort ist falsch.",
+            variant: "destructive",
+          });
+        } else {
+          toast({
+            title: "Fehler",
+            description: error.message,
+            variant: "destructive",
+          });
+        }
       } else {
+        console.log('AuthForm: Authentication successful');
         toast({
           title: isLogin ? "Anmeldung erfolgreich" : "Registrierung erfolgreich",
           description: isLogin 
             ? "Sie wurden erfolgreich angemeldet." 
-            : "Bitte bestätigen Sie Ihre E-Mail-Adresse.",
+            : "Registrierung erfolgreich. Falls die E-Mail-Bestätigung aktiviert ist, bestätigen Sie bitte Ihre E-Mail-Adresse.",
         });
       }
-    } catch (error) {
+    } catch (error: any) {
+      console.error('AuthForm: Unexpected error:', error);
       toast({
         title: "Fehler",
         description: "Ein unerwarteter Fehler ist aufgetreten.",
@@ -124,6 +145,14 @@ const AuthForm = () => {
               </button>
             </div>
           </form>
+          
+          {/* Development hint */}
+          <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded text-sm">
+            <p className="text-yellow-800">
+              <strong>Entwicklungshinweis:</strong> Falls Sie Probleme mit der E-Mail-Bestätigung haben, 
+              deaktivieren Sie diese in den Supabase Authentication-Einstellungen.
+            </p>
+          </div>
         </CardContent>
       </Card>
     </div>

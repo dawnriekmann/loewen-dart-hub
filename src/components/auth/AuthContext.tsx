@@ -30,34 +30,28 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log('AuthProvider: Setting up auth state listener');
+    
     // Get initial session
     supabase.auth.getSession().then(({ data: { session } }) => {
+      console.log('AuthProvider: Initial session:', session);
       setSession(session);
       setUser(session?.user ?? null);
+      if (session?.user) {
+        checkAdminRole(session.user.id);
+      }
       setLoading(false);
     });
 
     // Set up auth state listener
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
+        console.log('AuthProvider: Auth state changed:', event, session);
         setSession(session);
         setUser(session?.user ?? null);
         
         if (session?.user) {
-          // Check if user is admin
-          setTimeout(async () => {
-            try {
-              const { data: profile } = await supabase
-                .from('profiles')
-                .select('role')
-                .eq('id', session.user.id)
-                .single();
-              setIsAdmin(profile?.role === 'admin');
-            } catch (error) {
-              console.error('Error fetching user profile:', error);
-              setIsAdmin(false);
-            }
-          }, 0);
+          checkAdminRole(session.user.id);
         } else {
           setIsAdmin(false);
         }
@@ -68,7 +62,32 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     return () => subscription.unsubscribe();
   }, []);
 
+  const checkAdminRole = async (userId: string) => {
+    try {
+      console.log('AuthProvider: Checking admin role for user:', userId);
+      const { data: profile, error } = await supabase
+        .from('profiles')
+        .select('role')
+        .eq('id', userId)
+        .maybeSingle();
+      
+      if (error) {
+        console.error('AuthProvider: Error fetching user profile:', error);
+        setIsAdmin(false);
+        return;
+      }
+      
+      const adminStatus = profile?.role === 'admin';
+      console.log('AuthProvider: User admin status:', adminStatus, 'Profile:', profile);
+      setIsAdmin(adminStatus);
+    } catch (error) {
+      console.error('AuthProvider: Exception checking admin role:', error);
+      setIsAdmin(false);
+    }
+  };
+
   const signUp = async (email: string, password: string, fullName: string) => {
+    console.log('AuthProvider: Signing up user:', email);
     const redirectUrl = `${window.location.origin}/`;
     
     const { error } = await supabase.auth.signUp({
@@ -81,18 +100,34 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         }
       }
     });
+    
+    if (error) {
+      console.error('AuthProvider: Sign up error:', error);
+    } else {
+      console.log('AuthProvider: Sign up successful');
+    }
+    
     return { error };
   };
 
   const signIn = async (email: string, password: string) => {
+    console.log('AuthProvider: Signing in user:', email);
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password
     });
+    
+    if (error) {
+      console.error('AuthProvider: Sign in error:', error);
+    } else {
+      console.log('AuthProvider: Sign in successful');
+    }
+    
     return { error };
   };
 
   const signOut = async () => {
+    console.log('AuthProvider: Signing out user');
     const { error } = await supabase.auth.signOut();
     return { error };
   };
