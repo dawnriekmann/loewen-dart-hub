@@ -12,7 +12,7 @@ const Admin = () => {
   };
 
   return (
-    <ProtectedRoute requireAdmin={true}>
+    <ProtectedRoute>
       <div className="min-h-screen bg-slate-900">
         <div className="bg-slate-800 border-b border-slate-700 p-4">
           <div className="max-w-7xl mx-auto flex justify-between items-center">

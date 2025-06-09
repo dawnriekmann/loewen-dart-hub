@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 
 const AuthButton = () => {
-  const { user, isAdmin, signOut } = useAuth();
+  const { user, signOut } = useAuth();
   const navigate = useNavigate();
 
   const handleAuth = async () => {
@@ -21,7 +21,7 @@ const AuthButton = () => {
 
   return (
     <div className="flex gap-2">
-      {user && isAdmin && (
+      {user && (
         <Button
           onClick={handleAdminPanel}
           className="bg-primary hover:bg-primary/90 text-primary-foreground"

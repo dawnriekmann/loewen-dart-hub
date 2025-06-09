@@ -6,7 +6,6 @@ import { supabase } from '@/integrations/supabase/client';
 interface AuthContextType {
   user: User | null;
   session: Session | null;
-  isAdmin: boolean;
   loading: boolean;
   signUp: (email: string, password: string, fullName: string) => Promise<{ error: any }>;
   signIn: (email: string, password: string) => Promise<{ error: any }>;
@@ -26,29 +25,7 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
-  const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
-
-  const checkAdminRole = async (userId: string) => {
-    try {
-      console.log('AuthProvider: Checking admin role for user:', userId);
-      
-      // Use the new security definer function with proper typing
-      const { data, error } = await supabase.rpc('is_admin' as any, { user_id: userId } as any);
-      
-      if (error) {
-        console.error('AuthProvider: Error checking admin role:', error);
-        setIsAdmin(false);
-        return;
-      }
-      
-      console.log('AuthProvider: Admin check result:', data);
-      setIsAdmin(Boolean(data));
-    } catch (error) {
-      console.error('AuthProvider: Exception checking admin role:', error);
-      setIsAdmin(false);
-    }
-  };
 
   useEffect(() => {
     console.log('AuthProvider: Setting up auth state listener');
@@ -58,13 +35,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       console.log('AuthProvider: Initial session:', session);
       setSession(session);
       setUser(session?.user ?? null);
-      
-      if (session?.user) {
-        checkAdminRole(session.user.id).finally(() => setLoading(false));
-      } else {
-        setIsAdmin(false);
-        setLoading(false);
-      }
+      setLoading(false);
     });
 
     // Set up auth state listener
@@ -73,12 +44,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         console.log('AuthProvider: Auth state changed:', event, session);
         setSession(session);
         setUser(session?.user ?? null);
-        
-        if (session?.user) {
-          await checkAdminRole(session.user.id);
-        } else {
-          setIsAdmin(false);
-        }
         setLoading(false);
       }
     );
@@ -135,7 +100,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const value = {
     user,
     session,
-    isAdmin,
     loading,
     signUp,
     signIn,
