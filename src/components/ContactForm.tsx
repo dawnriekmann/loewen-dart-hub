@@ -44,6 +44,7 @@ const ContactForm = () => {
       createInquiry.mutate({
         product_type: productInfo.type,
         product_price: productInfo.price,
+        quantity: 1, // Default quantity for contact form inquiries
         customer_name: formData.name,
         customer_email: formData.email,
         customer_phone: formData.phone || undefined,

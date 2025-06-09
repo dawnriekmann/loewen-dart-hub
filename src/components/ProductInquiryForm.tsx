@@ -45,6 +45,7 @@ export const ProductInquiryForm = ({ productType, basePrice, onBack }: ProductIn
     const inquiryData = {
       product_type: productType,
       product_price: calculateTotal(),
+      quantity: formData.quantity, // Now included
       customer_name: `${formData.firstName} ${formData.lastName}`,
       customer_email: formData.email,
       customer_phone: formData.phone,
