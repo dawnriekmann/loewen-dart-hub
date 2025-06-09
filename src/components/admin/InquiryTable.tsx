@@ -53,6 +53,7 @@ const InquiryTable = ({ inquiries, onStatusChange, onViewDetails }: InquiryTable
         <TableHeader>
           <TableRow className="border-slate-700 hover:bg-slate-750">
             <TableHead className="text-slate-300">Datum & Uhrzeit</TableHead>
+            <TableHead className="text-slate-300">Unternehmen</TableHead>
             <TableHead className="text-slate-300">Name & E-Mail</TableHead>
             <TableHead className="text-slate-300">Telefonnummer</TableHead>
             <TableHead className="text-slate-300">Produkt & Anzahl</TableHead>
@@ -67,6 +68,11 @@ const InquiryTable = ({ inquiries, onStatusChange, onViewDetails }: InquiryTable
               <TableCell className="text-slate-300">
                 <div>{format(new Date(inquiry.created_at), 'dd.MM.yyyy', { locale: de })}</div>
                 <div className="text-sm">{format(new Date(inquiry.created_at), 'HH:mm', { locale: de })}</div>
+              </TableCell>
+              <TableCell>
+                <div className="text-white font-medium">
+                  {inquiry.customer_company || 'PRIVAT'}
+                </div>
               </TableCell>
               <TableCell>
                 <div className="text-white font-medium">{inquiry.customer_name}</div>
