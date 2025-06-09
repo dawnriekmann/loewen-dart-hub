@@ -55,11 +55,11 @@ const generateEmailHTML = (data: ConfirmationEmailRequest) => {
         <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
           
           <!-- Header -->
-          <div style="background: linear-gradient(135deg, #002454 0%, #1e40af 100%); color: white; padding: 40px 30px; text-align: center;">
-            <h1 style="margin: 0; font-size: 28px; font-weight: bold; letter-spacing: -0.025em;">
+          <div style="background: linear-gradient(135deg, #002454 0%, #1e40af 100%); color: #002454; padding: 40px 30px; text-align: center;">
+            <h1 style="margin: 0; font-size: 28px; font-weight: bold; letter-spacing: -0.025em; color: #002454;">
               LÖWEN VERTRIEB
             </h1>
-            <p style="margin: 8px 0 0 0; font-size: 16px; opacity: 0.9;">
+            <p style="margin: 8px 0 0 0; font-size: 16px; opacity: 0.8; color: #002454;">
               Bestätigung Ihrer Anfrage
             </p>
           </div>
