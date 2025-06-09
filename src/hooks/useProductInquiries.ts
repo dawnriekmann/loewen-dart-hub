@@ -19,12 +19,41 @@ export const useProductInquiries = () => {
         .single();
 
       if (error) throw error;
+
+      // Send confirmation email
+      try {
+        console.log('Sending confirmation email for inquiry:', data);
+        
+        const emailData = {
+          customer_name: inquiry.customer_name,
+          customer_email: inquiry.customer_email,
+          customer_phone: inquiry.customer_phone,
+          customer_company: inquiry.customer_company,
+          product_type: inquiry.product_type,
+          product_price: inquiry.product_price,
+          quantity: inquiry.quantity,
+        };
+
+        const emailResponse = await supabase.functions.invoke('send-confirmation-email', {
+          body: emailData,
+        });
+
+        if (emailResponse.error) {
+          console.error('Error sending confirmation email:', emailResponse.error);
+        } else {
+          console.log('Confirmation email sent successfully');
+        }
+      } catch (emailError) {
+        console.error('Failed to send confirmation email:', emailError);
+        // Don't throw error here - inquiry was successful, email is just a bonus
+      }
+
       return data;
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['product-inquiries'] });
       toast.success('Anfrage erfolgreich gesendet!', {
-        description: 'Wir werden uns in Kürze bei Ihnen melden.',
+        description: 'Sie erhalten in Kürze eine Bestätigungsmail.',
         style: {
           background: '#1e293b',
           border: '1px solid #334155',
