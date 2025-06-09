@@ -103,7 +103,7 @@ const AdminPanel = () => {
                     variant={filter === 'all' ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setFilter('all')}
-                    className={filter === 'all' ? 'bg-primary text-primary-foreground hover:bg-primary/90' : 'bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700/50 hover:text-white hover:border-slate-500'}
+                    className={filter === 'all' ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-transparent border-blue-600 text-blue-400 hover:bg-blue-600/20 hover:text-blue-300 hover:border-blue-500'}
                   >
                     Alle
                   </Button>
@@ -111,7 +111,7 @@ const AdminPanel = () => {
                     variant={filter === 'HB8' ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setFilter('HB8')}
-                    className={filter === 'HB8' ? 'bg-primary text-primary-foreground hover:bg-primary/90' : 'bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700/50 hover:text-white hover:border-slate-500'}
+                    className={filter === 'HB8' ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700/50 hover:text-white hover:border-slate-500'}
                   >
                     HB8
                   </Button>
@@ -119,7 +119,7 @@ const AdminPanel = () => {
                     variant={filter === 'HB10' ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setFilter('HB10')}
-                    className={filter === 'HB10' ? 'bg-primary text-primary-foreground hover:bg-primary/90' : 'bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700/50 hover:text-white hover:border-slate-500'}
+                    className={filter === 'HB10' ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700/50 hover:text-white hover:border-slate-500'}
                   >
                     HB10
                   </Button>
@@ -133,7 +133,7 @@ const AdminPanel = () => {
                     variant={statusFilter === 'all' ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setStatusFilter('all')}
-                    className={statusFilter === 'all' ? 'bg-primary text-primary-foreground hover:bg-primary/90' : 'bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700/50 hover:text-white hover:border-slate-500'}
+                    className={statusFilter === 'all' ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-transparent border-blue-600 text-blue-400 hover:bg-blue-600/20 hover:text-blue-300 hover:border-blue-500'}
                   >
                     Alle
                   </Button>
@@ -141,7 +141,7 @@ const AdminPanel = () => {
                     variant={statusFilter === 'new' ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setStatusFilter('new')}
-                    className={statusFilter === 'new' ? 'bg-primary text-primary-foreground hover:bg-primary/90' : 'bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700/50 hover:text-white hover:border-slate-500'}
+                    className={statusFilter === 'new' ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700/50 hover:text-white hover:border-slate-500'}
                   >
                     Neu
                   </Button>
@@ -149,7 +149,7 @@ const AdminPanel = () => {
                     variant={statusFilter === 'contacted' ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setStatusFilter('contacted')}
-                    className={statusFilter === 'contacted' ? 'bg-primary text-primary-foreground hover:bg-primary/90' : 'bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700/50 hover:text-white hover:border-slate-500'}
+                    className={statusFilter === 'contacted' ? 'bg-slate-600 text-white hover:bg-slate-500' : 'bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700/50 hover:text-white hover:border-slate-500'}
                   >
                     Kontaktiert
                   </Button>
@@ -157,7 +157,7 @@ const AdminPanel = () => {
                     variant={statusFilter === 'closed' ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setStatusFilter('closed')}
-                    className={statusFilter === 'closed' ? 'bg-primary text-primary-foreground hover:bg-primary/90' : 'bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700/50 hover:text-white hover:border-slate-500'}
+                    className={statusFilter === 'closed' ? 'bg-green-700 text-white hover:bg-green-600' : 'bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700/50 hover:text-white hover:border-slate-500'}
                   >
                     Abgeschlossen
                   </Button>
