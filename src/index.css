@@ -92,44 +92,6 @@
     --products-text: 0 36 84; /* #002454 */
     --products-title: 248 250 252; /* helle Titelfarbe für dark mode */
   }
-
-  /* Global overrides for Radix UI components to prevent yellow/gold colors */
-  [data-radix-navigation-menu-content] {
-    --tw-ring-color: rgb(0 36 84) !important;
-    --tw-ring-offset-color: transparent !important;
-  }
-
-  [data-radix-navigation-menu-trigger] {
-    --tw-ring-color: rgb(0 36 84) !important;
-    --tw-ring-offset-color: transparent !important;
-  }
-
-  /* Override any yellow/amber focus rings */
-  *:focus-visible {
-    outline: 2px solid rgb(0 36 84) !important;
-    outline-offset: 2px !important;
-  }
-
-  /* Override any yellow/amber box shadows */
-  * {
-    --tw-shadow-color: rgb(0 36 84) !important;
-  }
-
-  /* Force blue focus states for form elements */
-  input:focus,
-  textarea:focus,
-  select:focus {
-    border-color: rgb(59 130 246) !important;
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5) !important;
-    outline: none !important;
-  }
-
-  /* Override Radix UI form component focus styles */
-  [data-radix-form-field] input:focus,
-  [data-radix-form-field] textarea:focus {
-    border-color: rgb(59 130 246) !important;
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5) !important;
-  }
 }
 
 @layer base {
