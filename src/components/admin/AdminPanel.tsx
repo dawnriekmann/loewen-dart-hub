@@ -2,15 +2,16 @@
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { useProductInquiries, ProductInquiry } from "@/hooks/useProductInquiries";
-import { format } from "date-fns";
-import { de } from "date-fns/locale";
+import InquiryTable from "./InquiryTable";
+import InquiryDetailDialog from "./InquiryDetailDialog";
 
 const AdminPanel = () => {
   const { inquiries, isLoading, updateInquiryStatus } = useProductInquiries();
   const [filter, setFilter] = useState<'all' | 'HB8' | 'HB10'>('all');
   const [statusFilter, setStatusFilter] = useState<'all' | 'new' | 'contacted' | 'closed'>('all');
+  const [selectedInquiry, setSelectedInquiry] = useState<ProductInquiry | null>(null);
+  const [detailDialogOpen, setDetailDialogOpen] = useState(false);
 
   const filteredInquiries = inquiries.filter(inquiry => {
     const productMatch = filter === 'all' || inquiry.product_type === filter;
@@ -20,26 +21,13 @@ const AdminPanel = () => {
 
   const totalValue = filteredInquiries.reduce((sum, inquiry) => sum + inquiry.product_price, 0);
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'new': return 'bg-blue-600 text-white';
-      case 'contacted': return 'bg-slate-600 text-white';
-      case 'closed': return 'bg-green-700 text-white';
-      default: return 'bg-slate-500 text-white';
-    }
-  };
-
-  const getStatusText = (status: string) => {
-    switch (status) {
-      case 'new': return 'Neu';
-      case 'contacted': return 'Kontaktiert';
-      case 'closed': return 'Abgeschlossen';
-      default: return status;
-    }
-  };
-
   const handleStatusChange = (id: string, newStatus: 'new' | 'contacted' | 'closed') => {
     updateInquiryStatus.mutate({ id, status: newStatus });
+  };
+
+  const handleViewDetails = (inquiry: ProductInquiry) => {
+    setSelectedInquiry(inquiry);
+    setDetailDialogOpen(true);
   };
 
   if (isLoading) {
@@ -167,105 +155,28 @@ const AdminPanel = () => {
           </CardContent>
         </Card>
 
-        {/* Inquiries List */}
-        <div className="space-y-4">
-          {filteredInquiries.map((inquiry) => (
-            <Card key={inquiry.id} className="bg-slate-800 border-slate-700">
-              <CardHeader>
-                <div className="flex justify-between items-start">
-                  <div>
-                    <CardTitle className="text-white text-lg">
-                      {inquiry.customer_name} - {inquiry.product_type}
-                    </CardTitle>
-                    <p className="text-slate-300 text-sm">
-                      {format(new Date(inquiry.created_at), 'dd.MM.yyyy HH:mm', { locale: de })}
-                    </p>
-                  </div>
-                  <div className="flex gap-2 items-center">
-                    <Badge className={getStatusColor(inquiry.status)}>
-                      {getStatusText(inquiry.status)}
-                    </Badge>
-                    <div className="text-white font-semibold">
-                      {inquiry.product_price.toLocaleString('de-DE')} €
-                    </div>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
-                  <div>
-                    <strong className="text-white">E-Mail:</strong>
-                    <p className="text-slate-300">{inquiry.customer_email}</p>
-                  </div>
-                  {inquiry.customer_phone && (
-                    <div>
-                      <strong className="text-white">Telefon:</strong>
-                      <p className="text-slate-300">{inquiry.customer_phone}</p>
-                    </div>
-                  )}
-                  {inquiry.customer_company && (
-                    <div>
-                      <strong className="text-white">Unternehmen:</strong>
-                      <p className="text-slate-300">{inquiry.customer_company}</p>
-                    </div>
-                  )}
-                  {inquiry.customer_address && (
-                    <div>
-                      <strong className="text-white">Adresse:</strong>
-                      <p className="text-slate-300">
-                        {inquiry.customer_address}
-                        {inquiry.customer_city && `, ${inquiry.customer_city}`}
-                        {inquiry.customer_zip && ` ${inquiry.customer_zip}`}
-                      </p>
-                    </div>
-                  )}
-                </div>
-                
-                {inquiry.message && (
-                  <div className="mb-4">
-                    <strong className="text-white">Nachricht:</strong>
-                    <p className="text-slate-300 mt-1 whitespace-pre-line">{inquiry.message}</p>
-                  </div>
-                )}
-
-                <div className="flex gap-2">
-                  <Button
-                    size="sm"
-                    variant={inquiry.status === 'new' ? 'default' : 'outline'}
-                    onClick={() => handleStatusChange(inquiry.id, 'new')}
-                    className={inquiry.status === 'new' ? 'bg-primary text-primary-foreground hover:bg-primary/90' : 'bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700/50 hover:text-white hover:border-slate-500'}
-                  >
-                    Neu
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant={inquiry.status === 'contacted' ? 'default' : 'outline'}
-                    onClick={() => handleStatusChange(inquiry.id, 'contacted')}
-                    className={inquiry.status === 'contacted' ? 'bg-slate-600 text-white hover:bg-slate-500' : 'bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700/50 hover:text-white hover:border-slate-500'}
-                  >
-                    Kontaktiert
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant={inquiry.status === 'closed' ? 'default' : 'outline'}
-                    onClick={() => handleStatusChange(inquiry.id, 'closed')}
-                    className={inquiry.status === 'closed' ? 'bg-green-700 text-white hover:bg-green-600' : 'bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700/50 hover:text-white hover:border-slate-500'}
-                  >
-                    Abgeschlossen
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {filteredInquiries.length === 0 && (
+        {/* Inquiries Table */}
+        {filteredInquiries.length > 0 ? (
+          <InquiryTable 
+            inquiries={filteredInquiries}
+            onStatusChange={handleStatusChange}
+            onViewDetails={handleViewDetails}
+          />
+        ) : (
           <Card className="bg-slate-800 border-slate-700">
             <CardContent className="p-12 text-center">
               <p className="text-slate-300">Keine Anfragen gefunden.</p>
             </CardContent>
           </Card>
         )}
+
+        {/* Detail Dialog */}
+        <InquiryDetailDialog
+          inquiry={selectedInquiry}
+          open={detailDialogOpen}
+          onOpenChange={setDetailDialogOpen}
+          onStatusChange={handleStatusChange}
+        />
       </div>
     </div>
   );
