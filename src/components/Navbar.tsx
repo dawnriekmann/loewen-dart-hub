@@ -1,7 +1,9 @@
+
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import AuthButton from "@/components/auth/AuthButton";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -66,7 +68,7 @@ const Navbar = () => {
           </div>
           
           {/* Desktop Navigation Menu */}
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center space-x-8">
             <NavigationMenu>
               <NavigationMenuList className="flex items-center space-x-8">
                 {/* Dartautomaten Dropdown */}
@@ -124,10 +126,15 @@ const Navbar = () => {
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
+            
+            {/* Auth Button */}
+            <AuthButton />
           </div>
 
-          {/* Spacer for mobile to keep logo centered */}
-          <div className="md:hidden w-10"></div>
+          {/* Mobile Auth Button - Right side on mobile */}
+          <div className="md:hidden">
+            <AuthButton />
+          </div>
         </div>
 
         {/* Mobile Menu */}
