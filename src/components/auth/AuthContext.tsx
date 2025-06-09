@@ -33,8 +33,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     try {
       console.log('AuthProvider: Checking admin role for user:', userId);
       
-      // Use the new security definer function
-      const { data, error } = await supabase.rpc('is_admin', { user_id: userId });
+      // Use the new security definer function with proper typing
+      const { data, error } = await supabase.rpc('is_admin' as any, { user_id: userId } as any);
       
       if (error) {
         console.error('AuthProvider: Error checking admin role:', error);
