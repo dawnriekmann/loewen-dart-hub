@@ -77,64 +77,67 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       <Navbar />
       
       <div className="pt-32 pb-20">
         <div className="container mx-auto px-4 max-w-md">
-          <div className="mb-6">
+          <div className="mb-8">
             <Link 
               to="/"
-              className="inline-flex items-center text-blue-600 hover:text-blue-700 transition-colors"
+              className="inline-flex items-center text-[#002454] hover:text-[#050c21] transition-colors font-medium"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Zurück zur Startseite
             </Link>
           </div>
 
-          <Card className="shadow-lg">
-            <CardHeader className="text-center">
-              <CardTitle className="text-2xl font-bold text-gray-900">
-                {isLogin ? 'Anmelden' : 'Konto erstellen'}
+          <Card className="shadow-xl border-0 bg-white">
+            <CardHeader className="text-center pb-8 pt-8">
+              <div className="w-16 h-16 bg-[#002454] rounded-full flex items-center justify-center mx-auto mb-6">
+                <User className="w-8 h-8 text-white" />
+              </div>
+              <CardTitle className="text-3xl font-bold text-[#002454] font-parisine-narrow">
+                {isLogin ? 'ANMELDEN' : 'REGISTRIEREN'}
               </CardTitle>
-              <p className="text-gray-600">
+              <p className="text-gray-600 mt-4 text-lg">
                 {isLogin 
-                  ? 'Melden Sie sich in Ihrem LÖWEN-Konto an' 
-                  : 'Erstellen Sie Ihr LÖWEN-Konto'
+                  ? 'Willkommen zurück bei LÖWEN Entertainment' 
+                  : 'Werden Sie Teil der LÖWEN Familie'
                 }
               </p>
             </CardHeader>
             
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
+            <CardContent className="px-8 pb-8">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 {!isLogin && (
                   <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="firstName">Vorname</Label>
+                    <div className="space-y-2">
+                      <Label htmlFor="firstName" className="text-[#002454] font-semibold">Vorname</Label>
                       <div className="relative">
-                        <User className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                        <User className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
                         <Input
                           id="firstName"
                           type="text"
                           value={formData.firstName}
                           onChange={(e) => handleInputChange('firstName', e.target.value)}
-                          className="pl-10"
-                          placeholder="Ihr Vorname"
+                          className="pl-12 h-12 border-2 border-gray-200 focus:border-[#002454] focus:ring-[#002454] text-base"
+                          placeholder="Vorname"
                           required={!isLogin}
                         />
                       </div>
                     </div>
-                    <div>
-                      <Label htmlFor="lastName">Nachname</Label>
+                    <div className="space-y-2">
+                      <Label htmlFor="lastName" className="text-[#002454] font-semibold">Nachname</Label>
                       <div className="relative">
-                        <User className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                        <User className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
                         <Input
                           id="lastName"
                           type="text"
                           value={formData.lastName}
                           onChange={(e) => handleInputChange('lastName', e.target.value)}
-                          className="pl-10"
-                          placeholder="Ihr Nachname"
+                          className="pl-12 h-12 border-2 border-gray-200 focus:border-[#002454] focus:ring-[#002454] text-base"
+                          placeholder="Nachname"
                           required={!isLogin}
                         />
                       </div>
@@ -142,33 +145,33 @@ const Auth = () => {
                   </div>
                 )}
 
-                <div>
-                  <Label htmlFor="email">E-Mail</Label>
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="text-[#002454] font-semibold">E-Mail-Adresse</Label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                    <Mail className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
                     <Input
                       id="email"
                       type="email"
                       value={formData.email}
                       onChange={(e) => handleInputChange('email', e.target.value)}
-                      className="pl-10"
+                      className="pl-12 h-12 border-2 border-gray-200 focus:border-[#002454] focus:ring-[#002454] text-base"
                       placeholder="ihre.email@beispiel.de"
                       required
                     />
                   </div>
                 </div>
 
-                <div>
-                  <Label htmlFor="password">Passwort</Label>
+                <div className="space-y-2">
+                  <Label htmlFor="password" className="text-[#002454] font-semibold">Passwort</Label>
                   <div className="relative">
-                    <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                    <Lock className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
                     <Input
                       id="password"
                       type="password"
                       value={formData.password}
                       onChange={(e) => handleInputChange('password', e.target.value)}
-                      className="pl-10"
-                      placeholder="Ihr Passwort"
+                      className="pl-12 h-12 border-2 border-gray-200 focus:border-[#002454] focus:ring-[#002454] text-base"
+                      placeholder="••••••••"
                       required
                     />
                   </div>
@@ -176,19 +179,28 @@ const Auth = () => {
 
                 <Button
                   type="submit"
-                  className="w-full bg-blue-600 hover:bg-blue-700"
+                  className="w-full h-12 bg-[#002454] hover:bg-[#050c21] text-white font-semibold text-base transition-all duration-200 transform hover:scale-[1.02]"
                   disabled={loading}
                 >
-                  {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                  {isLogin ? 'Anmelden' : 'Konto erstellen'}
+                  {loading && <Loader2 className="mr-2 h-5 w-5 animate-spin" />}
+                  {isLogin ? 'ANMELDEN' : 'KONTO ERSTELLEN'}
                 </Button>
               </form>
 
-              <div className="mt-6 text-center">
+              <div className="mt-8 text-center">
+                <div className="relative">
+                  <div className="absolute inset-0 flex items-center">
+                    <div className="w-full border-t border-gray-200"></div>
+                  </div>
+                  <div className="relative flex justify-center text-sm">
+                    <span className="px-4 bg-white text-gray-500">oder</span>
+                  </div>
+                </div>
+                
                 <button
                   type="button"
                   onClick={() => setIsLogin(!isLogin)}
-                  className="text-blue-600 hover:text-blue-700 transition-colors"
+                  className="mt-6 text-[#002454] hover:text-[#050c21] transition-colors font-semibold text-base"
                 >
                   {isLogin 
                     ? 'Noch kein Konto? Jetzt registrieren' 

@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
-import { LogOut, Search, Filter, Download, Eye } from 'lucide-react';
+import { LogOut, Search, Filter, Download, Eye, Users, Package, Euro } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 
 interface ProductInquiry {
@@ -129,13 +129,17 @@ const Admin = () => {
     window.URL.revokeObjectURL(url);
   };
 
+  const getTotalRevenue = () => {
+    return filteredInquiries.reduce((sum, inquiry) => sum + inquiry.total_price, 0);
+  };
+
   if (loading || loadingData) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-white">
         <Navbar />
         <div className="pt-32 flex items-center justify-center">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#002454] mx-auto mb-4"></div>
             <p className="text-gray-600">Laden...</p>
           </div>
         </div>
@@ -148,30 +152,78 @@ const Admin = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       <Navbar />
       
       <div className="pt-32 pb-20">
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center mb-8">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">Admin Panel</h1>
-              <p className="text-gray-600">Verwaltung der Produktanfragen</p>
+          {/* Header Section */}
+          <div className="bg-gradient-to-r from-[#002454] to-[#050c21] rounded-2xl p-8 mb-8 text-white">
+            <div className="flex justify-between items-start">
+              <div>
+                <h1 className="text-4xl font-bold font-parisine-narrow mb-2">ADMIN PANEL</h1>
+                <p className="text-blue-200 text-lg">Verwaltung der Produktanfragen</p>
+                <p className="text-blue-300 text-sm mt-2">Willkommen zurück, {user.email}</p>
+              </div>
+              <Button 
+                onClick={handleSignOut} 
+                variant="outline" 
+                className="bg-white/10 border-white/20 text-white hover:bg-white/20 transition-all duration-200"
+              >
+                <LogOut className="w-4 h-4 mr-2" />
+                Abmelden
+              </Button>
             </div>
-            <Button onClick={handleSignOut} variant="outline">
-              <LogOut className="w-4 h-4 mr-2" />
-              Abmelden
-            </Button>
           </div>
 
-          <Card className="mb-6">
-            <CardHeader>
-              <CardTitle className="flex items-center">
+          {/* Stats Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-50 to-blue-100">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-[#002454] opacity-80">Gesamt Anfragen</p>
+                    <p className="text-3xl font-bold text-[#002454]">{filteredInquiries.length}</p>
+                  </div>
+                  <Users className="h-12 w-12 text-[#002454] opacity-60" />
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="border-0 shadow-lg bg-gradient-to-br from-green-50 to-green-100">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-green-700 opacity-80">Gesamtumsatz</p>
+                    <p className="text-3xl font-bold text-green-700">{getTotalRevenue().toLocaleString('de-DE')}€</p>
+                  </div>
+                  <Euro className="h-12 w-12 text-green-700 opacity-60" />
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="border-0 shadow-lg bg-gradient-to-br from-orange-50 to-orange-100">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-orange-700 opacity-80">Produkte</p>
+                    <p className="text-3xl font-bold text-orange-700">{new Set(filteredInquiries.map(i => i.product)).size}</p>
+                  </div>
+                  <Package className="h-12 w-12 text-orange-700 opacity-60" />
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Filter Section */}
+          <Card className="mb-8 border-0 shadow-lg">
+            <CardHeader className="bg-gradient-to-r from-slate-50 to-slate-100 rounded-t-lg">
+              <CardTitle className="flex items-center text-[#002454]">
                 <Filter className="w-5 h-5 mr-2" />
                 Filter & Suche
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-6">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div className="relative">
                   <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
@@ -179,12 +231,12 @@ const Admin = () => {
                     placeholder="Namen oder E-Mail suchen..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="pl-10"
+                    className="pl-10 border-2 border-gray-200 focus:border-[#002454] focus:ring-[#002454]"
                   />
                 </div>
                 
                 <Select value={productFilter} onValueChange={setProductFilter}>
-                  <SelectTrigger>
+                  <SelectTrigger className="border-2 border-gray-200 focus:border-[#002454]">
                     <SelectValue placeholder="Produkt auswählen" />
                   </SelectTrigger>
                   <SelectContent>
@@ -195,7 +247,7 @@ const Admin = () => {
                 </Select>
 
                 <Select value={customerTypeFilter} onValueChange={setCustomerTypeFilter}>
-                  <SelectTrigger>
+                  <SelectTrigger className="border-2 border-gray-200 focus:border-[#002454]">
                     <SelectValue placeholder="Kundentyp auswählen" />
                   </SelectTrigger>
                   <SelectContent>
@@ -205,7 +257,10 @@ const Admin = () => {
                   </SelectContent>
                 </Select>
 
-                <Button onClick={exportToCSV} variant="outline">
+                <Button 
+                  onClick={exportToCSV} 
+                  className="bg-[#002454] hover:bg-[#050c21] text-white transition-all duration-200"
+                >
                   <Download className="w-4 h-4 mr-2" />
                   CSV Export
                 </Button>
@@ -213,70 +268,82 @@ const Admin = () => {
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Produktanfragen ({filteredInquiries.length})</CardTitle>
+          {/* Main Table */}
+          <Card className="border-0 shadow-lg">
+            <CardHeader className="bg-gradient-to-r from-[#002454] to-[#050c21] text-white rounded-t-lg">
+              <CardTitle className="text-xl">Produktanfragen ({filteredInquiries.length})</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-0">
               {filteredInquiries.length === 0 ? (
-                <div className="text-center py-8 text-gray-500">
-                  Keine Anfragen gefunden.
+                <div className="text-center py-12 text-gray-500">
+                  <Eye className="w-12 h-12 mx-auto mb-4 opacity-50" />
+                  <p className="text-lg">Keine Anfragen gefunden.</p>
                 </div>
               ) : (
                 <div className="overflow-x-auto">
                   <table className="w-full">
-                    <thead>
-                      <tr className="border-b">
-                        <th className="text-left p-3">Datum</th>
-                        <th className="text-left p-3">Kunde</th>
-                        <th className="text-left p-3">Kontakt</th>
-                        <th className="text-left p-3">Typ</th>
-                        <th className="text-left p-3">Produkt</th>
-                        <th className="text-left p-3">Menge</th>
-                        <th className="text-left p-3">Gesamtpreis</th>
+                    <thead className="bg-slate-50">
+                      <tr>
+                        <th className="text-left p-4 font-semibold text-[#002454]">Datum</th>
+                        <th className="text-left p-4 font-semibold text-[#002454]">Kunde</th>
+                        <th className="text-left p-4 font-semibold text-[#002454]">Kontakt</th>
+                        <th className="text-left p-4 font-semibold text-[#002454]">Typ</th>
+                        <th className="text-left p-4 font-semibold text-[#002454]">Produkt</th>
+                        <th className="text-left p-4 font-semibold text-[#002454]">Menge</th>
+                        <th className="text-left p-4 font-semibold text-[#002454]">Gesamtpreis</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {filteredInquiries.map((inquiry) => (
-                        <tr key={inquiry.id} className="border-b hover:bg-gray-50">
-                          <td className="p-3">
-                            {new Date(inquiry.created_at).toLocaleDateString('de-DE')}
-                            <br />
-                            <span className="text-xs text-gray-500">
+                      {filteredInquiries.map((inquiry, index) => (
+                        <tr key={inquiry.id} className={`border-b hover:bg-slate-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-slate-25'}`}>
+                          <td className="p-4">
+                            <div className="font-medium text-[#002454]">
+                              {new Date(inquiry.created_at).toLocaleDateString('de-DE')}
+                            </div>
+                            <div className="text-xs text-gray-500">
                               {new Date(inquiry.created_at).toLocaleTimeString('de-DE')}
-                            </span>
+                            </div>
                           </td>
-                          <td className="p-3">
-                            <div className="font-medium">
+                          <td className="p-4">
+                            <div className="font-semibold text-[#002454]">
                               {inquiry.first_name} {inquiry.last_name}
                             </div>
                             {inquiry.company_name && (
-                              <div className="text-sm text-gray-600">
+                              <div className="text-sm text-gray-600 font-medium">
                                 {inquiry.company_name}
                               </div>
                             )}
                           </td>
-                          <td className="p-3">
+                          <td className="p-4">
                             <div className="text-sm">
-                              <div>{inquiry.email}</div>
-                              {inquiry.phone && <div>{inquiry.phone}</div>}
+                              <div className="font-medium text-[#002454]">{inquiry.email}</div>
+                              {inquiry.phone && <div className="text-gray-600">{inquiry.phone}</div>}
                             </div>
                           </td>
-                          <td className="p-3">
-                            <Badge variant={inquiry.customer_type === 'privat' ? 'secondary' : 'default'}>
+                          <td className="p-4">
+                            <Badge 
+                              variant={inquiry.customer_type === 'privat' ? 'secondary' : 'default'}
+                              className={inquiry.customer_type === 'privat' 
+                                ? 'bg-blue-100 text-blue-800 border-blue-200' 
+                                : 'bg-green-100 text-green-800 border-green-200'
+                              }
+                            >
                               {inquiry.customer_type === 'privat' ? 'Privat' : 'Geschäftlich'}
                             </Badge>
                           </td>
-                          <td className="p-3">
-                            <Badge variant="outline" className="font-mono">
+                          <td className="p-4">
+                            <Badge 
+                              variant="outline" 
+                              className="font-mono font-bold bg-[#002454] text-white border-[#002454]"
+                            >
                               {inquiry.product}
                             </Badge>
                           </td>
-                          <td className="p-3">
-                            {inquiry.quantity}x
+                          <td className="p-4">
+                            <span className="font-semibold text-[#002454]">{inquiry.quantity}x</span>
                           </td>
-                          <td className="p-3">
-                            <div className="font-semibold">
+                          <td className="p-4">
+                            <div className="font-bold text-lg text-green-600">
                               {inquiry.total_price.toLocaleString('de-DE')}€
                             </div>
                             <div className="text-xs text-gray-500">
