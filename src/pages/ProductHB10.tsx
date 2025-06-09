@@ -55,6 +55,7 @@ const ProductHB10 = () => {
     const inquiryData = {
       product_type: 'HB10' as const,
       product_price: calculateTotal(),
+      quantity: formData.quantity,
       customer_name: `${formData.firstName} ${formData.lastName}`,
       customer_email: formData.email,
       customer_phone: formData.phone,
