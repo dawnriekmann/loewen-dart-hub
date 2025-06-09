@@ -32,10 +32,10 @@ const ContactInfo = () => {
                   <div>
                     <span className="text-[#002454] text-lg">Telefon: </span>
                     <a 
-                      href="tel:+492345678910" 
+                      href="tel:+4967214070" 
                       className="text-[#002454] hover:text-blue-600 transition-colors text-lg font-medium"
                     >
-                      +49 2345678910
+                      +49 6721 4070
                     </a>
                   </div>
                 </div>
@@ -69,10 +69,10 @@ const ContactInfo = () => {
                   <div>
                     <span className="text-[#002454] text-lg">Tel.: </span>
                     <a 
-                      href="tel:+492345678910" 
+                      href="tel:+4967214070" 
                       className="text-[#002454] hover:text-blue-600 transition-colors text-lg font-medium"
                     >
-                      +49 2345678910
+                      +49 6721 4070
                     </a>
                   </div>
                 </div>
