@@ -19,17 +19,6 @@ const Footer = () => {
                 Der internationale Marktführer für professionelle E-Dart Automaten. 
                 Qualität und Innovation seit Jahrzehnten.
               </p>
-              <div className="flex space-x-4">
-                <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer">
-                  <span className="text-sm font-bold">f</span>
-                </div>
-                <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer">
-                  <span className="text-sm font-bold">@</span>
-                </div>
-                <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer">
-                  <span className="text-sm font-bold">in</span>
-                </div>
-              </div>
             </div>
             
             <div>
@@ -43,13 +32,17 @@ const Footer = () => {
             </div>
             
             <div>
-              <h4 className="text-lg font-semibold mb-4">Service</h4>
-              <ul className="space-y-2 text-slate-300">
-                <li><a href="#" className="hover:text-white transition-colors">Support</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Wartung</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Ersatzteile</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Downloads</a></li>
-              </ul>
+              <h4 className="text-lg font-semibold mb-4">Informationen</h4>
+              <div className="space-y-2 text-slate-300">
+                <p className="font-medium">LÖWEN ENTERTAINMENT GmbH</p>
+                <p>Saarlandstraße 240</p>
+                <p>55411 Bingen</p>
+                <p>
+                  <a href="mailto:info@loewen-vertrieb.de" className="hover:text-white transition-colors">
+                    info@loewen-vertrieb.de
+                  </a>
+                </p>
+              </div>
             </div>
           </div>
         </div>
