@@ -7,6 +7,7 @@ export interface ProductInquiry {
   id: string;
   product_type: 'HB8' | 'HB10';
   product_price: number;
+  quantity: number;
   customer_name: string;
   customer_email: string;
   customer_phone?: string;

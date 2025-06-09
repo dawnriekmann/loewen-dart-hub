@@ -23,6 +23,7 @@ export type Database = {
           message: string | null
           product_price: number
           product_type: string
+          quantity: number
           status: string
           updated_at: string
         }
@@ -39,6 +40,7 @@ export type Database = {
           message?: string | null
           product_price: number
           product_type: string
+          quantity?: number
           status?: string
           updated_at?: string
         }
@@ -55,6 +57,7 @@ export type Database = {
           message?: string | null
           product_price?: number
           product_type?: string
+          quantity?: number
           status?: string
           updated_at?: string
         }

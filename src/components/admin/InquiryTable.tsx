@@ -83,13 +83,15 @@ const InquiryTable = ({ inquiries, onStatusChange, onViewDetails }: InquiryTable
               </TableCell>
               <TableCell>
                 <div className="text-white font-medium">{inquiry.product_type}</div>
-                <div className="text-slate-400 text-sm">1x Stück</div>
+                <div className="text-slate-400 text-sm">{inquiry.quantity || 1}x Stück</div>
               </TableCell>
               <TableCell>
                 <div className="text-white font-semibold">
                   {inquiry.product_price.toLocaleString('de-DE')} €
                 </div>
-                <div className="text-slate-400 text-sm">Einzelpreis</div>
+                <div className="text-slate-400 text-sm">
+                  {(inquiry.product_price / (inquiry.quantity || 1)).toLocaleString('de-DE')} € / Stück
+                </div>
               </TableCell>
               <TableCell>
                 <Badge className={getStatusColor(inquiry.status)}>

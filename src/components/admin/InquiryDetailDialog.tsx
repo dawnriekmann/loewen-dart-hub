@@ -39,9 +39,13 @@ const InquiryDetailDialog = ({ inquiry, open, onOpenChange, onStatusChange }: In
     }
   };
 
+  const unitPrice = inquiry.product_price / (inquiry.quantity || 1);
+  const totalPrice = inquiry.product_price;
+  const customerType = inquiry.customer_company ? 'Geschäftskunde' : 'Privatkunde';
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="bg-slate-800 border-slate-700 max-w-2xl">
+      <DialogContent className="bg-slate-800 border-slate-700 max-w-4xl">
         <DialogHeader>
           <DialogTitle className="text-white text-xl">
             Anfrage Details - {inquiry.customer_name}
@@ -56,64 +60,97 @@ const InquiryDetailDialog = ({ inquiry, open, onOpenChange, onStatusChange }: In
               <div className="text-slate-300">
                 {format(new Date(inquiry.created_at), 'dd.MM.yyyy HH:mm', { locale: de })}
               </div>
+              <div className="text-sm text-slate-400 mt-1">{customerType}</div>
             </div>
             <div className="text-right">
               <Badge className={getStatusColor(inquiry.status)}>
                 {getStatusText(inquiry.status)}
               </Badge>
-              <div className="text-2xl font-bold text-white mt-2">
-                {inquiry.product_price.toLocaleString('de-DE')} €
+            </div>
+          </div>
+
+          {/* Product Information */}
+          <div className="bg-slate-900 p-4 rounded-lg border border-slate-600">
+            <h3 className="text-white font-semibold mb-3">Produktinformationen</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <label className="text-slate-400 text-sm">Produkt:</label>
+                <div className="text-white font-medium">{inquiry.product_type}</div>
+              </div>
+              <div>
+                <label className="text-slate-400 text-sm">Anzahl:</label>
+                <div className="text-white font-medium">{inquiry.quantity || 1} Stück</div>
+              </div>
+              <div>
+                <label className="text-slate-400 text-sm">Einzelpreis:</label>
+                <div className="text-white">{unitPrice.toLocaleString('de-DE')} €</div>
+              </div>
+            </div>
+            <div className="mt-4 pt-3 border-t border-slate-700">
+              <div className="flex justify-between items-center">
+                <span className="text-slate-400">Gesamtpreis:</span>
+                <span className="text-2xl font-bold text-white">
+                  {totalPrice.toLocaleString('de-DE')} €
+                </span>
               </div>
             </div>
           </div>
 
           {/* Customer Information */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-4">
               <h3 className="text-white font-semibold">Kundendaten</h3>
-              <div>
-                <label className="text-slate-400 text-sm">Name:</label>
-                <div className="text-white">{inquiry.customer_name}</div>
-              </div>
-              <div>
-                <label className="text-slate-400 text-sm">E-Mail:</label>
-                <div className="text-white">{inquiry.customer_email}</div>
-              </div>
-              {inquiry.customer_phone && (
+              <div className="space-y-3">
                 <div>
-                  <label className="text-slate-400 text-sm">Telefon:</label>
-                  <div className="text-white">{inquiry.customer_phone}</div>
+                  <label className="text-slate-400 text-sm">Name:</label>
+                  <div className="text-white">{inquiry.customer_name}</div>
                 </div>
-              )}
-              {inquiry.customer_company && (
                 <div>
-                  <label className="text-slate-400 text-sm">Unternehmen:</label>
-                  <div className="text-white">{inquiry.customer_company}</div>
+                  <label className="text-slate-400 text-sm">E-Mail:</label>
+                  <div className="text-white">{inquiry.customer_email}</div>
                 </div>
-              )}
+                {inquiry.customer_phone && (
+                  <div>
+                    <label className="text-slate-400 text-sm">Telefon:</label>
+                    <div className="text-white">{inquiry.customer_phone}</div>
+                  </div>
+                )}
+                <div>
+                  <label className="text-slate-400 text-sm">Kundentyp:</label>
+                  <div className="text-white">{customerType}</div>
+                </div>
+                {inquiry.customer_company && (
+                  <div>
+                    <label className="text-slate-400 text-sm">Unternehmen:</label>
+                    <div className="text-white">{inquiry.customer_company}</div>
+                  </div>
+                )}
+              </div>
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-4">
               <h3 className="text-white font-semibold">Adresse</h3>
               {inquiry.customer_address ? (
-                <>
+                <div className="space-y-3">
                   <div>
                     <label className="text-slate-400 text-sm">Straße:</label>
                     <div className="text-white">{inquiry.customer_address}</div>
                   </div>
-                  {inquiry.customer_city && (
-                    <div>
-                      <label className="text-slate-400 text-sm">Stadt:</label>
-                      <div className="text-white">{inquiry.customer_city}</div>
-                    </div>
-                  )}
-                  {inquiry.customer_zip && (
-                    <div>
-                      <label className="text-slate-400 text-sm">PLZ:</label>
-                      <div className="text-white">{inquiry.customer_zip}</div>
-                    </div>
-                  )}
-                </>
+                  <div className="grid grid-cols-2 gap-3">
+                    {inquiry.customer_zip && (
+                      <div>
+                        <label className="text-slate-400 text-sm">PLZ:</label>
+                        <div className="text-white">{inquiry.customer_zip}</div>
+                      </div>
+                    )}
+                    {inquiry.customer_city && (
+                      <div>
+                        <label className="text-slate-400 text-sm">Stadt:</label>
+                        <div className="text-white">{inquiry.customer_city}</div>
+                      </div>
+                    )}
+                  </div>
+                </div>
               ) : (
                 <div className="text-slate-400">Keine Adresse angegeben</div>
               )}
