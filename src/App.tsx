@@ -19,7 +19,6 @@ import Impressum from "./pages/Impressum";
 import Datenschutz from "./pages/Datenschutz";
 import CookieEinstellungen from "./pages/CookieEinstellungen";
 import AGB from "./pages/AGB";
-import TempAdminSetup from "./components/TempAdminSetup";
 
 const queryClient = new QueryClient();
 
@@ -38,7 +37,6 @@ const AppContent = () => {
   return (
     <div>
       <ScrollToTop />
-      <TempAdminSetup />
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/hb8" element={<ProductHB8 />} />
