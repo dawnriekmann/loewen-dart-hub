@@ -29,6 +29,27 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  const checkAdminRole = async (userId: string) => {
+    try {
+      console.log('AuthProvider: Checking admin role for user:', userId);
+      
+      // Use the new security definer function
+      const { data, error } = await supabase.rpc('is_admin', { user_id: userId });
+      
+      if (error) {
+        console.error('AuthProvider: Error checking admin role:', error);
+        setIsAdmin(false);
+        return;
+      }
+      
+      console.log('AuthProvider: Admin check result:', data);
+      setIsAdmin(Boolean(data));
+    } catch (error) {
+      console.error('AuthProvider: Exception checking admin role:', error);
+      setIsAdmin(false);
+    }
+  };
+
   useEffect(() => {
     console.log('AuthProvider: Setting up auth state listener');
     
@@ -37,10 +58,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       console.log('AuthProvider: Initial session:', session);
       setSession(session);
       setUser(session?.user ?? null);
+      
       if (session?.user) {
-        checkAdminRole(session.user.id);
+        checkAdminRole(session.user.id).finally(() => setLoading(false));
+      } else {
+        setIsAdmin(false);
+        setLoading(false);
       }
-      setLoading(false);
     });
 
     // Set up auth state listener
@@ -51,7 +75,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         setUser(session?.user ?? null);
         
         if (session?.user) {
-          checkAdminRole(session.user.id);
+          await checkAdminRole(session.user.id);
         } else {
           setIsAdmin(false);
         }
@@ -61,30 +85,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     return () => subscription.unsubscribe();
   }, []);
-
-  const checkAdminRole = async (userId: string) => {
-    try {
-      console.log('AuthProvider: Checking admin role for user:', userId);
-      const { data: profile, error } = await supabase
-        .from('profiles')
-        .select('role')
-        .eq('id', userId)
-        .maybeSingle();
-      
-      if (error) {
-        console.error('AuthProvider: Error fetching user profile:', error);
-        setIsAdmin(false);
-        return;
-      }
-      
-      const adminStatus = profile?.role === 'admin';
-      console.log('AuthProvider: User admin status:', adminStatus, 'Profile:', profile);
-      setIsAdmin(adminStatus);
-    } catch (error) {
-      console.error('AuthProvider: Exception checking admin role:', error);
-      setIsAdmin(false);
-    }
-  };
 
   const signUp = async (email: string, password: string, fullName: string) => {
     console.log('AuthProvider: Signing up user:', email);

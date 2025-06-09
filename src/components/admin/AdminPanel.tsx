@@ -103,7 +103,7 @@ const AdminPanel = () => {
                     variant={filter === 'all' ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setFilter('all')}
-                    className="bg-[#002454] hover:bg-[#003366] border-slate-600"
+                    className="bg-primary hover:bg-primary/90 border-slate-600"
                   >
                     Alle
                   </Button>
@@ -111,7 +111,7 @@ const AdminPanel = () => {
                     variant={filter === 'HB8' ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setFilter('HB8')}
-                    className="bg-[#002454] hover:bg-[#003366] border-slate-600"
+                    className="bg-primary hover:bg-primary/90 border-slate-600"
                   >
                     HB8
                   </Button>
@@ -119,7 +119,7 @@ const AdminPanel = () => {
                     variant={filter === 'HB10' ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setFilter('HB10')}
-                    className="bg-[#002454] hover:bg-[#003366] border-slate-600"
+                    className="bg-primary hover:bg-primary/90 border-slate-600"
                   >
                     HB10
                   </Button>
@@ -133,7 +133,7 @@ const AdminPanel = () => {
                     variant={statusFilter === 'all' ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setStatusFilter('all')}
-                    className="bg-[#002454] hover:bg-[#003366] border-slate-600"
+                    className="bg-primary hover:bg-primary/90 border-slate-600"
                   >
                     Alle
                   </Button>
@@ -141,7 +141,7 @@ const AdminPanel = () => {
                     variant={statusFilter === 'new' ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setStatusFilter('new')}
-                    className="bg-[#002454] hover:bg-[#003366] border-slate-600"
+                    className="bg-primary hover:bg-primary/90 border-slate-600"
                   >
                     Neu
                   </Button>
@@ -149,7 +149,7 @@ const AdminPanel = () => {
                     variant={statusFilter === 'contacted' ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setStatusFilter('contacted')}
-                    className="bg-[#002454] hover:bg-[#003366] border-slate-600"
+                    className="bg-primary hover:bg-primary/90 border-slate-600"
                   >
                     Kontaktiert
                   </Button>
@@ -157,7 +157,7 @@ const AdminPanel = () => {
                     variant={statusFilter === 'closed' ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setStatusFilter('closed')}
-                    className="bg-[#002454] hover:bg-[#003366] border-slate-600"
+                    className="bg-primary hover:bg-primary/90 border-slate-600"
                   >
                     Abgeschlossen
                   </Button>
@@ -233,7 +233,7 @@ const AdminPanel = () => {
                     size="sm"
                     variant={inquiry.status === 'new' ? 'default' : 'outline'}
                     onClick={() => handleStatusChange(inquiry.id, 'new')}
-                    className="bg-blue-600 hover:bg-blue-700 border-slate-600"
+                    className="bg-blue-600 hover:bg-blue-700 border-slate-600 text-white"
                   >
                     Neu
                   </Button>
@@ -241,7 +241,7 @@ const AdminPanel = () => {
                     size="sm"
                     variant={inquiry.status === 'contacted' ? 'default' : 'outline'}
                     onClick={() => handleStatusChange(inquiry.id, 'contacted')}
-                    className="bg-amber-600 hover:bg-amber-700 border-slate-600"
+                    className="bg-amber-600 hover:bg-amber-700 border-slate-600 text-white"
                   >
                     Kontaktiert
                   </Button>
@@ -249,7 +249,7 @@ const AdminPanel = () => {
                     size="sm"
                     variant={inquiry.status === 'closed' ? 'default' : 'outline'}
                     onClick={() => handleStatusChange(inquiry.id, 'closed')}
-                    className="bg-green-600 hover:bg-green-700 border-slate-600"
+                    className="bg-green-600 hover:bg-green-700 border-slate-600 text-white"
                   >
                     Abgeschlossen
                   </Button>

@@ -13,10 +13,14 @@ const ProtectedRoute = ({ children, requireAdmin = false }: ProtectedRouteProps)
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log('ProtectedRoute: Auth state:', { user: !!user, isAdmin, loading, requireAdmin });
+    
     if (!loading) {
       if (!user) {
+        console.log('ProtectedRoute: No user, redirecting to auth');
         navigate("/auth");
       } else if (requireAdmin && !isAdmin) {
+        console.log('ProtectedRoute: Admin required but user is not admin, redirecting to home');
         navigate("/");
       }
     }
@@ -30,10 +34,17 @@ const ProtectedRoute = ({ children, requireAdmin = false }: ProtectedRouteProps)
     );
   }
 
-  if (!user || (requireAdmin && !isAdmin)) {
+  if (!user) {
+    console.log('ProtectedRoute: Rendering null - no user');
+    return null;
+  }
+  
+  if (requireAdmin && !isAdmin) {
+    console.log('ProtectedRoute: Rendering null - admin required but user is not admin');
     return null;
   }
 
+  console.log('ProtectedRoute: Rendering children');
   return <>{children}</>;
 };
 

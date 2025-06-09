@@ -100,7 +100,7 @@ const CreateAdminButton = () => {
     <Button
       onClick={createAdminAccount}
       disabled={isCreating}
-      className="bg-red-600 hover:bg-red-700"
+      className="bg-destructive hover:bg-destructive/90 text-destructive-foreground"
     >
       {isCreating ? "Erstelle Admin..." : "Admin-Account erstellen"}
     </Button>

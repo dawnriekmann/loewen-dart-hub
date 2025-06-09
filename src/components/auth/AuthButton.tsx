@@ -24,7 +24,7 @@ const AuthButton = () => {
       {user && isAdmin && (
         <Button
           onClick={handleAdminPanel}
-          className="bg-[#002454] hover:bg-[#003366] text-white"
+          className="bg-primary hover:bg-primary/90 text-primary-foreground"
         >
           Admin Panel
         </Button>
@@ -32,7 +32,7 @@ const AuthButton = () => {
       <Button
         onClick={handleAuth}
         variant="outline"
-        className="border-[#002454] text-[#002454] hover:bg-[#002454] hover:text-white"
+        className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
       >
         {user ? "Abmelden" : "Anmelden"}
       </Button>

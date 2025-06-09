@@ -23,7 +23,7 @@ const Admin = () => {
             <Button 
               onClick={handleSignOut}
               variant="outline"
-              className="border-slate-600 text-slate-300 hover:bg-slate-700"
+              className="border-slate-600 text-slate-300 hover:bg-slate-700 hover:text-white"
             >
               Abmelden
             </Button>
