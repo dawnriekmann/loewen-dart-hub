@@ -7,7 +7,7 @@ import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { CheckCircle, Star, Truck, Shield, Award, Users, Zap, Target, ArrowLeft, Plus, Minus } from "lucide-react";
+import { CheckCircle, Star, Truck, Shield, Award, Users, Zap, Target, ArrowLeft, Plus, Minus, Smartphone, Monitor, Wifi } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useProductInquiries } from "@/hooks/useProductInquiries";
@@ -16,6 +16,7 @@ const ProductHB8 = () => {
   const navigate = useNavigate();
   const { createInquiry } = useProductInquiries();
   const [checkoutMode, setCheckoutMode] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -30,7 +31,9 @@ const ProductHB8 = () => {
   const heroSectionRef = useRef<HTMLElement>(null);
   const productDetailsRef = useRef<HTMLElement>(null);
 
-  const basePrice = 2000;
+  const basePrice = 2599;
+  const originalPrice = 2999;
+  const savings = originalPrice - basePrice;
   const calculateTotal = () => {
     return basePrice * formData.quantity;
   };
@@ -43,7 +46,7 @@ const ProductHB8 = () => {
   };
 
   const handleQuantityChange = (delta: number) => {
-    const newQuantity = Math.max(1, Math.min(7, formData.quantity + delta));
+    const newQuantity = Math.max(1, Math.min(10, formData.quantity + delta));
     setFormData(prev => ({ ...prev, quantity: newQuantity }));
   };
 
@@ -60,7 +63,25 @@ const ProductHB8 = () => {
       customer_company: formData.customerType === 'business' ? formData.companyName : undefined,
     };
     
-    createInquiry.mutate(inquiryData);
+    createInquiry.mutate(inquiryData, {
+      onSuccess: () => {
+        setIsSubmitted(true);
+      }
+    });
+  };
+
+  const resetForm = () => {
+    setIsSubmitted(false);
+    setCheckoutMode(false);
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      quantity: 1,
+      customerType: "private",
+      companyName: ""
+    });
   };
 
   const scrollToTop = () => {
@@ -133,9 +154,9 @@ const ProductHB8 = () => {
                   // Normal Price Display Mode
                   <div className="animate-fade-in">
                     <div className="flex items-baseline gap-4 mb-4">
-                      <div className="text-5xl font-bold text-white">2.000€</div>
-                      <div className="text-slate-400 text-lg line-through">2.500€</div>
-                      <Badge className="bg-red-600 text-white">-20%</Badge>
+                      <div className="text-5xl font-bold text-white">2.599€</div>
+                      <div className="text-slate-400 text-lg line-through">2.999€</div>
+                      <Badge className="bg-red-600 text-white">-{savings}€</Badge>
                     </div>
                     <div className="text-slate-300 text-lg mb-6">inkl. 19% MwSt.</div>
                     
@@ -165,8 +186,8 @@ const ProductHB8 = () => {
                       </div>
                     </div>
                   </div>
-                ) : (
-                  // Checkout Form Mode
+                ) : !isSubmitted ? (
+                  // Checkout Form Mode - same structure as HB10
                   <form onSubmit={handleSubmit} className="animate-fade-in">
                     <div className="flex items-center gap-3 mb-6">
                       <Button
@@ -289,13 +310,13 @@ const ProductHB8 = () => {
                           variant="outline"
                           size="sm"
                           onClick={() => handleQuantityChange(1)}
-                          disabled={formData.quantity >= 7}
+                          disabled={formData.quantity >= 10}
                           className="bg-transparent border-blue-500 text-blue-400 hover:bg-blue-500/10 hover:text-blue-300 disabled:opacity-50 disabled:border-slate-600 disabled:text-slate-500"
                         >
                           <Plus className="w-4 h-4" />
                         </Button>
                         <span className="text-sm text-slate-400 ml-2">
-                          (max. 7 Stück verfügbar)
+                          (max. 10 Stück verfügbar)
                         </span>
                       </div>
                     </div>
@@ -326,14 +347,66 @@ const ProductHB8 = () => {
 
                     <Button 
                       type="submit" 
-                      className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 rounded-md shadow-lg transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
+                      disabled={createInquiry.isPending}
+                      className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 rounded-md shadow-lg transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02] disabled:opacity-50"
                     >
-                      Unverbindliche Anfrage stellen
+                      {createInquiry.isPending ? "Wird gesendet..." : "Unverbindliche Anfrage stellen"}
                     </Button>
                   </form>
+                ) : (
+                  // Success State
+                  <div className="animate-fade-in text-center">
+                    <div className="mb-6">
+                      <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <CheckCircle className="w-8 h-8 text-white" />
+                      </div>
+                      <h3 className="text-2xl font-semibold text-white mb-2">Anfrage erfolgreich gesendet!</h3>
+                      <p className="text-slate-300 mb-4">
+                        Vielen Dank für Ihr Interesse am HB8. Wir haben Ihre Anfrage erhalten und werden uns in Kürze bei Ihnen melden.
+                      </p>
+                    </div>
+
+                    <div className="bg-slate-900/50 border border-slate-600 rounded-lg p-4 mb-6">
+                      <h4 className="text-white font-semibold mb-3">Ihre Anfrage im Überblick:</h4>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex justify-between text-slate-300">
+                          <span>Produkt:</span>
+                          <span className="text-blue-400">HB8 Dartautomat</span>
+                        </div>
+                        <div className="flex justify-between text-slate-300">
+                          <span>Menge:</span>
+                          <span>{formData.quantity}x</span>
+                        </div>
+                        <div className="flex justify-between text-slate-300">
+                          <span>Gesamtpreis:</span>
+                          <span className="text-green-400 font-semibold">{calculateTotal().toLocaleString()}€</span>
+                        </div>
+                        <div className="flex justify-between text-slate-300">
+                          <span>Kontakt:</span>
+                          <span>{formData.email}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="space-y-3">
+                      <Button 
+                        onClick={resetForm}
+                        className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 rounded-md shadow-lg transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
+                      >
+                        Neue Anfrage stellen
+                      </Button>
+                      <Button 
+                        variant="ghost" 
+                        onClick={handleBeratungAnfordern}
+                        className="w-full border border-transparent text-slate-300 hover:bg-slate-700 hover:border-slate-500 hover:text-white py-3 rounded-md transition-all duration-300"
+                      >
+                        Persönliche Beratung
+                      </Button>
+                    </div>
+                  </div>
                 )}
 
-                {!checkoutMode && (
+                {!checkoutMode && !isSubmitted && (
                   <div className="flex gap-4">
                     <Button 
                       onClick={() => setCheckoutMode(true)}

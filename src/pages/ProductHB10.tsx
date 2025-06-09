@@ -16,6 +16,7 @@ const ProductHB10 = () => {
   const navigate = useNavigate();
   const { createInquiry } = useProductInquiries();
   const [checkoutMode, setCheckoutMode] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -62,7 +63,25 @@ const ProductHB10 = () => {
       customer_company: formData.customerType === 'business' ? formData.companyName : undefined,
     };
     
-    createInquiry.mutate(inquiryData);
+    createInquiry.mutate(inquiryData, {
+      onSuccess: () => {
+        setIsSubmitted(true);
+      }
+    });
+  };
+
+  const resetForm = () => {
+    setIsSubmitted(false);
+    setCheckoutMode(false);
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      quantity: 1,
+      customerType: "private",
+      companyName: ""
+    });
   };
 
   const scrollToTop = () => {
@@ -167,8 +186,8 @@ const ProductHB10 = () => {
                       </div>
                     </div>
                   </div>
-                ) : (
-                  // Checkout Form Mode - same as HB8
+                ) : !isSubmitted ? (
+                  // Checkout Form Mode
                   <form onSubmit={handleSubmit} className="animate-fade-in">
                     <div className="flex items-center gap-3 mb-6">
                       <Button
@@ -328,14 +347,66 @@ const ProductHB10 = () => {
 
                     <Button 
                       type="submit" 
-                      className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 rounded-md shadow-lg transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
+                      disabled={createInquiry.isPending}
+                      className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 rounded-md shadow-lg transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02] disabled:opacity-50"
                     >
-                      Unverbindliche Anfrage stellen
+                      {createInquiry.isPending ? "Wird gesendet..." : "Unverbindliche Anfrage stellen"}
                     </Button>
                   </form>
+                ) : (
+                  // Success State
+                  <div className="animate-fade-in text-center">
+                    <div className="mb-6">
+                      <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <CheckCircle className="w-8 h-8 text-white" />
+                      </div>
+                      <h3 className="text-2xl font-semibold text-white mb-2">Anfrage erfolgreich gesendet!</h3>
+                      <p className="text-slate-300 mb-4">
+                        Vielen Dank für Ihr Interesse am HB10. Wir haben Ihre Anfrage erhalten und werden uns in Kürze bei Ihnen melden.
+                      </p>
+                    </div>
+
+                    <div className="bg-slate-900/50 border border-slate-600 rounded-lg p-4 mb-6">
+                      <h4 className="text-white font-semibold mb-3">Ihre Anfrage im Überblick:</h4>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex justify-between text-slate-300">
+                          <span>Produkt:</span>
+                          <span className="text-blue-400">HB10 Dartautomat</span>
+                        </div>
+                        <div className="flex justify-between text-slate-300">
+                          <span>Menge:</span>
+                          <span>{formData.quantity}x</span>
+                        </div>
+                        <div className="flex justify-between text-slate-300">
+                          <span>Gesamtpreis:</span>
+                          <span className="text-green-400 font-semibold">{calculateTotal().toLocaleString()}€</span>
+                        </div>
+                        <div className="flex justify-between text-slate-300">
+                          <span>Kontakt:</span>
+                          <span>{formData.email}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="space-y-3">
+                      <Button 
+                        onClick={resetForm}
+                        className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 rounded-md shadow-lg transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
+                      >
+                        Neue Anfrage stellen
+                      </Button>
+                      <Button 
+                        variant="ghost" 
+                        onClick={handleBeratungAnfordern}
+                        className="w-full border border-transparent text-slate-300 hover:bg-slate-700 hover:border-slate-500 hover:text-white py-3 rounded-md transition-all duration-300"
+                      >
+                        Persönliche Beratung
+                      </Button>
+                    </div>
+                  </div>
                 )}
 
-                {!checkoutMode && (
+                {!checkoutMode && !isSubmitted && (
                   <div className="flex gap-4">
                     <Button 
                       onClick={() => setCheckoutMode(true)}
