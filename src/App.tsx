@@ -30,29 +30,37 @@ const ScrollToTop = () => {
   return null;
 };
 
+const AppContent = () => (
+  <>
+    <ScrollToTop />
+    <TempAdminSetup />
+    <Routes>
+      <Route path="/" element={<Index />} />
+      <Route path="/hb8" element={<ProductHB8 />} />
+      <Route path="/hb9" element={<ProductHB9 />} />
+      <Route path="/hb10" element={<ProductHB10 />} />
+      <Route path="/kontakt" element={<Contact />} />
+      <Route path="/auth" element={<Auth />} />
+      <Route path="/admin" element={<Admin />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  </>
+);
+
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <AuthProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <ScrollToTop />
-          <TempAdminSetup />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/hb8" element={<ProductHB8 />} />
-            <Route path="/hb9" element={<ProductHB9 />} />
-            <Route path="/hb10" element={<ProductHB10 />} />
-            <Route path="/kontakt" element={<Contact />} />
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </AuthProvider>
-  </QueryClientProvider>
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <TooltipProvider>
+          <BrowserRouter>
+            <AppContent />
+          </BrowserRouter>
+          <Toaster />
+          <Sonner />
+        </TooltipProvider>
+      </AuthProvider>
+    </QueryClientProvider>
+  </React.StrictMode>
 );
 
 export default App;
