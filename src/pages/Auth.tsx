@@ -5,14 +5,19 @@ import { useAuth } from "@/components/auth/AuthContext";
 import AuthForm from "@/components/auth/AuthForm";
 
 const Auth = () => {
-  const { user, loading } = useAuth();
+  const { user, isAdmin, loading } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (user && !loading) {
-      navigate("/");
+      // Redirect admin users to the admin panel, regular users to home
+      if (isAdmin) {
+        navigate("/admin");
+      } else {
+        navigate("/");
+      }
     }
-  }, [user, loading, navigate]);
+  }, [user, isAdmin, loading, navigate]);
 
   if (loading) {
     return (
