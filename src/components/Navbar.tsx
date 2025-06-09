@@ -77,12 +77,12 @@ const Navbar = () => {
                   >
                     <span style={menuItemStyle}>Dartautomaten</span>
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent className="!bg-transparent !border-none !shadow-none p-0 m-0 focus:ring-0 focus:ring-offset-0 data-[state=open]:ring-0">
-                    <div className="bg-[#002454] border-2 border-blue-400/60 rounded-xl shadow-2xl p-6 w-64 text-white backdrop-blur-sm">
+                  <NavigationMenuContent className="!bg-transparent !border-none !shadow-none focus:ring-0 focus:ring-offset-0 focus-visible:ring-2 focus-visible:ring-blue-600 data-[state=open]:ring-0">
+                    <div className="bg-slate-900/90 backdrop-blur-xl border-2 border-blue-500/60 rounded-xl shadow-2xl p-6 w-64 !text-white focus:ring-0 focus:ring-offset-0">
                       <div className="space-y-2">
                         <Link 
                           to="/hb8"
-                          className="block px-4 py-3 text-white hover:bg-blue-600/30 hover:border-l-4 hover:border-l-blue-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-0"
+                          className="block px-4 py-3 text-white hover:bg-blue-600/30 hover:border-l-4 hover:border-l-blue-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-0"
                         >
                           <div className="flex items-center space-x-3">
                             <div className="w-2 h-2 bg-blue-400 rounded-full shadow-lg shadow-blue-400/50"></div>
@@ -91,7 +91,7 @@ const Navbar = () => {
                         </Link>
                         <Link 
                           to="/hb9" 
-                          className="block px-4 py-3 text-white hover:bg-blue-600/30 hover:border-l-4 hover:border-l-blue-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-0"
+                          className="block px-4 py-3 text-white hover:bg-blue-600/30 hover:border-l-4 hover:border-l-blue-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-0"
                         >
                           <div className="flex items-center space-x-3">
                             <div className="w-2 h-2 bg-blue-400 rounded-full shadow-lg shadow-blue-400/50"></div>
@@ -100,7 +100,7 @@ const Navbar = () => {
                         </Link>
                         <Link 
                           to="/hb10" 
-                          className="block px-4 py-3 text-white hover:bg-blue-600/30 hover:border-l-4 hover:border-l-blue-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-0"
+                          className="block px-4 py-3 text-white hover:bg-blue-600/30 hover:border-l-4 hover:border-l-blue-400 rounded-md transition-all duration-200 hover:scale-105 font-medium tracking-wide focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-0"
                         >
                           <div className="flex items-center space-x-3">
                             <div className="w-2 h-2 bg-blue-400 rounded-full shadow-lg shadow-blue-400/50"></div>
@@ -132,7 +132,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 bg-[#002454] border border-blue-400/60 rounded-xl p-6">
+          <div className="md:hidden mt-4 bg-slate-900/95 backdrop-blur-xl border border-blue-500/60 rounded-xl p-6">
             <div className="space-y-4">
               <div className="space-y-2">
                 <div className="text-white font-franklin text-lg font-semibold mb-3 tracking-wide">DARTAUTOMATEN</div>
@@ -159,7 +159,7 @@ const Navbar = () => {
                 </Link>
               </div>
               
-              <hr className="border-blue-400/30" />
+              <hr className="border-blue-500/30" />
               
               <Link 
                 to="/kontakt" 

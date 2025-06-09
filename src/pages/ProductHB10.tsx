@@ -10,11 +10,9 @@ import { Label } from "@/components/ui/label";
 import { CheckCircle, Star, Truck, Shield, Award, Users, Zap, Target, ArrowLeft, Plus, Minus, Smartphone, Monitor, Wifi } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useProductInquiry } from "@/hooks/useProductInquiry";
 
 const ProductHB10 = () => {
   const navigate = useNavigate();
-  const { submitInquiry, loading: submitting } = useProductInquiry();
   const [checkoutMode, setCheckoutMode] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -22,10 +20,10 @@ const ProductHB10 = () => {
     email: "",
     phone: "",
     quantity: 1,
-    customerType: "privat" as "privat" | "gewerbe",
+    customerType: "private", // "private" or "business"
     companyName: ""
   });
-  const [previousCustomerType, setPreviousCustomerType] = useState("privat" as "privat" | "gewerbe");
+  const [previousCustomerType, setPreviousCustomerType] = useState("private");
   const companyFieldRef = useRef<HTMLDivElement>(null);
   const heroSectionRef = useRef<HTMLElement>(null);
   const productDetailsRef = useRef<HTMLElement>(null);
@@ -49,34 +47,10 @@ const ProductHB10 = () => {
     setFormData(prev => ({ ...prev, quantity: newQuantity }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    const result = await submitInquiry({
-      firstName: formData.firstName,
-      lastName: formData.lastName,
-      email: formData.email,
-      phone: formData.phone,
-      companyName: formData.customerType === 'gewerbe' ? formData.companyName : undefined,
-      customerType: formData.customerType,
-      quantity: formData.quantity,
-      product: 'HB10',
-      unitPrice: basePrice,
-    });
-
-    if (result.success) {
-      // Reset form
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        quantity: 1,
-        customerType: "privat",
-        companyName: ""
-      });
-      setCheckoutMode(false);
-    }
+    console.log("Form submitted:", formData);
+    // Handle form submission logic here
   };
 
   const scrollToTop = () => {
@@ -202,15 +176,15 @@ const ProductHB10 = () => {
                       <label className="block text-sm font-medium text-slate-300 mb-3">Kundentyp</label>
                       <RadioGroup
                         value={formData.customerType}
-                        onValueChange={(value: "privat" | "gewerbe") => handleInputChange("customerType", value)}
+                        onValueChange={(value) => handleInputChange("customerType", value)}
                         className="flex gap-6"
                       >
                         <div className="flex items-center space-x-2">
-                          <RadioGroupItem value="privat" id="private" className="border-slate-600 text-blue-400" />
+                          <RadioGroupItem value="private" id="private" className="border-slate-600 text-blue-400" />
                           <Label htmlFor="private" className="text-slate-300 cursor-pointer">Privat</Label>
                         </div>
                         <div className="flex items-center space-x-2">
-                          <RadioGroupItem value="gewerbe" id="business" className="border-slate-600 text-blue-400" />
+                          <RadioGroupItem value="business" id="business" className="border-slate-600 text-blue-400" />
                           <Label htmlFor="business" className="text-slate-300 cursor-pointer">Geschäftlich</Label>
                         </div>
                       </RadioGroup>
@@ -220,7 +194,7 @@ const ProductHB10 = () => {
                     <div 
                       ref={companyFieldRef}
                       className={`overflow-hidden transition-all duration-300 ease-out ${
-                        formData.customerType === "gewerbe" 
+                        formData.customerType === "business" 
                           ? "max-h-20 opacity-100 mb-4 animate-slide-down" 
                           : "max-h-0 opacity-0 mb-0"
                       }`}
@@ -232,7 +206,7 @@ const ProductHB10 = () => {
                           onChange={(e) => handleInputChange("companyName", e.target.value)}
                           className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400"
                           placeholder="Ihr Unternehmensname"
-                          required={formData.customerType === "gewerbe"}
+                          required={formData.customerType === "business"}
                         />
                       </div>
                     </div>
@@ -342,10 +316,9 @@ const ProductHB10 = () => {
 
                     <Button 
                       type="submit" 
-                      disabled={submitting}
                       className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 rounded-md shadow-lg transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
                     >
-                      {submitting ? "Wird gesendet..." : "Unverbindliche Anfrage stellen"}
+                      Unverbindliche Anfrage stellen
                     </Button>
                   </form>
                 )}
@@ -538,7 +511,7 @@ const ProductHB10 = () => {
                   <div className="bg-blue-900/20 border border-blue-700/50 rounded-lg p-4 mt-6">
                     <h4 className="text-blue-400 font-semibold mb-2">Einzigartiges Spielerlebnis:</h4>
                     <p className="text-sm text-slate-300">
-                      Individuelle Features wie die Darstellung von Spielstatistiken und Trainingserfolge 
+                      Individuelle Features wie die Darstellung von Spielstatistiken und Trainingserfolgen 
                       bieten Dartfans ein einzigartiges Spielerlebnis und machen sie noch mehr Teil der E-Darts-Community.
                     </p>
                   </div>

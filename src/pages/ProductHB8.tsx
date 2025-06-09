@@ -7,14 +7,12 @@ import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { CheckCircle, Star, Truck, Shield, Award, Users, Zap, Target, ArrowLeft, Plus, Minus, Smartphone, Monitor, Wifi } from "lucide-react";
+import { CheckCircle, Star, Truck, Shield, Award, Users, Zap, Target, ArrowLeft, Plus, Minus } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useProductInquiry } from "@/hooks/useProductInquiry";
 
 const ProductHB8 = () => {
   const navigate = useNavigate();
-  const { submitInquiry, loading: submitting } = useProductInquiry();
   const [checkoutMode, setCheckoutMode] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -22,17 +20,15 @@ const ProductHB8 = () => {
     email: "",
     phone: "",
     quantity: 1,
-    customerType: "privat" as "privat" | "gewerbe",
+    customerType: "private", // "private" or "business"
     companyName: ""
   });
-  const [previousCustomerType, setPreviousCustomerType] = useState("privat" as "privat" | "gewerbe");
+  const [previousCustomerType, setPreviousCustomerType] = useState("private");
   const companyFieldRef = useRef<HTMLDivElement>(null);
   const heroSectionRef = useRef<HTMLElement>(null);
   const productDetailsRef = useRef<HTMLElement>(null);
 
-  const basePrice = 2799;
-  const originalPrice = 3299;
-  const savings = originalPrice - basePrice;
+  const basePrice = 2000;
   const calculateTotal = () => {
     return basePrice * formData.quantity;
   };
@@ -45,38 +41,14 @@ const ProductHB8 = () => {
   };
 
   const handleQuantityChange = (delta: number) => {
-    const newQuantity = Math.max(1, Math.min(10, formData.quantity + delta));
+    const newQuantity = Math.max(1, Math.min(7, formData.quantity + delta));
     setFormData(prev => ({ ...prev, quantity: newQuantity }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    const result = await submitInquiry({
-      firstName: formData.firstName,
-      lastName: formData.lastName,
-      email: formData.email,
-      phone: formData.phone,
-      companyName: formData.customerType === 'gewerbe' ? formData.companyName : undefined,
-      customerType: formData.customerType,
-      quantity: formData.quantity,
-      product: 'HB8',
-      unitPrice: basePrice,
-    });
-
-    if (result.success) {
-      // Reset form
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        quantity: 1,
-        customerType: "privat",
-        companyName: ""
-      });
-      setCheckoutMode(false);
-    }
+    console.log("Form submitted:", formData);
+    // Handle form submission logic here
   };
 
   const scrollToTop = () => {
@@ -116,11 +88,11 @@ const ProductHB8 = () => {
               <div className="flex items-center gap-3 mb-6">
                 <Badge className="bg-blue-600 hover:bg-blue-700 text-white border-0">
                   <Award className="w-4 h-4 mr-2" />
-                  Bestseller
+                  Profi-Gerät
                 </Badge>
-                <Badge className="bg-green-700 hover:bg-green-600 text-white border-0">
-                  <CheckCircle className="w-4 h-4 mr-2" />
-                  Verfügbar
+                <Badge className="bg-slate-700 hover:bg-slate-600 text-slate-200 border-slate-600">
+                  <Star className="w-4 h-4 mr-2 fill-blue-400 text-blue-400" />
+                  Marktführer
                 </Badge>
               </div>
               
@@ -128,18 +100,18 @@ const ProductHB8 = () => {
                 LÖWEN DARTAUTOMAT
               </h1>
               <h2 className="font-bold text-blue-400 mb-6 font-parisine-narrow" style={{ fontSize: '42px' }}>
-                HB8 DART BLAU (V4)
+                HB8 PROFESSIONAL
               </h2>
               
               <div className="flex items-center gap-4 mb-8">
                 <div className="text-slate-300">
-                  <span className="text-sm">Serie:</span>
-                  <span className="ml-2 font-semibold text-blue-400">Bewährte Produktionsreihe</span>
+                  <span className="text-sm">Baujahr:</span>
+                  <span className="ml-2 font-semibold text-blue-400">2021</span>
                 </div>
                 <Separator orientation="vertical" className="h-6 bg-slate-600" />
                 <div className="text-slate-300">
                   <span className="text-sm">Status:</span>
-                  <span className="ml-2 font-semibold text-green-400">Sofort verfügbar</span>
+                  <span className="ml-2 font-semibold text-green-400">Lagerware verfügbar</span>
                 </div>
               </div>
               
@@ -149,16 +121,16 @@ const ProductHB8 = () => {
                   // Normal Price Display Mode
                   <div className="animate-fade-in">
                     <div className="flex items-baseline gap-4 mb-4">
-                      <div className="text-5xl font-bold text-white">2.799€</div>
-                      <div className="text-slate-400 text-lg line-through">3.299€</div>
-                      <Badge className="bg-red-600 text-white">-{savings}€</Badge>
+                      <div className="text-5xl font-bold text-white">2.000€</div>
+                      <div className="text-slate-400 text-lg line-through">2.500€</div>
+                      <Badge className="bg-red-600 text-white">-20%</Badge>
                     </div>
                     <div className="text-slate-300 text-lg mb-6">inkl. 19% MwSt.</div>
                     
                     <div className="flex items-center gap-3 mb-6">
                       <div className="flex items-center gap-2 bg-green-900/30 text-green-400 px-3 py-2 rounded-full text-sm">
                         <CheckCircle className="w-4 h-4" />
-                        Sofort verfügbar
+                        Nur 7 Stück verfügbar
                       </div>
                       <div className="flex items-center gap-2 bg-blue-900/30 text-blue-400 px-3 py-2 rounded-full text-sm">
                         <Truck className="w-4 h-4" />
@@ -176,8 +148,8 @@ const ProductHB8 = () => {
                         Kostenlose Einrichtung vor Ort
                       </div>
                       <div className="flex items-center gap-2">
-                        <Smartphone className="w-4 h-4 text-cyan-400" />
-                        LÖWEN DART-App inklusive
+                        <Zap className="w-4 h-4 text-cyan-400" />
+                        Sofort einsatzbereit
                       </div>
                     </div>
                   </div>
@@ -202,15 +174,15 @@ const ProductHB8 = () => {
                       <label className="block text-sm font-medium text-slate-300 mb-3">Kundentyp</label>
                       <RadioGroup
                         value={formData.customerType}
-                        onValueChange={(value: "privat" | "gewerbe") => handleInputChange("customerType", value)}
+                        onValueChange={(value) => handleInputChange("customerType", value)}
                         className="flex gap-6"
                       >
                         <div className="flex items-center space-x-2">
-                          <RadioGroupItem value="privat" id="private" className="border-slate-600 text-blue-400" />
+                          <RadioGroupItem value="private" id="private" className="border-slate-600 text-blue-400" />
                           <Label htmlFor="private" className="text-slate-300 cursor-pointer">Privat</Label>
                         </div>
                         <div className="flex items-center space-x-2">
-                          <RadioGroupItem value="gewerbe" id="business" className="border-slate-600 text-blue-400" />
+                          <RadioGroupItem value="business" id="business" className="border-slate-600 text-blue-400" />
                           <Label htmlFor="business" className="text-slate-300 cursor-pointer">Geschäftlich</Label>
                         </div>
                       </RadioGroup>
@@ -220,7 +192,7 @@ const ProductHB8 = () => {
                     <div 
                       ref={companyFieldRef}
                       className={`overflow-hidden transition-all duration-300 ease-out ${
-                        formData.customerType === "gewerbe" 
+                        formData.customerType === "business" 
                           ? "max-h-20 opacity-100 mb-4 animate-slide-down" 
                           : "max-h-0 opacity-0 mb-0"
                       }`}
@@ -232,7 +204,7 @@ const ProductHB8 = () => {
                           onChange={(e) => handleInputChange("companyName", e.target.value)}
                           className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400"
                           placeholder="Ihr Unternehmensname"
-                          required={formData.customerType === "gewerbe"}
+                          required={formData.customerType === "business"}
                         />
                       </div>
                     </div>
@@ -305,13 +277,13 @@ const ProductHB8 = () => {
                           variant="outline"
                           size="sm"
                           onClick={() => handleQuantityChange(1)}
-                          disabled={formData.quantity >= 10}
+                          disabled={formData.quantity >= 7}
                           className="bg-transparent border-blue-500 text-blue-400 hover:bg-blue-500/10 hover:text-blue-300 disabled:opacity-50 disabled:border-slate-600 disabled:text-slate-500"
                         >
                           <Plus className="w-4 h-4" />
                         </Button>
                         <span className="text-sm text-slate-400 ml-2">
-                          (Aktuell verfügbar)
+                          (max. 7 Stück verfügbar)
                         </span>
                       </div>
                     </div>
@@ -342,10 +314,9 @@ const ProductHB8 = () => {
 
                     <Button 
                       type="submit" 
-                      disabled={submitting}
                       className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 rounded-md shadow-lg transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
                     >
-                      {submitting ? "Wird gesendet..." : "Unverbindliche Anfrage stellen"}
+                      Unverbindliche Anfrage stellen
                     </Button>
                   </form>
                 )}
@@ -378,27 +349,28 @@ const ProductHB8 = () => {
                   <div className="flex flex-col">
                     <div className="h-[28rem] flex items-center justify-center mb-4">
                       <img 
-                        src="https://www.loewen.de/fileadmin/_processed_/e/9/csm_2023-08-08-HB8-Blau-Links_ea4a0f63ed.png"
+                        src="https://www.loewen.de/fileadmin/_processed_/3/b/csm_DART_HB8_Tunier_Retusche_593a52b77d.png"
                         alt="Löwen Dartautomat HB8"
                         className="max-h-full max-w-full object-contain drop-shadow-2xl scale-120"
                       />
                     </div>
                     
                     <div className="text-center space-y-4">
-                      <h3 className="text-2xl font-bold text-white">DER BEWÄHRTE KLASSIKER</h3>
+                      <h3 className="text-2xl font-bold text-white">LÖWEN DARTAUTOMAT HB8</h3>
                       <p className="text-slate-300 text-base leading-relaxed">
-                        Der HB8 verbindet bewährte Qualität mit modernen Features. 
-                        Mit dem 10,4" Monitor und der LÖWEN DART-App das perfekte Gerät für Einsteiger und Profis.
+                        Der LÖWEN Turnier Dart HB8 ist die neueste Evolution des legendären Dart 96, 
+                        der seit 1996 als Marktführer in Deutschland gilt. Ein hochwertiges 
+                        Profi-Gerät mit über 10.000 verkauften Geräten im ersten Jahr.
                       </p>
                       
                       <div className="flex items-center justify-center gap-4 pt-4">
                         <div className="flex items-center gap-2 text-sm text-blue-400">
-                          <Monitor className="w-4 h-4" />
-                          <span>10,4" Monitor</span>
+                          <Target className="w-4 h-4" />
+                          <span>Piezo-Sensoren</span>
                         </div>
                         <div className="flex items-center gap-2 text-sm text-green-400">
-                          <Smartphone className="w-4 h-4" />
-                          <span>App-Ready</span>
+                          <Shield className="w-4 h-4" />
+                          <span>Made in Germany</span>
                         </div>
                       </div>
                     </div>
@@ -415,71 +387,51 @@ const ProductHB8 = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="font-bold text-white mb-6 font-parisine-narrow" style={{ fontSize: '48px' }}>
-              HIGHLIGHTS
+              WARUM DER HB8?
             </h2>
             <p className="text-slate-400 text-xl max-w-3xl mx-auto">
-              Der HB8 überzeugt durch bewährte Technik und moderne Features
+              Der HB8 vereint jahrzehntelange Erfahrung mit modernster Technologie für das ultimative Dart-Erlebnis
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 hover:scale-105">
               <CardHeader className="text-center">
-                <Monitor className="w-12 h-12 text-blue-400 mx-auto mb-4" />
-                <CardTitle className="text-white">10,4" Monitor</CardTitle>
+                <Target className="w-12 h-12 text-blue-400 mx-auto mb-4" />
+                <CardTitle className="text-white">Präzise Sensorik</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-slate-400 text-center">Hochauflösender Bildschirm für Spielergebnisse</p>
+                <p className="text-slate-400 text-center">Piezo-Sensoren für 100% akkurate Trefferkennung</p>
               </CardContent>
             </Card>
 
             <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 hover:scale-105">
               <CardHeader className="text-center">
-                <Target className="w-12 h-12 text-green-400 mx-auto mb-4" />
-                <CardTitle className="text-white">Soft-Tip Technologie</CardTitle>
+                <Shield className="w-12 h-12 text-green-400 mx-auto mb-4" />
+                <CardTitle className="text-white">Deutsche Qualität</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-slate-400 text-center">Präzise Trefferkennung mit Piezo-Sensoren</p>
+                <p className="text-slate-400 text-center">CE & GS geprüft, hergestellt in Deutschland</p>
               </CardContent>
             </Card>
 
             <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 hover:scale-105">
               <CardHeader className="text-center">
-                <Zap className="w-12 h-12 text-purple-400 mx-auto mb-4" />
-                <CardTitle className="text-white">LED-Beleuchtung</CardTitle>
+                <Users className="w-12 h-12 text-purple-400 mx-auto mb-4" />
+                <CardTitle className="text-white">Multiplayer</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-slate-400 text-center">Optimale Ausleuchtung des Spielfeldes</p>
+                <p className="text-slate-400 text-center">Bis zu 8 Spieler gleichzeitig, Teams möglich</p>
               </CardContent>
             </Card>
 
             <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 hover:scale-105">
               <CardHeader className="text-center">
-                <Wifi className="w-12 h-12 text-blue-400 mx-auto mb-4" />
-                <CardTitle className="text-white">WLAN-Ready</CardTitle>
+                <Award className="w-12 h-12 text-blue-400 mx-auto mb-4" />
+                <CardTitle className="text-white">Marktführer</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-slate-400 text-center">Optional erweiterbar mit WLAN-Modul</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 hover:scale-105">
-              <CardHeader className="text-center">
-                <Users className="w-12 h-12 text-green-400 mx-auto mb-4" />
-                <CardTitle className="text-white">4 Sprachen</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-slate-400 text-center">Deutsch, Englisch, Spanisch, Französisch</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 hover:scale-105">
-              <CardHeader className="text-center">
-                <Smartphone className="w-12 h-12 text-blue-400 mx-auto mb-4" />
-                <CardTitle className="text-white">LÖWEN DART-App</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-slate-400 text-center">Statistiken und Spielerprofile verwalten</p>
+                <p className="text-slate-400 text-center">Über 10.000 verkaufte Geräte seit 1996</p>
               </CardContent>
             </Card>
           </div>
@@ -839,7 +791,7 @@ const ProductHB8 = () => {
                         <ul className="text-slate-400 text-sm space-y-1">
                           <li>• Offizielle Turnier-Abwurflinie</li>
                           <li>• Befestigungsmaterial (Wandmontage)</li>
-                          <li>• Deutsches Benutzerhandbuch (120 Seiten)</li>
+                          <li>• Deutsches Handbuch (120 Seiten)</li>
                           <li>• Garantieschein & Zertifikate</li>
                         </ul>
                       </div>
@@ -873,11 +825,11 @@ const ProductHB8 = () => {
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="max-w-4xl mx-auto">
             <h2 className="font-bold text-white mb-8 font-parisine-narrow" style={{ fontSize: '48px' }}>
-              SICHERN SIE SICH JETZT DEN HB8
+              SICHERN SIE SICH JETZT IHREN HB8
             </h2>
             <p className="text-slate-300 mb-10 text-lg leading-relaxed">
-              Der bewährte Klassiker der LÖWEN DART-Serie. Mit moderner App-Integration, 
-              24 Monaten Garantie und kostenloser Speditionslieferung.
+              Nur noch wenige Exemplare dieser exklusiven Lagerware aus 2021 verfügbar. 
+              Mit 24 Monaten Garantie, kostenloser Speditionslieferung und professioneller Einrichtung vor Ort.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -906,8 +858,8 @@ const ProductHB8 = () => {
                 Kostenlose Lieferung
               </div>
               <div className="flex items-center gap-2">
-                <Smartphone className="w-4 h-4 text-purple-400" />
-                App-Integration
+                <Users className="w-4 h-4 text-purple-400" />
+                Profi-Setup inklusive
               </div>
             </div>
           </div>

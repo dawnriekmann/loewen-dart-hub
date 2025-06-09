@@ -1,11 +1,7 @@
-
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { useState, useEffect } from "react";
-import { useDynamicGradientHeight } from "@/hooks/useDynamicGradientHeight";
 
 const UpdateSection = () => {
-  const { textRef, gradientHeight } = useDynamicGradientHeight();
-
   const sliderImages = [
     "https://www.loewen.de/fileadmin/user_upload/Dart-Slider-V4-092024-1.png",
     "https://www.loewen.de/fileadmin/user_upload/Dart-Slider-V4-092024-2.png",
@@ -51,27 +47,13 @@ const UpdateSection = () => {
   }, [sliderImages.length]);
 
   return (
-    <section className="py-20 bg-slate-50 overflow-hidden">
-      <div className="container mx-auto px-4 max-w-none overflow-hidden">
+    <section className="py-20 bg-slate-50">
+      <div className="container mx-auto px-4">
         {/* Title with gradient background */}
-        <div className="text-center mb-16 overflow-hidden w-full">
-          <div className="relative overflow-hidden w-full">
-            <div 
-              className="products-title-gradient-container"
-              style={{ 
-                height: gradientHeight,
-                left: '50%',
-                right: 'auto',
-                transform: 'translateX(-50%) translateY(-50%)',
-                width: '100vw',
-                maxWidth: 'none'
-              }}
-            ></div>
-            <h2 
-              ref={textRef}
-              className="font-bold font-parisine-narrow uppercase text-white relative z-10 px-4 max-w-full" 
-              style={{ fontSize: '58.5px' }}
-            >
+        <div className="text-center mb-16">
+          <div className="relative">
+            <div className="products-title-gradient-container w-full"></div>
+            <h2 className="font-bold font-parisine-narrow uppercase text-white relative z-10" style={{ fontSize: '58.5px' }}>
               JETZT NEU: HB10 UPDATE V4.0-4 (April 2025)
             </h2>
           </div>
@@ -98,8 +80,8 @@ const UpdateSection = () => {
         </div>
 
         {/* Banner Slider with custom dots navigation - 50% larger */}
-        <div className="mb-16 overflow-hidden">
-          <div className="w-full max-w-7xl mx-auto overflow-x-hidden">
+        <div className="mb-16">
+          <div className="w-full max-w-7xl mx-auto"> {/* Changed from max-w-5xl to max-w-7xl for 50% larger */}
             <div className="relative overflow-hidden rounded-lg">
               <div 
                 className="flex transition-transform duration-500 ease-in-out"
@@ -107,7 +89,7 @@ const UpdateSection = () => {
               >
                 {sliderImages.map((image, index) => (
                   <div key={index} className="w-full flex-shrink-0 flex justify-center p-8">
-                    <div className="bg-white rounded-lg shadow-lg p-6 max-w-5xl w-full">
+                    <div className="bg-white rounded-lg shadow-lg p-6 max-w-5xl"> {/* Changed from max-w-3xl to max-w-5xl for 50% larger */}
                       <img 
                         src={image} 
                         alt={`HB10 Update Slide ${index + 1}`}
@@ -135,44 +117,37 @@ const UpdateSection = () => {
           </div>
         </div>
 
-        {/* Three columns with download items - constrained width */}
-        <div className="max-w-6xl mx-auto mb-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {downloadItems.map((item) => (
-              <div key={item.id} className="flex items-center space-x-2 min-w-0">
-                <div 
-                  className="flex-shrink-0"
-                  style={{ 
-                    width: '12px', 
-                    height: '100px', 
-                    backgroundColor: '#638ec5' 
-                  }}
-                />
-                <img 
-                  src={item.image} 
-                  alt={item.title}
-                  className="flex-shrink-0"
-                  style={{ width: '80px', height: '100px' }}
-                />
-                <div className="flex flex-col text-left min-w-0 flex-1">
-                  <h3 className="text-lg text-[#002454] mb-1 break-words">
-                    {item.title}
-                  </h3>
-                  <p className="text-xl font-bold text-[#002454] mb-2 break-words">
-                    {item.subtitle}
-                  </p>
-                  <a 
-                    href="https://www.loewen-kundenportal.de/downloadbereich/produktinformationen/dart-soccer"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-lg font-bold text-[#002454] cursor-pointer hover:underline break-words"
-                  >
-                    Zum Downloadbereich
-                  </a>
-                </div>
+        {/* Three columns with download items */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          {downloadItems.map((item) => (
+            <div key={item.id} className="flex items-center space-x-2">
+              <div 
+                className="flex-shrink-0"
+                style={{ 
+                  width: '12px', 
+                  height: '100px', 
+                  backgroundColor: '#638ec5' 
+                }}
+              />
+              <img 
+                src={item.image} 
+                alt={item.title}
+                className="flex-shrink-0"
+                style={{ width: '80px', height: '100px' }}
+              />
+              <div className="flex flex-col text-left">
+                <h3 className="text-lg text-[#002454] mb-1">
+                  {item.title}
+                </h3>
+                <p className="text-xl font-bold text-[#002454] mb-2">
+                  {item.subtitle}
+                </p>
+                <p className="text-lg font-bold text-[#002454] cursor-pointer hover:underline">
+                  Zum Downloadbereich
+                </p>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
 
         {/* Bottom text section */}
@@ -182,7 +157,7 @@ const UpdateSection = () => {
           </p>
           
           <a 
-            href="https://www.loewen-kundenportal.de/downloadbereich/produktinformationen/dart-soccer"
+            href="https://www.loewen-kundenportal.de/downloadbereich/produktinformationen/dart-soccer?utm_source=website&utm_medium=link&utm_campaign=downloadbereich&utm_content=dart"
             target="_blank"
             rel="noopener noreferrer"
             className="text-lg font-bold text-[#002454] cursor-pointer hover:underline"
