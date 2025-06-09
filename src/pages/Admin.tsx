@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
@@ -28,7 +27,7 @@ interface ProductInquiry {
 }
 
 const Admin = () => {
-  const { user, isAdmin, signOut, loading } = useAuth();
+  const { user, isAdmin, signOut, loading, adminLoading } = useAuth();
   const [inquiries, setInquiries] = useState<ProductInquiry[]>([]);
   const [filteredInquiries, setFilteredInquiries] = useState<ProductInquiry[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -38,17 +37,45 @@ const Admin = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
 
+  console.log('🎛️ Admin component state:', { 
+    user: user?.id, 
+    isAdmin, 
+    loading, 
+    adminLoading, 
+    authComplete: !loading && !adminLoading 
+  });
+
+  // Wait for BOTH loading states to complete before making any redirects
   useEffect(() => {
-    if (!loading && (!user || !isAdmin)) {
-      navigate('/auth');
+    console.log('📊 Admin useEffect - checking auth states:', {
+      loading,
+      adminLoading,
+      user: !!user,
+      isAdmin
+    });
+
+    // Only proceed if both auth checks are complete
+    if (!loading && !adminLoading) {
+      if (!user) {
+        console.log('🚫 No user found, redirecting to auth');
+        navigate('/auth');
+      } else if (!isAdmin) {
+        console.log('🚫 User is not admin, redirecting to home');
+        navigate('/');
+      } else {
+        console.log('✅ User is authenticated admin, staying on admin page');
+      }
+    } else {
+      console.log('⏳ Still loading auth states, waiting...');
     }
-  }, [user, isAdmin, loading, navigate]);
+  }, [user, isAdmin, loading, adminLoading, navigate]);
 
   useEffect(() => {
-    if (user && isAdmin) {
+    if (user && isAdmin && !loading && !adminLoading) {
+      console.log('📊 Fetching inquiries for admin user');
       fetchInquiries();
     }
-  }, [user, isAdmin]);
+  }, [user, isAdmin, loading, adminLoading]);
 
   useEffect(() => {
     filterInquiries();
@@ -56,14 +83,21 @@ const Admin = () => {
 
   const fetchInquiries = async () => {
     try {
+      console.log('📥 Starting to fetch product inquiries...');
       const { data, error } = await supabase
         .from('product_inquiries')
         .select('*')
         .order('created_at', { ascending: false });
 
-      if (error) throw error;
+      if (error) {
+        console.error('❌ Error fetching inquiries:', error);
+        throw error;
+      }
+      
+      console.log('✅ Successfully fetched inquiries:', data?.length || 0);
       setInquiries(data || []);
     } catch (error) {
+      console.error('💥 Exception in fetchInquiries:', error);
       toast({
         title: 'Fehler',
         description: 'Anfragen konnten nicht geladen werden.',
@@ -133,20 +167,43 @@ const Admin = () => {
     return filteredInquiries.reduce((sum, inquiry) => sum + inquiry.total_price, 0);
   };
 
-  if (loading || loadingData) {
+  // Show loading while ANY authentication state is being determined
+  if (loading || adminLoading) {
     return (
       <div className="min-h-screen bg-white">
         <Navbar />
         <div className="pt-32 flex items-center justify-center">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#002454] mx-auto mb-4"></div>
-            <p className="text-gray-600">Laden...</p>
+            <p className="text-gray-600 text-lg">
+              {loading ? 'Lade Authentifizierung...' : 'Überprüfe Admin-Berechtigung...'}
+            </p>
+            <p className="text-gray-500 text-sm mt-2">
+              Bitte warten Sie einen Moment...
+            </p>
           </div>
         </div>
       </div>
     );
   }
 
+  // Show loading for data after auth is complete
+  if (loadingData) {
+    return (
+      <div className="min-h-screen bg-white">
+        <Navbar />
+        <div className="pt-32 flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#002454] mx-auto mb-4"></div>
+            <p className="text-gray-600 text-lg">Lade Admin-Daten...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Only show empty return if auth is complete and user is not admin/authenticated
+  // (This should never be reached due to useEffect redirect, but kept as safeguard)
   if (!user || !isAdmin) {
     return null;
   }
