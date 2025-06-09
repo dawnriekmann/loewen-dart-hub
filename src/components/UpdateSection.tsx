@@ -1,3 +1,4 @@
+
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { useState, useEffect } from "react";
 import { useDynamicGradientHeight } from "@/hooks/useDynamicGradientHeight";
@@ -134,42 +135,44 @@ const UpdateSection = () => {
           </div>
         </div>
 
-        {/* Three columns with download items */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          {downloadItems.map((item) => (
-            <div key={item.id} className="flex items-center space-x-2 min-w-0">
-              <div 
-                className="flex-shrink-0"
-                style={{ 
-                  width: '12px', 
-                  height: '100px', 
-                  backgroundColor: '#638ec5' 
-                }}
-              />
-              <img 
-                src={item.image} 
-                alt={item.title}
-                className="flex-shrink-0"
-                style={{ width: '80px', height: '100px' }}
-              />
-              <div className="flex flex-col text-left min-w-0 flex-1">
-                <h3 className="text-lg text-[#002454] mb-1 break-words">
-                  {item.title}
-                </h3>
-                <p className="text-xl font-bold text-[#002454] mb-2 break-words">
-                  {item.subtitle}
-                </p>
-                <a 
-                  href="https://www.loewen-kundenportal.de/downloadbereich/produktinformationen/dart-soccer"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-lg font-bold text-[#002454] cursor-pointer hover:underline break-words"
-                >
-                  Zum Downloadbereich
-                </a>
+        {/* Three columns with download items - constrained width */}
+        <div className="max-w-6xl mx-auto mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {downloadItems.map((item) => (
+              <div key={item.id} className="flex items-center space-x-2 min-w-0">
+                <div 
+                  className="flex-shrink-0"
+                  style={{ 
+                    width: '12px', 
+                    height: '100px', 
+                    backgroundColor: '#638ec5' 
+                  }}
+                />
+                <img 
+                  src={item.image} 
+                  alt={item.title}
+                  className="flex-shrink-0"
+                  style={{ width: '80px', height: '100px' }}
+                />
+                <div className="flex flex-col text-left min-w-0 flex-1">
+                  <h3 className="text-lg text-[#002454] mb-1 break-words">
+                    {item.title}
+                  </h3>
+                  <p className="text-xl font-bold text-[#002454] mb-2 break-words">
+                    {item.subtitle}
+                  </p>
+                  <a 
+                    href="https://www.loewen-kundenportal.de/downloadbereich/produktinformationen/dart-soccer"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-lg font-bold text-[#002454] cursor-pointer hover:underline break-words"
+                  >
+                    Zum Downloadbereich
+                  </a>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* Bottom text section */}
