@@ -15,26 +15,19 @@ const AuthButton = () => {
     }
   };
 
-  const handleAdminPanel = () => {
-    navigate("/admin");
-  };
+  // Return null to completely hide the component when user is authenticated
+  if (user) {
+    return null;
+  }
 
   return (
     <div className="flex gap-2">
-      {user && (
-        <Button
-          onClick={handleAdminPanel}
-          className="bg-primary hover:bg-primary/90 text-primary-foreground"
-        >
-          Admin Panel
-        </Button>
-      )}
       <Button
         onClick={handleAuth}
         variant="outline"
         className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
       >
-        {user ? "Abmelden" : "Anmelden"}
+        Anmelden
       </Button>
     </div>
   );
