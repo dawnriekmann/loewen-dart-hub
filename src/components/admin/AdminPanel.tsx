@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useProductInquiries, ProductInquiry } from "@/hooks/useProductInquiries";
+import { useProductInquiries, type ProductInquiry } from "@/hooks/useProductInquiries";
 import InquiryTable from "./InquiryTable";
 import InquiryDetailDialog from "./InquiryDetailDialog";
 

@@ -1,4 +1,3 @@
-
 import { format } from "date-fns";
 import { de } from "date-fns/locale";
 import {
@@ -9,7 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ProductInquiry } from "@/hooks/useProductInquiries";
+import { type ProductInquiry } from "@/hooks/useProductInquiries";
 
 interface InquiryDetailDialogProps {
   inquiry: ProductInquiry | null;

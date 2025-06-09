@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { format } from "date-fns";
 import { de } from "date-fns/locale";
@@ -20,7 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ProductInquiry } from "@/hooks/useProductInquiries";
+import { type ProductInquiry } from "@/hooks/useProductInquiries";
 
 interface InquiryTableProps {
   inquiries: ProductInquiry[];
