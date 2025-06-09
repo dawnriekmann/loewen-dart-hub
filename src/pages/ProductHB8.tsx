@@ -315,9 +315,6 @@ const ProductHB8 = () => {
                         >
                           <Plus className="w-4 h-4" />
                         </Button>
-                        <span className="text-sm text-slate-400 ml-2">
-                          (max. 10 Stück verfügbar)
-                        </span>
                       </div>
                     </div>
 
