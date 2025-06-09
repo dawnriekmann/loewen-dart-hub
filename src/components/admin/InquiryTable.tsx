@@ -13,6 +13,13 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { ProductInquiry } from "@/hooks/useProductInquiries";
 
 interface InquiryTableProps {
@@ -45,9 +52,10 @@ const InquiryTable = ({ inquiries, onStatusChange, onViewDetails }: InquiryTable
       <Table>
         <TableHeader>
           <TableRow className="border-slate-700 hover:bg-slate-750">
-            <TableHead className="text-slate-300">Datum</TableHead>
-            <TableHead className="text-slate-300">Kunde</TableHead>
-            <TableHead className="text-slate-300">Produkt</TableHead>
+            <TableHead className="text-slate-300">Datum & Uhrzeit</TableHead>
+            <TableHead className="text-slate-300">Name & E-Mail</TableHead>
+            <TableHead className="text-slate-300">Telefonnummer</TableHead>
+            <TableHead className="text-slate-300">Produkt & Anzahl</TableHead>
             <TableHead className="text-slate-300">Preis</TableHead>
             <TableHead className="text-slate-300">Status</TableHead>
             <TableHead className="text-slate-300">Aktionen</TableHead>
@@ -57,15 +65,25 @@ const InquiryTable = ({ inquiries, onStatusChange, onViewDetails }: InquiryTable
           {inquiries.map((inquiry) => (
             <TableRow key={inquiry.id} className="border-slate-700 hover:bg-slate-750">
               <TableCell className="text-slate-300">
-                {format(new Date(inquiry.created_at), 'dd.MM.yyyy', { locale: de })}
+                <div>{format(new Date(inquiry.created_at), 'dd.MM.yyyy', { locale: de })}</div>
+                <div className="text-sm">{format(new Date(inquiry.created_at), 'HH:mm', { locale: de })}</div>
               </TableCell>
               <TableCell>
                 <div className="text-white font-medium">{inquiry.customer_name}</div>
                 <div className="text-slate-400 text-sm">{inquiry.customer_email}</div>
               </TableCell>
-              <TableCell className="text-white">{inquiry.product_type}</TableCell>
-              <TableCell className="text-white font-semibold">
-                {inquiry.product_price.toLocaleString('de-DE')} €
+              <TableCell className="text-slate-300">
+                {inquiry.customer_phone || '-'}
+              </TableCell>
+              <TableCell>
+                <div className="text-white font-medium">{inquiry.product_type}</div>
+                <div className="text-slate-400 text-sm">1x Stück</div>
+              </TableCell>
+              <TableCell>
+                <div className="text-white font-semibold">
+                  {inquiry.product_price.toLocaleString('de-DE')} €
+                </div>
+                <div className="text-slate-400 text-sm">Einzelpreis</div>
               </TableCell>
               <TableCell>
                 <Badge className={getStatusColor(inquiry.status)}>
@@ -73,7 +91,7 @@ const InquiryTable = ({ inquiries, onStatusChange, onViewDetails }: InquiryTable
                 </Badge>
               </TableCell>
               <TableCell>
-                <div className="flex gap-2">
+                <div className="flex gap-2 items-center">
                   <Button
                     size="sm"
                     variant="outline"
@@ -82,32 +100,25 @@ const InquiryTable = ({ inquiries, onStatusChange, onViewDetails }: InquiryTable
                   >
                     <Eye className="h-4 w-4" />
                   </Button>
-                  <div className="flex gap-1">
-                    <Button
-                      size="sm"
-                      variant={inquiry.status === 'new' ? 'default' : 'outline'}
-                      onClick={() => onStatusChange(inquiry.id, 'new')}
-                      className={inquiry.status === 'new' ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700/50 hover:text-white hover:border-slate-500'}
-                    >
-                      N
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant={inquiry.status === 'contacted' ? 'default' : 'outline'}
-                      onClick={() => onStatusChange(inquiry.id, 'contacted')}
-                      className={inquiry.status === 'contacted' ? 'bg-slate-600 text-white hover:bg-slate-500' : 'bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700/50 hover:text-white hover:border-slate-500'}
-                    >
-                      K
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant={inquiry.status === 'closed' ? 'default' : 'outline'}
-                      onClick={() => onStatusChange(inquiry.id, 'closed')}
-                      className={inquiry.status === 'closed' ? 'bg-green-700 text-white hover:bg-green-600' : 'bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700/50 hover:text-white hover:border-slate-500'}
-                    >
-                      A
-                    </Button>
-                  </div>
+                  <Select
+                    value={inquiry.status}
+                    onValueChange={(value: 'new' | 'contacted' | 'closed') => onStatusChange(inquiry.id, value)}
+                  >
+                    <SelectTrigger className="w-32 bg-slate-700 border-slate-600 text-slate-300">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent className="bg-slate-700 border-slate-600">
+                      <SelectItem value="new" className="text-slate-300 focus:bg-slate-600 focus:text-white">
+                        Neu
+                      </SelectItem>
+                      <SelectItem value="contacted" className="text-slate-300 focus:bg-slate-600 focus:text-white">
+                        Kontaktiert
+                      </SelectItem>
+                      <SelectItem value="closed" className="text-slate-300 focus:bg-slate-600 focus:text-white">
+                        Abgeschlossen
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
               </TableCell>
             </TableRow>
