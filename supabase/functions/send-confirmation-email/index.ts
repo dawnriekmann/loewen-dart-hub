@@ -1,4 +1,3 @@
-
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "npm:resend@2.0.0";
 
@@ -153,14 +152,20 @@ const generateEmailHTML = (data: ConfirmationEmailRequest) => {
           <div style="background-color: #1e293b; color: #94a3b8; padding: 24px 30px; text-align: center;">
             <div style="margin-bottom: 16px;">
               <h4 style="margin: 0 0 8px 0; color: #f1f5f9; font-size: 16px; font-weight: 600;">
-                LÖWEN VERTRIEB
+                LÖWEN ENTERTAINMENT GmbH
               </h4>
               <p style="margin: 0; font-size: 14px;">
                 Ihr Partner für professionelle Dartautomaten
               </p>
             </div>
             
-            <div style="border-top: 1px solid #334155; padding-top: 16px; font-size: 12px;">
+            <div style="border-top: 1px solid #334155; padding-top: 16px; font-size: 12px; line-height: 1.4;">
+              <p style="margin: 0 0 4px 0;">
+                Saarlandstraße 240, 55411 Bingen
+              </p>
+              <p style="margin: 0 0 4px 0;">
+                <a href="https://loewen-vertrieb.de" style="color: #94a3b8; text-decoration: none;">https://loewen-vertrieb.de</a>
+              </p>
               <p style="margin: 0;">
                 E-Mail: info@loewen-vertrieb.de
               </p>
