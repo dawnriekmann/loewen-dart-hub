@@ -22,9 +22,9 @@ const AdminPanel = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'new': return 'bg-blue-500';
-      case 'contacted': return 'bg-amber-500';
-      case 'closed': return 'bg-green-500';
+      case 'new': return 'bg-primary';
+      case 'contacted': return 'bg-secondary';
+      case 'closed': return 'bg-muted';
       default: return 'bg-slate-500';
     }
   };
@@ -103,7 +103,7 @@ const AdminPanel = () => {
                     variant={filter === 'all' ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setFilter('all')}
-                    className="bg-primary hover:bg-primary/90 border-slate-600"
+                    className="border-slate-600 text-primary-foreground"
                   >
                     Alle
                   </Button>
@@ -111,7 +111,7 @@ const AdminPanel = () => {
                     variant={filter === 'HB8' ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setFilter('HB8')}
-                    className="bg-primary hover:bg-primary/90 border-slate-600"
+                    className="border-slate-600 text-primary-foreground"
                   >
                     HB8
                   </Button>
@@ -119,7 +119,7 @@ const AdminPanel = () => {
                     variant={filter === 'HB10' ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setFilter('HB10')}
-                    className="bg-primary hover:bg-primary/90 border-slate-600"
+                    className="border-slate-600 text-primary-foreground"
                   >
                     HB10
                   </Button>
@@ -133,7 +133,7 @@ const AdminPanel = () => {
                     variant={statusFilter === 'all' ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setStatusFilter('all')}
-                    className="bg-primary hover:bg-primary/90 border-slate-600"
+                    className="border-slate-600 text-primary-foreground"
                   >
                     Alle
                   </Button>
@@ -141,7 +141,7 @@ const AdminPanel = () => {
                     variant={statusFilter === 'new' ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setStatusFilter('new')}
-                    className="bg-primary hover:bg-primary/90 border-slate-600"
+                    className="border-slate-600 text-primary-foreground"
                   >
                     Neu
                   </Button>
@@ -149,7 +149,7 @@ const AdminPanel = () => {
                     variant={statusFilter === 'contacted' ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setStatusFilter('contacted')}
-                    className="bg-primary hover:bg-primary/90 border-slate-600"
+                    className="border-slate-600 text-primary-foreground"
                   >
                     Kontaktiert
                   </Button>
@@ -157,7 +157,7 @@ const AdminPanel = () => {
                     variant={statusFilter === 'closed' ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setStatusFilter('closed')}
-                    className="bg-primary hover:bg-primary/90 border-slate-600"
+                    className="border-slate-600 text-primary-foreground"
                   >
                     Abgeschlossen
                   </Button>
@@ -182,7 +182,7 @@ const AdminPanel = () => {
                     </p>
                   </div>
                   <div className="flex gap-2 items-center">
-                    <Badge className={`${getStatusColor(inquiry.status)} text-white`}>
+                    <Badge className={`${getStatusColor(inquiry.status)} text-primary-foreground`}>
                       {getStatusText(inquiry.status)}
                     </Badge>
                     <div className="text-white font-semibold">
@@ -233,7 +233,7 @@ const AdminPanel = () => {
                     size="sm"
                     variant={inquiry.status === 'new' ? 'default' : 'outline'}
                     onClick={() => handleStatusChange(inquiry.id, 'new')}
-                    className="bg-blue-600 hover:bg-blue-700 border-slate-600 text-white"
+                    className="border-slate-600 text-primary-foreground"
                   >
                     Neu
                   </Button>
@@ -241,7 +241,7 @@ const AdminPanel = () => {
                     size="sm"
                     variant={inquiry.status === 'contacted' ? 'default' : 'outline'}
                     onClick={() => handleStatusChange(inquiry.id, 'contacted')}
-                    className="bg-amber-600 hover:bg-amber-700 border-slate-600 text-white"
+                    className="border-slate-600 text-primary-foreground"
                   >
                     Kontaktiert
                   </Button>
@@ -249,7 +249,7 @@ const AdminPanel = () => {
                     size="sm"
                     variant={inquiry.status === 'closed' ? 'default' : 'outline'}
                     onClick={() => handleStatusChange(inquiry.id, 'closed')}
-                    className="bg-green-600 hover:bg-green-700 border-slate-600 text-white"
+                    className="border-slate-600 text-primary-foreground"
                   >
                     Abgeschlossen
                   </Button>
