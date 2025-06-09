@@ -27,7 +27,6 @@ const Footer = () => {
                 <li><Link to="/hb8" className="hover:text-white transition-colors">Dart HB8</Link></li>
                 <li><Link to="/hb9" className="hover:text-white transition-colors">Dart HB9</Link></li>
                 <li><Link to="/hb10" className="hover:text-white transition-colors">Dart HB10</Link></li>
-                <li><a href="#" className="hover:text-white transition-colors">Zubehör</a></li>
               </ul>
             </div>
             
