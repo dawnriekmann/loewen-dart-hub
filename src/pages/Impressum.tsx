@@ -5,7 +5,7 @@ import ContactBanner from "@/components/ContactBanner";
 
 const Impressum = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Navbar />
       
       {/* Hero Section */}
@@ -36,46 +36,46 @@ const Impressum = () => {
       <ContactBanner />
 
       {/* Content */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="prose prose-lg max-w-none">
-            <h2 className="text-3xl font-bold mb-8 text-[#002454]">Angaben gemäß § 5 TMG</h2>
+            <h2 className="text-3xl font-bold mb-8 text-primary">Angaben gemäß § 5 TMG</h2>
             
-            <div className="bg-slate-50 p-8 rounded-lg mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-[#002454]">Unternehmen</h3>
-              <p className="mb-2"><strong>LÖWEN ENTERTAINMENT GmbH</strong></p>
-              <p className="mb-2">Saarlandstraße 240</p>
-              <p className="mb-4">55411 Bingen</p>
+            <div className="bg-muted p-8 rounded-lg mb-8 border border-border">
+              <h3 className="text-xl font-semibold mb-4 text-primary">Unternehmen</h3>
+              <p className="mb-2 text-foreground"><strong>LÖWEN ENTERTAINMENT GmbH</strong></p>
+              <p className="mb-2 text-foreground">Saarlandstraße 240</p>
+              <p className="mb-4 text-foreground">55411 Bingen</p>
               
-              <p className="mb-2"><strong>Telefon:</strong> +49 6721 4070</p>
-              <p className="mb-4"><strong>E-Mail:</strong> info@loewen.de</p>
+              <p className="mb-2 text-foreground"><strong>Telefon:</strong> +49 6721 4070</p>
+              <p className="mb-4 text-foreground"><strong>E-Mail:</strong> info@loewen.de</p>
             </div>
 
-            <div className="bg-slate-50 p-8 rounded-lg mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-[#002454]">Handelsregister</h3>
-              <p className="mb-2"><strong>Registergericht:</strong> Amtsgericht Mainz</p>
-              <p className="mb-2"><strong>Registernummer:</strong> HRB 23327</p>
-              <p className="mb-4"><strong>Umsatzsteuer-ID:</strong> DE148266135</p>
+            <div className="bg-muted p-8 rounded-lg mb-8 border border-border">
+              <h3 className="text-xl font-semibold mb-4 text-primary">Handelsregister</h3>
+              <p className="mb-2 text-foreground"><strong>Registergericht:</strong> Amtsgericht Mainz</p>
+              <p className="mb-2 text-foreground"><strong>Registernummer:</strong> HRB 23327</p>
+              <p className="mb-4 text-foreground"><strong>Umsatzsteuer-ID:</strong> DE148266135</p>
             </div>
 
-            <div className="bg-slate-50 p-8 rounded-lg mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-[#002454]">Vertretungsberechtigte Personen</h3>
-              <p className="mb-2"><strong>Geschäftsführung:</strong></p>
-              <ul className="list-disc pl-6 mb-4">
+            <div className="bg-muted p-8 rounded-lg mb-8 border border-border">
+              <h3 className="text-xl font-semibold mb-4 text-primary">Vertretungsberechtigte Personen</h3>
+              <p className="mb-2 text-foreground"><strong>Geschäftsführung:</strong></p>
+              <ul className="list-disc pl-6 mb-4 text-foreground">
                 <li>Christian Arras (Vorsitzender)</li>
                 <li>Oliver Bagus</li>
                 <li>Dr. Daniel Henzgen</li>
                 <li>Jakob Rothwangl</li>
               </ul>
-              <p className="mb-2"><strong>Vorsitz im Aufsichtsrat:</strong> Uwe Christiansen</p>
+              <p className="mb-2 text-foreground"><strong>Vorsitz im Aufsichtsrat:</strong> Uwe Christiansen</p>
             </div>
 
-            <h2 className="text-3xl font-bold mb-8 text-[#002454]">Haftungsausschluss</h2>
+            <h2 className="text-3xl font-bold mb-8 text-primary">Haftungsausschluss</h2>
             
             <div className="space-y-6">
               <div>
-                <h3 className="text-xl font-semibold mb-3 text-[#002454]">Haftung für Inhalte</h3>
-                <p className="text-gray-700 leading-relaxed">
+                <h3 className="text-xl font-semibold mb-3 text-primary">Haftung für Inhalte</h3>
+                <p className="text-foreground leading-relaxed">
                   Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den 
                   allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht 
                   unter der Verpflichtung, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach 
@@ -84,8 +84,8 @@ const Impressum = () => {
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold mb-3 text-[#002454]">Haftung für Links</h3>
-                <p className="text-gray-700 leading-relaxed">
+                <h3 className="text-xl font-semibold mb-3 text-primary">Haftung für Links</h3>
+                <p className="text-foreground leading-relaxed">
                   Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. 
                   Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten 
                   Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
@@ -93,8 +93,8 @@ const Impressum = () => {
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold mb-3 text-[#002454]">Urheberrecht</h3>
-                <p className="text-gray-700 leading-relaxed">
+                <h3 className="text-xl font-semibold mb-3 text-primary">Urheberrecht</h3>
+                <p className="text-foreground leading-relaxed">
                   Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen 
                   Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der 
                   Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
