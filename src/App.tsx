@@ -34,39 +34,43 @@ const ScrollToTop = () => {
   return null;
 };
 
-const AppContent = () => (
-  <React.Fragment>
-    <ScrollToTop />
-    <TempAdminSetup />
-    <Routes>
-      <Route path="/" element={<Index />} />
-      <Route path="/hb8" element={<ProductHB8 />} />
-      <Route path="/hb9" element={<ProductHB9 />} />
-      <Route path="/hb10" element={<ProductHB10 />} />
-      <Route path="/kontakt" element={<Contact />} />
-      <Route path="/auth" element={<Auth />} />
-      <Route path="/admin" element={<Admin />} />
-      <Route path="/impressum" element={<Impressum />} />
-      <Route path="/datenschutz" element={<Datenschutz />} />
-      <Route path="/cookie-einstellungen" element={<CookieEinstellungen />} />
-      <Route path="/agb" element={<AGB />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
-  </React.Fragment>
-);
+const AppContent = () => {
+  return (
+    <div>
+      <ScrollToTop />
+      <TempAdminSetup />
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/hb8" element={<ProductHB8 />} />
+        <Route path="/hb9" element={<ProductHB9 />} />
+        <Route path="/hb10" element={<ProductHB10 />} />
+        <Route path="/kontakt" element={<Contact />} />
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/impressum" element={<Impressum />} />
+        <Route path="/datenschutz" element={<Datenschutz />} />
+        <Route path="/cookie-einstellungen" element={<CookieEinstellungen />} />
+        <Route path="/agb" element={<AGB />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </div>
+  );
+};
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <AuthProvider>
-      <TooltipProvider>
-        <BrowserRouter>
-          <AppContent />
-        </BrowserRouter>
-        <Toaster />
-        <Sonner />
-      </TooltipProvider>
-    </AuthProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <TooltipProvider>
+          <BrowserRouter>
+            <AppContent />
+          </BrowserRouter>
+          <Toaster />
+          <Sonner />
+        </TooltipProvider>
+      </AuthProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
