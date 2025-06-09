@@ -65,20 +65,20 @@ const AuthForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4">
-      <Card className="w-full max-w-md border-slate-200 shadow-lg">
+    <div className="min-h-screen bg-slate-900 flex items-center justify-center px-4">
+      <Card className="w-full max-w-md bg-slate-800 border-slate-700 shadow-2xl">
         <CardHeader className="text-center pb-6">
-          <CardTitle className="text-3xl font-bold text-[#002454] font-parisine-narrow">
+          <CardTitle className="text-3xl font-bold text-slate-100 font-parisine-narrow">
             ANMELDEN
           </CardTitle>
-          <p className="text-slate-600 mt-2">
+          <p className="text-slate-400 mt-2">
             Melden Sie sich in Ihrem Konto an
           </p>
         </CardHeader>
         <CardContent className="px-8 pb-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
-              <label htmlFor="email" className="block text-sm font-semibold text-[#002454]">
+              <label htmlFor="email" className="block text-sm font-semibold text-slate-200">
                 E-Mail-Adresse
               </label>
               <Input
@@ -87,13 +87,13 @@ const AuthForm = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="h-12 border-slate-300 focus:border-[#002454] focus:ring-[#002454] focus:ring-2 focus:ring-offset-0"
+                className="h-12 bg-slate-700 border-slate-600 text-slate-100 placeholder:text-slate-400 focus:border-[#002454] focus:ring-[#002454] focus:ring-2 focus:ring-offset-0"
                 placeholder="ihre.email@example.com"
               />
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="password" className="block text-sm font-semibold text-[#002454]">
+              <label htmlFor="password" className="block text-sm font-semibold text-slate-200">
                 Passwort
               </label>
               <Input
@@ -102,7 +102,7 @@ const AuthForm = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="h-12 border-slate-300 focus:border-[#002454] focus:ring-[#002454] focus:ring-2 focus:ring-offset-0"
+                className="h-12 bg-slate-700 border-slate-600 text-slate-100 placeholder:text-slate-400 focus:border-[#002454] focus:ring-[#002454] focus:ring-2 focus:ring-offset-0"
                 placeholder="Ihr Passwort"
               />
             </div>
