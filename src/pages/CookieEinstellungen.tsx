@@ -5,7 +5,7 @@ import ContactBanner from "@/components/ContactBanner";
 
 const CookieEinstellungen = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <Navbar />
       
       {/* Hero Section */}
@@ -36,94 +36,94 @@ const CookieEinstellungen = () => {
       <ContactBanner />
 
       {/* Content */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="prose prose-lg max-w-none">
-            <h2 className="text-3xl font-bold mb-8 text-primary">Cookie-Richtlinie</h2>
+            <h2 className="text-3xl font-bold mb-8 text-[#002454]">Cookie-Richtlinie</h2>
             
             <div className="space-y-8">
               <div>
-                <h3 className="text-2xl font-bold mb-4 text-primary">Was sind Cookies?</h3>
-                <p className="text-foreground leading-relaxed mb-4">
+                <h3 className="text-2xl font-bold mb-4 text-[#002454]">Was sind Cookies?</h3>
+                <p className="text-gray-700 leading-relaxed mb-4">
                   Cookies sind kleine Textdateien, die auf Ihrem Gerät gespeichert werden, wenn Sie eine Website besuchen. 
                   Sie ermöglichen es der Website, sich an Ihre Aktionen und Präferenzen zu erinnern, damit Sie diese nicht 
                   bei jedem Besuch oder beim Navigieren zwischen Seiten erneut eingeben müssen.
                 </p>
               </div>
 
-              <div className="bg-muted p-8 rounded-lg border border-border">
-                <h3 className="text-xl font-semibold mb-4 text-primary">Notwendige Cookies</h3>
-                <p className="text-foreground leading-relaxed mb-4">
+              <div className="bg-slate-50 p-8 rounded-lg">
+                <h3 className="text-xl font-semibold mb-4 text-[#002454]">Notwendige Cookies</h3>
+                <p className="text-gray-700 leading-relaxed mb-4">
                   Diese Cookies sind für das ordnungsgemäße Funktionieren der Website unbedingt erforderlich und können 
                   nicht deaktiviert werden. Sie werden normalerweise nur als Reaktion auf von Ihnen durchgeführte 
                   Aktionen gesetzt, wie z.B. das Festlegen Ihrer Datenschutzeinstellungen oder das Ausfüllen von Formularen.
                 </p>
-                <div className="flex items-center justify-between p-4 bg-card rounded border-border border">
-                  <span className="font-medium text-foreground">Erforderliche Cookies</span>
-                  <span className="text-sm text-muted-foreground">Immer aktiv</span>
+                <div className="flex items-center justify-between p-4 bg-white rounded border">
+                  <span className="font-medium">Erforderliche Cookies</span>
+                  <span className="text-sm text-gray-500">Immer aktiv</span>
                 </div>
               </div>
 
-              <div className="bg-muted p-8 rounded-lg border border-border">
-                <h3 className="text-xl font-semibold mb-4 text-primary">Funktionale Cookies</h3>
-                <p className="text-foreground leading-relaxed mb-4">
+              <div className="bg-slate-50 p-8 rounded-lg">
+                <h3 className="text-xl font-semibold mb-4 text-[#002454]">Funktionale Cookies</h3>
+                <p className="text-gray-700 leading-relaxed mb-4">
                   Diese Cookies ermöglichen es der Website, verbesserte Funktionalität und Personalisierung bereitzustellen. 
                   Sie können von uns oder von Drittanbietern gesetzt werden, deren Dienste wir auf unseren Seiten verwenden.
                 </p>
-                <div className="flex items-center justify-between p-4 bg-card rounded border-border border">
+                <div className="flex items-center justify-between p-4 bg-white rounded border">
                   <div>
-                    <span className="font-medium block text-foreground">Funktionale Cookies</span>
-                    <span className="text-sm text-muted-foreground">Verbesserte Website-Funktionen</span>
+                    <span className="font-medium block">Funktionale Cookies</span>
+                    <span className="text-sm text-gray-500">Verbesserte Website-Funktionen</span>
                   </div>
                   <label className="relative inline-flex items-center cursor-pointer">
                     <input type="checkbox" className="sr-only peer" />
-                    <div className="w-11 h-6 bg-input peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/30 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-card after:border-border after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                    <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
                   </label>
                 </div>
               </div>
 
-              <div className="bg-muted p-8 rounded-lg border border-border">
-                <h3 className="text-xl font-semibold mb-4 text-primary">Analyse-Cookies</h3>
-                <p className="text-foreground leading-relaxed mb-4">
+              <div className="bg-slate-50 p-8 rounded-lg">
+                <h3 className="text-xl font-semibold mb-4 text-[#002454]">Analyse-Cookies</h3>
+                <p className="text-gray-700 leading-relaxed mb-4">
                   Diese Cookies helfen uns zu verstehen, wie Besucher mit der Website interagieren, indem sie anonyme 
                   Informationen sammeln und melden. Diese Informationen helfen uns, die Website zu verbessern.
                 </p>
-                <div className="flex items-center justify-between p-4 bg-card rounded border-border border">
+                <div className="flex items-center justify-between p-4 bg-white rounded border">
                   <div>
-                    <span className="font-medium block text-foreground">Analyse-Cookies</span>
-                    <span className="text-sm text-muted-foreground">Website-Verbesserungen durch Nutzungsanalyse</span>
+                    <span className="font-medium block">Analyse-Cookies</span>
+                    <span className="text-sm text-gray-500">Website-Verbesserungen durch Nutzungsanalyse</span>
                   </div>
                   <label className="relative inline-flex items-center cursor-pointer">
                     <input type="checkbox" className="sr-only peer" />
-                    <div className="w-11 h-6 bg-input peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/30 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-card after:border-border after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                    <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
                   </label>
                 </div>
               </div>
 
-              <div className="bg-muted p-8 rounded-lg border border-border">
-                <h3 className="text-xl font-semibold mb-4 text-primary">Marketing-Cookies</h3>
-                <p className="text-foreground leading-relaxed mb-4">
+              <div className="bg-slate-50 p-8 rounded-lg">
+                <h3 className="text-xl font-semibold mb-4 text-[#002454]">Marketing-Cookies</h3>
+                <p className="text-gray-700 leading-relaxed mb-4">
                   Diese Cookies können über unsere Website von unseren Werbepartnern gesetzt werden. Sie können von 
                   diesen Unternehmen verwendet werden, um ein Profil Ihrer Interessen zu erstellen und Ihnen relevante 
                   Anzeigen auf anderen Websites zu zeigen.
                 </p>
-                <div className="flex items-center justify-between p-4 bg-card rounded border-border border">
+                <div className="flex items-center justify-between p-4 bg-white rounded border">
                   <div>
-                    <span className="font-medium block text-foreground">Marketing-Cookies</span>
-                    <span className="text-sm text-muted-foreground">Personalisierte Werbung</span>
+                    <span className="font-medium block">Marketing-Cookies</span>
+                    <span className="text-sm text-gray-500">Personalisierte Werbung</span>
                   </div>
                   <label className="relative inline-flex items-center cursor-pointer">
                     <input type="checkbox" className="sr-only peer" />
-                    <div className="w-11 h-6 bg-input peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/30 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-card after:border-border after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                    <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
                   </label>
                 </div>
               </div>
 
               <div className="flex space-x-4 pt-6">
-                <button className="bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors">
+                <button className="bg-[#002454] text-white px-6 py-3 rounded-lg hover:bg-[#002454]/90 transition-colors">
                   Einstellungen speichern
                 </button>
-                <button className="border border-primary text-primary px-6 py-3 rounded-lg hover:bg-primary/10 transition-colors">
+                <button className="border border-[#002454] text-[#002454] px-6 py-3 rounded-lg hover:bg-[#002454]/10 transition-colors">
                   Alle akzeptieren
                 </button>
               </div>
