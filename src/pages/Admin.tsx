@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { useToast } from '@/hooks/use-toast';
 import { LogOut, Search, Filter, Download, Eye, Users, Package, Euro } from 'lucide-react';
 import Navbar from '@/components/Navbar';
+import LoadingSpinner from '@/components/LoadingSpinner';
 
 interface ProductInquiry {
   id: string;
@@ -45,7 +46,7 @@ const Admin = () => {
     authComplete: !loading && !adminLoading 
   });
 
-  // Wait for BOTH loading states to complete before making any redirects
+  // Redirect logic - only run when auth states are determined
   useEffect(() => {
     console.log('📊 Admin useEffect - checking auth states:', {
       loading,
@@ -58,9 +59,19 @@ const Admin = () => {
     if (!loading && !adminLoading) {
       if (!user) {
         console.log('🚫 No user found, redirecting to auth');
+        toast({
+          title: 'Anmeldung erforderlich',
+          description: 'Bitte melden Sie sich an, um auf den Admin-Bereich zuzugreifen.',
+          variant: 'destructive',
+        });
         navigate('/auth');
       } else if (!isAdmin) {
         console.log('🚫 User is not admin, redirecting to home');
+        toast({
+          title: 'Zugriff verweigert',
+          description: 'Sie haben keine Berechtigung für den Admin-Bereich.',
+          variant: 'destructive',
+        });
         navigate('/');
       } else {
         console.log('✅ User is authenticated admin, staying on admin page');
@@ -68,8 +79,9 @@ const Admin = () => {
     } else {
       console.log('⏳ Still loading auth states, waiting...');
     }
-  }, [user, isAdmin, loading, adminLoading, navigate]);
+  }, [user, isAdmin, loading, adminLoading, navigate, toast]);
 
+  // Fetch data only when user is authenticated admin
   useEffect(() => {
     if (user && isAdmin && !loading && !adminLoading) {
       console.log('📊 Fetching inquiries for admin user');
@@ -77,6 +89,7 @@ const Admin = () => {
     }
   }, [user, isAdmin, loading, adminLoading]);
 
+  // Filter inquiries when data or filters change
   useEffect(() => {
     filterInquiries();
   }, [inquiries, searchTerm, productFilter, customerTypeFilter]);
@@ -173,15 +186,10 @@ const Admin = () => {
       <div className="min-h-screen bg-white">
         <Navbar />
         <div className="pt-32 flex items-center justify-center">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#002454] mx-auto mb-4"></div>
-            <p className="text-gray-600 text-lg">
-              {loading ? 'Lade Authentifizierung...' : 'Überprüfe Admin-Berechtigung...'}
-            </p>
-            <p className="text-gray-500 text-sm mt-2">
-              Bitte warten Sie einen Moment...
-            </p>
-          </div>
+          <LoadingSpinner 
+            message={loading ? 'Authentifizierung wird überprüft...' : 'Admin-Berechtigung wird geprüft...'} 
+            size="lg"
+          />
         </div>
       </div>
     );
@@ -193,10 +201,7 @@ const Admin = () => {
       <div className="min-h-screen bg-white">
         <Navbar />
         <div className="pt-32 flex items-center justify-center">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#002454] mx-auto mb-4"></div>
-            <p className="text-gray-600 text-lg">Lade Admin-Daten...</p>
-          </div>
+          <LoadingSpinner message="Admin-Daten werden geladen..." size="lg" />
         </div>
       </div>
     );
