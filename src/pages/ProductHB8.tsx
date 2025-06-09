@@ -10,9 +10,11 @@ import { Label } from "@/components/ui/label";
 import { CheckCircle, Star, Truck, Shield, Award, Users, Zap, Target, ArrowLeft, Plus, Minus } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useProductInquiries } from "@/hooks/useProductInquiries";
 
 const ProductHB8 = () => {
   const navigate = useNavigate();
+  const { createInquiry } = useProductInquiries();
   const [checkoutMode, setCheckoutMode] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -47,8 +49,17 @@ const ProductHB8 = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Handle form submission logic here
+    
+    const inquiryData = {
+      product_type: 'HB8' as const,
+      product_price: calculateTotal(),
+      customer_name: `${formData.firstName} ${formData.lastName}`,
+      customer_email: formData.email,
+      customer_phone: formData.phone,
+      customer_company: formData.customerType === 'business' ? formData.companyName : undefined,
+    };
+    
+    createInquiry.mutate(inquiryData);
   };
 
   const scrollToTop = () => {
