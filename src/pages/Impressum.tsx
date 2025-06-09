@@ -43,31 +43,31 @@ const Impressum = () => {
             
             <div className="bg-slate-50 p-8 rounded-lg mb-8">
               <h3 className="text-xl font-semibold mb-4 text-[#002454]">Unternehmen</h3>
-              <p className="mb-2"><strong>LÖWEN ENTERTAINMENT GmbH</strong></p>
-              <p className="mb-2">Saarlandstraße 240</p>
-              <p className="mb-4">55411 Bingen</p>
+              <p className="mb-2 text-[#002454]"><strong>LÖWEN ENTERTAINMENT GmbH</strong></p>
+              <p className="mb-2 text-[#002454]">Saarlandstraße 240</p>
+              <p className="mb-4 text-[#002454]">55411 Bingen</p>
               
-              <p className="mb-2"><strong>Telefon:</strong> +49 6721 4070</p>
-              <p className="mb-4"><strong>E-Mail:</strong> info@loewen.de</p>
+              <p className="mb-2 text-[#002454]"><strong>Telefon:</strong> +49 6721 4070</p>
+              <p className="mb-4 text-[#002454]"><strong>E-Mail:</strong> info@loewen.de</p>
             </div>
 
             <div className="bg-slate-50 p-8 rounded-lg mb-8">
               <h3 className="text-xl font-semibold mb-4 text-[#002454]">Handelsregister</h3>
-              <p className="mb-2"><strong>Registergericht:</strong> Amtsgericht Mainz</p>
-              <p className="mb-2"><strong>Registernummer:</strong> HRB 23327</p>
-              <p className="mb-4"><strong>Umsatzsteuer-ID:</strong> DE148266135</p>
+              <p className="mb-2 text-[#002454]"><strong>Registergericht:</strong> Amtsgericht Mainz</p>
+              <p className="mb-2 text-[#002454]"><strong>Registernummer:</strong> HRB 23327</p>
+              <p className="mb-4 text-[#002454]"><strong>Umsatzsteuer-ID:</strong> DE148266135</p>
             </div>
 
             <div className="bg-slate-50 p-8 rounded-lg mb-8">
               <h3 className="text-xl font-semibold mb-4 text-[#002454]">Vertretungsberechtigte Personen</h3>
-              <p className="mb-2"><strong>Geschäftsführung:</strong></p>
-              <ul className="list-disc pl-6 mb-4">
+              <p className="mb-2 text-[#002454]"><strong>Geschäftsführung:</strong></p>
+              <ul className="list-disc pl-6 mb-4 text-[#002454]">
                 <li>Christian Arras (Vorsitzender)</li>
                 <li>Oliver Bagus</li>
                 <li>Dr. Daniel Henzgen</li>
                 <li>Jakob Rothwangl</li>
               </ul>
-              <p className="mb-2"><strong>Vorsitz im Aufsichtsrat:</strong> Uwe Christiansen</p>
+              <p className="mb-2 text-[#002454]"><strong>Vorsitz im Aufsichtsrat:</strong> Uwe Christiansen</p>
             </div>
 
             <h2 className="text-3xl font-bold mb-8 text-[#002454]">Haftungsausschluss</h2>
@@ -75,7 +75,7 @@ const Impressum = () => {
             <div className="space-y-6">
               <div>
                 <h3 className="text-xl font-semibold mb-3 text-[#002454]">Haftung für Inhalte</h3>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-[#002454] leading-relaxed">
                   Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den 
                   allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht 
                   unter der Verpflichtung, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach 
@@ -85,7 +85,7 @@ const Impressum = () => {
 
               <div>
                 <h3 className="text-xl font-semibold mb-3 text-[#002454]">Haftung für Links</h3>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-[#002454] leading-relaxed">
                   Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. 
                   Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten 
                   Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
@@ -94,7 +94,7 @@ const Impressum = () => {
 
               <div>
                 <h3 className="text-xl font-semibold mb-3 text-[#002454]">Urheberrecht</h3>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-[#002454] leading-relaxed">
                   Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen 
                   Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der 
                   Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
