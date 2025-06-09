@@ -1,4 +1,5 @@
 
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -34,9 +35,9 @@ const Footer = () => {
             <div>
               <h4 className="text-lg font-semibold mb-4">Produkte</h4>
               <ul className="space-y-2 text-slate-300">
-                <li><a href="#" className="hover:text-white transition-colors">Dart HB8</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Dart HB9</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Dart HB10</a></li>
+                <li><Link to="/hb8" className="hover:text-white transition-colors">Dart HB8</Link></li>
+                <li><Link to="/hb9" className="hover:text-white transition-colors">Dart HB9</Link></li>
+                <li><Link to="/hb10" className="hover:text-white transition-colors">Dart HB10</Link></li>
                 <li><a href="#" className="hover:text-white transition-colors">Zubehör</a></li>
               </ul>
             </div>
@@ -58,10 +59,11 @@ const Footer = () => {
       <div className="bg-[#010614] text-white py-4">
         <div className="container mx-auto px-4">
           <div className="flex justify-center items-center space-x-8 text-sm">
-            <a href="#" className="hover:text-gray-300 transition-colors">Impressum</a>
-            <a href="#" className="hover:text-gray-300 transition-colors">Datenschutz</a>
-            <a href="#" className="hover:text-gray-300 transition-colors">Kontakt</a>
-            <a href="#" className="hover:text-gray-300 transition-colors">Cookie-Einstellungen</a>
+            <Link to="/impressum" className="hover:text-gray-300 transition-colors">Impressum</Link>
+            <Link to="/datenschutz" className="hover:text-gray-300 transition-colors">Datenschutz</Link>
+            <Link to="/kontakt" className="hover:text-gray-300 transition-colors">Kontakt</Link>
+            <Link to="/cookie-einstellungen" className="hover:text-gray-300 transition-colors">Cookie-Einstellungen</Link>
+            <Link to="/agb" className="hover:text-gray-300 transition-colors">AGB</Link>
           </div>
         </div>
       </div>
@@ -70,4 +72,3 @@ const Footer = () => {
 };
 
 export default Footer;
-

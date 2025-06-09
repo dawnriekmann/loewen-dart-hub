@@ -15,6 +15,10 @@ import Contact from "./pages/Contact";
 import Auth from "./pages/Auth";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
+import Impressum from "./pages/Impressum";
+import Datenschutz from "./pages/Datenschutz";
+import CookieEinstellungen from "./pages/CookieEinstellungen";
+import AGB from "./pages/AGB";
 import TempAdminSetup from "./components/TempAdminSetup";
 
 const queryClient = new QueryClient();
@@ -42,6 +46,10 @@ const AppContent = () => (
       <Route path="/kontakt" element={<Contact />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/admin" element={<Admin />} />
+      <Route path="/impressum" element={<Impressum />} />
+      <Route path="/datenschutz" element={<Datenschutz />} />
+      <Route path="/cookie-einstellungen" element={<CookieEinstellungen />} />
+      <Route path="/agb" element={<AGB />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   </>
