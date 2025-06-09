@@ -1,4 +1,7 @@
 
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+
 const HB10Section = () => {
   return (
     <section className="py-0 relative overflow-x-hidden">
@@ -59,7 +62,7 @@ const HB10Section = () => {
               />
               <h3 className="text-2xl font-bold text-[#002454]">Highlights</h3>
             </div>
-            <ul className="text-[#002454] space-y-2 text-xl">
+            <ul className="text-[#002454] space-y-2 text-xl mb-8">
               <li>• Offizielles DSAB-Liga- und Turniergerät</li>
               <li>• Hochauflösender 23,8-Zoll-Monitor und ein 12,1-Zoll-Touchpad</li>
               <li>• Bewährtes Treffererkennungssystem</li>
@@ -71,6 +74,15 @@ const HB10Section = () => {
               <li>• 5 Sprachen wählbar: Deutsch, Englisch, Spanisch, Französisch und Italienisch</li>
               <li>• Maße (H x B x T in cm): 236* x 62 x 60, Gewicht: 105 kg</li>
             </ul>
+            
+            {/* Jetzt kaufen Button */}
+            <div className="flex justify-center">
+              <Link to="/hb10">
+                <Button className="bg-[#002454] hover:bg-[#001a3d] text-white px-8 py-3 text-lg font-semibold">
+                  Jetzt kaufen
+                </Button>
+              </Link>
+            </div>
           </div>
 
           {/* Games and Options section - removed white background */}
