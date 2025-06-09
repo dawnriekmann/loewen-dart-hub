@@ -3,7 +3,6 @@ import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMe
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import AuthButton from "@/components/auth/AuthButton";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -126,14 +125,6 @@ const Navbar = () => {
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
-            
-            {/* Auth Button */}
-            <AuthButton />
-          </div>
-
-          {/* Mobile Auth Button - Right side on mobile */}
-          <div className="md:hidden">
-            <AuthButton />
           </div>
         </div>
 
