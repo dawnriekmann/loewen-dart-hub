@@ -4,52 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Input } from "@/components/ui/input";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
-import { CheckCircle, Star, Truck, Shield, Award, Users, Zap, Target, ArrowLeft, Plus, Minus } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { CheckCircle, Star, Truck, Shield, Award, Users, Zap, Target } from "lucide-react";
+import { useRef } from "react";
+import ProductInquiryButton from "@/components/ProductInquiryButton";
 
 const ProductHB8 = () => {
-  const navigate = useNavigate();
-  const [checkoutMode, setCheckoutMode] = useState(false);
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    quantity: 1,
-    customerType: "private", // "private" or "business"
-    companyName: ""
-  });
-  const [previousCustomerType, setPreviousCustomerType] = useState("private");
-  const companyFieldRef = useRef<HTMLDivElement>(null);
   const heroSectionRef = useRef<HTMLElement>(null);
   const productDetailsRef = useRef<HTMLElement>(null);
-
-  const basePrice = 2000;
-  const calculateTotal = () => {
-    return basePrice * formData.quantity;
-  };
-
-  const handleInputChange = (field: string, value: string | number) => {
-    if (field === "customerType") {
-      setPreviousCustomerType(formData.customerType);
-    }
-    setFormData(prev => ({ ...prev, [field]: value }));
-  };
-
-  const handleQuantityChange = (delta: number) => {
-    const newQuantity = Math.max(1, Math.min(7, formData.quantity + delta));
-    setFormData(prev => ({ ...prev, quantity: newQuantity }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Handle form submission logic here
-  };
 
   const scrollToTop = () => {
     heroSectionRef.current?.scrollIntoView({ 
@@ -63,10 +24,6 @@ const ProductHB8 = () => {
       behavior: 'smooth',
       block: 'start'
     });
-  };
-
-  const handleBeratungAnfordern = () => {
-    navigate('/kontakt');
   };
 
   return (
@@ -88,11 +45,11 @@ const ProductHB8 = () => {
               <div className="flex items-center gap-3 mb-6">
                 <Badge className="bg-blue-600 hover:bg-blue-700 text-white border-0">
                   <Award className="w-4 h-4 mr-2" />
-                  Profi-Gerät
+                  Professional
                 </Badge>
-                <Badge className="bg-slate-700 hover:bg-slate-600 text-slate-200 border-slate-600">
-                  <Star className="w-4 h-4 mr-2 fill-blue-400 text-blue-400" />
-                  Marktführer
+                <Badge className="bg-green-600 hover:bg-green-700 text-white border-0">
+                  <CheckCircle className="w-4 h-4 mr-2" />
+                  Verfügbar
                 </Badge>
               </div>
               
@@ -105,262 +62,87 @@ const ProductHB8 = () => {
               
               <div className="flex items-center gap-4 mb-8">
                 <div className="text-slate-300">
-                  <span className="text-sm">Baujahr:</span>
-                  <span className="ml-2 font-semibold text-blue-400">2021</span>
+                  <span className="text-sm">Typ:</span>
+                  <span className="ml-2 font-semibold text-blue-400">Professional Dart</span>
                 </div>
                 <Separator orientation="vertical" className="h-6 bg-slate-600" />
                 <div className="text-slate-300">
                   <span className="text-sm">Status:</span>
-                  <span className="ml-2 font-semibold text-green-400">Lagerware verfügbar</span>
+                  <span className="ml-2 font-semibold text-green-400">Verfügbar</span>
                 </div>
               </div>
               
-              {/* Enhanced Price Box / Checkout Form */}
-              <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700 rounded-2xl p-8 mb-8 shadow-2xl transition-all duration-500 ease-in-out">
-                {!checkoutMode ? (
-                  // Normal Price Display Mode
-                  <div className="animate-fade-in">
-                    <div className="flex items-baseline gap-4 mb-4">
-                      <div className="text-5xl font-bold text-white">2.000€</div>
-                      <div className="text-slate-400 text-lg line-through">2.500€</div>
-                      <Badge className="bg-red-600 text-white">-20%</Badge>
+              {/* Price and CTA Box */}
+              <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700 rounded-2xl p-8 mb-8 shadow-2xl">
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-blue-400 mb-4">ab 2.950 €</div>
+                  <div className="text-slate-300 text-lg mb-6">
+                    zzgl. MwSt. und Versandkosten
+                  </div>
+                  
+                  <div className="flex items-center justify-center gap-4 mb-6">
+                    <div className="flex items-center gap-2 bg-green-900/30 text-green-400 px-3 py-2 rounded-full text-sm">
+                      <CheckCircle className="w-4 h-4" />
+                      Sofort lieferbar
                     </div>
-                    <div className="text-slate-300 text-lg mb-6">inkl. 19% MwSt.</div>
-                    
-                    <div className="flex items-center gap-3 mb-6">
-                      <div className="flex items-center gap-2 bg-green-900/30 text-green-400 px-3 py-2 rounded-full text-sm">
-                        <CheckCircle className="w-4 h-4" />
-                        Nur 7 Stück verfügbar
-                      </div>
-                      <div className="flex items-center gap-2 bg-blue-900/30 text-blue-400 px-3 py-2 rounded-full text-sm">
-                        <Truck className="w-4 h-4" />
-                        Kostenlose Spedition
-                      </div>
-                    </div>
-                    
-                    <div className="space-y-3 text-sm text-slate-400 mb-6">
-                      <div className="flex items-center gap-2">
-                        <Shield className="w-4 h-4 text-green-400" />
-                        24 Monate Garantie
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Users className="w-4 h-4 text-blue-400" />
-                        Kostenlose Einrichtung vor Ort
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Zap className="w-4 h-4 text-cyan-400" />
-                        Sofort einsatzbereit
-                      </div>
+                    <div className="flex items-center gap-2 bg-blue-900/30 text-blue-400 px-3 py-2 rounded-full text-sm">
+                      <Truck className="w-4 h-4" />
+                      Kostenlose Lieferung
                     </div>
                   </div>
-                ) : (
-                  // Checkout Form Mode
-                  <form onSubmit={handleSubmit} className="animate-fade-in">
-                    <div className="flex items-center gap-3 mb-6">
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => setCheckoutMode(false)}
-                        className="text-slate-400 hover:text-white p-2"
-                      >
-                        <ArrowLeft className="w-4 h-4" />
-                      </Button>
-                      <h3 className="text-xl font-semibold text-white">Anfrage stellen</h3>
+                  
+                  <div className="space-y-3 text-sm text-slate-400 mb-6">
+                    <div className="flex items-center gap-2">
+                      <Shield className="w-4 h-4 text-green-400" />
+                      2 Jahre Garantie
                     </div>
-
-                    {/* Customer Type Selection */}
-                    <div className="mb-4">
-                      <label className="block text-sm font-medium text-slate-300 mb-3">Kundentyp</label>
-                      <RadioGroup
-                        value={formData.customerType}
-                        onValueChange={(value) => handleInputChange("customerType", value)}
-                        className="flex gap-6"
-                      >
-                        <div className="flex items-center space-x-2">
-                          <RadioGroupItem value="private" id="private" className="border-slate-600 text-blue-400" />
-                          <Label htmlFor="private" className="text-slate-300 cursor-pointer">Privat</Label>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <RadioGroupItem value="business" id="business" className="border-slate-600 text-blue-400" />
-                          <Label htmlFor="business" className="text-slate-300 cursor-pointer">Geschäftlich</Label>
-                        </div>
-                      </RadioGroup>
+                    <div className="flex items-center gap-2">
+                      <Users className="w-4 h-4 text-blue-400" />
+                      Professionelle Installation möglich
                     </div>
-
-                    {/* Company Name Field - with smooth animation */}
-                    <div 
-                      ref={companyFieldRef}
-                      className={`overflow-hidden transition-all duration-300 ease-out ${
-                        formData.customerType === "business" 
-                          ? "max-h-20 opacity-100 mb-4 animate-slide-down" 
-                          : "max-h-0 opacity-0 mb-0"
-                      }`}
-                    >
-                      <div className="mb-4">
-                        <label className="block text-sm font-medium text-slate-300 mb-2">Unternehmen</label>
-                        <Input
-                          value={formData.companyName}
-                          onChange={(e) => handleInputChange("companyName", e.target.value)}
-                          className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400"
-                          placeholder="Ihr Unternehmensname"
-                          required={formData.customerType === "business"}
-                        />
-                      </div>
+                    <div className="flex items-center gap-2">
+                      <Target className="w-4 h-4 text-purple-400" />
+                      Piezo-Sensoren für höchste Präzision
                     </div>
-
-                    <div className="grid grid-cols-2 gap-4 mb-4">
-                      <div>
-                        <label className="block text-sm font-medium text-slate-300 mb-2">Vorname</label>
-                        <Input
-                          value={formData.firstName}
-                          onChange={(e) => handleInputChange("firstName", e.target.value)}
-                          className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400"
-                          placeholder="Ihr Vorname"
-                          required
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-slate-300 mb-2">Nachname</label>
-                        <Input
-                          value={formData.lastName}
-                          onChange={(e) => handleInputChange("lastName", e.target.value)}
-                          className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400"
-                          placeholder="Ihr Nachname"
-                          required
-                        />
-                      </div>
-                    </div>
-
-                    <div className="mb-4">
-                      <label className="block text-sm font-medium text-slate-300 mb-2">E-Mail</label>
-                      <Input
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) => handleInputChange("email", e.target.value)}
-                        className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400"
-                        placeholder="Ihre E-Mail Adresse"
-                        required
-                      />
-                    </div>
-
-                    <div className="mb-4">
-                      <label className="block text-sm font-medium text-slate-300 mb-2">Telefonnummer</label>
-                      <Input
-                        type="tel"
-                        value={formData.phone}
-                        onChange={(e) => handleInputChange("phone", e.target.value)}
-                        className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400"
-                        placeholder="Ihre Telefonnummer"
-                        required
-                      />
-                    </div>
-
-                    <div className="mb-6">
-                      <label className="block text-sm font-medium text-slate-300 mb-2">Menge</label>
-                      <div className="flex items-center gap-3">
-                        <Button
-                          type="button"
-                          variant="outline"
-                          size="sm"
-                          onClick={() => handleQuantityChange(-1)}
-                          disabled={formData.quantity <= 1}
-                          className="bg-transparent border-blue-500 text-blue-400 hover:bg-blue-500/10 hover:text-blue-300 disabled:opacity-50 disabled:border-slate-600 disabled:text-slate-500"
-                        >
-                          <Minus className="w-4 h-4" />
-                        </Button>
-                        <span className="text-xl font-semibold text-white min-w-[3rem] text-center">
-                          {formData.quantity}
-                        </span>
-                        <Button
-                          type="button"
-                          variant="outline"
-                          size="sm"
-                          onClick={() => handleQuantityChange(1)}
-                          disabled={formData.quantity >= 7}
-                          className="bg-transparent border-blue-500 text-blue-400 hover:bg-blue-500/10 hover:text-blue-300 disabled:opacity-50 disabled:border-slate-600 disabled:text-slate-500"
-                        >
-                          <Plus className="w-4 h-4" />
-                        </Button>
-                        <span className="text-sm text-slate-400 ml-2">
-                          (max. 7 Stück verfügbar)
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Integrated Price Calculator */}
-                    <div className="bg-slate-900/50 border border-slate-600 rounded-lg p-4 mb-6 animate-scale-in">
-                      <div className="space-y-2">
-                        <div className="flex justify-between text-slate-300">
-                          <span>Einzelpreis:</span>
-                          <span>{basePrice.toLocaleString()}€</span>
-                        </div>
-                        <div className="flex justify-between text-slate-300">
-                          <span>Menge:</span>
-                          <span>{formData.quantity}x</span>
-                        </div>
-                        <div className="flex justify-between text-slate-300">
-                          <span>Versand:</span>
-                          <span className="text-green-400">Kostenlos</span>
-                        </div>
-                        <Separator className="bg-slate-600" />
-                        <div className="flex justify-between text-lg font-semibold text-white">
-                          <span>Gesamtpreis:</span>
-                          <span>{calculateTotal().toLocaleString()}€</span>
-                        </div>
-                        <div className="text-sm text-slate-400 text-right">inkl. 19% MwSt.</div>
-                      </div>
-                    </div>
-
-                    <Button 
-                      type="submit" 
-                      className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 rounded-md shadow-lg transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
-                    >
-                      Unverbindliche Anfrage stellen
-                    </Button>
-                  </form>
-                )}
-
-                {!checkoutMode && (
-                  <div className="flex gap-4">
-                    <Button 
-                      onClick={() => setCheckoutMode(true)}
-                      className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-3 text-lg font-semibold rounded-md shadow-lg transition-all duration-300 hover:shadow-xl flex-1 transform hover:scale-[1.02]"
-                    >
-                      Jetzt anfragen
-                    </Button>
-                    <Button 
-                      variant="ghost" 
-                      onClick={scrollToProductDetails}
-                      className="border border-transparent text-slate-300 hover:bg-slate-700 hover:border-slate-500 hover:text-white px-6 py-3 text-lg rounded-md transition-all duration-300 transform hover:scale-[1.02]"
-                    >
-                      Mehr Info
-                    </Button>
                   </div>
-                )}
+                </div>
+
+                <div className="flex gap-4">
+                  <ProductInquiryButton
+                    productType="HB8"
+                    productPrice={2950}
+                    className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 text-lg rounded-md transition-all duration-300 flex-1 transform hover:scale-[1.02]"
+                  />
+                  <Button 
+                    variant="ghost" 
+                    onClick={scrollToProductDetails}
+                    className="border border-transparent text-slate-300 hover:bg-slate-700 hover:border-slate-500 hover:text-white px-6 py-3 text-lg rounded-md transition-all duration-300 flex-1 transform hover:scale-[1.02]"
+                  >
+                    Mehr Info
+                  </Button>
+                </div>
               </div>
             </div>
             
             <div className="order-1 lg:order-2">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-blue-700/20 rounded-3xl blur-2xl transform scale-110"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-700/20 rounded-3xl blur-2xl transform scale-110"></div>
                 
                 <div className="relative bg-slate-800/30 backdrop-blur-sm rounded-3xl p-8 border border-slate-700 shadow-2xl">
                   <div className="flex flex-col">
                     <div className="h-[28rem] flex items-center justify-center mb-4">
                       <img 
-                        src="https://www.loewen.de/fileadmin/_processed_/3/b/csm_DART_HB8_Tunier_Retusche_593a52b77d.png"
+                        src="https://www.loewen.de/fileadmin/_processed_/5/5/csm_HB8_Professional_Dart_b0a7c5c1a6.png"
                         alt="Löwen Dartautomat HB8"
-                        className="max-h-full max-w-full object-contain drop-shadow-2xl scale-120"
+                        className="max-h-full max-w-full object-contain drop-shadow-2xl"
                       />
                     </div>
                     
                     <div className="text-center space-y-4">
                       <h3 className="text-2xl font-bold text-white">LÖWEN DARTAUTOMAT HB8</h3>
                       <p className="text-slate-300 text-base leading-relaxed">
-                        Der LÖWEN Turnier Dart HB8 ist die neueste Evolution des legendären Dart 96, 
-                        der seit 1996 als Marktführer in Deutschland gilt. Ein hochwertiges 
-                        Profi-Gerät mit über 10.000 verkauften Geräten im ersten Jahr.
+                        Das Professional Dart-Gerät mit bewährter Technologie und höchster Qualität. 
+                        Perfekt für Gastronomiebetriebe und ernsthafte Dart-Spieler.
                       </p>
                       
                       <div className="flex items-center justify-center gap-4 pt-4">
@@ -378,6 +160,61 @@ const ProductHB8 = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 bg-slate-900">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="font-bold text-white mb-6 font-parisine-narrow" style={{ fontSize: '48px' }}>
+              PROFESSIONAL FEATURES
+            </h2>
+            <p className="text-slate-400 text-xl max-w-3xl mx-auto">
+              Hochwertige deutsche Ingenieurskunst trifft auf modernste Dart-Technologie
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 hover:scale-105">
+              <CardHeader className="text-center">
+                <Target className="w-12 h-12 text-blue-400 mx-auto mb-4" />
+                <CardTitle className="text-white">PIEZO-SENSOREN</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-slate-400 text-center">
+                  Hochpräzise Trefferkennung durch bewährte Piezo-Sensor-Technologie 
+                  für perfekte Spielergebnisse.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 hover:scale-105">
+              <CardHeader className="text-center">
+                <Zap className="w-12 h-12 text-yellow-400 mx-auto mb-4" />
+                <CardTitle className="text-white">INFRAROT-ERKENNUNG</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-slate-400 text-center">
+                  Automatische Spielererkennung verhindert Fehlwürfe und 
+                  sorgt für reibungslose Spielabläufe.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 hover:scale-105">
+              <CardHeader className="text-center">
+                <Shield className="w-12 h-12 text-green-400 mx-auto mb-4" />
+                <CardTitle className="text-white">MADE IN GERMANY</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-slate-400 text-center">
+                  Deutsche Qualität und Langlebigkeit für höchste Ansprüche 
+                  in Gastronomie und Freizeit.
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -791,7 +628,7 @@ const ProductHB8 = () => {
                         <ul className="text-slate-400 text-sm space-y-1">
                           <li>• Offizielle Turnier-Abwurflinie</li>
                           <li>• Befestigungsmaterial (Wandmontage)</li>
-                          <li>• Deutsches Handbuch (120 Seiten)</li>
+                          <li>• Deutsches Benutzerhandbuch (120 Seiten)</li>
                           <li>• Garantieschein & Zertifikate</li>
                         </ul>
                       </div>
@@ -819,39 +656,38 @@ const ProductHB8 = () => {
       <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-10 right-10 w-64 h-64 bg-blue-500 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 left-10 w-96 h-96 bg-blue-600 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 left-10 w-96 h-96 bg-purple-600 rounded-full blur-3xl"></div>
         </div>
         
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="max-w-4xl mx-auto">
             <h2 className="font-bold text-white mb-8 font-parisine-narrow" style={{ fontSize: '48px' }}>
-              SICHERN SIE SICH JETZT IHREN HB8
+              BEREIT FÜR IHR NEUES DARTGERÄT?
             </h2>
             <p className="text-slate-300 mb-10 text-lg leading-relaxed">
-              Nur noch wenige Exemplare dieser exklusiven Lagerware aus 2021 verfügbar. 
-              Mit 24 Monaten Garantie, kostenloser Speditionslieferung und professioneller Einrichtung vor Ort.
+              Fordern Sie jetzt ein unverbindliches Angebot für den LÖWEN DART HB8 an. 
+              Unsere Experten beraten Sie gerne und erstellen Ihnen ein maßgeschneidertes Angebot.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                onClick={scrollToTop}
+              <ProductInquiryButton
+                productType="HB8"
+                productPrice={2950}
                 className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-12 py-5 font-semibold rounded-md shadow-lg transition-all duration-300 hover:shadow-xl text-xl transform hover:scale-[1.02]"
-              >
-                Jetzt bestellen
-              </Button>
+              />
               <Button 
                 variant="ghost" 
-                onClick={handleBeratungAnfordern}
+                onClick={scrollToTop}
                 className="border border-transparent text-slate-300 hover:bg-slate-700 hover:border-slate-500 hover:text-white px-8 py-5 text-lg rounded-md transition-all duration-300 transform hover:scale-[1.02]"
               >
-                Beratung anfordern
+                Zurück nach oben
               </Button>
             </div>
             
             <div className="flex items-center justify-center gap-8 mt-8 text-sm text-slate-400">
               <div className="flex items-center gap-2">
                 <Shield className="w-4 h-4 text-green-400" />
-                24 Monate Garantie
+                2 Jahre Garantie
               </div>
               <div className="flex items-center gap-2">
                 <Truck className="w-4 h-4 text-blue-400" />
@@ -859,7 +695,7 @@ const ProductHB8 = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Users className="w-4 h-4 text-purple-400" />
-                Profi-Setup inklusive
+                Persönliche Beratung
               </div>
             </div>
           </div>
