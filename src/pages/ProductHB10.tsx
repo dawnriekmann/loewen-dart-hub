@@ -59,8 +59,12 @@ const ProductHB10 = () => {
       quantity: formData.quantity,
       customer_name: `${formData.firstName} ${formData.lastName}`,
       customer_email: formData.email,
-      customer_phone: formData.phone,
-      customer_company: formData.customerType === 'business' ? formData.companyName : undefined,
+      customer_phone: formData.phone || null,
+      customer_company: formData.customerType === 'business' ? formData.companyName : null,
+      customer_address: null,
+      customer_city: null,
+      customer_zip: null,
+      message: null,
     };
     
     createInquiry.mutate(inquiryData, {

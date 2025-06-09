@@ -2,15 +2,16 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
-import type { Tables } from '@/integrations/supabase/types';
+import type { Tables, TablesInsert } from '@/integrations/supabase/types';
 
 export type ProductInquiry = Tables<'product_inquiries'>;
+export type ProductInquiryInsert = TablesInsert<'product_inquiries'>;
 
 export const useProductInquiries = () => {
   const queryClient = useQueryClient();
 
   const createInquiry = useMutation({
-    mutationFn: async (inquiry: Omit<ProductInquiry, 'id' | 'created_at' | 'updated_at' | 'status'>) => {
+    mutationFn: async (inquiry: Omit<ProductInquiryInsert, 'id' | 'created_at' | 'updated_at' | 'status'>) => {
       const { data, error } = await supabase
         .from('product_inquiries')
         .insert(inquiry)
