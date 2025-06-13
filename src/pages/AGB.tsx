@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactBanner from "@/components/ContactBanner";
@@ -47,8 +46,8 @@ const AGB = () => {
                 <p className="mb-2 text-[#002454]"><strong>LÖWEN ENTERTAINMENT GmbH</strong></p>
                 <p className="mb-2 text-[#002454]">Saarlandstraße 240</p>
                 <p className="mb-2 text-[#002454]">55411 Bingen</p>
-                <p className="mb-2 text-[#002454]"><strong>Telefon:</strong> +49 6721 4070</p>
-                <p className="mb-2 text-[#002454]"><strong>E-Mail:</strong> info@loewen.de</p>
+                <p className="mb-2 text-[#002454]"><strong>Telefon:</strong> +49 6721 7974020</p>
+                <p className="mb-2 text-[#002454]"><strong>E-Mail:</strong> info@loewen-vertrieb.de</p>
               </div>
 
               <div>
