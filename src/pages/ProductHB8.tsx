@@ -1,3 +1,4 @@
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -7,8 +8,8 @@ import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { CheckCircle, Star, Truck, Shield, Award, Users, Zap, Target, ArrowLeft, Plus, Minus, Smartphone, Monitor, Wifi } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
+import { CheckCircle, Star, Truck, Shield, Award, Users, Zap, Target, ArrowLeft, Plus, Minus, Smartphone, Monitor } from "lucide-react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useProductInquiries } from "@/hooks/useProductInquiries";
 
@@ -31,8 +32,8 @@ const ProductHB8 = () => {
   const heroSectionRef = useRef<HTMLElement>(null);
   const productDetailsRef = useRef<HTMLElement>(null);
 
-  const basePrice = 2599;
-  const originalPrice = 2999;
+  const basePrice = 2999;
+  const originalPrice = 3499;
   const savings = originalPrice - basePrice;
   const calculateTotal = () => {
     return basePrice * formData.quantity;
@@ -59,8 +60,12 @@ const ProductHB8 = () => {
       quantity: formData.quantity,
       customer_name: `${formData.firstName} ${formData.lastName}`,
       customer_email: formData.email,
-      customer_phone: formData.phone,
-      customer_company: formData.customerType === 'business' ? formData.companyName : undefined,
+      customer_phone: formData.phone || null,
+      customer_company: formData.customerType === 'business' ? formData.companyName : null,
+      customer_address: null,
+      customer_city: null,
+      customer_zip: null,
+      message: null,
     };
     
     createInquiry.mutate(inquiryData, {
@@ -121,11 +126,11 @@ const ProductHB8 = () => {
               <div className="flex items-center gap-3 mb-6">
                 <Badge className="bg-blue-600 hover:bg-blue-700 text-white border-0">
                   <Award className="w-4 h-4 mr-2" />
-                  Profi-Gerät
+                  Bewährtes Modell
                 </Badge>
-                <Badge className="bg-slate-700 hover:bg-slate-600 text-slate-200 border-slate-600">
-                  <Star className="w-4 h-4 mr-2 fill-blue-400 text-blue-400" />
-                  Marktführer
+                <Badge className="bg-green-700 hover:bg-green-600 text-white border-0">
+                  <CheckCircle className="w-4 h-4 mr-2" />
+                  Verfügbar
                 </Badge>
               </div>
               
@@ -133,18 +138,18 @@ const ProductHB8 = () => {
                 LÖWEN DARTAUTOMAT
               </h1>
               <h2 className="font-bold text-blue-400 mb-6 font-parisine-narrow" style={{ fontSize: '42px' }}>
-                HB8 PROFESSIONAL
+                HB8 DART TURNIER
               </h2>
               
               <div className="flex items-center gap-4 mb-8">
                 <div className="text-slate-300">
-                  <span className="text-sm">Baujahr:</span>
-                  <span className="ml-2 font-semibold text-blue-400">2021</span>
+                  <span className="text-sm">Serie:</span>
+                  <span className="ml-2 font-semibold text-blue-400">Bewährte Produktionsreihe</span>
                 </div>
                 <Separator orientation="vertical" className="h-6 bg-slate-600" />
                 <div className="text-slate-300">
                   <span className="text-sm">Status:</span>
-                  <span className="ml-2 font-semibold text-green-400">Lagerware verfügbar</span>
+                  <span className="ml-2 font-semibold text-green-400">Sofort verfügbar</span>
                 </div>
               </div>
               
@@ -154,8 +159,8 @@ const ProductHB8 = () => {
                   // Normal Price Display Mode
                   <div className="animate-fade-in">
                     <div className="flex items-baseline gap-4 mb-4">
-                      <div className="text-5xl font-bold text-white">2.599€</div>
-                      <div className="text-slate-400 text-lg line-through">2.999€</div>
+                      <div className="text-5xl font-bold text-white">2.999€</div>
+                      <div className="text-slate-400 text-lg line-through">3.499€</div>
                       <Badge className="bg-red-600 text-white">-{savings}€</Badge>
                     </div>
                     <div className="text-slate-300 text-lg mb-6">inkl. 19% MwSt.</div>
@@ -163,7 +168,7 @@ const ProductHB8 = () => {
                     <div className="flex items-center gap-3 mb-6">
                       <div className="flex items-center gap-2 bg-green-900/30 text-green-400 px-3 py-2 rounded-full text-sm">
                         <CheckCircle className="w-4 h-4" />
-                        Nur 7 Stück verfügbar
+                        Sofort verfügbar
                       </div>
                       <div className="flex items-center gap-2 bg-blue-900/30 text-blue-400 px-3 py-2 rounded-full text-sm">
                         <Truck className="w-4 h-4" />
@@ -181,13 +186,13 @@ const ProductHB8 = () => {
                         Kostenlose Einrichtung vor Ort
                       </div>
                       <div className="flex items-center gap-2">
-                        <Zap className="w-4 h-4 text-cyan-400" />
-                        Sofort einsatzbereit
+                        <Target className="w-4 h-4 text-cyan-400" />
+                        Bewährte Turnier-Qualität
                       </div>
                     </div>
                   </div>
                 ) : !isSubmitted ? (
-                  // Checkout Form Mode - same structure as HB10
+                  // Checkout Form Mode
                   <form onSubmit={handleSubmit} className="animate-fade-in">
                     <div className="flex items-center gap-3 mb-6">
                       <Button
@@ -315,6 +320,9 @@ const ProductHB8 = () => {
                         >
                           <Plus className="w-4 h-4" />
                         </Button>
+                        <span className="text-sm text-slate-400 ml-2">
+                          (Aktuell verfügbar)
+                        </span>
                       </div>
                     </div>
 
@@ -431,28 +439,27 @@ const ProductHB8 = () => {
                   <div className="flex flex-col">
                     <div className="h-[28rem] flex items-center justify-center mb-4">
                       <img 
-                        src="https://www.loewen.de/fileadmin/_processed_/3/b/csm_DART_HB8_Tunier_Retusche_593a52b77d.png"
+                        src="https://www.loewen-vertrieb.de/fileadmin/_processed_/3/b/csm_DART_HB8_Tunier_Retusche_593a52b77d.png"
                         alt="Löwen Dartautomat HB8"
                         className="max-h-full max-w-full object-contain drop-shadow-2xl scale-120"
                       />
                     </div>
                     
                     <div className="text-center space-y-4">
-                      <h3 className="text-2xl font-bold text-white">LÖWEN DARTAUTOMAT HB8</h3>
+                      <h3 className="text-2xl font-bold text-white">BEWÄHRTE TURNIER-QUALITÄT</h3>
                       <p className="text-slate-300 text-base leading-relaxed">
-                        Der LÖWEN Turnier Dart HB8 ist die neueste Evolution des legendären Dart 96, 
-                        der seit 1996 als Marktführer in Deutschland gilt. Ein hochwertiges 
-                        Profi-Gerät mit über 10.000 verkauften Geräten im ersten Jahr.
+                        Der HB8 ist das bewährte Modell für professionelle Ansprüche. Mit solidem Aufbau 
+                        und zuverlässiger Technik ist er perfekt für Vereine und Gastronomie geeignet.
                       </p>
                       
                       <div className="flex items-center justify-center gap-4 pt-4">
                         <div className="flex items-center gap-2 text-sm text-blue-400">
                           <Target className="w-4 h-4" />
-                          <span>Piezo-Sensoren</span>
+                          <span>Turnier-Standard</span>
                         </div>
                         <div className="flex items-center gap-2 text-sm text-green-400">
                           <Shield className="w-4 h-4" />
-                          <span>Made in Germany</span>
+                          <span>24 Mon. Garantie</span>
                         </div>
                       </div>
                     </div>
@@ -469,226 +476,71 @@ const ProductHB8 = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="font-bold text-white mb-6 font-parisine-narrow" style={{ fontSize: '48px' }}>
-              WARUM DER HB8?
+              HIGHLIGHTS
             </h2>
             <p className="text-slate-400 text-xl max-w-3xl mx-auto">
-              Der HB8 vereint jahrzehntelange Erfahrung mit modernster Technologie für das ultimative Dart-Erlebnis
+              Der HB8 bietet bewährte Technik und zuverlässige Qualität für professionelle Ansprüche
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 hover:scale-105">
               <CardHeader className="text-center">
                 <Target className="w-12 h-12 text-blue-400 mx-auto mb-4" />
-                <CardTitle className="text-white">Präzise Sensorik</CardTitle>
+                <CardTitle className="text-white">Turnier-Standard</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-slate-400 text-center">Piezo-Sensoren für 100% akkurate Trefferkennung</p>
+                <p className="text-slate-400 text-center">Entspricht allen offiziellen Turnier-Anforderungen</p>
               </CardContent>
             </Card>
 
             <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 hover:scale-105">
               <CardHeader className="text-center">
                 <Shield className="w-12 h-12 text-green-400 mx-auto mb-4" />
-                <CardTitle className="text-white">Deutsche Qualität</CardTitle>
+                <CardTitle className="text-white">Robuste Bauweise</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-slate-400 text-center">CE & GS geprüft, hergestellt in Deutschland</p>
+                <p className="text-slate-400 text-center">Solide Konstruktion für langfristige Nutzung</p>
               </CardContent>
             </Card>
 
             <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 hover:scale-105">
               <CardHeader className="text-center">
-                <Users className="w-12 h-12 text-purple-400 mx-auto mb-4" />
-                <CardTitle className="text-white">Multiplayer</CardTitle>
+                <Zap className="w-12 h-12 text-purple-400 mx-auto mb-4" />
+                <CardTitle className="text-white">Präzise Erkennung</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-slate-400 text-center">Bis zu 8 Spieler gleichzeitig, Teams möglich</p>
+                <p className="text-slate-400 text-center">100% akkurate Treffererfassung durch Piezo-Sensoren</p>
               </CardContent>
             </Card>
 
             <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 hover:scale-105">
               <CardHeader className="text-center">
-                <Award className="w-12 h-12 text-blue-400 mx-auto mb-4" />
-                <CardTitle className="text-white">Marktführer</CardTitle>
+                <Monitor className="w-12 h-12 text-blue-400 mx-auto mb-4" />
+                <CardTitle className="text-white">Klares Display</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-slate-400 text-center">Über 10.000 verkaufte Geräte seit 1996</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Detailed Description Section */}
-      <section ref={productDetailsRef} className="py-20 bg-slate-800">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="font-bold text-white mb-6 font-parisine-narrow" style={{ fontSize: '48px' }}>
-                PRODUKTDETAILS
-              </h2>
-            </div>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <Card className="bg-slate-900/50 border-slate-700">
-                <CardHeader>
-                  <CardTitle className="text-white text-2xl flex items-center">
-                    <div className="w-4 h-4 bg-blue-500 rounded-full mr-4"></div>
-                    Über den HB8
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4 text-slate-300">
-                  <p className="leading-relaxed">
-                    Der LÖWEN Turnier Dart HB8 ist die neueste Evolution des legendären Dart 96, 
-                    der seit 1996 als Marktführer in Deutschland gilt. Mit über 10.000 verkauften 
-                    Geräten im ersten Jahr hat sich dieser Dartautomat als der absolute Klassiker etabliert.
-                  </p>
-                  <p className="leading-relaxed">
-                    Diese Lagerware aus 2021 bietet Ihnen die Möglichkeit, ein hochwertiges 
-                    Profi-Gerät zu einem außergewöhnlichen Preis zu erwerben. Jedes Gerät wurde 
-                    vor der Lagerung vollständig getestet und versiegelt.
-                  </p>
-                  <div className="bg-blue-900/20 border border-blue-700/50 rounded-lg p-4 mt-6">
-                    <h4 className="text-blue-400 font-semibold mb-2">Besonderheit dieser Charge:</h4>
-                    <p className="text-sm text-slate-300">
-                      Originalverpackte Geräte aus der letzten Produktionsserie 2021. 
-                      Limitierte Verfügbarkeit mit Sammlerwert.
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-slate-900/50 border-slate-700">
-                <CardHeader>
-                  <CardTitle className="text-white text-2xl flex items-center">
-                    <div className="w-4 h-4 bg-green-500 rounded-full mr-4"></div>
-                    Lieferung & Service
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-3 text-slate-300">
-                      <Truck className="w-5 h-5 text-blue-400" />
-                      <span>Professionelle Speditionslieferung deutschlandweit</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-slate-300">
-                      <Shield className="w-5 h-5 text-green-400" />
-                      <span>24 Monate Herstellergarantie</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-slate-300">
-                      <Users className="w-5 h-5 text-purple-400" />
-                      <span>Kostenlose Einrichtung und Einweisung vor Ort</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-slate-300">
-                      <Zap className="w-5 h-5 text-blue-400" />
-                      <span>Sofort einsatzbereit nach Aufstellung</span>
-                    </div>
-                  </div>
-                  
-                  <Separator className="bg-slate-700" />
-                  
-                  <div className="bg-slate-800/50 rounded-lg p-4">
-                    <h4 className="text-white font-semibold mb-3">Lieferumfang komplett:</h4>
-                    <ul className="space-y-2 text-sm text-slate-300">
-                      <li>• 1x HB8 Dartautomat (komplett montiert)</li>
-                      <li>• 1x Profi-Dartset (12 Pfeile)</li>
-                      <li>• 1x Abwurflinie (offizielle Turniermaße)</li>
-                      <li>• Komplettes Befestigungsmaterial</li>
-                      <li>• Deutsches Benutzerhandbuch (120 Seiten)</li>
-                      <li>• Garantieschein und Konformitätserklärung</li>
-                    </ul>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Games Section - Enhanced */}
-      <section className="py-20 bg-slate-900">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="font-bold text-white mb-6 font-parisine-narrow" style={{ fontSize: '48px' }}>
-              SPIELMODI & VARIANTEN
-            </h2>
-            <p className="text-slate-400 text-xl max-w-4xl mx-auto">
-              Mit 10 verschiedenen Spielmodi und über 30 Variationen bietet der HB8 
-              unendlichen Spielspaß für Anfänger bis Profis
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-500 hover:scale-105 group">
-              <CardHeader>
-                <CardTitle className="text-white flex items-center text-xl">
-                  <div className="w-3 h-3 bg-blue-500 rounded-full mr-3 group-hover:animate-pulse"></div>
-                  Standard Spiele
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  <div className="text-slate-300 font-semibold mb-3">Klassische Modi:</div>
-                  <ul className="text-slate-400 space-y-2">
-                    <li className="flex items-center"><span className="text-blue-400 mr-2">•</span> 301 (Einsteiger)</li>
-                    <li className="flex items-center"><span className="text-blue-400 mr-2">•</span> 501 (Standard)</li>
-                    <li className="flex items-center"><span className="text-blue-400 mr-2">•</span> 701 (Profi)</li>
-                    <li className="flex items-center"><span className="text-blue-400 mr-2">•</span> Rapid Fire</li>
-                    <li className="flex items-center"><span className="text-blue-400 mr-2">•</span> Split Score</li>
-                  </ul>
-                  <div className="bg-blue-900/20 border border-blue-700/50 rounded p-3 mt-4">
-                    <p className="text-xs text-blue-300">Perfekt für Turniere und Wettkämpfe</p>
-                  </div>
-                </div>
+                <p className="text-slate-400 text-center">Übersichtliche Anzeige aller Spielstände</p>
               </CardContent>
             </Card>
 
-            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-500 hover:scale-105 group">
-              <CardHeader>
-                <CardTitle className="text-white flex items-center text-xl">
-                  <div className="w-3 h-3 bg-green-500 rounded-full mr-3 group-hover:animate-pulse"></div>
-                  Profi Optionen
-                </CardTitle>
+            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 hover:scale-105">
+              <CardHeader className="text-center">
+                <Users className="w-12 h-12 text-green-400 mx-auto mb-4" />
+                <CardTitle className="text-white">Vielseitige Spiele</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-3">
-                  <div className="text-slate-300 font-semibold mb-3">Erweiterte Modi:</div>
-                  <ul className="text-slate-400 space-y-2">
-                    <li className="flex items-center"><span className="text-green-400 mr-2">•</span> Double In/Out</li>
-                    <li className="flex items-center"><span className="text-green-400 mr-2">•</span> Masters Out</li>
-                    <li className="flex items-center"><span className="text-green-400 mr-2">•</span> Team Modi (2er/4er)</li>
-                    <li className="flex items-center"><span className="text-green-400 mr-2">•</span> Handicap System</li>
-                    <li className="flex items-center"><span className="text-green-400 mr-2">•</span> Time Out Handicap</li>
-                  </ul>
-                  <div className="bg-green-900/20 border border-green-700/50 rounded p-3 mt-4">
-                    <p className="text-xs text-green-300">Für anspruchsvolle Spieler</p>
-                  </div>
-                </div>
+                <p className="text-slate-400 text-center">Große Auswahl an Spielvarianten und Modi</p>
               </CardContent>
             </Card>
 
-            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-500 hover:scale-105 group">
-              <CardHeader>
-                <CardTitle className="text-white flex items-center text-xl">
-                  <div className="w-3 h-3 bg-purple-500 rounded-full mr-3 group-hover:animate-pulse"></div>
-                  Cricket Varianten
-                </CardTitle>
+            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300 hover:scale-105">
+              <CardHeader className="text-center">
+                <Award className="w-12 h-12 text-yellow-400 mx-auto mb-4" />
+                <CardTitle className="text-white">Bewährt</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-3">
-                  <div className="text-slate-300 font-semibold mb-3">11 Cricket Modi:</div>
-                  <ul className="text-slate-400 space-y-2">
-                    <li className="flex items-center"><span className="text-purple-400 mr-2">•</span> Standard Cricket</li>
-                    <li className="flex items-center"><span className="text-purple-400 mr-2">•</span> Cut Throat</li>
-                    <li className="flex items-center"><span className="text-purple-400 mr-2">•</span> Masters Cricket</li>
-                    <li className="flex items-center"><span className="text-purple-400 mr-2">•</span> You Pick It</li>
-                    <li className="flex items-center"><span className="text-purple-400 mr-2">•</span> Chance It</li>
-                  </ul>
-                  <div className="bg-purple-900/20 border border-purple-700/50 rounded p-3 mt-4">
-                    <p className="text-xs text-purple-300">Strategische Spielvarianten</p>
-                  </div>
-                </div>
+                <p className="text-slate-400 text-center">Tausendfach bewährt in Vereinen und Gastronomie</p>
               </CardContent>
             </Card>
           </div>
@@ -696,80 +548,19 @@ const ProductHB8 = () => {
       </section>
 
       {/* Technical Specifications - Enhanced */}
-      <section className="py-20 bg-slate-800">
+      <section ref={productDetailsRef} className="py-20 bg-slate-800">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="font-bold text-white mb-6 font-parisine-narrow" style={{ fontSize: '48px' }}>
-              TECHNISCHE SPEZIFIKATIONEN
+              TECHNISCHE DATEN
             </h2>
             <p className="text-slate-400 text-xl max-w-4xl mx-auto">
-              Präzise Engineered für professionelle Ansprüche und jahrelange Zuverlässigkeit
+              Solide Technik für professionelle Ansprüche und langfristige Zuverlässigkeit
             </p>
           </div>
           
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-              <Card className="bg-slate-900/50 border-slate-700 hover:bg-slate-900/70 transition-all duration-500">
-                <CardHeader>
-                  <CardTitle className="text-white flex items-center text-xl">
-                    <Shield className="w-6 h-6 text-green-400 mr-3" />
-                    Sicherheit & Zertifizierung
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-slate-800/50 rounded-lg p-3">
-                        <div className="text-green-400 text-sm font-semibold">CE-Kennzeichnung</div>
-                        <div className="text-slate-400 text-xs">EU-Konformität</div>
-                      </div>
-                      <div className="bg-slate-800/50 rounded-lg p-3">
-                        <div className="text-green-400 text-sm font-semibold">GS-Siegel</div>
-                        <div className="text-slate-400 text-xs">Geprüfte Sicherheit</div>
-                      </div>
-                    </div>
-                    <ul className="text-slate-300 space-y-2 text-sm">
-                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" /> Matrix fest an Gehäuserückwand montiert</li>
-                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" /> Abklappbare Dartsscheibe für Service</li>
-                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" /> Piezo-Sensoren für präzise Erkennung</li>
-                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" /> Infrarot-Spielererkennung</li>
-                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" /> Made in Germany Qualität</li>
-                    </ul>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-slate-900/50 border-slate-700 hover:bg-slate-900/70 transition-all duration-500">
-                <CardHeader>
-                  <CardTitle className="text-white flex items-center text-xl">
-                    <Zap className="w-6 h-6 text-blue-400 mr-3" />
-                    Erweiterte Features
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="grid grid-cols-1 gap-3">
-                      <div className="bg-slate-800/50 rounded-lg p-3">
-                        <div className="text-blue-400 text-sm font-semibold mb-1">Dataprint-Schnittstelle</div>
-                        <div className="text-slate-400 text-xs">Für externe Anzeigetafeln und Statistiken</div>
-                      </div>
-                      <div className="bg-slate-800/50 rounded-lg p-3">
-                        <div className="text-blue-400 text-sm font-semibold mb-1">Programmierbare Einstellungen</div>
-                        <div className="text-slate-400 text-xs">Gerätenummer, Rundenlimits, Bullseye-Wertung</div>
-                      </div>
-                    </div>
-                    <ul className="text-slate-300 space-y-2 text-sm">
-                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-blue-400 mr-2" /> Einstellbare Spielabschaltung</li>
-                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-blue-400 mr-2" /> "Free Play" Modus verfügbar</li>
-                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-blue-400 mr-2" /> Automatische Spielstandspeicherung</li>
-                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-blue-400 mr-2" /> Mehrsprachige Menüführung</li>
-                    </ul>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Card className="bg-slate-900/50 border-slate-700 hover:bg-slate-900/70 transition-all duration-500">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center text-xl">
@@ -779,17 +570,17 @@ const ProductHB8 = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-6">
-                    <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700">
+                    <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-600">
                       <h4 className="font-semibold text-white mb-3 flex items-center">
-                        <span className="text-purple-400 mr-2">📏</span> Betriebsstellung (aufgeklappt):
+                        <span className="text-purple-400 mr-2">📏</span> Aufgestellt:
                       </h4>
                       <div className="grid grid-cols-3 gap-3 text-center">
                         <div>
-                          <div className="text-2xl font-bold text-purple-400">219cm</div>
+                          <div className="text-2xl font-bold text-purple-400">220cm</div>
                           <div className="text-xs text-slate-400">Höhe</div>
                         </div>
                         <div>
-                          <div className="text-2xl font-bold text-purple-400">63cm</div>
+                          <div className="text-2xl font-bold text-purple-400">62cm</div>
                           <div className="text-xs text-slate-400">Breite</div>
                         </div>
                         <div>
@@ -797,41 +588,24 @@ const ProductHB8 = () => {
                           <div className="text-xs text-slate-400">Tiefe</div>
                         </div>
                       </div>
-                      <p className="text-xs text-slate-400 mt-3 bg-slate-800/50 border border-slate-700 rounded p-2">
-                        <strong>Wichtig:</strong> Zum Aufklappen wird zusätzlicher Platz nach oben benötigt!
-                      </p>
                     </div>
                     
-                    <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700">
+                    <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-600">
                       <h4 className="font-semibold text-white mb-3 flex items-center">
-                        <span className="text-blue-400 mr-2">📦</span> Transportstellung (zusammengeklappt):
+                        <span className="text-blue-400 mr-2">📦</span> Transport zusammengeklappt:
                       </h4>
                       <div className="grid grid-cols-3 gap-3 text-center">
                         <div>
-                          <div className="text-2xl font-bold text-blue-400">115cm</div>
+                          <div className="text-2xl font-bold text-blue-400">110cm</div>
                           <div className="text-xs text-slate-400">Höhe</div>
                         </div>
                         <div>
-                          <div className="text-2xl font-bold text-blue-400">63cm</div>
+                          <div className="text-2xl font-bold text-blue-400">62cm</div>
                           <div className="text-xs text-slate-400">Breite</div>
                         </div>
                         <div>
-                          <div className="text-2xl font-bold text-blue-400">83cm</div>
+                          <div className="text-2xl font-bold text-blue-400">70cm</div>
                           <div className="text-xs text-slate-400">Tiefe</div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700">
-                      <h4 className="font-semibold text-white mb-3">Gewicht & Material:</h4>
-                      <div className="grid grid-cols-2 gap-3">
-                        <div>
-                          <div className="text-lg font-bold text-slate-300">~85kg</div>
-                          <div className="text-xs text-slate-400">Gesamtgewicht</div>
-                        </div>
-                        <div>
-                          <div className="text-lg font-bold text-slate-300">Stahl/Holz</div>
-                          <div className="text-xs text-slate-400">Materialien</div>
                         </div>
                       </div>
                     </div>
@@ -842,57 +616,102 @@ const ProductHB8 = () => {
               <Card className="bg-slate-900/50 border-slate-700 hover:bg-slate-900/70 transition-all duration-500">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center text-xl">
-                    <Award className="w-6 h-6 text-blue-400 mr-3" />
-                    Kompletter Lieferumfang
+                    <Zap className="w-6 h-6 text-blue-400 mr-3" />
+                    Technische Spezifikationen
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    <div className="grid grid-cols-1 gap-3">
-                      <div className="bg-slate-800/50 rounded-lg p-3 border border-slate-700">
-                        <div className="flex items-center gap-3 mb-2">
-                          <Target className="w-5 h-5 text-blue-400" />
-                          <span className="text-white font-semibold">HB8 Hauptgerät</span>
-                        </div>
-                        <p className="text-slate-400 text-sm">Komplett montiert und getestet</p>
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="bg-slate-800/50 rounded-lg p-3">
+                        <div className="text-blue-400 text-sm font-semibold">Gewicht</div>
+                        <div className="text-slate-300 text-lg font-bold">85kg</div>
                       </div>
-                      
-                      <div className="bg-slate-800/50 rounded-lg p-3 border border-slate-700">
-                        <div className="flex items-center gap-3 mb-2">
-                          <Zap className="w-5 h-5 text-blue-400" />
-                          <span className="text-white font-semibold">Profi Dart-Set</span>
-                        </div>
-                        <p className="text-slate-400 text-sm">12 hochwertige Turnier-Darts</p>
-                      </div>
-                      
-                      <div className="bg-slate-800/50 rounded-lg p-3 border border-slate-700">
-                        <div className="flex items-center gap-3 mb-2">
-                          <CheckCircle className="w-5 h-5 text-green-400" />
-                          <span className="text-white font-semibold">Zubehör komplett</span>
-                        </div>
-                        <ul className="text-slate-400 text-sm space-y-1">
-                          <li>• Offizielle Turnier-Abwurflinie</li>
-                          <li>• Befestigungsmaterial (Wandmontage)</li>
-                          <li>• Deutsches Handbuch (120 Seiten)</li>
-                          <li>• Garantieschein & Zertifikate</li>
-                        </ul>
+                      <div className="bg-slate-800/50 rounded-lg p-3">
+                        <div className="text-green-400 text-sm font-semibold">Versorgung</div>
+                        <div className="text-slate-300 text-sm">230V ±10% / 50Hz</div>
                       </div>
                     </div>
                     
-                    <div className="bg-red-900/20 border border-red-700/50 rounded-lg p-4">
-                      <h4 className="text-red-400 font-semibold mb-2 flex items-center">
-                        <Shield className="w-4 h-4 mr-2" />
-                        Wichtiger Hinweis:
-                      </h4>
-                      <p className="text-red-300 text-sm">
-                        Die LEO-Funktion (Löwen Entertainment Online) ist bei diesen Geräten nicht verfügbar 
-                        und kann auch nicht nachgerüstet werden. Alle anderen Funktionen sind vollumfänglich verfügbar.
-                      </p>
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="bg-slate-800/50 rounded-lg p-3">
+                        <div className="text-purple-400 text-sm font-semibold">Leistungsaufnahme</div>
+                        <div className="text-slate-300 text-lg font-bold">60W</div>
+                      </div>
+                      <div className="bg-slate-800/50 rounded-lg p-3">
+                        <div className="text-blue-400 text-sm font-semibold">Sicherungen</div>
+                        <div className="text-slate-300 text-sm">3,15A träge</div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-600">
+                      <h4 className="text-white font-semibold mb-3">Umgebungsbedingungen:</h4>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex justify-between text-slate-300">
+                          <span>Temperatur:</span>
+                          <span className="text-green-400">10-35°C</span>
+                        </div>
+                        <div className="flex justify-between text-slate-300">
+                          <span>Luftfeuchtigkeit:</span>
+                          <span className="text-blue-400">30-80%</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </CardContent>
               </Card>
             </div>
+
+            <Card className="bg-slate-900/50 border-slate-700 hover:bg-slate-900/70 transition-all duration-500">
+              <CardHeader>
+                <CardTitle className="text-white flex items-center text-xl">
+                  <Award className="w-6 h-6 text-green-400 mr-3" />
+                  Kompletter Lieferumfang
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="space-y-3">
+                    <h4 className="text-white font-semibold flex items-center">
+                      <Target className="w-5 h-5 text-blue-400 mr-2" />
+                      Hauptgerät
+                    </h4>
+                    <ul className="text-slate-300 space-y-2 text-sm">
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" /> HB8 Dartautomat komplett</li>
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" /> Integriertes Display</li>
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" /> Piezo-Sensorik</li>
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" /> Stabile Konstruktion</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <h4 className="text-white font-semibold flex items-center">
+                      <Zap className="w-5 h-5 text-purple-400 mr-2" />
+                      Zubehör
+                    </h4>
+                    <ul className="text-slate-300 space-y-2 text-sm">
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-purple-400 mr-2" /> 1x Profi Dartset</li>
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-purple-400 mr-2" /> 1x Abwurflinie (Turnier)</li>
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-purple-400 mr-2" /> Befestigungsmaterial komplett</li>
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-purple-400 mr-2" /> Deutsches Benutzerhandbuch</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <h4 className="text-white font-semibold flex items-center">
+                      <Users className="w-5 h-5 text-blue-400 mr-2" />
+                      Service & Support
+                    </h4>
+                    <ul className="text-slate-300 space-y-2 text-sm">
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-blue-400 mr-2" /> 24 Monate Garantie</li>
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-blue-400 mr-2" /> Kostenlose Einrichtung</li>
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-blue-400 mr-2" /> Technischer Support</li>
+                      <li className="flex items-center"><CheckCircle className="w-4 h-4 text-blue-400 mr-2" /> Ersatzteil-Service</li>
+                    </ul>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -907,11 +726,11 @@ const ProductHB8 = () => {
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="max-w-4xl mx-auto">
             <h2 className="font-bold text-white mb-8 font-parisine-narrow" style={{ fontSize: '48px' }}>
-              SICHERN SIE SICH JETZT IHREN HB8
+              SICHERN SIE SICH JETZT DEN HB8
             </h2>
             <p className="text-slate-300 mb-10 text-lg leading-relaxed">
-              Nur noch wenige Exemplare dieser exklusiven Lagerware aus 2021 verfügbar. 
-              Mit 24 Monaten Garantie, kostenloser Speditionslieferung und professioneller Einrichtung vor Ort.
+              Das bewährte Modell der LÖWEN DART-Serie. Mit solider Technik, 
+              Turnier-Standard und 24 Monaten Garantie. Kostenlose Speditionslieferung und professionelle Einrichtung inklusive.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -940,8 +759,8 @@ const ProductHB8 = () => {
                 Kostenlose Lieferung
               </div>
               <div className="flex items-center gap-2">
-                <Users className="w-4 h-4 text-purple-400" />
-                Profi-Setup inklusive
+                <Target className="w-4 h-4 text-purple-400" />
+                Turnier-Standard
               </div>
             </div>
           </div>

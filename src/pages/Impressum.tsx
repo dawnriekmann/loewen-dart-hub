@@ -1,3 +1,4 @@
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactBanner from "@/components/ContactBanner";
@@ -12,7 +13,7 @@ const Impressum = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: 'url(https://www.loewen.de/fileadmin/_processed_/5/0/csm_1_gruppe-header_loewen_01665782ea.jpg)'
+            backgroundImage: 'url(https://www.loewen-vertrieb.de/fileadmin/_processed_/5/0/csm_1_gruppe-header_loewen_01665782ea.jpg)'
           }}
         ></div>
         <div className="absolute inset-0 bg-gradient-to-br from-slate-800/60 to-slate-900/60"></div>

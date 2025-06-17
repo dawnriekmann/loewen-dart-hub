@@ -438,7 +438,7 @@ const ProductHB10 = () => {
                   <div className="flex flex-col">
                     <div className="h-[28rem] flex items-center justify-center mb-4">
                       <img 
-                        src="https://www.loewen.de/fileadmin/_processed_/6/8/csm_2023-08-08-HB10-Rot-Blau-Links_9b110b3a99.png"
+                        src="https://www.loewen-vertrieb.de/fileadmin/_processed_/6/8/csm_2023-08-08-HB10-Rot-Blau-Links_9b110b3a99.png"
                         alt="Löwen Dartautomat HB10"
                         className="max-h-full max-w-full object-contain drop-shadow-2xl scale-120"
                       />
