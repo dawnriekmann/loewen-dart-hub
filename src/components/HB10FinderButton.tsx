@@ -6,9 +6,7 @@ const HB10FinderButton = () => {
     <Tooltip>
       <TooltipTrigger asChild>
         <a
-          href="https://www.loewen.de/produkte/dart-soccer/hb10-finder/"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/hb10"
           className="flex items-center bg-[#060034] border-2 border-[#73afff] rounded-[36px] max-w-[450px] p-[15px_30px] fixed bottom-[145px] right-[-30px] z-[200] hover:bg-[#080048] text-white shadow-lg transition-all duration-300 hover:shadow-xl group"
         >
           <img
@@ -22,7 +20,7 @@ const HB10FinderButton = () => {
         </a>
       </TooltipTrigger>
       <TooltipContent side="left" className="bg-[#002454] text-white">
-        <p>Zum HB10 Standortfinder</p>
+        <p>HB10 kaufen</p>
       </TooltipContent>
     </Tooltip>
   );
