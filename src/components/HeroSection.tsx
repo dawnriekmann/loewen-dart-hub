@@ -58,7 +58,7 @@ const HeroSection = () => {
         onClick={handleVideoClick}
       >
         <source 
-          src="https://www.loewen.de/fileadmin/user_upload/240409_Headervideo_Darts_Produktseite_2024.mp4" 
+          src="https://www.loewen-vertrieb.de/fileadmin/user_upload/240409_Headervideo_Darts_Produktseite_2024.mp4" 
           type="video/mp4" 
         />
         Your browser does not support the video tag.
@@ -95,7 +95,7 @@ const HeroSection = () => {
       {/* Scroll indicator with arrow above text */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white text-center cursor-pointer" onClick={scrollToProducts}>
         <img 
-          src="https://www.loewen.de/_assets/522279b556b280de835e1011f7255b60/img/arrow-dotted-scroll-down.png" 
+          src="https://www.loewen-vertrieb.de/_assets/522279b556b280de835e1011f7255b60/img/arrow-dotted-scroll-down.png" 
           alt="Scroll down arrow"
           className="mx-auto mb-2 animate-bounce"
           style={{ width: '208px', height: '172px' }}

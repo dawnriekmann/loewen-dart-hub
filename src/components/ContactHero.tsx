@@ -1,4 +1,5 @@
 
+
 const ContactHero = () => {
   return (
     <section className="relative h-[60vh] flex items-center overflow-hidden">
@@ -6,7 +7,7 @@ const ContactHero = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: 'url(https://www.loewen.de/fileadmin/_processed_/5/0/csm_1_gruppe-header_loewen_01665782ea.jpg)'
+          backgroundImage: 'url(https://www.loewen-vertrieb.de/fileadmin/_processed_/5/0/csm_1_gruppe-header_loewen_01665782ea.jpg)'
         }}
       ></div>
       

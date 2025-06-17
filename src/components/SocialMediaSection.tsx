@@ -1,4 +1,5 @@
 
+
 const SocialMediaSection = () => {
   return (
     <section className="py-20 bg-slate-50">
@@ -24,7 +25,7 @@ const SocialMediaSection = () => {
             className="hover:scale-110 transition-transform duration-300"
           >
             <img 
-              src="https://www.loewen.de//fileadmin/_processed_/5/e/csm_facebook_icon1_5f97167bd4.png" 
+              src="https://www.loewen-vertrieb.de/fileadmin/_processed_/5/e/csm_facebook_icon1_5f97167bd4.png" 
               alt="Facebook"
               className="w-7 h-12.5"
               style={{ width: '28px', height: '50px' }}
@@ -38,7 +39,7 @@ const SocialMediaSection = () => {
             className="hover:scale-110 transition-transform duration-300"
           >
             <img 
-              src="https://www.loewen.de/fileadmin/_processed_/f/e/csm_instagram_icon1_b2cf83a61c.png" 
+              src="https://www.loewen-vertrieb.de/fileadmin/_processed_/f/e/csm_instagram_icon1_b2cf83a61c.png" 
               alt="Instagram"
               className="w-12.5 h-12.5"
               style={{ width: '50px', height: '50px' }}

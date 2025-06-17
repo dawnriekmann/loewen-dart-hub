@@ -1,5 +1,3 @@
-
-
 const HB10Section = () => {
   return (
     <section className="py-0 relative">
@@ -14,7 +12,7 @@ const HB10Section = () => {
       <div className="absolute left-0 top-32 z-10">
         <div className="shadow-2xl relative">
           <img 
-            src="https://www.loewen.de/fileadmin/user_upload/Dart-HB10-092024.jpg" 
+            src="https://www.loewen-vertrieb.de/fileadmin/user_upload/Dart-HB10-092024.jpg" 
             alt="LÖWEN DART HB10"
             className="object-cover"
             style={{ width: '1331px', height: '614px' }}
@@ -24,7 +22,7 @@ const HB10Section = () => {
           <div className="absolute right-8 top-16 z-30">
             <div className="flex items-center justify-center mb-8">
               <img 
-                src="https://www.loewen.de/fileadmin/_processed_/4/8/csm_Dart_HB_10_Logo_klein_407a328601.png" 
+                src="https://www.loewen-vertrieb.de/fileadmin/_processed_/4/8/csm_Dart_HB_10_Logo_klein_407a328601.png" 
                 alt="LÖWEN DART HB10 Logo"
                 className="h-32 object-contain"
               />
@@ -55,7 +53,7 @@ const HB10Section = () => {
           <div className="bg-white rounded-lg shadow-xl p-8 mb-16 max-w-4xl mx-auto">
             <div className="flex flex-col items-center mb-6">
               <img 
-                src="https://www.loewen.de/fileadmin/_processed_/4/8/csm_Dart_HB_10_Logo_klein_407a328601.png" 
+                src="https://www.loewen-vertrieb.de/fileadmin/_processed_/4/8/csm_Dart_HB_10_Logo_klein_407a328601.png" 
                 alt="LÖWEN DART HB10 Logo"
                 className="mb-4"
               />
@@ -88,7 +86,7 @@ const HB10Section = () => {
             <div className="max-w-6xl mx-auto mb-8">
               <div className="shadow-xl">
                 <img 
-                  src="https://www.loewen.de/fileadmin/user_upload/Erlauterung-Menue-Dart-V4-102024.png" 
+                  src="https://www.loewen-vertrieb.de/fileadmin/user_upload/Erlauterung-Menue-Dart-V4-102024.png" 
                   alt="LÖWEN DART Menu Explanation"
                   className="w-full h-auto"
                 />
@@ -106,7 +104,7 @@ const HB10Section = () => {
             <div className="max-w-6xl mx-auto">
               <div className="shadow-xl">
                 <img 
-                  src="https://www.loewen.de/fileadmin/user_upload/Dart-Banner-HB10-Monitorkit_092024.png" 
+                  src="https://www.loewen-vertrieb.de/fileadmin/user_upload/Dart-Banner-HB10-Monitorkit_092024.png" 
                   alt="LÖWEN DART HB10 Monitorkit"
                   className="w-full h-auto"
                 />
@@ -127,7 +125,7 @@ const HB10Section = () => {
                   }}
                 />
                 <img 
-                  src="https://www.loewen.de/fileadmin/user_upload/Deckblatt_Flyer_DE.PNG" 
+                  src="https://www.loewen-vertrieb.de/fileadmin/user_upload/Deckblatt_Flyer_DE.PNG" 
                   alt="Produktflyer"
                   className="flex-shrink-0"
                   style={{ width: '95px', height: '135px' }}
@@ -157,7 +155,7 @@ const HB10Section = () => {
                   }}
                 />
                 <img 
-                  src="https://www.loewen.de/fileadmin/user_upload/Produktwelt/Dart/Titel_Handbuch_199x262.jpg" 
+                  src="https://www.loewen-vertrieb.de/fileadmin/user_upload/Produktwelt/Dart/Titel_Handbuch_199x262.jpg" 
                   alt="Benutzerhandbuch"
                   className="flex-shrink-0"
                   style={{ width: '95px', height: '135px' }}
@@ -204,4 +202,3 @@ const HB10Section = () => {
 };
 
 export default HB10Section;
-

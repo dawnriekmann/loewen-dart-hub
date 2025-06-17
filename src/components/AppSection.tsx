@@ -4,12 +4,12 @@ import { useState, useEffect } from "react";
 
 const AppSection = () => {
   const sliderImages = [
-    "https://www.loewen.de/fileadmin/user_upload/Banner-Desktop-Dart-App-Startseite-07032023.jpg",
-    "https://www.loewen.de/fileadmin/user_upload/DartSlider-V3-HB10Finder-App-12072023.jpg",
-    "https://www.loewen.de/fileadmin/user_upload/Banner-Desktop-Dart-App-Statistiken-07032023.jpg",
-    "https://www.loewen.de/fileadmin/user_upload/Dartbannner-Spielhistorie-24112023.jpg",
-    "https://www.loewen.de/fileadmin/user_upload/Dart-Slider-App-092024.png",
-    "https://www.loewen.de/fileadmin/user_upload/Banner-Desktop-Dart-App-SocialMedia-07032023.jpg"
+    "https://www.loewen-vertrieb.de/fileadmin/user_upload/Banner-Desktop-Dart-App-Startseite-07032023.jpg",
+    "https://www.loewen-vertrieb.de/fileadmin/user_upload/DartSlider-V3-HB10Finder-App-12072023.jpg",
+    "https://www.loewen-vertrieb.de/fileadmin/user_upload/Banner-Desktop-Dart-App-Statistiken-07032023.jpg",
+    "https://www.loewen-vertrieb.de/fileadmin/user_upload/Dartbannner-Spielhistorie-24112023.jpg",
+    "https://www.loewen-vertrieb.de/fileadmin/user_upload/Dart-Slider-App-092024.png",
+    "https://www.loewen-vertrieb.de/fileadmin/user_upload/Banner-Desktop-Dart-App-SocialMedia-07032023.jpg"
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -39,7 +39,7 @@ const AppSection = () => {
             {/* App Icon */}
             <div className="flex-shrink-0">
               <img 
-                src="https://www.loewen.de/fileadmin/user_upload/Icon_Dart_App_2000px.png" 
+                src="https://www.loewen-vertrieb.de/fileadmin/user_upload/Icon_Dart_App_2000px.png" 
                 alt="LÖWEN Dart App Icon"
                 className="w-96 h-96 object-contain"
               />
@@ -61,7 +61,7 @@ const AppSection = () => {
                   rel="noopener noreferrer"
                 >
                   <img 
-                    src="https://www.loewen.de/fileadmin/user_upload/myNOVO/app-store.png" 
+                    src="https://www.loewen-vertrieb.de/fileadmin/user_upload/myNOVO/app-store.png" 
                     alt="Download im App Store"
                     className="h-14 w-auto hover:brightness-110 transition-all duration-300"
                   />
@@ -74,7 +74,7 @@ const AppSection = () => {
                   rel="noopener noreferrer"
                 >
                   <img 
-                    src="https://www.loewen.de/fileadmin/user_upload/myNOVO/google-play.png" 
+                    src="https://www.loewen-vertrieb.de/fileadmin/user_upload/myNOVO/google-play.png" 
                     alt="Jetzt bei Google Play"
                     className="h-14 w-auto hover:brightness-110 transition-all duration-300"
                   />
