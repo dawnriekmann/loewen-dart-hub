@@ -1,3 +1,4 @@
+
 const HB10Section = () => {
   return (
     <section className="py-0 relative">
@@ -125,7 +126,7 @@ const HB10Section = () => {
                   }}
                 />
                 <img 
-                  src="https://www.loewen-vertrieb.de/fileadmin/user_upload/Deckblatt_Flyer_DE.PNG" 
+                  src="https://www.loewen-vertrieb.de/fileadmin/user_upload/Deckblatt_Flyer_DE.png" 
                   alt="Produktflyer"
                   className="flex-shrink-0"
                   style={{ width: '95px', height: '135px' }}

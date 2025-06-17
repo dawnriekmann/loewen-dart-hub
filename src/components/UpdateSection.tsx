@@ -1,3 +1,4 @@
+
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { useState, useEffect } from "react";
 
@@ -23,13 +24,13 @@ const UpdateSection = () => {
     },
     {
       id: 2,
-      image: "https://www.loewen-vertrieb.de/fileadmin/user_upload/Video-Bild.PNG",
+      image: "https://www.loewen-vertrieb.de/fileadmin/user_upload/Video-Bild.png",
       title: "HB10 - V4",
       subtitle: "Promovideo"
     },
     {
       id: 3,
-      image: "https://www.loewen-vertrieb.de/fileadmin/user_upload/Titel_dart.PNG",
+      image: "https://www.loewen-vertrieb.de/fileadmin/user_upload/Titel_dart.png",
       title: "HB10",
       subtitle: "Update-Anleitung"
     }
