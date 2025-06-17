@@ -1,3 +1,4 @@
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -143,7 +144,7 @@ const ProductHB9 = () => {
                   <div className="flex flex-col">
                     <div className="h-[28rem] flex items-center justify-center mb-4">
                       <img 
-                        src="https://www.loewen.de/fileadmin/_processed_/6/8/csm_HB9_Sport_Dart_760f4d03f8.png"
+                        src="https://www.loewen-vertrieb.de/fileadmin/_processed_/6/8/csm_HB9_Sport_Dart_760f4d03f8.png"
                         alt="Löwen Dartautomat HB9"
                         className="max-h-full max-w-full object-contain drop-shadow-2xl scale-120"
                       />
